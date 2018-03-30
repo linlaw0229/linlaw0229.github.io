@@ -5,20 +5,20 @@
   
 
   
-  <title>Space complexity between recursion and iterative | Hexo</title>
+  <title>LC147. Insertion Sort List | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack. But if the recursive function is  the last line of the call (tail recursion) then there is no">
-<meta name="keywords" content="leetcode,algorithm">
+  <meta name="description" content="Problem description:Sort a linked list using insertion sort. Analysis:The insertion sort of linked list can be done in O(1) space. In this solution, I create a node, result, to contain the result. The">
+<meta name="keywords" content="leetcode,sort,linked list">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Space complexity between recursion and iterative">
-<meta property="og:url" content="http://linlaw0229.github.io/2018/03/28/Space complexity/index.html">
+<meta property="og:title" content="LC147. Insertion Sort List">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/03/29/LC147-Insertion-Sort-List/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack. But if the recursive function is  the last line of the call (tail recursion) then there is no">
+<meta property="og:description" content="Problem description:Sort a linked list using insertion sort. Analysis:The insertion sort of linked list can be done in O(1) space. In this solution, I create a node, result, to contain the result. The">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-03-29T21:57:58.000Z">
+<meta property="og:updated_time" content="2018-03-30T18:52:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Space complexity between recursion and iterative">
-<meta name="twitter:description" content="Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack. But if the recursive function is  the last line of the call (tail recursion) then there is no">
+<meta name="twitter:title" content="LC147. Insertion Sort List">
+<meta name="twitter:description" content="Problem description:Sort a linked list using insertion sort. Analysis:The insertion sort of linked list can be done in O(1) space. In this solution, I create a node, result, to contain the result. The">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,16 +65,12 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Space complexity" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-LC147-Insertion-Sort-List" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/28/Space complexity/" class="article-date">
-  <time datetime="2018-03-28T05:00:00.000Z" itemprop="datePublished">2018-03-28</time>
+    <a href="/2018/03/29/LC147-Insertion-Sort-List/" class="article-date">
+  <time datetime="2018-03-29T23:22:50.000Z" itemprop="datePublished">2018-03-29</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -83,7 +79,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Space complexity between recursion and iterative
+      LC147. Insertion Sort List
     </h1>
   
 
@@ -91,19 +87,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack.</p>
-<p>But if the recursive function is  <strong>the last line of the call (tail recursion)</strong> then there is no additional penalty.</p>
-<p>That is of course both algorithms are the same.</p>
-<p><strong><em>Space complexity in Merge-sort</em></strong></p>
-<p>Reference:<br><a href="https://www.codeproject.com/Articles/21194/Iterative-vs-Recursive-Approaches" target="_blank" rel="noopener">https://www.codeproject.com/Articles/21194/Iterative-vs-Recursive-Approaches</a><br><a href="https://stackoverflow.com/questions/10821059/space-complexity-of-recursive-algorithm" target="_blank" rel="noopener">https://stackoverflow.com/questions/10821059/space-complexity-of-recursive-algorithm</a><br><a href="https://en.wikipedia.org/wiki/Tail_call" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Tail_call</a><br><a href="https://goo.gl/JY6o7o" target="_blank" rel="noopener">https://goo.gl/JY6o7o</a></p>
+        <p>Problem description:<br>Sort a linked list using insertion sort.</p>
+<p>Analysis:<br>The insertion sort of linked list can be done in O(1) space. In this solution, I create a node, result, to contain the result. The result would be look like the following graph.</p>
+<pre><code>-init state-
+Original: 1 3 2 4 5
+result-&gt;null
+
+-first round-
+Original: 3 2 4 5
+result-&gt;1-&gt;NULL
+</code></pre><p>I use the next pointer to temporally save the position in the original list. The iter already move to the position in the result list that contains value higher than head-&gt;val. Then adjust the pointer in these item to direct head node to result list and move to next item in original list.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode *insertionSortList(ListNode *head) &#123;</span><br><span class="line">        ListNode result(INT_MIN);</span><br><span class="line">        </span><br><span class="line">        while(head)&#123;</span><br><span class="line">            ListNode* iter = &amp;result;</span><br><span class="line">            while(iter-&gt;next &amp;&amp; (iter-&gt;next-&gt;val &lt; head-&gt;val))&#123; </span><br><span class="line">                //when result list gets long, use this to find proper position in result list.</span><br><span class="line">                iter = iter-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            ListNode* next = head-&gt;next;</span><br><span class="line">            head-&gt;next = iter-&gt;next;</span><br><span class="line">            iter-&gt;next = head;</span><br><span class="line">            head = next;</span><br><span class="line">        &#125;</span><br><span class="line">        return result.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Reference:<br><a href="https://goo.gl/dzL3m1" target="_blank" rel="noopener">https://goo.gl/dzL3m1</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjfeb1yuz0003e95b482emxbf" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/29/LC147-Insertion-Sort-List/" data-id="cjfeb1yus0000e95bddhnj8p9" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sort/">sort</a></li></ul>
 
     </footer>
   </div>
@@ -111,19 +114,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/28/LC148-Sort-List/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LC148.Sort List
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/25/how to setup webpage/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/03/28/LC148-Sort-List/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">How to setup a webpage</div>
+      <div class="article-nav-title">LC148.Sort List</div>
     </a>
   
 </nav>
