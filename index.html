@@ -62,6 +62,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-84-Largest-Rectangle-in-Histogram" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/12/84-Largest-Rectangle-in-Histogram/" class="article-date">
+  <time datetime="2018-05-12T21:36:07.000Z" itemprop="datePublished">2018-05-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/12/84-Largest-Rectangle-in-Histogram/">84. Largest Rectangle in Histogram</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:<br>  Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.<br>  <img src="1.png" alt=""><br>  Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].<br>  <img src="2.png" alt=""><br>  The largest rectangle is shown in the shaded area, which has area = 10 unit.</p>
+<p>  Example:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,1,5,6,2,3]</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int largestRectangleArea(vector&lt;int&gt;&amp; height) &#123;            </span><br><span class="line">        int ret = 0;</span><br><span class="line">        height.push_back(0);</span><br><span class="line">        vector&lt;int&gt; index;</span><br><span class="line">        for(auto n: height)</span><br><span class="line">            cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">            </span><br><span class="line">            for(int i = 0; i &lt; height.size(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt; &quot;i: &quot;&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">                if(i == 4) cout&lt;&lt;index.size()&lt;&lt;endl;</span><br><span class="line">                while(index.size() &gt; 0 &amp;&amp; height[index.back()] &gt;= height[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    int h = height[index.back()];</span><br><span class="line">                    cout&lt;&lt; &quot;h:&quot; &lt;&lt;h;</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                    </span><br><span class="line">                    int sidx = index.size() &gt; 0 ? index.back() : -1;</span><br><span class="line">                    cout&lt;&lt; &quot;, sidx:&quot; &lt;&lt;sidx;</span><br><span class="line">                    if(h * (i-sidx-1) &gt; ret)</span><br><span class="line">                        ret = h * (i-sidx-1);</span><br><span class="line">                    cout&lt;&lt; &quot;, calculate:&quot; &lt;&lt;h * (i-sidx-1)&lt;&lt;endl;</span><br><span class="line">                &#125;</span><br><span class="line">                cout&lt;&lt; &quot;ret: &quot;&lt;&lt;ret&lt;&lt;endl;</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/12/84-Largest-Rectangle-in-Histogram/" data-id="cjh3wwb1n0001uk5b5zi3fili" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-72-Edit-Distance" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/11/72-Edit-Distance/" class="article-date">
@@ -97,10 +141,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjh2g2m4d0000j8bzuxu9t5zw" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjh3wwb1i0000uk5b3qms982c" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-string/">leetcode,dynamic programming,string</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li></ul>
 
     </footer>
   </div>
@@ -144,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjh2g2m4u000bj8bz55etebro" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjh3wwb23000euk5brzxxs2tf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refer-job/">refer,job</a></li></ul>
@@ -191,7 +235,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/31/LC24-Swap-Nodes-in-Pairs/" data-id="cjh2g2m4p0006j8bzfx871rug" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/31/LC24-Swap-Nodes-in-Pairs/" data-id="cjh3wwb1y000auk5bif5at9xd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li></ul>
@@ -234,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/" data-id="cjh2g2m4i0001j8bz30to0k9a" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/" data-id="cjh3wwb1s0003uk5b4vel3cly" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li></ul>
@@ -288,7 +332,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/29/LC147-Insertion-Sort-List/" data-id="cjh2g2m4l0003j8bz6hqo6dhd" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/29/LC147-Insertion-Sort-List/" data-id="cjh3wwb1v0006uk5b4lh8jght" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sort/">sort</a></li></ul>
@@ -334,7 +378,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/28/LC148-Sort-List/" data-id="cjh2g2m4n0005j8bzjbapgn9h" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/28/LC148-Sort-List/" data-id="cjh3wwb1u0005uk5bspfjrf98" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/space-complexity/">space complexity</a></li></ul>
@@ -381,7 +425,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjh2g2m4s000aj8bzqmjl6z9p" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjh3wwb20000buk5bb1wwx105" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -447,7 +491,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjh2g2m4w000ej8bzg3t04z0e" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjh3wwb24000huk5b4q5m2nbz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -479,7 +523,7 @@ result-&gt;1-&gt;NULL
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string/">leetcode,dynamic programming,string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -489,7 +533,7 @@ result-&gt;1-&gt;NULL
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string/" style="font-size: 10px;">leetcode,dynamic programming,string</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -511,6 +555,10 @@ result-&gt;1-&gt;NULL
       <ul>
         
           <li>
+            <a href="/2018/05/12/84-Largest-Rectangle-in-Histogram/">84. Largest Rectangle in Histogram</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/11/72-Edit-Distance/">72. Edit Distance</a>
           </li>
         
@@ -524,10 +572,6 @@ result-&gt;1-&gt;NULL
         
           <li>
             <a href="/2018/03/30/LC142-Linked-List-Cycle-II/">LC142. Linked List Cycle II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/03/29/LC147-Insertion-Sort-List/">LC147. Insertion Sort List</a>
           </li>
         
       </ul>
