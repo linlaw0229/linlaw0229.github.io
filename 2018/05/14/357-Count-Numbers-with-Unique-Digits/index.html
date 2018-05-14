@@ -5,20 +5,20 @@
   
 
   
-  <title>LC142. Linked List Cycle II | Hexo</title>
+  <title>357. Count Numbers with Unique Digits | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Reference:https://en.wikipedia.org/wiki/Cycle_detectionhttps://leetcode.com/problems/linked-list-cycle-ii/solution/https://goo.gl/SpP3Ybhttps://goo.gl/UNFB98">
-<meta name="keywords" content="leetcode,cycle detection,linked list,algorithm">
+  <meta name="description" content="Problem description:Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &amp;lt; 10n. Example:Given n = 2, return 91. (The answer should be the total numbers in the range">
+<meta name="keywords" content="leetcode,math,dynamic programming,backtracking,medium,google">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LC142. Linked List Cycle II">
-<meta property="og:url" content="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/index.html">
+<meta property="og:title" content="357. Count Numbers with Unique Digits">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Reference:https://en.wikipedia.org/wiki/Cycle_detectionhttps://leetcode.com/problems/linked-list-cycle-ii/solution/https://goo.gl/SpP3Ybhttps://goo.gl/UNFB98">
+<meta property="og:description" content="Problem description:Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &amp;lt; 10n. Example:Given n = 2, return 91. (The answer should be the total numbers in the range">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-12T21:24:57.000Z">
+<meta property="og:updated_time" content="2018-05-14T19:14:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LC142. Linked List Cycle II">
-<meta name="twitter:description" content="Reference:https://en.wikipedia.org/wiki/Cycle_detectionhttps://leetcode.com/problems/linked-list-cycle-ii/solution/https://goo.gl/SpP3Ybhttps://goo.gl/UNFB98">
+<meta name="twitter:title" content="357. Count Numbers with Unique Digits">
+<meta name="twitter:description" content="Problem description:Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &amp;lt; 10n. Example:Given n = 2, return 91. (The answer should be the total numbers in the range">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,14 +65,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-LC142-Linked-List-Cycle-II" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-357-Count-Numbers-with-Unique-Digits" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="article-date">
-  <time datetime="2018-03-30T19:30:32.000Z" itemprop="datePublished">2018-03-30</time>
+    <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="article-date">
+  <time datetime="2018-05-14T19:12:05.000Z" itemprop="datePublished">2018-05-14</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>►<a class="article-category-link" href="/categories/leetcode/algorithm/">algorithm</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </div>
 
   </div>
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      LC142. Linked List Cycle II
+      357. Count Numbers with Unique Digits
     </h1>
   
 
@@ -91,15 +91,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Reference:<br><a href="https://en.wikipedia.org/wiki/Cycle_detection" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cycle_detection</a><br><a href="https://leetcode.com/problems/linked-list-cycle-ii/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/linked-list-cycle-ii/solution/</a><br><a href="https://goo.gl/SpP3Yb" target="_blank" rel="noopener">https://goo.gl/SpP3Yb</a><br><a href="https://goo.gl/UNFB98" target="_blank" rel="noopener">https://goo.gl/UNFB98</a></p>
+        <p>Problem description:<br>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.</p>
+<p>Example:<br>Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</p>
+<p>Following the hint. Let f(n) = count of number with unique digits of length n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f(1) = 10. (0, 1, 2, 3, ...., 9)</span><br><span class="line"></span><br><span class="line">f(2) = 9 * 9. Because for each number i from 1, ..., 9, we can pick j to form a 2-digit number ij and there are 9 numbers that are different from i for j to choose from.</span><br><span class="line"></span><br><span class="line">f(3) = f(2) * 8 = 9 * 9 * 8. Because for each number with unique digits of length 2, say ij, we can pick k to form a 3 digit number ijk and there are 8 numbers that are different from i and j for k to choose from.</span><br><span class="line"></span><br><span class="line">Similarly f(4) = f(3) * 7 = 9 * 9 * 8 * 7....</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">f(10) = 9 * 9 * 8 * 7 * 6 * ... * 1</span><br><span class="line"></span><br><span class="line">f(11) = 0 = f(12) = f(13)....</span><br></pre></td></tr></table></figure></p>
+<p>any number with length &gt; 10 couldn’t be unique digits number.</p>
+<p>The problem is asking for numbers from 0 to 10^n. Hence return f(1) + f(2) + .. + f(n)</p>
+<p>As @4acreg suggests, There are only 11 different ans. You can create a lookup table for it. This problem is O(1) in essence</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countNumbersWithUniqueDigits(int n) &#123;</span><br><span class="line">        if (n == 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int ans = 10, base = 9;</span><br><span class="line">        for (int i = 2; i &lt;= n &amp;&amp; i &lt;= 10; i++) &#123;</span><br><span class="line">            base *= (9 - i + 2);</span><br><span class="line">            ans += base;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">        if(n == 0) return 1;</span><br><span class="line">        int res = 10; //original case</span><br><span class="line">        int uniqueDigits = 9;</span><br><span class="line">        int available = 9;</span><br><span class="line">        </span><br><span class="line">        while(n-- &gt;1 &amp;&amp; available &gt;0)&#123;</span><br><span class="line">            uniqueDigits = uniqueDigits* available; //recursively multiply the remain digits</span><br><span class="line">            res += uniqueDigits; //The answer ask from 0&lt;=x&lt;= 10^n, so need to add the result</span><br><span class="line">            available--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">        */</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/" data-id="cjh6mo2dw000es5bz9w3m049n" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjh6mo2dj0001s5bzxy4e0su4" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li></ul>
 
     </footer>
   </div>
@@ -107,19 +114,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/03/31/LC24-Swap-Nodes-in-Pairs/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LC24. Swap Nodes in Pairs
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/29/LC147-Insertion-Sort-List/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">LC147. Insertion Sort List</div>
+      <div class="article-nav-title">95. Unique Binary Search Trees II</div>
     </a>
   
 </nav>
