@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: leetcode,array,hash table,dp,dynamic programming,stack,facebook | Hexo</title>
+  <title>413. Arithmetic Slices | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/index.html">
+  <meta name="description" content="Problem description: A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are">
+<meta name="keywords" content="leetcode,math,dynamic programming,medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="413. Arithmetic Slices">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description: A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-14T20:39:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="413. Arithmetic Slices">
+<meta name="twitter:description" content="Problem description: A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same. For example, these are">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,73 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/12/85-Maximal-Rectangle/" class="archive-article-date">
-  <time datetime="2018-05-13T03:12:46.000Z" itemprop="datePublished">May 12</time>
+        <section id="main"><article id="post-413-Arithmetic-Slices" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/14/413-Arithmetic-Slices/" class="article-date">
+  <time datetime="2018-05-14T20:23:00.000Z" itemprop="datePublished">2018-05-14</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/85-Maximal-Rectangle/">85. Maximal Rectangle</a>
+    <h1 class="article-title" itemprop="name">
+      413. Arithmetic Slices
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
+<p>For example, these are arithmetic sequence:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, 3, 5, 7, 9</span><br><span class="line">7, 7, 7, 7</span><br><span class="line">3, -1, -5, -9</span><br></pre></td></tr></table></figure></p>
+<p>The following sequence is not arithmetic.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 1, 2, 5, 7</span><br></pre></td></tr></table></figure></p>
+<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
+<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
+<p>The function should return the number of arithmetic slices in the array A.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</span><br></pre></td></tr></table></figure></p>
+<p>solution1:</p>
+<p>use 1D dp array. When we have a arithmetic slice in 1…i, which can create total X arithmetic slice, and we got the i+1 element with same distance(slice) as before, the i+1 element can create additional X+1 arithmetic slice. And the sum of arithmetic slices create by sequence 1…i+1 elements would be X+(X+1).<br>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      1,3,5,7,9,15,20,25,28,29</span><br><span class="line">dp    0 0 1 2 3 0  0  1  0  0</span><br><span class="line">sum       1 3 6 6  6  7  7  7</span><br></pre></td></tr></table></figure></p>
+<p>In the above example, [1,3,5] can make the first slice.<br>When we add 7 into the sequence, it creates [3,5,7] and [1,3,5,7] slices.<br>Therefore, total slices when we consider sequence [1,3,5,7] would be<br>[1,3,5]: which is created and stored in dp[2]<br>[3,5,7], [1,3,5,7]: in dp[3]<br>Total: 3 slices</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(A.size(), 0);</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; dp.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp[i] = 1 + dp[i - 1];</span><br><span class="line">                sum += dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time: O(n)<br>Space: O(n)</p>
+<p>solution2:<br>Since if we don’t have consecutive sequence, we don’t need the dp. We can use a integer to store the slices created by previous consecutive sequence. When the consecutive sequence end, A[i]-A[i-1] != A[i-1]-A[i-2], just reset the counter to zero.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        int dp= 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; A.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp+=1;</span><br><span class="line">                sum += dp;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                dp = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time: O(n)<br>Space: O(1)</p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjh6pjlet00031bbzdnp0tvw7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">357. Count Numbers with Unique Digits</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
