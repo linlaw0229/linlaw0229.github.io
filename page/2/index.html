@@ -5,20 +5,15 @@
   
 
   
-  <title>Space complexity between recursion and iterative | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack. But if the recursive function is  the last line of the call (tail recursion) then there is no">
-<meta name="keywords" content="leetcode,algorithm">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Space complexity between recursion and iterative">
-<meta property="og:url" content="http://linlaw0229.github.io/2018/03/28/Space complexity/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://linlaw0229.github.io/page/2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack. But if the recursive function is  the last line of the call (tail recursion) then there is no">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-03-29T21:57:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Space complexity between recursion and iterative">
-<meta name="twitter:description" content="Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack. But if the recursive function is  the last line of the call (tail recursion) then there is no">
+<meta name="twitter:title" content="Hexo">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,7 +60,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Space complexity" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main">
+  
+    <article id="post-Space complexity" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/28/Space complexity/" class="article-date">
   <time datetime="2018-03-28T05:00:00.000Z" itemprop="datePublished">2018-03-28</time>
@@ -82,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      Space complexity between recursion and iterative
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/28/Space complexity/">Space complexity between recursion and iterative</a>
     </h1>
   
 
@@ -108,28 +105,82 @@
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/2018/03/28/LC148-Sort-List/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          LC148.Sort List
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/03/25/how to setup webpage/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">How to setup a webpage</div>
-    </a>
-  
-</nav>
+</article>
+
 
   
+    <article id="post-how to setup webpage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/25/how to setup webpage/" class="article-date">
+  <time datetime="2018-03-25T05:00:00.000Z" itemprop="datePublished">2018-03-25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tutorial/">tutorial</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/25/how to setup webpage/">How to setup a webpage</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s not that familiar for me, who basically use c++ and python, to setup a website. So I checked some options, and decided to use Hexo.<br>Setting up website through Hexo is pretty simple, which I believe can be done in half an hour. Let’s begin.</p>
+<p>My Environment:<br>Mac Sierra: 10.12.6<br>NodeJS: v8.10.0<br>Git: git version 2.10.1 (Apple Git-78)</p>
+<h2 id="Download-package"><a href="#Download-package" class="headerlink" title="Download package"></a>Download package</h2><p>First of all, the Hexo is based on two packages, NodeJS and Git. For those who don’t have/don’t know if you have these two packages, you can use the following commands on your terminal to check.</p>
+<p>I follow the original steps of these installations. </p>
+<h3 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure>
+<p>if you don’t have NodeJS installed on you machine, you can go download it through this site.<br><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git version</span><br></pre></td></tr></table></figure>
+<p>if you don’t have Git installed on you machine, you can go download it through this site.<br><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+<h3 id="Hexo-Installation"><a href="#Hexo-Installation" class="headerlink" title="Hexo Installation"></a>Hexo Installation</h3><p>To install hexo, we need to use node project manager to download it. I had permission error, so I use sudo to fix it. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="Create-webpage"><a href="#Create-webpage" class="headerlink" title="Create webpage"></a>Create webpage</h2><h3 id="Create-new-project"><a href="#Create-new-project" class="headerlink" title="Create new project"></a>Create new project</h3><p>After successfully install hexo, you should be able to create your own project. Here, I use “hexo_tmp” as the project name</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo_tmp</span><br></pre></td></tr></table></figure>
+<h3 id="Create-new-web-page"><a href="#Create-new-web-page" class="headerlink" title="Create new web page"></a>Create new web page</h3><p>Check the source_posts folder, add a markdown file, and you’re good to go.</p>
+<h2 id="Publish-the-webpage-on-github"><a href="#Publish-the-webpage-on-github" class="headerlink" title="Publish the webpage on github"></a>Publish the webpage on github</h2><p>Each github account can publish a webpage use github pages. The following steps would help you setup the webpage on github. </p>
+<ol>
+<li>Create github repository</li>
+<li>Change configuration in hexo</li>
+<li>Public the data to github</li>
+</ol>
+<h3 id="Create-github-repository"><a href="#Create-github-repository" class="headerlink" title="Create github repository"></a>Create github repository</h3><p>Login to you github and create a new repository like this. Notice that each account only have one free github page, and the name is restricted to “username.github.io”<br>The following picture is screenshot after I created the blog, so you should be okay to create a repository like this.</p>
+<p><img src="/image/github1.png" alt=""></p>
+<h3 id="Change-configuration-in-hexo"><a href="#Change-configuration-in-hexo" class="headerlink" title="Change configuration in hexo"></a>Change configuration in hexo</h3><p>The most frequently used file in hexo should be “hexofolder/_config.yml”<br>You should be able to find these two parts of code in your _config.yml. Change the “username” to your account name.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">url: https://username.github.io</span><br><span class="line">#root:</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h3 id="Public-the-data-to-github"><a href="#Public-the-data-to-github" class="headerlink" title="Public the data to github"></a>Public the data to github</h3><p>Finish above steps, you are on step to publish you website. Type the following command and you can see your website on <a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjh5puvgq000rs15bfn6alv6p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+    </footer>
+  </div>
+  
 </article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 </section>
         
