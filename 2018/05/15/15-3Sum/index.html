@@ -5,15 +5,20 @@
   
 
   
-  <title>Category: algorithm | Hexo</title>
+  <title>15. 3Sum | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/categories/algorithm/index.html">
+  <meta name="description" content="Problem description:Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution">
+<meta name="keywords" content="leetcode,array,two pointers,facebook,amazon,microsoft,medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="15. 3Sum">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/15/15-3Sum/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description:Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-15T21:04:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="15. 3Sum">
+<meta name="twitter:description" content="Problem description:Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero. Note: The solution">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,71 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/28/Space complexity/" class="archive-article-date">
-  <time datetime="2018-03-28T05:00:00.000Z" itemprop="datePublished">Mar 28</time>
+        <section id="main"><article id="post-15-3Sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/15/15-3Sum/" class="article-date">
+  <time datetime="2018-05-15T20:45:39.000Z" itemprop="datePublished">2018-05-15</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/28/Space complexity/">Space complexity between recursion and iterative</a>
+    <h1 class="article-title" itemprop="name">
+      15. 3Sum
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:<br>Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
+<p>Note:</p>
+<p>The solution set must not contain duplicate triplets.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 0, 1, 2, -1, -4],</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>Solution:</p>
+<ol>
+<li>Sort the array</li>
+<li>Pick indices from 0…n-2. To n-2 is because we need to find 3 item sequence. If we sort the array, need to at least save one spot for right element.</li>
+<li>Bypass duplicate element</li>
+<li>Use two pointers, one goes from i+1 toward right, the other one goes from n toward left</li>
+<li>If the sum of two pointers can not make the sequence zero, move the point.<br>To clarify, we can only move one pointer to make the result close to zero.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">input nums[-1, 0, 1, 2, -1, -4]</span><br><span class="line">sort  nums[-4, -1, -1, 0, 1, 2]</span><br><span class="line"></span><br><span class="line">start from nums[0]= -4, pointer1= nums[1], pointer2= nums[6-1]</span><br></pre></td></tr></table></figure>
+<p>Solution:<br>Time: O(n^2)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        if(nums.size() &lt;= 2) return res; //edge case check</span><br><span class="line">        </span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        for(int i = 0; i &lt; nums.size()-2; ++i)&#123; //-2 is because last possible 3Sum sequence could be last 3 item, </span><br><span class="line">                                                //and the center is n-2</span><br><span class="line">            </span><br><span class="line">            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1]) //pass duplicate elements</span><br><span class="line">                continue;</span><br><span class="line">            </span><br><span class="line">            int j=i+1, k=nums.size()-1;</span><br><span class="line">            int target = 0-nums[i]; //because the other two elements would make sequence zero</span><br><span class="line">            </span><br><span class="line">            while(j&lt; k)&#123;</span><br><span class="line">                if(nums[j]+ nums[k] == target)&#123;</span><br><span class="line">                    res.push_back(vector&lt;int&gt;&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">                    j++;</span><br><span class="line">                    k--;</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[j]==nums[j-1]) j++;//skip same element</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[k]==nums[k+1]) k--;//skip same element</span><br><span class="line">                &#125;</span><br><span class="line">                else if(nums[j]+ nums[k]&gt;target)&#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjh860nkh0000959ietn5prwf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/14/413-Arithmetic-Slices/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">413. Arithmetic Slices</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
