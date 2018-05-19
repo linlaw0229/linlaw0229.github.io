@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: Merge sort | Hexo</title>
+  <title>445. Add Two Numbers II | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/tags/Merge-sort/index.html">
+  <meta name="description" content="Problem description:You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two">
+<meta name="keywords" content="leetcode,medium,linked list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="445. Add Two Numbers II">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description:You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-19T22:34:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="445. Add Two Numbers II">
+<meta name="twitter:description" content="Problem description:You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,63 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/28/LC148-Sort-List/" class="archive-article-date">
-  <time datetime="2018-03-29T02:35:23.000Z" itemprop="datePublished">Mar 28</time>
+        <section id="main"><article id="post-445-Add-Two-Numbers-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/445-Add-Two-Numbers-II/" class="article-date">
+  <time datetime="2018-05-19T22:28:02.000Z" itemprop="datePublished">2018-05-19</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/28/LC148-Sort-List/">LC148.Sort List</a>
+    <h1 class="article-title" itemprop="name">
+      445. Add Two Numbers II
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:<br>You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Follow up:<br>What if you cannot modify the input lists? In other words, reversing the lists is not allowed.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: (6 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">Output: 6 -&gt; 8 -&gt; 0 -&gt; 7</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>This question is a followup from “2. Add two number.” The different part is that the significant digit comes first. However, we need to start from least significant digit when we do calculation. Even though the question states that you can not modify the input list, we can use a stack, first in last out, to achieve the reverse order calculation.</p>
+<p>Space: O(n)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        stack&lt;int&gt; s1, s2;</span><br><span class="line">        while(l1 != NULL)&#123;</span><br><span class="line">            s1.push(l1-&gt;val);</span><br><span class="line">            l1= l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        while(l2 != NULL)&#123;</span><br><span class="line">            s2.push(l2-&gt;val);</span><br><span class="line">            l2= l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int sum= 0;</span><br><span class="line">        ListNode* list= new ListNode(0);</span><br><span class="line">        while (!s1.empty() ||!s2.empty())&#123;</span><br><span class="line">            if(!s1.empty()) &#123;</span><br><span class="line">                sum += s1.top();</span><br><span class="line">                s1.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            if(!s2.empty())&#123;</span><br><span class="line">                sum += s2.top();  </span><br><span class="line">                s2.pop();</span><br><span class="line">            &#125; </span><br><span class="line">            </span><br><span class="line">            list-&gt;val = sum %10;</span><br><span class="line">            ListNode* head = new ListNode(sum/10);</span><br><span class="line">            head-&gt;next = list;</span><br><span class="line">            list = head;</span><br><span class="line">            sum/=10;</span><br><span class="line">        &#125;</span><br><span class="line">        return list-&gt;val ==0 ? list-&gt;next: list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhdytmk00003dg5b5cr9jnnc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/15/15-3Sum/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">15. 3Sum</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

@@ -62,6 +62,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-445-Add-Two-Numbers-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/19/445-Add-Two-Numbers-II/" class="article-date">
+  <time datetime="2018-05-19T22:28:02.000Z" itemprop="datePublished">2018-05-19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/19/445-Add-Two-Numbers-II/">445. Add Two Numbers II</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:<br>You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Follow up:<br>What if you cannot modify the input lists? In other words, reversing the lists is not allowed.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: (6 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">Output: 6 -&gt; 8 -&gt; 0 -&gt; 7</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>This question is a followup from “2. Add two number.” The different part is that the significant digit comes first. However, we need to start from least significant digit when we do calculation. Even though the question states that you can not modify the input list, we can use a stack, first in last out, to achieve the reverse order calculation.</p>
+<p>Space: O(n)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        stack&lt;int&gt; s1, s2;</span><br><span class="line">        while(l1 != NULL)&#123;</span><br><span class="line">            s1.push(l1-&gt;val);</span><br><span class="line">            l1= l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        while(l2 != NULL)&#123;</span><br><span class="line">            s2.push(l2-&gt;val);</span><br><span class="line">            l2= l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int sum= 0;</span><br><span class="line">        ListNode* list= new ListNode(0);</span><br><span class="line">        while (!s1.empty() ||!s2.empty())&#123;</span><br><span class="line">            if(!s1.empty()) &#123;</span><br><span class="line">                sum += s1.top();</span><br><span class="line">                s1.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            if(!s2.empty())&#123;</span><br><span class="line">                sum += s2.top();  </span><br><span class="line">                s2.pop();</span><br><span class="line">            &#125; </span><br><span class="line">            </span><br><span class="line">            list-&gt;val = sum %10;</span><br><span class="line">            ListNode* head = new ListNode(sum/10);</span><br><span class="line">            head-&gt;next = list;</span><br><span class="line">            list = head;</span><br><span class="line">            sum/=10;</span><br><span class="line">        &#125;</span><br><span class="line">        return list-&gt;val ==0 ? list-&gt;next: list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhdytmk00003dg5b5cr9jnnc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-15-3Sum" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/15/15-3Sum/" class="article-date">
@@ -106,7 +154,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjh860nkh0000959ietn5prwf" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjhdytmjq0000dg5bl7xaibm9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li></ul>
@@ -164,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjh860nkt0005959ipac2683n" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjhdytmk40006dg5b649p3mex" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li></ul>
@@ -214,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjh860nkr0003959i3kgqa3yb" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjhdytmk20005dg5butn1b9bb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li></ul>
@@ -262,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" data-id="cjh860nl3000e959iu0jsvpob" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" data-id="cjhdytmke000hdg5b6er5lsxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li></ul>
@@ -318,7 +366,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" data-id="cjh860nl9000k959ix7egz66x" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" data-id="cjhdytmki000kdg5bswfd3ofs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li></ul>
@@ -364,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/221-Maximal-Square/" data-id="cjh860nkm0001959iqqajspcl" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/12/221-Maximal-Square/" data-id="cjhdytmjw0001dg5b6cwbe1s4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li></ul>
@@ -411,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/85-Maximal-Rectangle/" data-id="cjh860nl1000b959iv8ljrv2r" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/12/85-Maximal-Rectangle/" data-id="cjhdytmkc000edg5b623a1tvs" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li></ul>
@@ -457,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/84-Largest-Rectangle-in-Histogram/" data-id="cjh860nkv0006959ihys7uots" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/12/84-Largest-Rectangle-in-Histogram/" data-id="cjhdytmk9000bdg5b73511azw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li></ul>
@@ -504,57 +552,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjh860nky000a959i8oj0nrfv" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjhdytmk7000adg5bsea0ge9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-companylist" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/20/companylist/" class="article-date">
-  <time datetime="2018-04-20T18:56:45.000Z" itemprop="datePublished">2018-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/20/companylist/">companylist</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>——以推——<br>FaceBook, 1/21, can’t refer in half year<br>  <a href="https://goo.gl/MkCvdg" target="_blank" rel="noopener">https://goo.gl/MkCvdg</a>, <a href="mailto:fancyusc@gmail.com" target="_blank" rel="noopener">fancyusc@gmail.com</a><br>  <a href="http://www.1point3acres.com/bbs/thread-404772-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-404772-1-1.html</a></p>
-<p>——未推——</p>
-<p>Uber<br>Lyft<br>Google<br>  <a href="https://goo.gl/Wp6XDs" target="_blank" rel="noopener">https://goo.gl/Wp6XDs</a>, <a href="mailto:emily.ggrefer@gmail.com" target="_blank" rel="noopener">emily.ggrefer@gmail.com</a><br>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>  <a href="https://goo.gl/5ovfPo" target="_blank" rel="noopener">https://goo.gl/5ovfPo</a></p>
-<p>Microsoft<br>  <a href="https://goo.gl/q6AzJm" target="_blank" rel="noopener">https://goo.gl/q6AzJm</a></p>
-<p>Paypal<br>  <a href="https://goo.gl/3X5odc" target="_blank" rel="noopener">https://goo.gl/3X5odc</a>, <a href="mailto:paypal.refer.2018@gmail.com" target="_blank" rel="noopener">paypal.refer.2018@gmail.com</a></p>
-<p>Amazon<br>Amazon<br> <a href="https://goo.gl/8jBf3T" target="_blank" rel="noopener">https://goo.gl/8jBf3T</a>, <a href="mailto:infinity.730@outlook.com" target="_blank" rel="noopener">infinity.730@outlook.com</a><br>visa<br>cisco<br>snapchat<br>Adobe<br>  <a href="https://goo.gl/yAVixp" target="_blank" rel="noopener">https://goo.gl/yAVixp</a>,<br>salesforce<br>2 sigma<br>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware<br>  <a href="https://goo.gl/jD8siQ" target="_blank" rel="noopener">https://goo.gl/jD8siQ</a></p>
-<p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p>
-<p>Quora<br>Pinterest<br>Wish<br>twillo</p>
-<p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix<br>dropbox<br>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjh860nlk0010959iqhp5izv8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refer-job/">refer,job</a></li></ul>
 
     </footer>
   </div>
@@ -588,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -598,7 +599,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -620,6 +621,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/19/445-Add-Two-Numbers-II/">445. Add Two Numbers II</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/15/15-3Sum/">15. 3Sum</a>
           </li>
         
@@ -633,10 +638,6 @@
         
           <li>
             <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">95. Unique Binary Search Trees II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/13/96-Unique-Binary-Search-Trees/">96. Unique Binary Search Trees</a>
           </li>
         
       </ul>
