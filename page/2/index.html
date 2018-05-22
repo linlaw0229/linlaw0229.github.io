@@ -62,6 +62,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-72-Edit-Distance" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/11/72-Edit-Distance/" class="article-date">
+  <time datetime="2018-05-11T20:55:19.000Z" itemprop="datePublished">2018-05-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/11/72-Edit-Distance/">72. Edit Distance</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:<br>  Given two words word1 and word2, find the minimum number of operations required to<br>  convert word1 to word2.</p>
+<p>  You have the following 3 operations permitted on a word:</p>
+<p>  Insert a character<br>  Delete a character<br>  Replace a character<br>  Example 1:</p>
+<p>  Input: word1 = “horse”, word2 = “ros”<br>  Output: 3<br>  Explanation:<br>  horse -&gt; rorse (replace ‘h’ with ‘r’)<br>  rorse -&gt; rose (remove ‘r’)<br>  rose -&gt; ros (remove ‘e’)<br>  Example 2:</p>
+<p>  Input: word1 = “intention”, word2 = “execution”<br>  Output: 5<br>  Explanation:<br>  intention -&gt; inention (remove ‘t’)<br>  inention -&gt; enention (replace ‘i’ with ‘e’)<br>  enention -&gt; exention (replace ‘n’ with ‘x’)<br>  exention -&gt; exection (replace ‘n’ with ‘c’)<br>  exection -&gt; execution (insert ‘u’)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123; </span><br><span class="line">public:</span><br><span class="line">    int minDistance(string word1, string word2) &#123; </span><br><span class="line">        int m = word1.length(), n= word2.length();</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(m+1, vector&lt;int&gt;(n+1, 0));</span><br><span class="line">        </span><br><span class="line">        //convert word2 to word1 if word2 is empty, so the operation is m times</span><br><span class="line">        //ex: word1: &quot;ABCDE&quot;, word2= &quot;&quot;  </span><br><span class="line">        //notice: start from 1 because dp[i][j] denotes word1[0...i-1] are the same as word2[0...j-1]</span><br><span class="line">        for(int i= 1; i&lt;= m; ++i)</span><br><span class="line">            dp[i][0] = i;</span><br><span class="line">        </span><br><span class="line">        //convert word1 to word2 if word1 is empty, so the operation is n times</span><br><span class="line">        for(int i= 1; i&lt;= n; ++i)</span><br><span class="line">            dp[0][i] = i;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        for(int i = 1; i&lt;= m; ++i)&#123;</span><br><span class="line">            for(int j= 1; j&lt;= n; ++j)&#123;</span><br><span class="line">                if(word1[i-1] == word2[j-1])</span><br><span class="line">                    dp[i][j] = dp[i-1][j-1];</span><br><span class="line">                else</span><br><span class="line">                    //replace: means till the dp[i-1][j-1] is the same, add 1 operation by replacement</span><br><span class="line">                    //  example: word1: &quot;ABCDE&quot;, word2: &quot;ABCDF&quot; </span><br><span class="line">                    //           therefore, only needs to 1 move based on dp[i-1][j-1]</span><br><span class="line">                    </span><br><span class="line">                    //deletion: the question is convert from word1 to word2, </span><br><span class="line">                    //          means till the dp[i-1][j] is the same, add 1 ...</span><br><span class="line">                    //  example: word1: &quot;ABCDE&quot;, word2: &quot;ABCD&quot;. i=4 j=3</span><br><span class="line">                    //           add 1 move based on dp[i-1][j]</span><br><span class="line">                    </span><br><span class="line">                    //insertion: the question is convert from word1 to word2, </span><br><span class="line">                    //          means till the dp[i][j-1] is the same, add 1 ...</span><br><span class="line">                    //  example: word1: &quot;ABCD&quot;, word2: &quot;ABCDE&quot;. i=3 j=4</span><br><span class="line">                    //           add 1 move based on dp[i][j-1]</span><br><span class="line">                    dp[i][j] = min(dp[i-1][j-1]+1, min(dp[i-1][j]+1, dp[i][j-1]+1));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjhh5e2ez000b5v5bz0m9iuep" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-companylist" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/20/companylist/" class="article-date">
@@ -97,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjhdytmkv0012dg5bdb43111h" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjhh5e2fl00155v5b7v48qxyg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refer-job/">refer,job</a></li></ul>
@@ -144,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/31/LC24-Swap-Nodes-in-Pairs/" data-id="cjhdytmks000wdg5b5kol6whv" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/31/LC24-Swap-Nodes-in-Pairs/" data-id="cjhh5e2fh00105v5bsd1k34db" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li></ul>
@@ -187,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/" data-id="cjhdytmkk000ndg5bh8s2hin0" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/" data-id="cjhh5e2fc000q5v5bvsegaqze" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li></ul>
@@ -241,7 +288,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/29/LC147-Insertion-Sort-List/" data-id="cjhdytmkn000qdg5b3uednlak" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/29/LC147-Insertion-Sort-List/" data-id="cjhh5e2fe000t5v5b7pidqh56" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sort/">sort</a></li></ul>
@@ -287,7 +334,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/28/LC148-Sort-List/" data-id="cjhdytmkq000tdg5b9p8553ug" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/28/LC148-Sort-List/" data-id="cjhh5e2fg000v5v5bp2613bs5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/space-complexity/">space complexity</a></li></ul>
@@ -334,7 +381,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjhdytmkt0010dg5b9b05tpe2" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjhh5e2fj00125v5bfunz4zkd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -400,7 +447,7 @@ result-&gt;1-&gt;NULL
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjhdytmkw0015dg5b3g0cytc0" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjhh5e2fm00185v5bm5ghgkpy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -437,7 +484,7 @@ result-&gt;1-&gt;NULL
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-Linked-List/">leetcode,medium,Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
     </div>
   </div>
 
@@ -447,7 +494,7 @@ result-&gt;1-&gt;NULL
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -469,6 +516,10 @@ result-&gt;1-&gt;NULL
       <ul>
         
           <li>
+            <a href="/2018/05/21/369-Plus-One-Linked-List/">369. Plus One Linked List</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/19/445-Add-Two-Numbers-II/">445. Add Two Numbers II</a>
           </li>
         
@@ -482,10 +533,6 @@ result-&gt;1-&gt;NULL
         
           <li>
             <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">357. Count Numbers with Unique Digits</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">95. Unique Binary Search Trees II</a>
           </li>
         
       </ul>

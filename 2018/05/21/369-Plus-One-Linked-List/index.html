@@ -5,15 +5,20 @@
   
 
   
-  <title>Tag: cycle detection | Hexo</title>
+  <title>369. Plus One Linked List | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/tags/cycle-detection/index.html">
+  <meta name="description" content="Problem Description:Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer. You may assume the integer do not contain any leading zero, except th">
+<meta name="keywords" content="leetcode,medium,Linked List">
+<meta property="og:type" content="article">
+<meta property="og:title" content="369. Plus One Linked List">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem Description:Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer. You may assume the integer do not contain any leading zero, except th">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-22T03:56:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="369. Plus One Linked List">
+<meta name="twitter:description" content="Problem Description:Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer. You may assume the integer do not contain any leading zero, except th">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="archive-article-date">
-  <time datetime="2018-03-30T19:30:32.000Z" itemprop="datePublished">Mar 30</time>
+        <section id="main"><article id="post-369-Plus-One-Linked-List" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/21/369-Plus-One-Linked-List/" class="article-date">
+  <time datetime="2018-05-22T03:54:20.000Z" itemprop="datePublished">2018-05-21</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/LC142-Linked-List-Cycle-II/">LC142. Linked List Cycle II</a>
+    <h1 class="article-title" itemprop="name">
+      369. Plus One Linked List
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem Description:<br>Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer.</p>
+<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input:</span><br><span class="line">1-&gt;2-&gt;3</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">1-&gt;2-&gt;4</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>The key point is to find 9’s.<br>For example: 8-&gt;7-&gt;9-&gt;9<br>Add dummy: 0-&gt;8-&gt;7-&gt;9-&gt;9<br>The lastNotNine is 7.<br>7 + 1 = 8<br>9 change to 0.<br>We got 0-&gt;8-&gt;8-&gt;0-&gt;0<br>return dummy.next</p>
+<p>For example: 9-&gt;9-&gt;9<br>Add dummy: 0-&gt;9-&gt;9-&gt;9<br>The lastNotNine is 0.<br>0 + 1 = 1<br>9 change to 0.<br>We got 1-&gt;0-&gt;0-&gt;0<br>return dummy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* plusOne(ListNode* head) &#123;</span><br><span class="line">        </span><br><span class="line">        ListNode* dmy = new ListNode(0);</span><br><span class="line">        ListNode* lastNot9 = dmy;</span><br><span class="line">        dmy-&gt;next = head;</span><br><span class="line">        for (ListNode* n = head; n != NULL; n = n-&gt;next) &#123;</span><br><span class="line">            if (n-&gt;val != 9) lastNot9 = n; /* invariant: [lastNot9.next, tail] are all 9*/</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        lastNot9-&gt;val++;</span><br><span class="line">        for (ListNode* n = lastNot9-&gt;next; n != NULL; n = n-&gt;next) &#123;</span><br><span class="line">            n-&gt;val = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return dmy-&gt;val == 1 ? dmy : head;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/" data-id="cjhh5e2el00015v5b3jj319af" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-Linked-List/">leetcode,medium,Linked List</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/19/445-Add-Two-Numbers-II/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">445. Add Two Numbers II</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
