@@ -5,20 +5,20 @@
   
 
   
-  <title>96. Unique Binary Search Trees | Hexo</title>
+  <title>16. 3Sum Closest | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Problem description:Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n? Example:12345678910Input: 3Output: 5Explanation:Given n = 3, there are a total of 5 uniqu">
-<meta name="keywords" content="leetcode,dynamic programming,tree,snapchat,medium">
+  <meta name="description" content="Problem description:Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume th">
+<meta name="keywords" content="leetcode,array,medium,two pointers">
 <meta property="og:type" content="article">
-<meta property="og:title" content="96. Unique Binary Search Trees">
-<meta property="og:url" content="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/index.html">
+<meta property="og:title" content="16. 3Sum Closest">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Problem description:Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n? Example:12345678910Input: 3Output: 5Explanation:Given n = 3, there are a total of 5 uniqu">
+<meta property="og:description" content="Problem description:Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume th">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-14T16:11:16.000Z">
+<meta property="og:updated_time" content="2018-05-29T21:36:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="96. Unique Binary Search Trees">
-<meta name="twitter:description" content="Problem description:Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n? Example:12345678910Input: 3Output: 5Explanation:Given n = 3, there are a total of 5 uniqu">
+<meta name="twitter:title" content="16. 3Sum Closest">
+<meta name="twitter:description" content="Problem description:Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume th">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -65,10 +65,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-96-Unique-Binary-Search-Trees" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-16-3Sum-Closest" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="article-date">
-  <time datetime="2018-05-14T03:52:18.000Z" itemprop="datePublished">2018-05-13</time>
+    <a href="/2018/05/29/16-3Sum-Closest/" class="article-date">
+  <time datetime="2018-05-29T21:32:04.000Z" itemprop="datePublished">2018-05-29</time>
 </a>
     
   <div class="article-category">
@@ -83,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      96. Unique Binary Search Trees
+      16. 3Sum Closest
     </h1>
   
 
@@ -91,28 +91,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Problem description:<br>Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n?</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">Given n = 3, there are a total of 5 unique BST&apos;s:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure></p>
-<p>The problem can be solved in a dynamic programming way. I’ll explain the intuition and formulas in the following.</p>
-<p>Given a sequence 1…n, to construct a Binary Search Tree (BST) out of the sequence, we could enumerate each number i in the sequence, and use the number as the root, naturally, the subsequence 1…(i-1) on its left side would lay on the left branch of the root, and similarly the right subsequence (i+1)…n lay on the right branch of the root. We then can construct the subtree from the subsequence recursively. Through the above approach, we could ensure that the BST that we construct are all unique, since they have unique roots.</p>
-<p>The problem is to calculate the number of unique BST. To do so, we need to define two functions:</p>
-<p>G(n): the number of unique BST for a sequence of length n.</p>
-<p>F(i, n), 1 &lt;= i &lt;= n: the number of unique BST, where the number i is the root of BST, and the sequence ranges from 1 to n.</p>
-<p>As one can see, G(n) is the actual function we need to calculate in order to solve the problem. And G(n) can be derived from F(i, n), which at the end, would recursively refer to G(n).</p>
-<p>First of all, given the above definitions, we can see that the total number of unique BST G(n), is the sum of BST F(i) using each number i as a root.<br>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = F(1, n) + F(2, n) + ... + F(n, n).</span><br></pre></td></tr></table></figure></p>
-<p>Particularly, the bottom cases, there is only one combination to construct a BST out of a sequence of length 1 (only a root) or 0 (empty tree).<br>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(0)=1, G(1)=1.</span><br></pre></td></tr></table></figure></p>
-<p>Given a sequence 1…n, we pick a number i out of the sequence as the root, then the number of unique BST with the specified root F(i), is the cartesian product of the number of BST for its left and right subtrees. For example, F(3, 7): the number of unique BST tree with number 3 as its root. To construct an unique BST out of the entire sequence [1, 2, 3, 4, 5, 6, 7] with 3 as the root, which is to say, we need to construct an unique BST out of its left subsequence [1, 2] and another BST out of the right subsequence [4, 5, 6, 7], and then combine them together (i.e. cartesian product). The tricky part is that we could consider the number of unique BST out of sequence [1,2] as G(2), and the number of of unique BST out of sequence [4, 5, 6, 7] as G(4). Therefore, F(3,7) = G(2) * G(4).</p>
-<p>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F(i, n) = G(i-1) * G(n-i)	1 &lt;= i &lt;= n</span><br></pre></td></tr></table></figure></p>
-<p>Combining the above two formulas, we obtain the recursive formula for G(n). i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)</span><br></pre></td></tr></table></figure></p>
-<p>In terms of calculation, we need to start with the lower number, since the value of G(n) depends on the values of G(0) … G(n-1).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numTrees(int n) &#123;</span><br><span class="line">        vector&lt;int&gt; G(n+1, 0);</span><br><span class="line">        G[0] = G[1] = 1;</span><br><span class="line">    </span><br><span class="line">        for(int i=2; i&lt;=n; ++i) &#123;</span><br><span class="line">            for(int j=1; j&lt;=i; ++j) &#123;</span><br><span class="line">                G[i] += G[j-1] * G[i-j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return G[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>Problem description:<br>Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 2, 1, -4], and target = 1.</span><br><span class="line"></span><br><span class="line">The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).</span><br></pre></td></tr></table></figure></p>
+<p>Solution:</p>
+<p>Sort the vector and then no need to run O(N^3) algorithm as each index has a direction to move.</p>
+<p>The code starts from this formation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">----------------------------------------------------</span><br><span class="line">^  ^                                               ^</span><br><span class="line">|  |                                               |</span><br><span class="line">|  +- second                                     third</span><br><span class="line">+-first</span><br></pre></td></tr></table></figure></p>
+<p>if nums[first] + nums[second] + nums[third] is smaller than the target, we know we have to increase the sum. so only choice is moving the second index forward.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------</span><br><span class="line">^    ^                                             ^</span><br><span class="line">|    |                                             |</span><br><span class="line">|    +- second                                   third</span><br><span class="line">+-first</span><br></pre></td></tr></table></figure></p>
+<p>if the sum is bigger than the target, we know that we need to reduce the sum. so only choice is moving ‘third’ to backward. of course if the sum equals to target, we can immediately return the sum.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------</span><br><span class="line">^    ^                                          ^</span><br><span class="line">|    |                                          |</span><br><span class="line">|    +- second                                third</span><br><span class="line">+-first</span><br></pre></td></tr></table></figure></p>
+<p>when second and third cross, the round is done so start next round by moving ‘first’ and resetting second and third.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------</span><br><span class="line">  ^    ^                                           ^</span><br><span class="line">  |    |                                           |</span><br><span class="line">  |    +- second                                 third</span><br><span class="line">  +-first</span><br></pre></td></tr></table></figure></p>
+<p>while doing this, collect the closest sum of each stage by calculating and comparing delta. Compare abs(target-newSum) and abs(target-closest). At the end of the process the three indexes will eventually be gathered at the end of the array.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">----------------------------------------------------</span><br><span class="line">                                         ^    ^    ^</span><br><span class="line">                                         |    |    `- third</span><br><span class="line">                                         |    +- second</span><br><span class="line">                                         +-first</span><br></pre></td></tr></table></figure></p>
+<p>if no exactly matching sum has been found so far, the value in closest will be the answer.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int threeSumClosest(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        </span><br><span class="line">        if(nums.size() &lt; 3) return 0;</span><br><span class="line">        int closest = nums[0]+nums[1]+nums[2]; //pick a sum value to compare</span><br><span class="line">        sort(nums.begin(), nums.end()); //sort the array, takes O(log n)</span><br><span class="line">        for(int first = 0 ; first &lt; nums.size()-2 ; ++first) &#123;</span><br><span class="line">            if(first &gt; 0 &amp;&amp; nums[first] == nums[first-1]) continue; //skip the duplicate items</span><br><span class="line">            int second = first+1; //2nd pointer go toward left</span><br><span class="line">            int third = nums.size()-1; //3rdd pointer go toward right         </span><br><span class="line">            while(second &lt; third) &#123; //use 1st pointer as index, find the set has closest sum</span><br><span class="line">                int curSum = nums[first]+nums[second]+nums[third];</span><br><span class="line">                if(curSum == target) return curSum;</span><br><span class="line">                if(abs(target-curSum)&lt;abs(target-closest)) &#123;</span><br><span class="line">                    closest = curSum;</span><br><span class="line">                &#125;</span><br><span class="line">                if(curSum &gt; target) &#123; //because the array is sorted, we can decide where the pointer should move.</span><br><span class="line">                    --third;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    ++second;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return closest;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" data-id="cjhs79mcu000t1a5bbx3fk2na" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhs79mbl00001a5bkeplhwfe" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/two-pointers/">two pointers</a></li></ul>
 
     </footer>
   </div>
@@ -120,19 +116,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          95. Unique Binary Search Trees II
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/05/12/221-Maximal-Square/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">221. Maximal Square</div>
+      <div class="article-nav-title">81. Search in Rotated Sorted Array II</div>
     </a>
   
 </nav>
