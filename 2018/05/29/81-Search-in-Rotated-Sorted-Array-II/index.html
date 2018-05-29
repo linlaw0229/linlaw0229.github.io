@@ -5,15 +5,20 @@
   
 
   
-  <title>Category: algorithm | Hexo</title>
+  <title>81. Search in Rotated Sorted Array II | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/categories/leetcode/algorithm/index.html">
+  <meta name="description" content="Problem description: Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., [0,0,1,2,2,5,6] might become [2,5,6,0,0,1,2]). You are given a target value t">
+<meta name="keywords" content="leetcode, medium, array, binary search">
+<meta property="og:type" content="article">
+<meta property="og:title" content="81. Search in Rotated Sorted Array II">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description: Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., [0,0,1,2,2,5,6] might become [2,5,6,0,0,1,2]). You are given a target value t">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-29T20:38:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="81. Search in Rotated Sorted Array II">
+<meta name="twitter:description" content="Problem description: Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e., [0,0,1,2,2,5,6] might become [2,5,6,0,0,1,2]). You are given a target value t">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,67 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="archive-article-date">
-  <time datetime="2018-03-30T19:30:32.000Z" itemprop="datePublished">Mar 30</time>
+        <section id="main"><article id="post-81-Search-in-Rotated-Sorted-Array-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" class="article-date">
+  <time datetime="2018-05-29T20:36:34.000Z" itemprop="datePublished">2018-05-29</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/LC142-Linked-List-Cycle-II/">LC142. Linked List Cycle II</a>
+    <h1 class="article-title" itemprop="name">
+      81. Search in Rotated Sorted Array II
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e., [0,0,1,2,2,5,6] might become [2,5,6,0,0,1,2]).</p>
+<p>You are given a target value to search. If found in the array return true, otherwise return false.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: nums = [2,5,6,0,0,1,2], target = 0</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: nums = [2,5,6,0,0,1,2], target = 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p>Follow up:</p>
+<p>This is a follow up problem to Search in Rotated Sorted Array, where nums may contain duplicates.<br>Would this affect the run-time complexity? How and why?</p>
+<p>Solution:</p>
+<p>1) everytime check if targe == nums[mid], if so, we find it.<br>2) otherwise, we check if the first half is in order (i.e. nums[left]&lt;=nums[mid])<br>  and if so, go to step 3), otherwise, the second half is in order,   go to step 4)<br>3) check if target in the range of [left, mid-1] (i.e. nums[left]&lt;=target &lt; nums[mid]), if so, do search in the first half, i.e. right = mid-1; otherwise, search in the second half left = mid+1;<br>4)  check if target in the range of [mid+1, right] (i.e. nums[mid]&lt;target &lt;= nums[right]), if so, do search in the second half, i.e. left = mid+1; otherwise search in the first half right = mid-1;</p>
+<p>The only difference is that due to the existence of duplicates, we can have nums[left] == nums[mid] and in that case, the first half could be out of order (i.e. NOT in the ascending order, e.g. [3 1 2 3 3 3 3]) and we have to deal this case separately. In that case, it is guaranteed that nums[right] also equals to nums[mid], so what we can do is to check if nums[mid]== nums[left] == nums[right] before the original logic, and if so, we can move left and right both towards the middle by 1. and repeat.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool search(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        int left = 0, right =  nums.size()-1, mid;</span><br><span class="line">        </span><br><span class="line">        while(left&lt;=right)</span><br><span class="line">        &#123;</span><br><span class="line">            mid = (left + right) &gt;&gt; 1;</span><br><span class="line">            if(nums[mid] == target) return true;</span><br><span class="line"></span><br><span class="line">            // the only difference from the first one, trickly case, just updat left and right</span><br><span class="line">            if( (nums[left] == nums[mid]) &amp;&amp; (nums[right] == nums[mid]) ) &#123;++left; --right;&#125;</span><br><span class="line"></span><br><span class="line">            else if(nums[left] &lt;= nums[mid])</span><br><span class="line">            &#123;</span><br><span class="line">                if( (nums[left]&lt;=target) &amp;&amp; (nums[mid] &gt; target) ) right = mid-1;</span><br><span class="line">                else left = mid + 1; </span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                if((nums[mid] &lt; target) &amp;&amp;  (nums[right] &gt;= target) ) left = mid+1;</span><br><span class="line">                else right = mid-1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhs5901d000htq5bzv7z5nht" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array-binary-search/">leetcode, medium, array, binary search</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">153. Find Minimum in Rotated Sorted Array</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

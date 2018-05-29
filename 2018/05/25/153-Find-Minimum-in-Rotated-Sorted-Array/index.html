@@ -5,15 +5,20 @@
   
 
   
-  <title>Category: algorithm | Hexo</title>
+  <title>153. Find Minimum in Rotated Sorted Array | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/categories/leetcode/algorithm/index.html">
+  <meta name="description" content="Problem description: Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]). Find the minimum element. Yo">
+<meta name="keywords" content="leetcode, array, binary search">
+<meta property="og:type" content="article">
+<meta property="og:title" content="153. Find Minimum in Rotated Sorted Array">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description: Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]). Find the minimum element. Yo">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-25T20:14:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="153. Find Minimum in Rotated Sorted Array">
+<meta name="twitter:description" content="Problem description: Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand. (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]). Find the minimum element. Yo">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,75 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="archive-article-date">
-  <time datetime="2018-03-30T19:30:32.000Z" itemprop="datePublished">Mar 30</time>
+        <section id="main"><article id="post-153-Find-Minimum-in-Rotated-Sorted-Array" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" class="article-date">
+  <time datetime="2018-05-25T20:11:59.000Z" itemprop="datePublished">2018-05-25</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/30/LC142-Linked-List-Cycle-II/">LC142. Linked List Cycle II</a>
+    <h1 class="article-title" itemprop="name">
+      153. Find Minimum in Rotated Sorted Array
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).</p>
+<p>Find the minimum element.</p>
+<p>You may assume no duplicate exists in the array.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [3,4,5,1,2] </span><br><span class="line">Output: 1</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [4,5,6,7,0,1,2]</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>Case 1. The leftmost value is less than the rightmost value in the list: This means that the list is not rotated.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 2 3 4 5 6 7 ]</span><br></pre></td></tr></table></figure></p>
+<p>Case 2. The value in the middle of the list is greater than the leftmost and rightmost values in the list.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 4 5 6 7 0 1 2 3 ]</span><br></pre></td></tr></table></figure></p>
+<p>Case 3. The value in the middle of the list is less than the leftmost and rightmost values in the list.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ 5 6 7 0 1 2 3 4 ]</span><br></pre></td></tr></table></figure></p>
+<p>As you see in the examples above, if we have case 1, we just return the leftmost value in the list. If we have case 2, we just move to the right side of the list. If we have case 3 we need to move to the left side of the list.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findMin(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        </span><br><span class="line">        int start=0,end=num.size()-1;</span><br><span class="line">        </span><br><span class="line">        while (start&lt;end) &#123;</span><br><span class="line">            if (num[start]&lt;num[end])</span><br><span class="line">                return num[start];</span><br><span class="line">            </span><br><span class="line">            int mid = (start+end)/2;</span><br><span class="line">            </span><br><span class="line">            if (num[mid]&gt;=num[start]) &#123;</span><br><span class="line">                start = mid+1;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                end = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return num[start];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhs590120006tq5b4s549dak" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-binary-search/">leetcode, array, binary search</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          81. Search in Rotated Sorted Array II
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/25/48-Rotate-Image/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">48. Rotate Image</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
