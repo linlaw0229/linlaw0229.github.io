@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2018/5 | Hexo</title>
+  <title>59. Spiral Matrix II | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/archives/2018/05/page/2/index.html">
+  <meta name="description" content="Problem description: Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.123456789Example:Input: 3Output:[ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ]] Sol">
+<meta name="keywords" content="leetcode,array,medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="59. Spiral Matrix II">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/30/59-Spiral-Matrix-II/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description: Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.123456789Example:Input: 3Output:[ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ]] Sol">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-30T20:22:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="59. Spiral Matrix II">
+<meta name="twitter:description" content="Problem description: Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.123456789Example:Input: 3Output:[ [ 1, 2, 3 ], [ 8, 9, 4 ], [ 7, 6, 5 ]] Sol">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,159 +65,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="archive-article-date">
-  <time datetime="2018-05-14T19:12:05.000Z" itemprop="datePublished">May 14</time>
+        <section id="main"><article id="post-59-Spiral-Matrix-II" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/59-Spiral-Matrix-II/" class="article-date">
+  <time datetime="2018-05-30T20:06:10.000Z" itemprop="datePublished">2018-05-30</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">357. Count Numbers with Unique Digits</a>
+    <h1 class="article-title" itemprop="name">
+      59. Spiral Matrix II
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" class="archive-article-date">
-  <time datetime="2018-05-14T16:10:35.000Z" itemprop="datePublished">May 14</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">95. Unique Binary Search Trees II</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="archive-article-date">
-  <time datetime="2018-05-14T03:52:18.000Z" itemprop="datePublished">May 13</time>
-</a>
+        <p>Problem description:</p>
+<p>Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: 3</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 8, 9, 4 ],</span><br><span class="line"> [ 7, 6, 5 ]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>Solution:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; generateMatrix(int n) &#123;</span><br><span class="line">        </span><br><span class="line">        vector&lt;vector&lt;int&gt; &gt; res( n, vector&lt;int&gt;(n) );</span><br><span class="line">        int k = 1, i = 0;</span><br><span class="line">        	while( k &lt;= n * n )</span><br><span class="line">        	&#123;</span><br><span class="line">        		int j = i;</span><br><span class="line">                    // four steps</span><br><span class="line">        		while( j &lt; n - i )             // 1. horizonal, left to right</span><br><span class="line">        			res[i][j++] = k++;</span><br><span class="line">        		j = i + 1;</span><br><span class="line">        		while( j &lt; n - i )             // 2. vertical, top to bottom</span><br><span class="line">        			res[j++][n-i-1] = k++;</span><br><span class="line">        		j = n - i - 2;</span><br><span class="line">        		while( j &gt; i )                  // 3. horizonal, right to left </span><br><span class="line">        			res[n-i-1][j--] = k++;</span><br><span class="line">        		j = n - i - 1;</span><br><span class="line">        		while( j &gt; i )                  // 4. vertical, bottom to  top </span><br><span class="line">        			res[j--][i] = k++;</span><br><span class="line">        		i++;      // next loop</span><br><span class="line">        	&#125;</span><br><span class="line">        	return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/13/96-Unique-Binary-Search-Trees/">96. Unique Binary Search Trees</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/12/221-Maximal-Square/" class="archive-article-date">
-  <time datetime="2018-05-13T03:47:27.000Z" itemprop="datePublished">May 12</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/30/59-Spiral-Matrix-II/" data-id="cjhtk4x6j000mvt9cwga507w1" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/221-Maximal-Square/">221. Maximal Square</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/12/85-Maximal-Rectangle/" class="archive-article-date">
-  <time datetime="2018-05-13T03:12:46.000Z" itemprop="datePublished">May 12</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/85-Maximal-Rectangle/">85. Maximal Rectangle</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/30/54-Spiral-Matrix/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">54. Spiral Matrix</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/12/84-Largest-Rectangle-in-Histogram/" class="archive-article-date">
-  <time datetime="2018-05-12T21:36:07.000Z" itemprop="datePublished">May 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/84-Largest-Rectangle-in-Histogram/">84. Largest Rectangle in Histogram</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/05/11/72-Edit-Distance/" class="archive-article-date">
-  <time datetime="2018-05-11T20:55:19.000Z" itemprop="datePublished">May 11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/11/72-Edit-Distance/">72. Edit Distance</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/archives/2018/05/">&laquo; Prev</a><a class="page-number" href="/archives/2018/05/">1</a><span class="page-number current">2</span>
-  </nav>
 
 </section>
         
