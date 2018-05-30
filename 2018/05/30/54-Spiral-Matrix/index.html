@@ -5,15 +5,20 @@
   
 
   
-  <title>Category: algorithm | Hexo</title>
+  <title>54. Spiral Matrix | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/categories/algorithm/index.html">
+  <meta name="description" content="Problem description: Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order. 123456789Example 1:Input:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]]Output: [">
+<meta name="keywords" content="leetcode,array,medium">
+<meta property="og:type" content="article">
+<meta property="og:title" content="54. Spiral Matrix">
+<meta property="og:url" content="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Problem description: Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order. 123456789Example 1:Input:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]]Output: [">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-30T19:57:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="54. Spiral Matrix">
+<meta name="twitter:description" content="Problem description: Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order. 123456789Example 1:Input:[ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ]]Output: [">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,40 +65,62 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/28/Space complexity/" class="archive-article-date">
-  <time datetime="2018-03-28T05:00:00.000Z" itemprop="datePublished">Mar 28</time>
+        <section id="main"><article id="post-54-Spiral-Matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/54-Spiral-Matrix/" class="article-date">
+  <time datetime="2018-05-30T19:55:40.000Z" itemprop="datePublished">2018-05-30</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/28/Space complexity/">Space complexity between recursion and iterative</a>
+    <h1 class="article-title" itemprop="name">
+      54. Spiral Matrix
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
+<p>Solution:<br>This is a very simple and easy to understand solution. I traverse right and increment rowBegin, then traverse down and decrement colEnd, then I traverse left and decrement rowEnd, and finally I traverse up and increment colBegin.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; spiralOrder(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if(matrix.size()== 0) return res;</span><br><span class="line">        if(matrix[0].size()== 0) return res;</span><br><span class="line">        </span><br><span class="line">        int rowBegin = 0;</span><br><span class="line">        int rowEnd = matrix.size()-1;</span><br><span class="line">        int colBegin = 0;</span><br><span class="line">        int colEnd = matrix[0].size() - 1;</span><br><span class="line">        </span><br><span class="line">        while (rowBegin &lt;= rowEnd &amp;&amp; colBegin &lt;= colEnd) &#123;</span><br><span class="line">            // Traverse Right</span><br><span class="line">            for (int j = colBegin; j &lt;= colEnd; j ++) &#123;</span><br><span class="line">                res.push_back(matrix[rowBegin][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            rowBegin++;</span><br><span class="line">            </span><br><span class="line">            // Traverse Down</span><br><span class="line">            for (int j = rowBegin; j &lt;= rowEnd; j ++) &#123;</span><br><span class="line">                res.push_back(matrix[j][colEnd]);</span><br><span class="line">            &#125;</span><br><span class="line">            colEnd--;</span><br><span class="line">            </span><br><span class="line">            if (rowBegin &lt;= rowEnd) &#123;</span><br><span class="line">                // Traverse Left</span><br><span class="line">                for (int j = colEnd; j &gt;= colBegin; j --) &#123;</span><br><span class="line">                    res.push_back(matrix[rowEnd][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            rowEnd--;</span><br><span class="line">            </span><br><span class="line">            if (colBegin &lt;= colEnd) &#123;</span><br><span class="line">                // Traver Up</span><br><span class="line">                for (int j = rowEnd; j &gt;= rowBegin; j --) &#123;</span><br><span class="line">                    res.push_back(matrix[j][colBegin]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            colBegin ++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/" data-id="cjhtj943p000hr09cypoq4ufz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/29/16-3Sum-Closest/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">16. 3Sum Closest</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         

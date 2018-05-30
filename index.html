@@ -62,6 +62,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-54-Spiral-Matrix" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/54-Spiral-Matrix/" class="article-date">
+  <time datetime="2018-05-30T19:55:40.000Z" itemprop="datePublished">2018-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/30/54-Spiral-Matrix/">54. Spiral Matrix</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
+<p>Solution:<br>This is a very simple and easy to understand solution. I traverse right and increment rowBegin, then traverse down and decrement colEnd, then I traverse left and decrement rowEnd, and finally I traverse up and increment colBegin.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; spiralOrder(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if(matrix.size()== 0) return res;</span><br><span class="line">        if(matrix[0].size()== 0) return res;</span><br><span class="line">        </span><br><span class="line">        int rowBegin = 0;</span><br><span class="line">        int rowEnd = matrix.size()-1;</span><br><span class="line">        int colBegin = 0;</span><br><span class="line">        int colEnd = matrix[0].size() - 1;</span><br><span class="line">        </span><br><span class="line">        while (rowBegin &lt;= rowEnd &amp;&amp; colBegin &lt;= colEnd) &#123;</span><br><span class="line">            // Traverse Right</span><br><span class="line">            for (int j = colBegin; j &lt;= colEnd; j ++) &#123;</span><br><span class="line">                res.push_back(matrix[rowBegin][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            rowBegin++;</span><br><span class="line">            </span><br><span class="line">            // Traverse Down</span><br><span class="line">            for (int j = rowBegin; j &lt;= rowEnd; j ++) &#123;</span><br><span class="line">                res.push_back(matrix[j][colEnd]);</span><br><span class="line">            &#125;</span><br><span class="line">            colEnd--;</span><br><span class="line">            </span><br><span class="line">            if (rowBegin &lt;= rowEnd) &#123;</span><br><span class="line">                // Traverse Left</span><br><span class="line">                for (int j = colEnd; j &gt;= colBegin; j --) &#123;</span><br><span class="line">                    res.push_back(matrix[rowEnd][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            rowEnd--;</span><br><span class="line">            </span><br><span class="line">            if (colBegin &lt;= colEnd) &#123;</span><br><span class="line">                // Traver Up</span><br><span class="line">                for (int j = rowEnd; j &gt;= rowBegin; j --) &#123;</span><br><span class="line">                    res.push_back(matrix[j][colBegin]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            colBegin ++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/" data-id="cjhtj943p000hr09cypoq4ufz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-16-3Sum-Closest" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/29/16-3Sum-Closest/" class="article-date">
@@ -102,7 +149,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhs79mbl00001a5bkeplhwfe" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhtj94360003r09c78u14d7y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/two-pointers/">two pointers</a></li></ul>
@@ -154,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhs79mch000f1a5b7f97c7f5" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhtj9440000pr09c5hxadmdh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array-binary-search/">leetcode, medium, array, binary search</a></li></ul>
@@ -205,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhs79mc200031a5buoruhqcb" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhtj94300001r09c4ua7qieb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-binary-search/">leetcode, array, binary search</a></li></ul>
@@ -264,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/48-Rotate-Image/" data-id="cjhs79mcl000i1a5bz0esl0rq" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/25/48-Rotate-Image/" data-id="cjhtj943u000kr09cxa6612uj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array/">leetcode, medium, array</a></li></ul>
@@ -311,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/" data-id="cjhs79mca00091a5byw4ra1u4" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/" data-id="cjhtj943g000ar09c8pewq5x0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-Linked-List/">leetcode,medium,Linked List</a></li></ul>
@@ -359,7 +406,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhs79mcf000d1a5bpo8jmx4m" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhtj943m000er09c556qprkc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li></ul>
@@ -415,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjhs79mbu00011a5brn52h98k" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjhtj942s0000r09cisbh6mn0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li></ul>
@@ -473,7 +520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjhs79mcc000a1a5b28ed8b52" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjhtj943j000br09cq90wh5r4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li></ul>
@@ -523,58 +570,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjhs79mc600061a5bjaan3vys" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjhtj943b0006r09cjhrpqose" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-95-Unique-Binary-Search-Trees-II" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" class="article-date">
-  <time datetime="2018-05-14T16:10:35.000Z" itemprop="datePublished">2018-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">95. Unique Binary Search Trees II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:</p>
-<p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: 3</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [1,null,3,2],</span><br><span class="line">  [3,2,null,1],</span><br><span class="line">  [3,1,null,null,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [1,null,2,null,3]</span><br><span class="line">]</span><br><span class="line">Explanation:</span><br><span class="line">The above output corresponds to the 5 unique BST&apos;s shown below:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure></p>
-<p>Tree can be divided into three parts<br>Picking ith element in 1…n sequence, the subtree would be<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  V       </span><br><span class="line"> / \      L: 1...i-1</span><br><span class="line">L   R     R: i+1...n</span><br></pre></td></tr></table></figure></p>
-<p>Therefore, we need a function that could generate trees that take 2 inputs, start and end.<br>By recursively calling this subfunction, we can generate different trees.<br>One thing to notice is that, after the recursive, we should have a root node to catch these different left and right trees.<br>That is to say, if we have sequence [1,2,3,4,5] and we pick 3 as root.<br>L would be [1,2], R [4,5].<br>It’s easy to see that the Left tree could have these two shape.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   1        2                                                                       3           3</span><br><span class="line">  / \      / \          ==adding the subtree to left side with 3 as root ==&gt;       /           /</span><br><span class="line">null 2    1   null                                                                1           2</span><br><span class="line">                                                                                 / \         / \</span><br><span class="line">                                                                               null 2       1  null</span><br></pre></td></tr></table></figure></p>
-<p>The right part is the same, so I just draw left part on it.<br>Finally, push the new tree to the vector and return it to upper recursive.</p>
-<p>time: O(catalan(n)), <a href="https://goo.gl/umK2Fl" target="_blank" rel="noopener">https://goo.gl/umK2Fl</a><br>space: O(log(n)), tree space is log(n) with total node n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">  Definition for a binary tree node.</span><br><span class="line">  struct TreeNode &#123;</span><br><span class="line">      int val;</span><br><span class="line">      TreeNode *left;</span><br><span class="line">      TreeNode *right;</span><br><span class="line">      TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;TreeNode*&gt; generateTrees(int n) &#123;</span><br><span class="line">        if(n == 0) return vector&lt;TreeNode*&gt;();</span><br><span class="line">        return genTree(1,n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;TreeNode*&gt; genTree(int start, int end)&#123;</span><br><span class="line">        vector&lt;TreeNode*&gt; list;</span><br><span class="line">        if(start&gt;end)&#123;</span><br><span class="line">            list.push_back(NULL);</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(start == end)&#123;</span><br><span class="line">            list.push_back(new TreeNode(start));</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vector&lt;TreeNode*&gt; left, right;</span><br><span class="line">        for(int i= start; i&lt;= end; ++i)&#123;</span><br><span class="line">            left = genTree(start, i-1);</span><br><span class="line">            right = genTree(i+1,end);</span><br><span class="line">            </span><br><span class="line">            for(auto lnode: left)</span><br><span class="line">            &#123;</span><br><span class="line">                for(auto rnode: right)</span><br><span class="line">                &#123;</span><br><span class="line">                    TreeNode* root = new TreeNode(i);</span><br><span class="line">                    root-&gt;left = lnode;</span><br><span class="line">                    root-&gt;right = rnode;</span><br><span class="line">                    list.push_back(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" data-id="cjhs79mcs000q1a5bmynjtmii" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li></ul>
 
     </footer>
   </div>
@@ -618,7 +617,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/array/" style="font-size: 13.33px;">array</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/medium/" style="font-size: 13.33px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -640,6 +639,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/30/54-Spiral-Matrix/">54. Spiral Matrix</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/29/16-3Sum-Closest/">16. 3Sum Closest</a>
           </li>
         
@@ -653,10 +656,6 @@
         
           <li>
             <a href="/2018/05/25/48-Rotate-Image/">48. Rotate Image</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/21/369-Plus-One-Linked-List/">369. Plus One Linked List</a>
           </li>
         
       </ul>

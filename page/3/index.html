@@ -62,6 +62,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-LC148-Sort-List" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/28/LC148-Sort-List/" class="article-date">
+  <time datetime="2018-03-29T02:35:23.000Z" itemprop="datePublished">2018-03-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/28/LC148-Sort-List/">LC148.Sort List</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sort a linked list in O(nlogn) time using constant space complexity.</p>
+<p>When it comes to the algorithm that can sort in O(nlogn), it should be Merge sort, Quick sort, Heap sort. The difficult part in this question is the space complexity. If you choose recursive, the program stack will exceed the requirement and might lead to stack overflow. If you use Top-down merge sort, you will use another recursive in your program.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">/**</span><br><span class="line"> * https://goo.gl/xgNMT4</span><br><span class="line"> * Merge sort use bottom-up policy, </span><br><span class="line"> * so Space Complexity is O(1)</span><br><span class="line"> * Time Complexity is O(NlgN)</span><br><span class="line"> * stable sort</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">	ListNode *sortList(ListNode *head) &#123;</span><br><span class="line">		if(!head || !(head-&gt;next)) return head;</span><br><span class="line">		</span><br><span class="line">		//get the linked list&apos;s length</span><br><span class="line">		ListNode* cur = head;</span><br><span class="line">		int length = 0;</span><br><span class="line">		while(cur)&#123;</span><br><span class="line">			length++;</span><br><span class="line">			cur = cur-&gt;next;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		ListNode dummy(0);</span><br><span class="line">		dummy.next = head;</span><br><span class="line">		ListNode *left, *right, *tail;</span><br><span class="line">		for(int step = 1; step &lt; length; step &lt;&lt;= 1)&#123;</span><br><span class="line">			cur = dummy.next;</span><br><span class="line">			tail = &amp;dummy;</span><br><span class="line">			while(cur)&#123;</span><br><span class="line">				left = cur;</span><br><span class="line">				right = split(left, step);</span><br><span class="line">				cur = split(right,step);</span><br><span class="line">				tail = merge(left, right, tail);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		return dummy.next;</span><br><span class="line">	&#125;</span><br><span class="line">private:</span><br><span class="line">	/**</span><br><span class="line">	 * Divide the linked list into two lists,</span><br><span class="line">     * while the first list contains first n ndoes</span><br><span class="line">	 * return the second list&apos;s head</span><br><span class="line">	 */</span><br><span class="line">	ListNode* split(ListNode *head, int n)&#123;</span><br><span class="line">		//if(!head) return NULL;</span><br><span class="line">        //1. point to the position that want to spilt</span><br><span class="line">        //2. separate two linked list, which are from start-&gt;head, second</span><br><span class="line">		for(int i = 1; head &amp;&amp; i &lt; n; i++) head = head-&gt;next;</span><br><span class="line">		</span><br><span class="line">		if(!head) return NULL;</span><br><span class="line">		ListNode *second = head-&gt;next; </span><br><span class="line">		head-&gt;next = NULL; //end the list</span><br><span class="line">		return second;</span><br><span class="line">	&#125;</span><br><span class="line">	/**</span><br><span class="line">	  * merge the two sorted linked list l1 and l2,</span><br><span class="line">	  * then append the merged sorted linked list to the node head</span><br><span class="line">	  * return the tail of the merged sorted linked list</span><br><span class="line">	 */</span><br><span class="line">	ListNode* merge(ListNode* l1, ListNode* l2, ListNode* head)&#123;</span><br><span class="line">		ListNode *cur = head;</span><br><span class="line">		while(l1 &amp;&amp; l2)&#123;</span><br><span class="line">			if(l1-&gt;val &gt; l2-&gt;val)&#123;</span><br><span class="line">				cur-&gt;next = l2;</span><br><span class="line">				cur = l2;</span><br><span class="line">				l2 = l2-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			else&#123;</span><br><span class="line">				cur-&gt;next = l1;</span><br><span class="line">				cur = l1;</span><br><span class="line">				l1 = l1-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cur-&gt;next = (l1 ? l1 : l2);</span><br><span class="line">		while(cur-&gt;next) cur = cur-&gt;next;</span><br><span class="line">		return cur;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Reference:<br><a href="https://goo.gl/xgNMT4" target="_blank" rel="noopener">https://goo.gl/xgNMT4</a><br><a href="https://goo.gl/zgWtLT" target="_blank" rel="noopener">https://goo.gl/zgWtLT</a><br><a href="https://goo.gl/JY6o7o" target="_blank" rel="noopener">https://goo.gl/JY6o7o</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/03/28/LC148-Sort-List/" data-id="cjhtj944h0018r09cnmf66flq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/space-complexity/">space complexity</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Space complexity" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/03/28/Space complexity/" class="article-date">
@@ -97,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjhs79md4001b1a5bztx3fnd2" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/28/Space complexity/" data-id="cjhtj944o001gr09c8t78dw7m" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
@@ -163,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjhs79mdb001l1a5bt08ptol3" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/25/how to setup webpage/" data-id="cjhtj944s001mr09c2g3dj21x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/github/">github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
@@ -210,7 +256,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/medium/" style="font-size: 10px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/array/" style="font-size: 13.33px;">array</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/medium/" style="font-size: 13.33px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -232,6 +278,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/30/54-Spiral-Matrix/">54. Spiral Matrix</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/29/16-3Sum-Closest/">16. 3Sum Closest</a>
           </li>
         
@@ -245,10 +295,6 @@
         
           <li>
             <a href="/2018/05/25/48-Rotate-Image/">48. Rotate Image</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/21/369-Plus-One-Linked-List/">369. Plus One Linked List</a>
           </li>
         
       </ul>
