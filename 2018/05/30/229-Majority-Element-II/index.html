@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Problem description: Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. Note: The algorithm should run in linear time and in O(1) space. 1234Example 1:Input: [3,2">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-30T20:45:29.000Z">
+<meta property="og:updated_time" content="2018-05-30T20:46:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="229. Majority Element II">
 <meta name="twitter:description" content="Problem description: Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. Note: The algorithm should run in linear time and in O(1) space. 1234Example 1:Input: [3,2">
@@ -98,11 +98,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,1,1,3,3,2,2,2]</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
 <p>Solution:<br>The essential concepts is you keep a counter for the majority number X. If you find a number Y that is not X, the current counter should deduce 1. The reason is that if there is 5 X and 4 Y, there would be one (5-4) more X than Y. This could be explained as “4 X being paired out by 4 Y”.</p>
 <p>And since the requirement is finding the majority for more than ceiling of [n/3], the answer would be less than or equal to two numbers.<br>So we can modify the algorithm to maintain two counters for two majorities.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int num0 = 0, num1 = 1, count0 = 0, count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums) &#123;</span><br><span class="line">            //find two majority element</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">          else if (! count0) num0 = x, count0 = 1;</span><br><span class="line">          else if (! count1) num1 = x, count1 = 1;</span><br><span class="line">          else count0--, count1--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //set to zero is because only need to count these two element</span><br><span class="line">        count0 = count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums)</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if (count0 &gt; nums.size()/3) res.push_back(num0);</span><br><span class="line">        if (count1 &gt; nums.size()/3) res.push_back(num1);</span><br><span class="line">        return res;</span><br><span class="line">        //https://goo.gl/jMTMc9</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int num0 = 0, num1 = 1, count0 = 0, count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums) &#123;</span><br><span class="line">            //find two majority element</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">          else if (! count0) num0 = x, count0 = 1;</span><br><span class="line">          else if (! count1) num1 = x, count1 = 1;</span><br><span class="line">          else count0--, count1--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //set to zero is because only need to count these two element</span><br><span class="line">        count0 = count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums)</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if (count0 &gt; nums.size()/3) res.push_back(num0);</span><br><span class="line">        if (count1 &gt; nums.size()/3) res.push_back(num1);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>reference:<br><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank" rel="noopener">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/229-Majority-Element-II/" data-id="cjhtkyf7i0005439c4svj6prx" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/229-Majority-Element-II/" data-id="cjhtnimnh000ak39caengkfu1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -112,6 +114,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/05/30/228-Summary-Ranges/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          228. Summary Ranges
+        
+      </div>
+    </a>
   
   
     <a href="/2018/05/30/59-Spiral-Matrix-II/" id="article-nav-older" class="article-nav-link-wrap">
@@ -174,6 +185,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/30/228-Summary-Ranges/">228. Summary Ranges</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/30/229-Majority-Element-II/">229. Majority Element II</a>
           </li>
         
@@ -187,10 +202,6 @@
         
           <li>
             <a href="/2018/05/29/16-3Sum-Closest/">16. 3Sum Closest</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/">81. Search in Rotated Sorted Array II</a>
           </li>
         
       </ul>

@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-228-Summary-Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/30/228-Summary-Ranges/" class="article-date">
+  <time datetime="2018-05-30T21:55:28.000Z" itemprop="datePublished">2018-05-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/30/228-Summary-Ranges/">228. Summary Ranges</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:<br>/*<br>Given a sorted integer array without duplicates, return the summary of its ranges.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:  [0,1,2,4,5,7]</span><br><span class="line">Output: [&quot;0-&gt;2&quot;,&quot;4-&gt;5&quot;,&quot;7&quot;]</span><br><span class="line">Explanation: 0,1,2 form a continuous range; 4,5 form a continuous range.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:  [0,2,3,4,6,8,9]</span><br><span class="line">Output: [&quot;0&quot;,&quot;2-&gt;4&quot;,&quot;6&quot;,&quot;8-&gt;9&quot;]</span><br><span class="line">Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range.</span><br></pre></td></tr></table></figure>
+<p>Solution:<br>A range covers consecutive elements. If two adjacent elements have difference larger than 11, the two elements does not belong to the same range.</p>
+<p>To summarize the ranges, we need to know how to separate them. The array is sorted and without duplicates. In such array, two adjacent elements have difference either 1 or larger than 1. If the difference is 1, they should be put in the same range; otherwise, separate ranges.</p>
+<p>We also need to know the start index of a range so that we can put it in the result list. Thus, we keep two indices, representing the two boundaries of current range. For each new element, we check if it extends the current range. If not, we put the current range into the list.</p>
+<p>Don’t forget to put the last range into the list. One can do this by either a special condition in the loop or putting the last range in to the list after the loop.</p>
+<p>Time complexity: O(n)<br>Space complexity: O(1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;string&gt; summaryRanges(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;string&gt; res;</span><br><span class="line">        if(nums.size() == 1)&#123;</span><br><span class="line">            res.push_back(to_string(nums[0]));</span><br><span class="line">            return res;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0; i&lt; nums.size(); ++i)&#123;</span><br><span class="line">            int cur= nums[i];</span><br><span class="line">            while(i+1&lt; nums.size() &amp;&amp; (nums[i+1]- nums[i]== 1))&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            if(cur != nums[i])</span><br><span class="line">                res.push_back(to_string(cur)+&quot;-&gt;&quot;+to_string(nums[i]));</span><br><span class="line">            else</span><br><span class="line">                res.push_back(to_string(nums[i]));</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/30/228-Summary-Ranges/" data-id="cjhtnimna0005k39cql5aqkfa" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-229-Majority-Element-II" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/30/229-Majority-Element-II/" class="article-date">
@@ -95,11 +144,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,1,1,3,3,2,2,2]</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
 <p>Solution:<br>The essential concepts is you keep a counter for the majority number X. If you find a number Y that is not X, the current counter should deduce 1. The reason is that if there is 5 X and 4 Y, there would be one (5-4) more X than Y. This could be explained as “4 X being paired out by 4 Y”.</p>
 <p>And since the requirement is finding the majority for more than ceiling of [n/3], the answer would be less than or equal to two numbers.<br>So we can modify the algorithm to maintain two counters for two majorities.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int num0 = 0, num1 = 1, count0 = 0, count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums) &#123;</span><br><span class="line">            //find two majority element</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">          else if (! count0) num0 = x, count0 = 1;</span><br><span class="line">          else if (! count1) num1 = x, count1 = 1;</span><br><span class="line">          else count0--, count1--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //set to zero is because only need to count these two element</span><br><span class="line">        count0 = count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums)</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if (count0 &gt; nums.size()/3) res.push_back(num0);</span><br><span class="line">        if (count1 &gt; nums.size()/3) res.push_back(num1);</span><br><span class="line">        return res;</span><br><span class="line">        //https://goo.gl/jMTMc9</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int num0 = 0, num1 = 1, count0 = 0, count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums) &#123;</span><br><span class="line">            //find two majority element</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">          else if (! count0) num0 = x, count0 = 1;</span><br><span class="line">          else if (! count1) num1 = x, count1 = 1;</span><br><span class="line">          else count0--, count1--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //set to zero is because only need to count these two element</span><br><span class="line">        count0 = count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums)</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if (count0 &gt; nums.size()/3) res.push_back(num0);</span><br><span class="line">        if (count1 &gt; nums.size()/3) res.push_back(num1);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>reference:<br><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank" rel="noopener">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/229-Majority-Element-II/" data-id="cjhtkyf7i0005439c4svj6prx" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/229-Majority-Element-II/" data-id="cjhtnimnh000ak39caengkfu1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -144,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/59-Spiral-Matrix-II/" data-id="cjhtkyf88000p439cl3g8zzbg" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/59-Spiral-Matrix-II/" data-id="cjhtnimo2000rk39cbnjtyx9q" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -191,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/" data-id="cjhtkyf83000k439cqfuqvxhg" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/" data-id="cjhtnimnz000pk39cr52y0e81" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -243,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhtkyf7f0003439cyymqpcjp" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhtnimn70003k39c1vspuhin" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/two-pointers/">two pointers</a></li></ul>
@@ -295,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhtkyf8i000t439cq0yx42ue" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhtnimo6000xk39cz9s3gfmu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array-binary-search/">leetcode, medium, array, binary search</a></li></ul>
@@ -346,7 +397,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhtkyf770001439ce89h8z57" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhtnimn00001k39cs0f3ooyc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-binary-search/">leetcode, array, binary search</a></li></ul>
@@ -405,7 +456,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/48-Rotate-Image/" data-id="cjhtkyf85000m439cod83jjdf" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/25/48-Rotate-Image/" data-id="cjhtnimnw000mk39cb2132976" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array/">leetcode, medium, array</a></li></ul>
@@ -452,7 +503,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/" data-id="cjhtkyf7t000b439c0vf5fdmu" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/" data-id="cjhtnimnn000ek39c0q0jko7w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-Linked-List/">leetcode,medium,Linked List</a></li></ul>
@@ -500,66 +551,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhtkyf7y000h439c1nhotqfg" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhtnimnu000kk39cb8lblv7w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-15-3Sum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/15/15-3Sum/" class="article-date">
-  <time datetime="2018-05-15T20:45:39.000Z" itemprop="datePublished">2018-05-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/15/15-3Sum/">15. 3Sum</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
-<p>Note:</p>
-<p>The solution set must not contain duplicate triplets.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 0, 1, 2, -1, -4],</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>Solution:</p>
-<ol>
-<li>Sort the array</li>
-<li>Pick indices from 0…n-2. To n-2 is because we need to find 3 item sequence. If we sort the array, need to at least save one spot for right element.</li>
-<li>Bypass duplicate element</li>
-<li>Use two pointers, one goes from i+1 toward right, the other one goes from n toward left</li>
-<li>If the sum of two pointers can not make the sequence zero, move the point.<br>To clarify, we can only move one pointer to make the result close to zero.</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">input nums[-1, 0, 1, 2, -1, -4]</span><br><span class="line">sort  nums[-4, -1, -1, 0, 1, 2]</span><br><span class="line"></span><br><span class="line">start from nums[0]= -4, pointer1= nums[1], pointer2= nums[6-1]</span><br></pre></td></tr></table></figure>
-<p>Solution:<br>Time: O(n^2)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        if(nums.size() &lt;= 2) return res; //edge case check</span><br><span class="line">        </span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        for(int i = 0; i &lt; nums.size()-2; ++i)&#123; //-2 is because last possible 3Sum sequence could be last 3 item, </span><br><span class="line">                                                //and the center is n-2</span><br><span class="line">            </span><br><span class="line">            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1]) //pass duplicate elements</span><br><span class="line">                continue;</span><br><span class="line">            </span><br><span class="line">            int j=i+1, k=nums.size()-1;</span><br><span class="line">            int target = 0-nums[i]; //because the other two elements would make sequence zero</span><br><span class="line">            </span><br><span class="line">            while(j&lt; k)&#123;</span><br><span class="line">                if(nums[j]+ nums[k] == target)&#123;</span><br><span class="line">                    res.push_back(vector&lt;int&gt;&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">                    j++;</span><br><span class="line">                    k--;</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[j]==nums[j-1]) j++;//skip same element</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[k]==nums[k+1]) k--;//skip same element</span><br><span class="line">                &#125;</span><br><span class="line">                else if(nums[j]+ nums[k]&gt;target)&#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjhtkyf700000439c2ada5ze4" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li></ul>
 
     </footer>
   </div>
@@ -625,6 +620,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/30/228-Summary-Ranges/">228. Summary Ranges</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/30/229-Majority-Element-II/">229. Majority Element II</a>
           </li>
         
@@ -638,10 +637,6 @@
         
           <li>
             <a href="/2018/05/29/16-3Sum-Closest/">16. 3Sum Closest</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/">81. Search in Rotated Sorted Array II</a>
           </li>
         
       </ul>
