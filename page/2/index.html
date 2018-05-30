@@ -62,6 +62,64 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-413-Arithmetic-Slices" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/14/413-Arithmetic-Slices/" class="article-date">
+  <time datetime="2018-05-14T20:23:00.000Z" itemprop="datePublished">2018-05-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/14/413-Arithmetic-Slices/">413. Arithmetic Slices</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
+<p>For example, these are arithmetic sequence:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, 3, 5, 7, 9</span><br><span class="line">7, 7, 7, 7</span><br><span class="line">3, -1, -5, -9</span><br></pre></td></tr></table></figure></p>
+<p>The following sequence is not arithmetic.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 1, 2, 5, 7</span><br></pre></td></tr></table></figure></p>
+<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
+<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
+<p>The function should return the number of arithmetic slices in the array A.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</span><br></pre></td></tr></table></figure></p>
+<p>solution1:</p>
+<p>use 1D dp array. When we have a arithmetic slice in 1…i, which can create total X arithmetic slice, and we got the i+1 element with same distance(slice) as before, the i+1 element can create additional X+1 arithmetic slice. And the sum of arithmetic slices create by sequence 1…i+1 elements would be X+(X+1).<br>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      1,3,5,7,9,15,20,25,28,29</span><br><span class="line">dp    0 0 1 2 3 0  0  1  0  0</span><br><span class="line">sum       1 3 6 6  6  7  7  7</span><br></pre></td></tr></table></figure></p>
+<p>In the above example, [1,3,5] can make the first slice.<br>When we add 7 into the sequence, it creates [3,5,7] and [1,3,5,7] slices.<br>Therefore, total slices when we consider sequence [1,3,5,7] would be<br>[1,3,5]: which is created and stored in dp[2]<br>[3,5,7], [1,3,5,7]: in dp[3]<br>Total: 3 slices</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(A.size(), 0);</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; dp.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp[i] = 1 + dp[i - 1];</span><br><span class="line">                sum += dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time: O(n)<br>Space: O(n)</p>
+<p>solution2:<br>Since if we don’t have consecutive sequence, we don’t need the dp. We can use a integer to store the slices created by previous consecutive sequence. When the consecutive sequence end, A[i]-A[i-1] != A[i-1]-A[i-2], just reset the counter to zero.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        int dp= 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; A.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp+=1;</span><br><span class="line">                sum += dp;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                dp = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time: O(n)<br>Space: O(1)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjhtkyf7w000e439crwanawlh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-357-Count-Numbers-with-Unique-Digits" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="article-date">
@@ -100,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjhtk4x5z0006vt9ccs3qashj" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjhtkyf7p000a439cl12jtc47" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li></ul>
@@ -148,7 +206,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" data-id="cjhtk4x6u000yvt9crh4p112b" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" data-id="cjhtkyf8p0011439cl0380kyb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li></ul>
@@ -204,7 +262,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" data-id="cjhtk4x6w0011vt9cd5e4q1ge" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" data-id="cjhtkyf8q0014439chfg8ninz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li></ul>
@@ -250,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/221-Maximal-Square/" data-id="cjhtk4x5x0005vt9c4dpg1qtz" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/12/221-Maximal-Square/" data-id="cjhtkyf7l0006439cmd4go8b8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li></ul>
@@ -297,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/85-Maximal-Rectangle/" data-id="cjhtk4x6s000wvt9carr15dqg" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/12/85-Maximal-Rectangle/" data-id="cjhtkyf8m000y439c89in5y20" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li></ul>
@@ -343,7 +401,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/84-Largest-Rectangle-in-Histogram/" data-id="cjhtk4x6q000tvt9cjsdmwk6i" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/12/84-Largest-Rectangle-in-Histogram/" data-id="cjhtkyf8k000w439cmx1rifyd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li></ul>
@@ -390,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjhtk4x6l000pvt9c5d1riwtc" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/11/72-Edit-Distance/" data-id="cjhtkyf8g000r439cb4ka84eh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li></ul>
@@ -437,7 +495,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjhtk4x79001mvt9cvu97lvqr" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/04/20/companylist/" data-id="cjhtkyf99001o439cvbvn7epo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refer-job/">refer,job</a></li></ul>
@@ -484,53 +542,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/31/LC24-Swap-Nodes-in-Pairs/" data-id="cjhtk4x75001gvt9cyf9m1mac" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/03/31/LC24-Swap-Nodes-in-Pairs/" data-id="cjhtkyf93001h439c4dera72x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-LC142-Linked-List-Cycle-II" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="article-date">
-  <time datetime="2018-03-30T19:30:32.000Z" itemprop="datePublished">2018-03-30</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>►<a class="article-category-link" href="/categories/leetcode/algorithm/">algorithm</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/LC142-Linked-List-Cycle-II/">LC142. Linked List Cycle II</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Reference:<br><a href="https://en.wikipedia.org/wiki/Cycle_detection" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cycle_detection</a><br><a href="https://leetcode.com/problems/linked-list-cycle-ii/solution/" target="_blank" rel="noopener">https://leetcode.com/problems/linked-list-cycle-ii/solution/</a><br><a href="https://goo.gl/SpP3Yb" target="_blank" rel="noopener">https://goo.gl/SpP3Yb</a><br><a href="https://goo.gl/UNFB98" target="_blank" rel="noopener">https://goo.gl/UNFB98</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/03/30/LC142-Linked-List-Cycle-II/" data-id="cjhtk4x6y0014vt9cv9hgxqsg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linked-list/">linked list</a></li></ul>
 
     </footer>
   </div>
@@ -574,7 +589,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 13.33px;">algorithm</a> <a href="/tags/array/" style="font-size: 16.67px;">array</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/medium/" style="font-size: 16.67px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
+      <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 12.5px;">algorithm</a> <a href="/tags/array/" style="font-size: 17.5px;">array</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/medium/" style="font-size: 17.5px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
@@ -596,6 +611,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/30/229-Majority-Element-II/">229. Majority Element II</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/30/59-Spiral-Matrix-II/">59. Spiral Matrix II</a>
           </li>
         
@@ -609,10 +628,6 @@
         
           <li>
             <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/">81. Search in Rotated Sorted Array II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/">153. Find Minimum in Rotated Sorted Array</a>
           </li>
         
       </ul>
