@@ -1,696 +1,385 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="keywords" content="hexo, autumn">
+    <title>
+        linlaw Techblog
+    </title>
+    <!-- favicon -->
+    
+    <link rel="icon" href="http://osly086qe.bkt.clouddn.com/favicon.ico">
+    
+    <link rel="stylesheet" href="/css/style.css">
 
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://linlaw0229.github.io/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
+    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
+    <script>
+        infiniteScroll()
+
+        // for mobile menu
+        $(function() {
+            $('.social-button').click(function() {
+                if ($('.social-links').hasClass('hide-links')) {
+                    $('.social-links').removeClass('hide-links')
+                } else {
+                    $('.social-links').addClass('hide-links')
+                }
+            })
+        })
+    </script>
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://linlaw0229.github.io"></form>
-      </div>
-    </div>
-  </div>
+    <body style="background: url(http://osly086qe.bkt.clouddn.com/button-bg.png) #f3f3f3">
+        <div class="container">
+            <header class="header">
+    <h1 class="title">
+        <a href="/" class="logo">
+            linlaw Techblog
+        </a>
+    </h1>
+    <h2 class="desc">
+        Make the change you want to see in the world.
+    </h2>
+
+    <nav class="links">
+        <button class="social-button">
+            menu
+        </button>
+        <ul class="social-links hide-links">
+            
+                <li>
+                    <a href="https://github.com/linlaw0229">
+                        Github
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://www.linkedin.com/in/lawrence0229/">
+                        LinkedIn
+                    </a>
+                </li>
+                
+        </ul>
+    </nav>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-48-Rotate-Image" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/48-Rotate-Image/" class="article-date">
-  <time datetime="2018-05-25T19:45:33.000Z" itemprop="datePublished">2018-05-25</time>
-</a>
+                <main class="main">
+                    <section class="posts">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/25/48-Rotate-Image/">
+                            48. Rotate Image
+                        </a>
+                    </h1>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 25, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/25/48-Rotate-Image/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/48-Rotate-Image/">48. Rotate Image</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/21/369-Plus-One-Linked-List/">
+                            369. Plus One Linked List
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:</p>
-<p>You are given an n x n 2D matrix representing an image.</p>
-<p>Rotate the image by 90 degrees (clockwise).</p>
-<p>Note:</p>
-<p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Given input matrix =</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>Solution:</p>
-<ul>
-<li>clockwise rotate:<br>first reverse up to down, then swap the symmetry <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     7 8 9     7 4 1</span><br><span class="line">4 5 6  =&gt; 4 5 6  =&gt; 8 5 2</span><br><span class="line">7 8 9     1 2 3     9 6 3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void rotate(vector&lt;vector&lt;int&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    for (int i = 0; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        for (int j = i + 1; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>anticlockwise rotate:<br>first reverse left to right, then swap the symmetry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     3 2 1     3 6 9</span><br><span class="line">4 5 6  =&gt; 6 5 4  =&gt; 2 5 8</span><br><span class="line">7 8 9     9 8 7     1 4 7</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void anti_rotate(vector&lt;vector&lt;int&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    for (auto vi : matrix) reverse(vi.begin(), vi.end());</span><br><span class="line">    for (int i = 0; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        for (int j = i + 1; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/48-Rotate-Image/" data-id="cjhuzuc24000ryban4xv363rn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array/">leetcode, medium, array</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-369-Plus-One-Linked-List" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/21/369-Plus-One-Linked-List/" class="article-date">
-  <time datetime="2018-05-22T03:54:20.000Z" itemprop="datePublished">2018-05-21</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 21, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/21/369-Plus-One-Linked-List/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/21/369-Plus-One-Linked-List/">369. Plus One Linked List</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/19/445-Add-Two-Numbers-II/">
+                            445. Add Two Numbers II
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem Description:<br>Given a non-negative integer represented as non-empty a singly linked list of digits, plus one to the integer.</p>
-<p>You may assume the integer do not contain any leading zero, except the number 0 itself.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input:</span><br><span class="line">1-&gt;2-&gt;3</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">1-&gt;2-&gt;4</span><br></pre></td></tr></table></figure></p>
-<p>Solution:<br>The key point is to find 9’s.<br>For example: 8-&gt;7-&gt;9-&gt;9<br>Add dummy: 0-&gt;8-&gt;7-&gt;9-&gt;9<br>The lastNotNine is 7.<br>7 + 1 = 8<br>9 change to 0.<br>We got 0-&gt;8-&gt;8-&gt;0-&gt;0<br>return dummy.next</p>
-<p>For example: 9-&gt;9-&gt;9<br>Add dummy: 0-&gt;9-&gt;9-&gt;9<br>The lastNotNine is 0.<br>0 + 1 = 1<br>9 change to 0.<br>We got 1-&gt;0-&gt;0-&gt;0<br>return dummy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* plusOne(ListNode* head) &#123;</span><br><span class="line">        </span><br><span class="line">        ListNode* dmy = new ListNode(0);</span><br><span class="line">        ListNode* lastNot9 = dmy;</span><br><span class="line">        dmy-&gt;next = head;</span><br><span class="line">        for (ListNode* n = head; n != NULL; n = n-&gt;next) &#123;</span><br><span class="line">            if (n-&gt;val != 9) lastNot9 = n; /* invariant: [lastNot9.next, tail] are all 9*/</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        lastNot9-&gt;val++;</span><br><span class="line">        for (ListNode* n = lastNot9-&gt;next; n != NULL; n = n-&gt;next) &#123;</span><br><span class="line">            n-&gt;val = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return dmy-&gt;val == 1 ? dmy : head;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/21/369-Plus-One-Linked-List/" data-id="cjhuzuc1x000hyban7srunb5b" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-Linked-List/">leetcode,medium,Linked List</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-445-Add-Two-Numbers-II" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/19/445-Add-Two-Numbers-II/" class="article-date">
-  <time datetime="2018-05-19T22:28:02.000Z" itemprop="datePublished">2018-05-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 19, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/19/445-Add-Two-Numbers-II/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/19/445-Add-Two-Numbers-II/">445. Add Two Numbers II</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/15/15-3Sum/">
+                            15. 3Sum
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
-<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
-<p>Follow up:<br>What if you cannot modify the input lists? In other words, reversing the lists is not allowed.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: (6 -&gt; 2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</span><br><span class="line">Output: 6 -&gt; 8 -&gt; 0 -&gt; 7</span><br></pre></td></tr></table></figure></p>
-<p>Solution:<br>This question is a followup from “2. Add two number.” The different part is that the significant digit comes first. However, we need to start from least significant digit when we do calculation. Even though the question states that you can not modify the input list, we can use a stack, first in last out, to achieve the reverse order calculation.</p>
-<p>Space: O(n)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        stack&lt;int&gt; s1, s2;</span><br><span class="line">        while(l1 != NULL)&#123;</span><br><span class="line">            s1.push(l1-&gt;val);</span><br><span class="line">            l1= l1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        while(l2 != NULL)&#123;</span><br><span class="line">            s2.push(l2-&gt;val);</span><br><span class="line">            l2= l2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int sum= 0;</span><br><span class="line">        ListNode* list= new ListNode(0);</span><br><span class="line">        while (!s1.empty() ||!s2.empty())&#123;</span><br><span class="line">            if(!s1.empty()) &#123;</span><br><span class="line">                sum += s1.top();</span><br><span class="line">                s1.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            if(!s2.empty())&#123;</span><br><span class="line">                sum += s2.top();  </span><br><span class="line">                s2.pop();</span><br><span class="line">            &#125; </span><br><span class="line">            </span><br><span class="line">            list-&gt;val = sum %10;</span><br><span class="line">            ListNode* head = new ListNode(sum/10);</span><br><span class="line">            head-&gt;next = list;</span><br><span class="line">            list = head;</span><br><span class="line">            sum/=10;</span><br><span class="line">        &#125;</span><br><span class="line">        return list-&gt;val ==0 ? list-&gt;next: list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/19/445-Add-Two-Numbers-II/" data-id="cjhuzuc23000pybanfboy7p60" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-15-3Sum" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/15/15-3Sum/" class="article-date">
-  <time datetime="2018-05-15T20:45:39.000Z" itemprop="datePublished">2018-05-15</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 15, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/15/15-3Sum/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/15/15-3Sum/">15. 3Sum</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/14/413-Arithmetic-Slices/">
+                            413. Arithmetic Slices
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.</p>
-<p>Note:</p>
-<p>The solution set must not contain duplicate triplets.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Given array nums = [-1, 0, 1, 2, -1, -4],</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>Solution:</p>
-<ol>
-<li>Sort the array</li>
-<li>Pick indices from 0…n-2. To n-2 is because we need to find 3 item sequence. If we sort the array, need to at least save one spot for right element.</li>
-<li>Bypass duplicate element</li>
-<li>Use two pointers, one goes from i+1 toward right, the other one goes from n toward left</li>
-<li>If the sum of two pointers can not make the sequence zero, move the point.<br>To clarify, we can only move one pointer to make the result close to zero.</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">input nums[-1, 0, 1, 2, -1, -4]</span><br><span class="line">sort  nums[-4, -1, -1, 0, 1, 2]</span><br><span class="line"></span><br><span class="line">start from nums[0]= -4, pointer1= nums[1], pointer2= nums[6-1]</span><br></pre></td></tr></table></figure>
-<p>Solution:<br>Time: O(n^2)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        if(nums.size() &lt;= 2) return res; //edge case check</span><br><span class="line">        </span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        for(int i = 0; i &lt; nums.size()-2; ++i)&#123; //-2 is because last possible 3Sum sequence could be last 3 item, </span><br><span class="line">                                                //and the center is n-2</span><br><span class="line">            </span><br><span class="line">            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1]) //pass duplicate elements</span><br><span class="line">                continue;</span><br><span class="line">            </span><br><span class="line">            int j=i+1, k=nums.size()-1;</span><br><span class="line">            int target = 0-nums[i]; //because the other two elements would make sequence zero</span><br><span class="line">            </span><br><span class="line">            while(j&lt; k)&#123;</span><br><span class="line">                if(nums[j]+ nums[k] == target)&#123;</span><br><span class="line">                    res.push_back(vector&lt;int&gt;&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">                    j++;</span><br><span class="line">                    k--;</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[j]==nums[j-1]) j++;//skip same element</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[k]==nums[k+1]) k--;//skip same element</span><br><span class="line">                &#125;</span><br><span class="line">                else if(nums[j]+ nums[k]&gt;target)&#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/15/15-3Sum/" data-id="cjhuzuc150001ybangcrs2fnc" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-413-Arithmetic-Slices" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/14/413-Arithmetic-Slices/" class="article-date">
-  <time datetime="2018-05-14T20:23:00.000Z" itemprop="datePublished">2018-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 14, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/14/413-Arithmetic-Slices/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/14/413-Arithmetic-Slices/">413. Arithmetic Slices</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">
+                            357. Count Numbers with Unique Digits
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:</p>
-<p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
-<p>For example, these are arithmetic sequence:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, 3, 5, 7, 9</span><br><span class="line">7, 7, 7, 7</span><br><span class="line">3, -1, -5, -9</span><br></pre></td></tr></table></figure></p>
-<p>The following sequence is not arithmetic.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 1, 2, 5, 7</span><br></pre></td></tr></table></figure></p>
-<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
-<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
-<p>The function should return the number of arithmetic slices in the array A.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</span><br></pre></td></tr></table></figure></p>
-<p>solution1:</p>
-<p>use 1D dp array. When we have a arithmetic slice in 1…i, which can create total X arithmetic slice, and we got the i+1 element with same distance(slice) as before, the i+1 element can create additional X+1 arithmetic slice. And the sum of arithmetic slices create by sequence 1…i+1 elements would be X+(X+1).<br>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      1,3,5,7,9,15,20,25,28,29</span><br><span class="line">dp    0 0 1 2 3 0  0  1  0  0</span><br><span class="line">sum       1 3 6 6  6  7  7  7</span><br></pre></td></tr></table></figure></p>
-<p>In the above example, [1,3,5] can make the first slice.<br>When we add 7 into the sequence, it creates [3,5,7] and [1,3,5,7] slices.<br>Therefore, total slices when we consider sequence [1,3,5,7] would be<br>[1,3,5]: which is created and stored in dp[2]<br>[3,5,7], [1,3,5,7]: in dp[3]<br>Total: 3 slices</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(A.size(), 0);</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; dp.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp[i] = 1 + dp[i - 1];</span><br><span class="line">                sum += dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Time: O(n)<br>Space: O(n)</p>
-<p>solution2:<br>Since if we don’t have consecutive sequence, we don’t need the dp. We can use a integer to store the slices created by previous consecutive sequence. When the consecutive sequence end, A[i]-A[i-1] != A[i-1]-A[i-2], just reset the counter to zero.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        int dp= 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; A.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp+=1;</span><br><span class="line">                sum += dp;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                dp = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Time: O(n)<br>Space: O(1)</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" data-id="cjhuzuc1z000kybanqcbs9ub1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-357-Count-Numbers-with-Unique-Digits" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="article-date">
-  <time datetime="2018-05-14T19:12:05.000Z" itemprop="datePublished">2018-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 14, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">357. Count Numbers with Unique Digits</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">
+                            95. Unique Binary Search Trees II
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.</p>
-<p>Example:<br>Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</p>
-<p>Following the hint. Let f(n) = count of number with unique digits of length n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f(1) = 10. (0, 1, 2, 3, ...., 9)</span><br><span class="line"></span><br><span class="line">f(2) = 9 * 9. Because for each number i from 1, ..., 9, we can pick j to form a 2-digit number ij and there are 9 numbers that are different from i for j to choose from.</span><br><span class="line"></span><br><span class="line">f(3) = f(2) * 8 = 9 * 9 * 8. Because for each number with unique digits of length 2, say ij, we can pick k to form a 3 digit number ijk and there are 8 numbers that are different from i and j for k to choose from.</span><br><span class="line"></span><br><span class="line">Similarly f(4) = f(3) * 7 = 9 * 9 * 8 * 7....</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">f(10) = 9 * 9 * 8 * 7 * 6 * ... * 1</span><br><span class="line"></span><br><span class="line">f(11) = 0 = f(12) = f(13)....</span><br></pre></td></tr></table></figure></p>
-<p>any number with length &gt; 10 couldn’t be unique digits number.</p>
-<p>The problem is asking for numbers from 0 to 10^n. Hence return f(1) + f(2) + .. + f(n)</p>
-<p>As @4acreg suggests, There are only 11 different ans. You can create a lookup table for it. This problem is O(1) in essence</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countNumbersWithUniqueDigits(int n) &#123;</span><br><span class="line">        if (n == 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int ans = 10, base = 9;</span><br><span class="line">        for (int i = 2; i &lt;= n &amp;&amp; i &lt;= 10; i++) &#123;</span><br><span class="line">            base *= (9 - i + 2);</span><br><span class="line">            ans += base;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">        if(n == 0) return 1;</span><br><span class="line">        int res = 10; //original case</span><br><span class="line">        int uniqueDigits = 9;</span><br><span class="line">        int available = 9;</span><br><span class="line">        </span><br><span class="line">        while(n-- &gt;1 &amp;&amp; available &gt;0)&#123;</span><br><span class="line">            uniqueDigits = uniqueDigits* available; //recursively multiply the remain digits</span><br><span class="line">            res += uniqueDigits; //The answer ask from 0&lt;=x&lt;= 10^n, so need to add the result</span><br><span class="line">            available--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">        */</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" data-id="cjhuzuc1v000eybanqvbjayut" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-95-Unique-Binary-Search-Trees-II" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" class="article-date">
-  <time datetime="2018-05-14T16:10:35.000Z" itemprop="datePublished">2018-05-14</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 14, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">95. Unique Binary Search Trees II</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/13/96-Unique-Binary-Search-Trees/">
+                            96. Unique Binary Search Trees
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:</p>
-<p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: 3</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [1,null,3,2],</span><br><span class="line">  [3,2,null,1],</span><br><span class="line">  [3,1,null,null,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [1,null,2,null,3]</span><br><span class="line">]</span><br><span class="line">Explanation:</span><br><span class="line">The above output corresponds to the 5 unique BST&apos;s shown below:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure></p>
-<p>Tree can be divided into three parts<br>Picking ith element in 1…n sequence, the subtree would be<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  V       </span><br><span class="line"> / \      L: 1...i-1</span><br><span class="line">L   R     R: i+1...n</span><br></pre></td></tr></table></figure></p>
-<p>Therefore, we need a function that could generate trees that take 2 inputs, start and end.<br>By recursively calling this subfunction, we can generate different trees.<br>One thing to notice is that, after the recursive, we should have a root node to catch these different left and right trees.<br>That is to say, if we have sequence [1,2,3,4,5] and we pick 3 as root.<br>L would be [1,2], R [4,5].<br>It’s easy to see that the Left tree could have these two shape.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   1        2                                                                       3           3</span><br><span class="line">  / \      / \          ==adding the subtree to left side with 3 as root ==&gt;       /           /</span><br><span class="line">null 2    1   null                                                                1           2</span><br><span class="line">                                                                                 / \         / \</span><br><span class="line">                                                                               null 2       1  null</span><br></pre></td></tr></table></figure></p>
-<p>The right part is the same, so I just draw left part on it.<br>Finally, push the new tree to the vector and return it to upper recursive.</p>
-<p>time: O(catalan(n)), <a href="https://goo.gl/umK2Fl" target="_blank" rel="noopener">https://goo.gl/umK2Fl</a><br>space: O(log(n)), tree space is log(n) with total node n</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">  Definition for a binary tree node.</span><br><span class="line">  struct TreeNode &#123;</span><br><span class="line">      int val;</span><br><span class="line">      TreeNode *left;</span><br><span class="line">      TreeNode *right;</span><br><span class="line">      TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;TreeNode*&gt; generateTrees(int n) &#123;</span><br><span class="line">        if(n == 0) return vector&lt;TreeNode*&gt;();</span><br><span class="line">        return genTree(1,n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;TreeNode*&gt; genTree(int start, int end)&#123;</span><br><span class="line">        vector&lt;TreeNode*&gt; list;</span><br><span class="line">        if(start&gt;end)&#123;</span><br><span class="line">            list.push_back(NULL);</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(start == end)&#123;</span><br><span class="line">            list.push_back(new TreeNode(start));</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vector&lt;TreeNode*&gt; left, right;</span><br><span class="line">        for(int i= start; i&lt;= end; ++i)&#123;</span><br><span class="line">            left = genTree(start, i-1);</span><br><span class="line">            right = genTree(i+1,end);</span><br><span class="line">            </span><br><span class="line">            for(auto lnode: left)</span><br><span class="line">            &#123;</span><br><span class="line">                for(auto rnode: right)</span><br><span class="line">                &#123;</span><br><span class="line">                    TreeNode* root = new TreeNode(i);</span><br><span class="line">                    root-&gt;left = lnode;</span><br><span class="line">                    root-&gt;right = rnode;</span><br><span class="line">                    list.push_back(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" data-id="cjhuzuc2l001hyban6tp8q9cf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-96-Unique-Binary-Search-Trees" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="article-date">
-  <time datetime="2018-05-14T03:52:18.000Z" itemprop="datePublished">2018-05-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 13, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/13/96-Unique-Binary-Search-Trees/">96. Unique Binary Search Trees</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/12/221-Maximal-Square/">
+                            221. Maximal Square
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n?</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">Given n = 3, there are a total of 5 unique BST&apos;s:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure></p>
-<p>The problem can be solved in a dynamic programming way. I’ll explain the intuition and formulas in the following.</p>
-<p>Given a sequence 1…n, to construct a Binary Search Tree (BST) out of the sequence, we could enumerate each number i in the sequence, and use the number as the root, naturally, the subsequence 1…(i-1) on its left side would lay on the left branch of the root, and similarly the right subsequence (i+1)…n lay on the right branch of the root. We then can construct the subtree from the subsequence recursively. Through the above approach, we could ensure that the BST that we construct are all unique, since they have unique roots.</p>
-<p>The problem is to calculate the number of unique BST. To do so, we need to define two functions:</p>
-<p>G(n): the number of unique BST for a sequence of length n.</p>
-<p>F(i, n), 1 &lt;= i &lt;= n: the number of unique BST, where the number i is the root of BST, and the sequence ranges from 1 to n.</p>
-<p>As one can see, G(n) is the actual function we need to calculate in order to solve the problem. And G(n) can be derived from F(i, n), which at the end, would recursively refer to G(n).</p>
-<p>First of all, given the above definitions, we can see that the total number of unique BST G(n), is the sum of BST F(i) using each number i as a root.<br>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = F(1, n) + F(2, n) + ... + F(n, n).</span><br></pre></td></tr></table></figure></p>
-<p>Particularly, the bottom cases, there is only one combination to construct a BST out of a sequence of length 1 (only a root) or 0 (empty tree).<br>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(0)=1, G(1)=1.</span><br></pre></td></tr></table></figure></p>
-<p>Given a sequence 1…n, we pick a number i out of the sequence as the root, then the number of unique BST with the specified root F(i), is the cartesian product of the number of BST for its left and right subtrees. For example, F(3, 7): the number of unique BST tree with number 3 as its root. To construct an unique BST out of the entire sequence [1, 2, 3, 4, 5, 6, 7] with 3 as the root, which is to say, we need to construct an unique BST out of its left subsequence [1, 2] and another BST out of the right subsequence [4, 5, 6, 7], and then combine them together (i.e. cartesian product). The tricky part is that we could consider the number of unique BST out of sequence [1,2] as G(2), and the number of of unique BST out of sequence [4, 5, 6, 7] as G(4). Therefore, F(3,7) = G(2) * G(4).</p>
-<p>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F(i, n) = G(i-1) * G(n-i)	1 &lt;= i &lt;= n</span><br></pre></td></tr></table></figure></p>
-<p>Combining the above two formulas, we obtain the recursive formula for G(n). i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)</span><br></pre></td></tr></table></figure></p>
-<p>In terms of calculation, we need to start with the lower number, since the value of G(n) depends on the values of G(0) … G(n-1).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numTrees(int n) &#123;</span><br><span class="line">        vector&lt;int&gt; G(n+1, 0);</span><br><span class="line">        G[0] = G[1] = 1;</span><br><span class="line">    </span><br><span class="line">        for(int i=2; i&lt;=n; ++i) &#123;</span><br><span class="line">            for(int j=1; j&lt;=i; ++j) &#123;</span><br><span class="line">                G[i] += G[j-1] * G[i-j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return G[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" data-id="cjhuzuc2n001kybanmei5quo2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-221-Maximal-Square" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/12/221-Maximal-Square/" class="article-date">
-  <time datetime="2018-05-13T03:47:27.000Z" itemprop="datePublished">2018-05-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 12, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/12/221-Maximal-Square/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/12/221-Maximal-Square/">221. Maximal Square</a>
-    </h1>
-  
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/12/85-Maximal-Rectangle/">
+                            85. Maximal Rectangle
+                        </a>
+                    </h1>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>Given a 2D binary matrix filled with 0’s and 1’s, find the largest square containing only 1’s and return its area.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line"></span><br><span class="line">1 0 1 0 0</span><br><span class="line">1 0 1 1 1</span><br><span class="line">1 1 1 1 1</span><br><span class="line">1 0 0 1 0</span><br><span class="line"></span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure></p>
-<p>solution1:<br>time: O(mn)<br>space: O(mn)<br><img src="221_Maximal_Square.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maximalSquare(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        int m = matrix.size(), n = m&gt;0 ? matrix[0].size(): 0;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; dp(m+1, vector&lt;int&gt;(n+1, 0));</span><br><span class="line">        int maxlen = 0;</span><br><span class="line">        </span><br><span class="line">        for(int i = 1; i&lt;= m; ++i)&#123;</span><br><span class="line">            for(int j= 1; j&lt;= n; ++j)&#123;</span><br><span class="line">                if(matrix[i-1][j-1] == &apos;1&apos;)&#123;</span><br><span class="line">                    dp[i][j] = min(dp[i][j-1], min(dp[i-1][j], dp[i-1][j-1])) +1;</span><br><span class="line">                    maxlen = max(maxlen, dp[i][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return maxlen*maxlen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>solution2:<br>time: O(mn)<br>space: O(n)<br><img src="221_Maximal_Square1.png" alt=""><br>dp[j] is to store the square that can be made in this<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maximalSquare(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        int m = matrix.size(), n = m&gt;0 ? matrix[0].size(): 0;</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; dp(n+1, 0);</span><br><span class="line">        int maxlen = 0, prev= 0;</span><br><span class="line">        </span><br><span class="line">        for(int i = 1; i&lt;= m; ++i)&#123;</span><br><span class="line">            for(int j= 1; j&lt;= n; ++j)&#123;</span><br><span class="line">                int temp = dp[j];</span><br><span class="line">                //cout&lt;&lt; &quot;dp[&quot;&lt;&lt;j&lt;&lt;&quot;]:&quot;&lt;&lt;dp[j]&lt;&lt;endl;</span><br><span class="line">                //cout&lt;&lt;&quot;temp:&quot;&lt;&lt; temp&lt;&lt;endl;</span><br><span class="line">                if(matrix[i-1][j-1] == &apos;1&apos;)&#123;</span><br><span class="line">                    dp[j] = min(dp[j-1], min(prev, dp[j]))+1;</span><br><span class="line">                    //+1 is because if this element is &apos;1&apos;, it at least can form a square by itself even previous is 0</span><br><span class="line">                    //cout&lt;&lt; &quot;dp[&quot;&lt;&lt;j&lt;&lt;&quot;-1]:&quot;&lt;&lt;dp[j-1];</span><br><span class="line">                    //cout&lt;&lt; &quot;, prev:&quot;&lt;&lt;prev;</span><br><span class="line">                    //cout&lt;&lt; &quot;, dp[&quot;&lt;&lt;j&lt;&lt;&quot;]:&quot;&lt;&lt;dp[j]&lt;&lt;endl;</span><br><span class="line">                    //dp[i][j] = min(dp[i][j-1], min(dp[i-1][j], dp[i-1][j-1])) +1;</span><br><span class="line">                    maxlen = max(maxlen, dp[j]);</span><br><span class="line">                    //cout&lt;&lt;&quot;max=&quot;&lt;&lt;maxlen&lt;&lt;endl;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    dp[j] = 0;</span><br><span class="line">                    //cout&lt;&lt; &quot;else dp[&quot;&lt;&lt;j&lt;&lt;&quot;]:&quot;&lt;&lt;dp[j]&lt;&lt;endl;</span><br><span class="line">                &#125;</span><br><span class="line">                prev= temp;</span><br><span class="line">                //cout&lt;&lt;&quot;----&quot;&lt;&lt;endl;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(auto n: dp)</span><br><span class="line">            cout&lt;&lt;n&lt;&lt;&quot; &quot;&lt;&lt;endl;</span><br><span class="line">        return maxlen*maxlen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/221-Maximal-Square/" data-id="cjhuzuc1g0005yban7bc2k8x7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-85-Maximal-Rectangle" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/12/85-Maximal-Rectangle/" class="article-date">
-  <time datetime="2018-05-13T03:12:46.000Z" itemprop="datePublished">2018-05-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+                    <ul class="post-date">
+                        <li>
+                            May 12, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/12/85-Maximal-Rectangle/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/12/85-Maximal-Rectangle/">85. Maximal Rectangle</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:<br>Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing only 1’s and return its area.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;]</span><br><span class="line">]</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure></p>
-<p>Solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int maximalRectangle(vector&lt;vector&lt;char&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        </span><br><span class="line">        if(matrix.size() &lt;= 0 || matrix[0].size()&lt;= 0)</span><br><span class="line">            return 0;</span><br><span class="line">        int m = matrix.size();</span><br><span class="line">        int n = matrix[0].size() + 1;</span><br><span class="line">        //take care of the size, because we need to calculate the item in stack twice</span><br><span class="line">        //just like 84., also need to push last item to the stack</span><br><span class="line">        int h= 0, w= 0, ret= 0;</span><br><span class="line">        vector&lt;int&gt; height(n, 0);</span><br><span class="line">        </span><br><span class="line">        for(int i= 0; i&lt; m; ++i)&#123;</span><br><span class="line">            stack&lt;int&gt; s;</span><br><span class="line">            for(int j= 0; j&lt; n; ++j)&#123;</span><br><span class="line">                //set height, </span><br><span class="line">                if(j &lt; n-1)&#123;</span><br><span class="line">                    //this is to check whether the j is the extra boundary case we need to calculate</span><br><span class="line">                    if(matrix[i][j] == &apos;1&apos;) height[j]+= 1;</span><br><span class="line">                    else height[j] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                //this is pretty similiar to 84</span><br><span class="line">                while(!s.empty() &amp;&amp; height[s.top()] &gt;= height[j])&#123;</span><br><span class="line">                    cout&lt;&lt; s.top()&lt;&lt;endl;</span><br><span class="line">                    h = height[s.top()];</span><br><span class="line">                    s.pop();</span><br><span class="line">                    w = s.empty() ? j: j-s.top()-1;</span><br><span class="line">                    cout&lt;&lt; &quot;h= &quot;&lt;&lt; h&lt;&lt;&quot;, w= &quot;&lt;&lt;w&lt;&lt;endl;</span><br><span class="line">                    if(h*w &gt; ret) ret = h*w;</span><br><span class="line">                &#125;</span><br><span class="line">                s.push(j);</span><br><span class="line">                cout&lt;&lt; &quot;j= &quot;&lt;&lt;j&lt;&lt;endl;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ret;   </span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>reference:<br><a href="https://goo.gl/3yW7Xc" target="_blank" rel="noopener">https://goo.gl/3yW7Xc</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/12/85-Maximal-Rectangle/" data-id="cjhuzuc2j001dyban5lvbnb4h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-  </nav>
-
 </section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/algorithm/">algorithm</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
-    </div>
-  </div>
+                </main>
+                <aside class="aside">
+                    <section class="aside-section">
+                        
+    <h1>Categories</h1>
 
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/algorithm/">algorithm</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-sort/">Merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-binary-search/">leetcode, array, binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-array/">leetcode, medium, array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-array-binary-search/">leetcode, medium, array, binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-stack-hard/">leetcode,array,stack,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-cycle-detection-linked-list-algorithm/">leetcode,cycle detection,linked list,algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-string-hard/">leetcode,dynamic programming,string,hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-medium/">leetcode,dynamic programming,tree,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/">leetcode,dynamic programming,tree,snapchat,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/">leetcode,math,dynamic programming,backtracking,medium,google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-math-dynamic-programming-medium/">leetcode,math,dynamic programming,medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-Linked-List/">leetcode,medium,Linked List</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode-medium-linked-list/">leetcode,medium,linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer-job/">refer,job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
-    </div>
-  </div>
+                    </section>
+                    <section class="aside-section">
+                        
+    <h1>Archives</h1>
 
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" style="font-size: 10px;">Floyd's Tortoise and Hare Algorithm</a> <a href="/tags/Merge-sort/" style="font-size: 10px;">Merge sort</a> <a href="/tags/algorithm/" style="font-size: 12.5px;">algorithm</a> <a href="/tags/array/" style="font-size: 17.5px;">array</a> <a href="/tags/backtracking/" style="font-size: 10px;">backtracking</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/cycle-detection/" style="font-size: 10px;">cycle detection</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/leetcode-array-binary-search/" style="font-size: 10px;">leetcode, array, binary search</a> <a href="/tags/leetcode-medium-array/" style="font-size: 10px;">leetcode, medium, array</a> <a href="/tags/leetcode-medium-array-binary-search/" style="font-size: 10px;">leetcode, medium, array, binary search</a> <a href="/tags/leetcode-array-hash-table-dp-dynamic-programming-stack-facebook/" style="font-size: 10px;">leetcode,array,hash table,dp,dynamic programming,stack,facebook</a> <a href="/tags/leetcode-array-stack-hard/" style="font-size: 10px;">leetcode,array,stack,hard</a> <a href="/tags/leetcode-array-two-pointers-facebook-amazon-microsoft-medium/" style="font-size: 10px;">leetcode,array,two pointers,facebook,amazon,microsoft,medium</a> <a href="/tags/leetcode-cycle-detection-linked-list-algorithm/" style="font-size: 10px;">leetcode,cycle detection,linked list,algorithm</a> <a href="/tags/leetcode-dynamic-programming-string-hard/" style="font-size: 10px;">leetcode,dynamic programming,string,hard</a> <a href="/tags/leetcode-dynamic-programming-tree-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,medium</a> <a href="/tags/leetcode-dynamic-programming-tree-snapchat-medium/" style="font-size: 10px;">leetcode,dynamic programming,tree,snapchat,medium</a> <a href="/tags/leetcode-math-dynamic-programming-backtracking-medium-google/" style="font-size: 10px;">leetcode,math,dynamic programming,backtracking,medium,google</a> <a href="/tags/leetcode-math-dynamic-programming-medium/" style="font-size: 10px;">leetcode,math,dynamic programming,medium</a> <a href="/tags/leetcode-medium-Linked-List/" style="font-size: 10px;">leetcode,medium,Linked List</a> <a href="/tags/leetcode-medium-dp-dynamic-programming-facebook-apple-airbnb/" style="font-size: 10px;">leetcode,medium,dp,dynamic programming,facebook,apple,airbnb</a> <a href="/tags/leetcode-medium-linked-list/" style="font-size: 10px;">leetcode,medium,linked list</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/medium/" style="font-size: 17.5px;">medium</a> <a href="/tags/refer-job/" style="font-size: 10px;">refer,job</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/space-complexity/" style="font-size: 10px;">space complexity</a> <a href="/tags/tutorial/" style="font-size: 10px;">tutorial</a> <a href="/tags/two-pointers/" style="font-size: 10px;">two pointers</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
-    </div>
-  </div>
+                    </section>
+                    <section class="aside-section tag">
+                        
+    <h1>Tags</h1>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li></ul>
-    </div>
-  </div>
+    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
 
+                    </section>
+                </aside>
+        </div>
+    </body>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/05/31/73-Set-Matrix-Zeroes/">73. Set Matrix Zeroes</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/31/79-Word-Search/">79. Word Search</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/31/287-Find-the-Duplicate-Number/">287. Find the Duplicate Number</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/30/228-Summary-Ranges/">228. Summary Ranges</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/30/229-Majority-Element-II/">229. Majority Element II</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Lawrence Lin<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
 </html>
