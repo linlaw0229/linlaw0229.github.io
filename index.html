@@ -62,6 +62,65 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-73-Set-Matrix-Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/05/31/73-Set-Matrix-Zeroes/" class="article-date">
+  <time datetime="2018-05-31T20:21:25.000Z" itemprop="datePublished">2018-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/73-Set-Matrix-Zeroes/">73. Set Matrix Zeroes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Problem description:</p>
+<p>Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: </span><br><span class="line">[</span><br><span class="line">  [1,1,1],</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [1,1,1]</span><br><span class="line">]</span><br><span class="line">Output: </span><br><span class="line">[</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [1,0,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: </span><br><span class="line">[</span><br><span class="line">  [0,1,2,0],</span><br><span class="line">  [3,4,5,2],</span><br><span class="line">  [1,3,1,5]</span><br><span class="line">]</span><br><span class="line">Output: </span><br><span class="line">[</span><br><span class="line">  [0,0,0,0],</span><br><span class="line">  [0,4,5,0],</span><br><span class="line">  [0,3,1,0]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>Follow up:</p>
+<ul>
+<li>A straight forward solution using O(mn) space is probably a bad idea.</li>
+<li>A simple improvement uses O(m + n) space, but still not the best solution.</li>
+<li>Could you devise a constant space solution?</li>
+</ul>
+<p>Solution:</p>
+<ol>
+<li>fr = first row, fc = first col</li>
+<li>Use first row and first column as markers. If matrix[i][j] = 0, mark respected row and col marker = 0 indicating that later this respective row and col must be marked 0; And because you are altering first row and column, we need to have two variables to track their own status. </li>
+<li><p>For example, if any one of the first row is 0, fr = 0, at the end need to set all first row to 0;</p>
+<p>time complexity: O(mn)<br>space complexity: O(1)</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void setZeroes(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        bool fr= false, fc= false;</span><br><span class="line">        for(int i = 0; i&lt; matrix.size(); ++i)&#123;</span><br><span class="line">            for(int j= 0; j&lt; matrix[0].size(); ++j)&#123;</span><br><span class="line">                if(matrix[i][j] == 0)&#123;</span><br><span class="line">                    if(i == 0) fr = true;</span><br><span class="line">                    if(j == 0) fc = true;</span><br><span class="line">                    matrix[i][0] = 0;</span><br><span class="line">                    matrix[0][j] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i = 1; i&lt; matrix.size(); ++i)&#123;</span><br><span class="line">            for(int j = 1; j&lt; matrix[0].size(); ++j)&#123;</span><br><span class="line">                if(matrix[i][0] == 0 || matrix[0][j] == 0)</span><br><span class="line">                    matrix[i][j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(fc)&#123;</span><br><span class="line">            for(int i = 0; i&lt; matrix.size(); ++i)</span><br><span class="line">                matrix[i][0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(fr)&#123;</span><br><span class="line">            for(int j = 0; j&lt; matrix[0].size(); ++j)</span><br><span class="line">                matrix[0][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://linlaw0229.github.io/2018/05/31/73-Set-Matrix-Zeroes/" data-id="cjhuznxz8000ww7an1me0xahz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-79-Word-Search" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/05/31/79-Word-Search/" class="article-date">
@@ -105,7 +164,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/31/79-Word-Search/" data-id="cjhuyhc20000wqlan9c5eoygc" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/31/79-Word-Search/" data-id="cjhuznxza000zw7ank8fu2vop" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -170,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/" data-id="cjhuyhc180006qlanqmeh3c5r" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/" data-id="cjhuznxyd0006w7angym2eal5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -219,7 +278,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/228-Summary-Ranges/" data-id="cjhuyhc1d000aqlanyfxr2a47" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/228-Summary-Ranges/" data-id="cjhuznxyi000aw7anteojay8h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -270,7 +329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/229-Majority-Element-II/" data-id="cjhuyhc1g000bqlanard40nto" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/229-Majority-Element-II/" data-id="cjhuznxym000bw7anlbbhzuzz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -315,7 +374,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/59-Spiral-Matrix-II/" data-id="cjhuyhc1y000tqlan90xxjjhq" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/59-Spiral-Matrix-II/" data-id="cjhuznxz6000tw7ank58v1v95" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -362,7 +421,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/" data-id="cjhuyhc1s000mqlan6t3i3q2p" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/30/54-Spiral-Matrix/" data-id="cjhuznxyz000mw7anr2cx4jpl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li></ul>
@@ -414,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhuyhc130003qlan4mtgah30" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/16-3Sum-Closest/" data-id="cjhuznxy80003w7an042tf6bo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/medium/">medium</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/two-pointers/">two pointers</a></li></ul>
@@ -466,7 +525,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhuyhc240013qlaneag54hn9" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" data-id="cjhuznxze0016w7anwo7exh5b" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array-binary-search/">leetcode, medium, array, binary search</a></li></ul>
@@ -517,69 +576,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhuyhc0w0001qlani68r5cir" class="article-share-link">Share</a>
+      <a data-url="http://linlaw0229.github.io/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" data-id="cjhuznxy10001w7an2czro4ob" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-array-binary-search/">leetcode, array, binary search</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-48-Rotate-Image" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/05/25/48-Rotate-Image/" class="article-date">
-  <time datetime="2018-05-25T19:45:33.000Z" itemprop="datePublished">2018-05-25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/25/48-Rotate-Image/">48. Rotate Image</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Problem description:</p>
-<p>You are given an n x n 2D matrix representing an image.</p>
-<p>Rotate the image by 90 degrees (clockwise).</p>
-<p>Note:</p>
-<p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Given input matrix =</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>Solution:</p>
-<ul>
-<li>clockwise rotate:<br>first reverse up to down, then swap the symmetry <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     7 8 9     7 4 1</span><br><span class="line">4 5 6  =&gt; 4 5 6  =&gt; 8 5 2</span><br><span class="line">7 8 9     1 2 3     9 6 3</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void rotate(vector&lt;vector&lt;int&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    for (int i = 0; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        for (int j = i + 1; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>anticlockwise rotate:<br>first reverse left to right, then swap the symmetry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     3 2 1     3 6 9</span><br><span class="line">4 5 6  =&gt; 6 5 4  =&gt; 2 5 8</span><br><span class="line">7 8 9     9 8 7     1 4 7</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void anti_rotate(vector&lt;vector&lt;int&gt; &gt; &amp;matrix) &#123;</span><br><span class="line">    for (auto vi : matrix) reverse(vi.begin(), vi.end());</span><br><span class="line">    for (int i = 0; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        for (int j = i + 1; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://linlaw0229.github.io/2018/05/25/48-Rotate-Image/" data-id="cjhuyhc1w000rqlanuzktzva5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode-medium-array/">leetcode, medium, array</a></li></ul>
 
     </footer>
   </div>
@@ -645,6 +645,10 @@
       <ul>
         
           <li>
+            <a href="/2018/05/31/73-Set-Matrix-Zeroes/">73. Set Matrix Zeroes</a>
+          </li>
+        
+          <li>
             <a href="/2018/05/31/79-Word-Search/">79. Word Search</a>
           </li>
         
@@ -658,10 +662,6 @@
         
           <li>
             <a href="/2018/05/30/229-Majority-Element-II/">229. Majority Element II</a>
-          </li>
-        
-          <li>
-            <a href="/2018/05/30/59-Spiral-Matrix-II/">59. Spiral Matrix II</a>
           </li>
         
       </ul>
