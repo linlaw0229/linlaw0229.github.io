@@ -72,93 +72,35 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/28/LC148-Sort-List/">
-                            LC148.Sort List
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 28, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/28/LC148-Sort-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/28/Space complexity/">
-                            Space complexity between recursion and iterative
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 28, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/28/Space complexity/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/tutorial/">
-                        tutorial
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/25/how to setup webpage/">
-                            How to setup a webpage
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 25, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/25/how to setup webpage/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+            <h2 class="post-title">
+                40. Combination Sum II
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-06-01
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
+<p>Each number in candidates may only be used once in the combination.</p>
+<p>Note:</p>
+<p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: candidates = [10,1,2,7,6,1,5], target = 8,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [1, 7],</span><br><span class="line">  [1, 2, 5],</span><br><span class="line">  [2, 6],</span><br><span class="line">  [1, 1, 6]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,5,2,1,2], target = 5,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>DFS + backtracking.<br>This question is very similar to <a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a>. The only difference is that the candidates array have duplicate elements, and we can not have same combination set in result array.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum2(vector&lt;int&gt;&amp; candidates, int target) &#123;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line"></span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        backtrack(candidates, tmp, res, target, 0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void backtrack(vector&lt;int&gt;&amp; candidates, vector&lt;int&gt;&amp; tmp, vector&lt;vector&lt;int&gt;&gt;&amp; res, int remain, int pos)&#123;</span><br><span class="line">        </span><br><span class="line">        if(remain == 0) res.push_back(tmp);</span><br><span class="line">        else if(remain &lt; 0) return;</span><br><span class="line">        else&#123;</span><br><span class="line">            for(int i = pos; i&lt; candidates.size(); i++)&#123;</span><br><span class="line">                //skip duplicate, because the question is asked for unique combination</span><br><span class="line">                if(i &gt; pos &amp;&amp; candidates[i] == candidates[i-1]) continue; </span><br><span class="line">                </span><br><span class="line">                tmp.push_back(candidates[i]);</span><br><span class="line">                backtrack(candidates, tmp, res, remain-candidates[i], i+1);</span><br><span class="line">                tmp.resize(tmp.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
