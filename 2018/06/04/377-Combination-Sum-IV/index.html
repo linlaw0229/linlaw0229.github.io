@@ -72,155 +72,41 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/30/LC142-Linked-List-Cycle-II/">
-                            LC142. Linked List Cycle II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 30, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/29/LC147-Insertion-Sort-List/">
-                            LC147. Insertion Sort List
-                        </a>
-                    </h1>
+            <h2 class="post-title">
+                377. Combination Sum IV
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-06-04
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <p>Problem description:</p>
+<p>Given an integer array with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">nums = [1, 2, 3]</span><br><span class="line">target = 4</span><br><span class="line"></span><br><span class="line">The possible combination ways are:</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line"></span><br><span class="line">Note that different sequences are counted as different combinations.</span><br><span class="line"></span><br><span class="line">Therefore the output is 7.</span><br></pre></td></tr></table></figure></p>
+<p>Follow up:</p>
+<ul>
+<li>What if negative numbers are allowed in the given array?</li>
+<li>How does it change the problem?</li>
+<li>What limitation we need to add to the question to allow negative numbers?</li>
+</ul>
+<p>Solution:<br>Think about the recurrence relation first. How does the # of combinations of the target related to the # of combinations of numbers that are smaller than the target?</p>
+<p>So we know that target is the sum of numbers in the array. Imagine we only need one more number to reach target, this number can be any one in the array, right? So the # of combinations of target, comb[target] = sum(comb[target - nums[i]]), where 0 &lt;= i &lt; nums.length, and target &gt;= nums[i].</p>
+<p>In the example given, we can actually find the # of combinations of 4 with the # of combinations of 3(4 - 1), 2(4- 2) and 1(4 - 3). As a result, comb[4] = comb[4-1] + comb[4-2] + comb[4-3] = comb[3] + comb[2] + comb[1].</p>
+<p>In the code, I use a dp array to represent the combination array.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int combinationSum4(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(target + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">          </span><br><span class="line">        for (int i = 1; i &lt;= target; ++i) &#123;</span><br><span class="line">            for (auto n : nums) &#123;</span><br><span class="line">                if (i &lt; n) break; //can not use n as i&apos;s candidate</span><br><span class="line">                dp[i] += dp[i - n];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp.back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
-                    <ul class="post-date">
-                        <li>
-                            March 29, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/29/LC147-Insertion-Sort-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/28/LC148-Sort-List/">
-                            LC148.Sort List
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 28, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/28/LC148-Sort-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/28/Space complexity/">
-                            Space complexity between recursion and iterative
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 28, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/28/Space complexity/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/tutorial/">
-                        tutorial
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/25/how to setup webpage/">
-                            How to setup a webpage
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 25, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/25/how to setup webpage/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
