@@ -72,37 +72,40 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/13/96-Unique-Binary-Search-Trees/">
-                            96. Unique Binary Search Trees
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 13, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-</section>
+            <h2 class="post-title">
+                105. Construct Binary Tree from Preorder and Inorder Traversal
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-06-05
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <p>Problem description:</p>
+<p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p>Note:<br>You may assume that duplicates do not exist in the tree.</p>
+<p>For example, given<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">preorder = [3,9,20,15,7]</span><br><span class="line">inorder = [9,3,15,20,7]</span><br><span class="line">Return the following binary tree:</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     _______7______</span><br><span class="line">    /              \</span><br><span class="line"> __10__          ___2</span><br><span class="line">/      \        /</span><br><span class="line">4       3      _8</span><br><span class="line">         \    /</span><br><span class="line">          1  11</span><br></pre></td></tr></table></figure></p>
+<p>The preorder and inorder traversals for the binary tree above is:</p>
+<p>preorder = <code>{7,10,4,3,1,2,8,11}</code><br>inorder = <code>{4,10,3,1,7,11,8,2}</code></p>
+<p>First of all, we can see that preorder’s 1st element <code>7</code> is Root. The element <code>7</code> is the 4th element in inorder sequence. Since there is no duplicate in the sequence, there is no ambiguity.<br>The characteristic of inorder sequence is that it will follow this visit order <code>left-&gt;root-&gt;right</code>; therefore, we can see that the left elements of <code>7</code> is in <code>left subtree</code>. Other elements to the right must be in the <code>right subtree</code>.</p>
+<p>Preorder traversal follows the sequence of <code>root-&gt;left-&gt;right</code>. Therefore, the left and right subtree’s postorder traversal must be {10, 4, 3, 1} and {2, 8, 11} respectively. Since the left and right subtree are binary trees in their own right, we can solve recursively!</p>
+<p>Then how do we search the root value’s index in the inorder sequence?<br>If we use linear search, assume that the constructed binary tree is always balanced, then we can guarantee the run time complexity to be O(N log N), where N is the number of nodes. However, this is not necessarily the case and the constructed binary tree can be skewed to the left/right, which has the worst complexity of O(N^2).</p>
+<p>A more efficient way is to eliminate the search by using an efficient look-up mechanism such as <code>hash table</code>. By hashing an element’s value to its corresponding index in the inorder sequence, we can do look-ups in constant time. Now, we need only O(N) time to construct the tree, which theoretically is the most efficient way.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; map;</span><br><span class="line">        for (int i = 0; i &lt; inorder.size(); i++) map[inorder[i]] = i;</span><br><span class="line">        return buildTree(preorder, 0, preorder.size()-1, inorder, 0, inorder.size()-1, map);</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, int m1, int n1, vector&lt;int&gt;&amp; inorder, int m2, int n2, unordered_map&lt;int, int&gt;&amp; map) &#123;</span><br><span class="line">        if (m1 &gt; n1) return NULL;</span><br><span class="line">        int curindex = map[preorder[m1]];</span><br><span class="line">        int new_right_m1 = m1 + curindex - m2 + 1;</span><br><span class="line">        TreeNode *root = new TreeNode(preorder[m1]);</span><br><span class="line">        root-&gt;left = buildTree(preorder, m1+1, new_right_m1-1, inorder, m2, curindex-1, map);</span><br><span class="line">        root-&gt;right = buildTree(preorder, new_right_m1, n1, inorder, curindex+1, n2, map);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
