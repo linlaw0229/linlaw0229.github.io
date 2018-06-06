@@ -72,45 +72,37 @@
     </nav>
 </header>
                 <main class="main">
-                    <article class="post">
+                    <section class="posts">
     
-        <h4 class="post-cat">
-            <a href="/categories/leetcode/">
-                leetcode
-            </a>
-        </h4>
-        
-            <h2 class="post-title">
-                39. Combination Sum
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-06-01
-                </li>
-                <li>
-                    Lawrence Lin
-                </li>
-            </ul>
-            <div class="post-content">
-                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
-<p>The same repeated number may be chosen from candidates unlimited number of times.</p>
-<p>Note:</p>
-<p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,6,7], target = 7,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,5], target = 8,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [2,2,2,2],</span><br><span class="line">  [2,3,3],</span><br><span class="line">  [3,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>DFS + backtracking.<br>In backtrack(), I use the following 5 inputs.</p>
-<ul>
-<li>vector&lt;vector<int>&gt;&amp; res, store every combination here</int></li>
-<li>vector<int>&amp; temp, this is buffer for recursive, increase/decrease element depends on depth of dfs</int></li>
-<li>vector<int>&amp; candidates, </int></li>
-<li>int remain, what we targeting, need to input remain-i when dfs into next level</li>
-<li>int start, this is because we can not have duplicate sets, to record what elements we already passed or visited.</li>
-</ul>
-<p>Time complexity: O(n*2^n)<br>The number of recursive calls, T(n) satisfies the recurrence T(n) = T(n - 1) + T(n - 2) + … + T(1) + T(0),which solves to T(n) = O(2^n). Since we spend O(n) time within a call, the time complexity is O(n2^n);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum(vector&lt;int&gt;&amp; candidates, int target) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        backtrack(res, tmp, candidates, target, 0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private :</span><br><span class="line">    void backtrack(vector&lt;vector&lt;int&gt;&gt;&amp; res, vector&lt;int&gt;&amp; temp, vector&lt;int&gt;&amp; candidates, int remain, int start)&#123;</span><br><span class="line">        if(remain &lt; 0) return; //did not match the target</span><br><span class="line">        else if(remain == 0) res.push_back(temp); //put into the result</span><br><span class="line">        else&#123;</span><br><span class="line">            for(int i = start; i&lt; candidates.size(); i++)&#123;</span><br><span class="line">                //search candidate[i] have any combanition</span><br><span class="line">                temp.push_back(candidates[i]); </span><br><span class="line">                backtrack(res, temp, candidates, remain-candidates[i], i); </span><br><span class="line">                </span><br><span class="line">                temp.resize(temp.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>reference:<br><a href="https://goo.gl/HkoJaT" target="_blank" rel="noopener">https://goo.gl/HkoJaT</a><br><a href="https://goo.gl/XX6WAv" target="_blank" rel="noopener">https://goo.gl/XX6WAv</a><br><a href="http://www.1point3acres.com/bbs/thread-117602-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-117602-1-1.html</a></p>
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/05/18-4Sum/">
+                            18. 4Sum
+                        </a>
+                    </h1>
 
-            </div>
-</article>
+                    <ul class="post-date">
+                        <li>
+                            June 5, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/05/18-4Sum/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+</section>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
