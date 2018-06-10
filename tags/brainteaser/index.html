@@ -72,35 +72,37 @@
     </nav>
 </header>
                 <main class="main">
-                    <article class="post">
+                    <section class="posts">
     
-        <h4 class="post-cat">
-            <a href="/categories/leetcode/">
-                leetcode
-            </a>
-        </h4>
-        
-            <h2 class="post-title">
-                49. Group Anagrams
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-06-06
-                </li>
-                <li>
-                    Lawrence Lin
-                </li>
-            </ul>
-            <div class="post-content">
-                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given an array of strings, group anagrams together.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<p>Note:</p>
-<p>All inputs will be in lowercase.<br>The order of your output does not matter.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The idea is to use an <code>unordered_map</code> to store those strings that are anagrams. We use the <code>sorted string</code> as the key and the string itself as the value. The strings are stored in a multiset since there may be duplicates. Moreover, multiset will sort them by default as we desire.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; groupAnagrams(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">multiset</span>&lt;<span class="built_in">string</span>&gt;&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> s: strs)&#123;</span><br><span class="line">            <span class="built_in">string</span> tmp = s; </span><br><span class="line">            sort(tmp.begin(), tmp.end());  <span class="comment">//use the sorted string as key to store every similar strings</span></span><br><span class="line">            <span class="built_in">map</span>[tmp].insert(s);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> m: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tmp(m.second.begin(), m.second.end());</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>time complexity: O(nlogn)</p>
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/09/319-Bulb-Switcher/">
+                            319. Bulb Switcher
+                        </a>
+                    </h1>
 
-            </div>
-</article>
+                    <ul class="post-date">
+                        <li>
+                            June 9, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/09/319-Bulb-Switcher/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+</section>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
