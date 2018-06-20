@@ -72,255 +72,45 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/12/84-Largest-Rectangle-in-Histogram/">
-                            84. Largest Rectangle in Histogram
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 12, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/12/84-Largest-Rectangle-in-Histogram/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/11/72-Edit-Distance/">
-                            72. Edit Distance
-                        </a>
-                    </h1>
+            <h2 class="post-title">
+                75. Sort Colors
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-06-20
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <p>#Problem description:</p>
+<p>Given an array with n objects colored red, white or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<p>Note: You are not suppose to use the library’s sort function for this problem.</p>
+<p>Example:</p>
+<p>Input: [2,0,2,1,1,0]<br>Output: [0,0,1,1,2,2]<br>Follow up:</p>
+<p>A rather straight forward solution is a two-pass algorithm using counting sort.<br>First, iterate the array counting number of 0’s, 1’s, and 2’s, then overwrite array with total number of 0’s, then 1’s and followed by 2’s.<br>Could you come up with a one-pass algorithm using only constant space?</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>We can use three pointers to solve this question.<br>low: point to <code>0</code><br>mid: point to <code>1</code><br>high: point to <code>2</code></p>
+<p>If we encounter a 0, we know that it will be on the low end of the array, and if we encounter a 2, we know it will be on the high end of the array.</p>
+<p>To achieve this in one pass without preprocessing (counting), we simply traverse the unknown will generating the low and high ends.</p>
+<p>Take this example:</p>
+<p>Assume our input is: 1 0 2 2 1 0 (short for simplicity).</p>
+<p>Running the algorithm by hand would look something like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">1 0 2 2 1 0</span><br><span class="line">    ^         ^</span><br><span class="line">    L         H</span><br><span class="line">    M</span><br><span class="line"></span><br><span class="line">    Mid != 0 || 2</span><br><span class="line">    Mid++</span><br><span class="line"></span><br><span class="line">    1 0 2 2 1 0</span><br><span class="line">    ^ ^       ^</span><br><span class="line">    L M       H</span><br><span class="line"></span><br><span class="line">    Mid == 0</span><br><span class="line">    Swap Low and Mid</span><br><span class="line">    Mid++</span><br><span class="line">    Low++</span><br><span class="line"></span><br><span class="line">    0 1 2 2 1 0</span><br><span class="line">      ^ ^     ^</span><br><span class="line">      L M     H</span><br><span class="line"></span><br><span class="line">    Mid == 2</span><br><span class="line">    Swap High and Mid</span><br><span class="line">    High--</span><br><span class="line"></span><br><span class="line">    0 1 0 2 1 2</span><br><span class="line">      ^ ^   ^</span><br><span class="line">      L M   H</span><br><span class="line"></span><br><span class="line">    Mid == 0</span><br><span class="line">    Swap Low and Mid</span><br><span class="line">    Mid++</span><br><span class="line">    Low++</span><br><span class="line"></span><br><span class="line">    0 0 1 2 1 2</span><br><span class="line">        ^ ^ ^</span><br><span class="line">        L M H</span><br><span class="line"></span><br><span class="line">    Mid == 2</span><br><span class="line">    Swap High and Mid</span><br><span class="line">    High--</span><br><span class="line"></span><br><span class="line">    0 0 1 1 2 2</span><br><span class="line">        ^ ^</span><br><span class="line">        L M</span><br><span class="line">          H</span><br><span class="line"></span><br><span class="line">    Mid &lt;= High is our exit case</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low= <span class="number">0</span>, mid= <span class="number">0</span>, high= nums.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(mid &lt;= high)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] == <span class="number">0</span>)&#123;</span><br><span class="line">                swap(nums[mid], nums[low]); <span class="comment">//change the value in position 'mid', 'low'</span></span><br><span class="line">                low++;</span><br><span class="line">                mid++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(nums[mid] == <span class="number">1</span>)&#123; </span><br><span class="line">                mid++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                swap(nums[mid], nums[high]);</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>reference:<br><a href="https://goo.gl/iKdeLx" target="_blank" rel="noopener">https://goo.gl/iKdeLx</a></p>
 
-                    <ul class="post-date">
-                        <li>
-                            May 11, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/11/72-Edit-Distance/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2018/04/20/companylist/">
-                            companylist
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            April 20, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/04/20/companylist/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/31/LC24-Swap-Nodes-in-Pairs/">
-                            LC24. Swap Nodes in Pairs
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 31, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/31/LC24-Swap-Nodes-in-Pairs/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/30/LC142-Linked-List-Cycle-II/">
-                            LC142. Linked List Cycle II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 30, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/30/LC142-Linked-List-Cycle-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/29/LC147-Insertion-Sort-List/">
-                            LC147. Insertion Sort List
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 29, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/29/LC147-Insertion-Sort-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/28/LC148-Sort-List/">
-                            LC148.Sort List
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 28, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/28/LC148-Sort-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/28/Space complexity/">
-                            Space complexity between recursion and iterative
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 28, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/28/Space complexity/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/tutorial/">
-                        tutorial
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/03/25/how to setup webpage/">
-                            How to setup a webpage
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            March 25, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/03/25/how to setup webpage/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
