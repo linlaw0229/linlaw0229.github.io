@@ -72,177 +72,39 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/20/523-Continuous-Subarray-Sum/">
-                            523. Continuous Subarray Sum
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 20, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/20/523-Continuous-Subarray-Sum/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/09/319-Bulb-Switcher/">
-                            319. Bulb Switcher
-                        </a>
-                    </h1>
+            <h2 class="post-title">
+                523. Continuous Subarray Sum
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-06-20
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>/<em><br>Given a list of non-negative numbers and a target integer k, write a function to check if the array has a continuous subarray of size at least 2 that sums up to the multiple of k, that is, sums up to n</em>k where n is also an integer.</p>
+<p>Example 1:<br><code>Input: [23, 2, 4, 6, 7],  k=6</code><br>Output: True<br>Explanation: Because [2, 4] is a continuous subarray of size 2 and sums up to 6.</p>
+<p>Example 2:<br><code>Input: [23, 2, 6, 4, 7],  k=6</code><br>Output: True<br>Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.</p>
+<p>Note:<br>The length of the array won’t exceed 10,000.<br>You may assume the sum of all the numbers is in the range of a signed 32-bit integer.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The main idea is to find whether if there’s two subarray that contains equal remainder.<br>Let’s say we have a sum of subarray from <code>i...j</code> look like this:<br>  <code>a[i]+a[i+1]+...+a[j]=n1k+q;</code></p>
+<p>If we can find a <code>n</code>, which is greater than j , that qualified for the following equation,<br>  <code>n&gt;j</code> and <code>a[i]+a[i+1]+...+a[j]+...+a[n]=n2k+q;</code></p>
+<p>We can derive a result that the sum of subarray from <code>j...n</code> should be:<br>  <code>a[j+1]+...+a[n]=(n2−n1)k</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkSubarraySum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum= <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>= &#123;&#123;<span class="number">0</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            sum+= nums[i];</span><br><span class="line">            <span class="keyword">if</span>(k != <span class="number">0</span>)</span><br><span class="line">                sum = sum%k;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.count(sum))&#123;</span><br><span class="line">                <span class="keyword">if</span>(i- <span class="built_in">map</span>[sum] &gt;<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">map</span>[sum]= i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>time complexity: O(n)<br>space complexity: O(n)</p>
+<p>reference:<br><a href="https://goo.gl/sieyWJ" target="_blank" rel="noopener">https://goo.gl/sieyWJ</a><br><a href="https://goo.gl/fb8NoY" target="_blank" rel="noopener">https://goo.gl/fb8NoY</a><br><a href="https://goo.gl/fK1cNG" target="_blank" rel="noopener">https://goo.gl/fK1cNG</a></p>
 
-                    <ul class="post-date">
-                        <li>
-                            June 9, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/09/319-Bulb-Switcher/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/09/8-String-to-Integer-atoi/">
-                            8. String to Integer (atoi)
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 9, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/09/8-String-to-Integer-atoi/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/535-Encode-and-Decode-TinyURL/">
-                            535. Encode and Decode TinyURL
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/535-Encode-and-Decode-TinyURL/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/413-Arithmetic-Slices/">
-                            413. Arithmetic Slices
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/413-Arithmetic-Slices/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">
-                            357. Count Numbers with Unique Digits
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
