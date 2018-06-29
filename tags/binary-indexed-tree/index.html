@@ -72,38 +72,37 @@
     </nav>
 </header>
                 <main class="main">
-                    <article class="post">
+                    <section class="posts">
     
-        <h4 class="post-cat">
-            <a href="/categories/leetcode/">
-                leetcode
-            </a>
-        </h4>
-        
-            <h2 class="post-title">
-                229. Majority Element II
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-05-30
-                </li>
-                <li>
-                    Lawrence Lin
-                </li>
-            </ul>
-            <div class="post-content">
-                <p>Problem description:</p>
-<p>Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.</p>
-<p>Note: The algorithm should run in linear time and in O(1) space.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [3,2,3]</span><br><span class="line">Output: [3]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [1,1,1,3,3,2,2,2]</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure>
-<p>Solution:<br>The essential concepts is you keep a counter for the majority number X. If you find a number Y that is not X, the current counter should deduce 1. The reason is that if there is 5 X and 4 Y, there would be one (5-4) more X than Y. This could be explained as “4 X being paired out by 4 Y”.</p>
-<p>And since the requirement is finding the majority for more than ceiling of [n/3], the answer would be less than or equal to two numbers.<br>So we can modify the algorithm to maintain two counters for two majorities.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; majorityElement(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int num0 = 0, num1 = 1, count0 = 0, count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums) &#123;</span><br><span class="line">            //find two majority element</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">          else if (! count0) num0 = x, count0 = 1;</span><br><span class="line">          else if (! count1) num1 = x, count1 = 1;</span><br><span class="line">          else count0--, count1--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        //set to zero is because only need to count these two element</span><br><span class="line">        count0 = count1 = 0;</span><br><span class="line">        </span><br><span class="line">        for (auto x: nums)</span><br><span class="line">          if (x == num0) count0++;</span><br><span class="line">          else if (x == num1) count1++;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if (count0 &gt; nums.size()/3) res.push_back(num0);</span><br><span class="line">        if (count1 &gt; nums.size()/3) res.push_back(num1);</span><br><span class="line">        return res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>reference:<br><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank" rel="noopener">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></p>
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/28/307-Range-Sum-Query-Mutable/">
+                            307. Range Sum Query - Mutable
+                        </a>
+                    </h1>
 
-            </div>
-</article>
+                    <ul class="post-date">
+                        <li>
+                            June 28, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/28/307-Range-Sum-Query-Mutable/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+</section>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
