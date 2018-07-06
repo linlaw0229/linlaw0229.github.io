@@ -98,17 +98,7 @@
 <p>Credits:<br>Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.<br><a href="https://goo.gl/CizU8W" target="_blank" rel="noopener">https://goo.gl/CizU8W</a></p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>We can try to find the pattern,<br> num  divide into   product<br>  2       1+1          1<br>  3       2+1          2<br>  4       2+2          4<br>  5       2+3          6<br>  6       3+3          9<br>  7       3+2+2        12<br>  8       3+3+2        18</p>
 <p>We can see that, all factors should be 2 or 3 (N &gt; 4). Also, since <code>3 * 3 &gt; 2 * 2 * 2</code>, we should try to have 3 as much as possible(N&gt;4). </p>
-<p>class Solution {<br>public:<br>    int integerBreak(int n) {<br>        if(n ==2) return 1;<br>        if(n==3) return 2;<br>        int product =1;</p>
-<pre><code>    while(n&gt;4){
-        product *=3;
-        n-=3;
-    }
-    product *=n;
-
-    return product;
-}
-</code></pre><p>};</p>
-
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n ==<span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> product =<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">4</span>)&#123;</span><br><span class="line">            product *=<span class="number">3</span>;</span><br><span class="line">            n-=<span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        product *=n;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
             </div>
 </article>
                 </main>
@@ -117,7 +107,7 @@
                         
     <h1>Categories</h1>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
 
                     </section>
                     <section class="aside-section">
@@ -135,7 +125,24 @@
 
                     </section>
                 </aside>
-        </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
     </body>
 
 </html>
