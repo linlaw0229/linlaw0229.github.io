@@ -1,402 +1,968 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        linlaw Techblog
-    </title>
-    <!-- favicon -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <link rel="icon" href="/css/L.ico">
+    <title>linlaw Techblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="linlaw Techblog" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
     
     <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/infinite-scroll.css">
-    <script src="/css/infinite-scroll.js"></script>
-    <script>
-        infiniteScroll()
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-    <body style="background: url(/css/button-bg.png) #f3f3f3">
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            linlaw Techblog
-        </a>
-    </h1>
-    <h2 class="desc">
-        Make the change you want to see in the world.
-    </h2>
+<body class="home">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">linlaw Techblog</span>
+                    <span class="description">Make the change you want to see in the world.</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
             
-                <li>
-                    <a href="https://github.com/linlaw0229">
-                        Github
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://www.linkedin.com/in/lawrence0229/">
-                        LinkedIn
-                    </a>
-                </li>
-                
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/page/5/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
         </ul>
-    </nav>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
 </header>
-                <main class="main">
-                    <section class="posts">
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 首页 -->
+
     
-        <article class="post">
+    <h3 class="widget-hd">
+        <strong>
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/05/55-Jump-Game/">
-                            55. Jump Game
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 5, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/05/55-Jump-Game/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+                最近动态
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/05/18-4Sum/">
-                            18. 4Sum
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 5, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/05/18-4Sum/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        </strong>
+    </h3>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
+    		159. Longest Substring with At Most Two Distinct Characters
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T19:15:20.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/05/162-Find-Peak-Element/">
-                            162. Find Peak Element
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/two-pointers/" title="two pointers">two pointers</a> / 
+    
+        <a href="/tags/string/" title="string">string</a> / 
+    
+        <a href="/tags/hard/" title="hard">hard</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 5, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/05/162-Find-Peak-Element/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/05/90-Subsets-II/">
-                            90. Subsets II
-                        </a>
-                    </h1>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a string s , find the length of the longest substring t  that contains at most 2 distinct characters.</p>
+<p>Example 1:</p>
+<p>Input: “eceba”<br>Output: 3<br>Explanation: t is “ece” which its length is 3.<br>Example 2:</p>
+<p>Input: “ccaabbb”<br>Output: 5<br>Explanation: t is “aabbb” which its length is 5.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This question belong to the same category as those such as “longest substring without repeating characters”, “minimum window substring”, and “substring with concatenation of all words”. To solve this kind of question we can use two pointers and a hash table. When the key of the hash table is char, we can simply use an array as the hash table. The most important idea in solving this kind of questions is “how to update the “start” pointer” and the solution to these questions seem usually differ only in this respect.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringTwoDistinct</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, left = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); ++i) &#123;</span><br><span class="line">            ++m[s[i]];</span><br><span class="line">            <span class="keyword">while</span> (m.size() &gt; <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (--m[s[left]] == <span class="number">0</span>) m.erase(s[left]);</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            res = max(res, i - left + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Solution2:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringTwoDistinct</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">-1</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s[i] == s[i - <span class="number">1</span>]) <span class="keyword">continue</span>; <span class="comment">//current position character is the same as previous one</span></span><br><span class="line">            <span class="keyword">if</span> (right &gt;= <span class="number">0</span> &amp;&amp; s[right] != s[i]) &#123;</span><br><span class="line">                res = max(res, i - left);</span><br><span class="line">                left = right + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            right = i - <span class="number">1</span>;</span><br><span class="line">            <span class="comment">//1. first time would be have two different character</span></span><br><span class="line">            <span class="comment">//2. after that, j means: when see different character, then move the end pointer j to previous substring</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max(<span class="keyword">int</span>(s.length()) - left, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-                    <ul class="post-date">
-                        <li>
-                            June 5, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/05/90-Subsets-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/" title="159. Longest Substring with At Most Two Distinct Characters">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/05/78-Subsets/">
-                            78. Subsets
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 5, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/05/78-Subsets/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/">
+    		3. Longest Substring Without Repeating Characters
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T19:10:08.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">
-                            105. Construct Binary Tree from Preorder and Inorder Traversal
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/two-pointers/" title="two pointers">two pointers</a> / 
+    
+        <a href="/tags/string/" title="string">string</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 5, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/04/Tree-traversal/">
-                            Tree traversal
-                        </a>
-                    </h1>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a string, find the length of the longest substring without repeating characters.</p>
+<p>Examples:</p>
+<p>Given <code>&quot;abcabcbb&quot;</code>, the answer is <code>&quot;abc&quot;</code>, which the length is 3.</p>
+<p>Given <code>&quot;bbbbb&quot;</code>, the answer is <code>&quot;b&quot;</code>, with the length of 1.</p>
+<p>Given <code>&quot;pwwkew&quot;</code>, the answer is <code>&quot;wke&quot;</code>, with the length of 3. Note that the answer must be a substring, <code>&quot;pwke&quot;</code> is a sub-sequence and not a substring.</p>
+<p>Solution:<br>Keep a <code>hashmap</code> which stores the characters in string as keys and their positions as values, and keep two pointers which define the max substring. move the right pointer to scan through the string , meanwhile update the hashmap. If the character is <code>already in the hashmap</code>, then move the left pointer to the right of the same character last found. Note that the two pointers can only move forward.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">int</span> maxl = <span class="number">0</span>, left= <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.find(s[i]) != <span class="built_in">map</span>.end())&#123; </span><br><span class="line">                <span class="comment">//check whether if the character already in the map</span></span><br><span class="line">                left = max(<span class="built_in">map</span>.find(s[i])-&gt;second, left); <span class="comment">//if we can find, update the left pointer</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">map</span>[s[i]] = i; <span class="comment">//update the appearance position of the character in map</span></span><br><span class="line">            maxl = max(maxl, i-left); <span class="comment">//max length would remain the same or (cur position-left pointer)</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> maxl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>time complexity: O(n)</p>
+<p>reference:<br><a href="https://goo.gl/mUhZjT" target="_blank" rel="noopener">https://goo.gl/mUhZjT</a><br><a href="https://goo.gl/8cQL7W" target="_blank" rel="noopener">https://goo.gl/8cQL7W</a></p>
 
-                    <ul class="post-date">
-                        <li>
-                            June 4, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/04/Tree-traversal/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/" title="3. Longest Substring Without Repeating Characters">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/04/442-Find-All-Duplicates-in-an-Array/">
-                            442. Find All Duplicates in an Array
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 4, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/04/442-Find-All-Duplicates-in-an-Array/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/55-Jump-Game/">
+    		55. Jump Game
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T00:50:29.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/04/64-Minimum-Path-Sum/">
-                            64. Minimum Path Sum
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/greedy/" title="greedy">greedy</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 4, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/04/64-Minimum-Path-Sum/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>/*<br>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
+<p>Each element in the array represents your maximum jump length at that position.</p>
+<p>Determine if you are able to reach the last index.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [2,3,1,1,4]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [3,2,1,0,4]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: You will always arrive at index 3 no matter what. Its maximum</span><br><span class="line">             jump length is 0, which makes it impossible to reach the last index.</span><br></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lastPos = nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i + nums[i] &gt;= lastPos) &#123; <span class="comment">//(current position + steps in this position) &gt; lastPos</span></span><br><span class="line">                lastPos = i;              <span class="comment">//if get to this slot, then we can get to last index</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lastPos == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/55-Jump-Game/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/55-Jump-Game/" title="55. Jump Game">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/04/377-Combination-Sum-IV/">
-                            377. Combination Sum IV
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 4, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/04/377-Combination-Sum-IV/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-</section>
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/18-4Sum/">
+    		18. 4Sum
+    	</a>
+    </h3>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T22:05:20.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/two-pointer/" title="two pointer">two pointer</a>
+    
 
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
+        </span>
+    </p>
 
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given an array nums of n integers and an integer target, are there elements a, b, c, and d in nums such that <code>a + b + c + d = target</code>? Find all unique quadruplets in the array which gives the sum of target.</p>
+<p>Note:</p>
+<p>The solution set must not contain duplicate quadruplets.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Given array nums = [1, 0, -1, 0, -2, 2], and target = 0.</span><br><span class="line"></span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [-1,  0, 0, 1],</span><br><span class="line">  [-2, -1, 1, 2],</span><br><span class="line">  [-2,  0, 0, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>This problem is pretty similar to , the key idea is to downgrade it to 2Sum problems. Other conditions is to increase performance.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; fourSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; total;</span><br><span class="line">        <span class="keyword">int</span> n = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">4</span>)  <span class="keyword">return</span> total;</span><br><span class="line">        sort(nums.begin(),nums.end());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-3</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(i&gt;<span class="number">0</span> &amp;&amp; nums[i]==nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>; <span class="comment">//skip duplicate element</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i]+nums[i+<span class="number">1</span>]+nums[i+<span class="number">2</span>]+nums[i+<span class="number">3</span>]&gt;target) <span class="keyword">break</span>; <span class="comment">//because the array is sorted, if 4 elements start from i is greater than target, no need to do the rest</span></span><br><span class="line">            <span class="keyword">if</span>(nums[i]+nums[n<span class="number">-3</span>]+nums[n<span class="number">-2</span>]+nums[n<span class="number">-1</span>]&lt;target) <span class="keyword">continue</span>; <span class="comment">//because the array is sorted, if 4 elements start from i is smaller than target, we should keep finding upcoming sequence</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;n<span class="number">-2</span>;j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(j&gt;i+<span class="number">1</span>&amp;&amp;nums[j]==nums[j<span class="number">-1</span>]) <span class="keyword">continue</span>; </span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]+nums[j+<span class="number">1</span>]+nums[j+<span class="number">2</span>]&gt;target) <span class="keyword">break</span>; </span><br><span class="line">                <span class="keyword">if</span>(nums[i]+nums[j]+nums[n<span class="number">-2</span>]+nums[n<span class="number">-1</span>]&lt;target) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> left=j+<span class="number">1</span>,right=n<span class="number">-1</span>; <span class="comment">//two pointer to search toward right and left</span></span><br><span class="line">                <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">                    <span class="keyword">int</span> sum=nums[left]+nums[right]+nums[i]+nums[j];</span><br><span class="line">                    <span class="keyword">if</span>(sum&lt;target) left++;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(sum&gt;target) right--;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        total.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;nums[i],nums[j],nums[left],nums[right]&#125;);</span><br><span class="line">                        <span class="keyword">do</span>&#123;</span><br><span class="line">                            left++;</span><br><span class="line">                        &#125;<span class="keyword">while</span>(nums[left]==nums[left<span class="number">-1</span>]&amp;&amp;left&lt;right); <span class="comment">//move left at least once then check for duplicate</span></span><br><span class="line">                        </span><br><span class="line">                        <span class="keyword">do</span>&#123;</span><br><span class="line">                            right--;</span><br><span class="line">                        &#125;<span class="keyword">while</span>(nums[right]==nums[right+<span class="number">1</span>]&amp;&amp;left&lt;right);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> total;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/18-4Sum/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/18-4Sum/" title="18. 4Sum">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/162-Find-Peak-Element/">
+    		162. Find Peak Element
+    	</a>
+    </h3>
 
-                    </section>
-                </aside>
-        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T20:57:48.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/binary-search/" title="binary search">binary search</a>
+    
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
+        </span>
+    </p>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-    </body>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>A peak element is an element that is greater than its neighbors.</p>
+<p>Given an input array nums, where <code>nums[i] ≠ nums[i+1]</code>, find a peak element and return its index.</p>
+<p>The array may contain multiple peaks, in that case return the index to any one of the peaks is fine.</p>
+<p>You may imagine that <code>nums[-1] = nums[n] = -∞</code>.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: nums = [1,2,3,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 3 is a peak element and your function should return the index number 2.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: nums = [1,2,1,3,5,6,4]</span><br><span class="line">Output: 1 or 5 </span><br><span class="line">Explanation: Your function can return either index number 1 where the peak element is 2, </span><br><span class="line">             or index number 5 where the peak element is 6.</span><br></pre></td></tr></table></figure>
+<p>Note:<br>Your solution should be in logarithmic complexity.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
+<li>The question is asking for peaking element, if the sequence have multiple peak, anyone of them is fine.</li>
+<li>We can use <code>sequential find</code> or <code>binary search</code></li>
+</ol>
+<p>We can consider the following case:</p>
+<ul>
+<li><p>Sequence is decreasing<br>If we use a <code>mid</code> pointer to find, then the peak must be on the left side.<br><img src="Find_Peak_Case1.png" alt=""></p>
+</li>
+<li><p>Sequence is increasing<br>The peak is on the right part.<br><img src="Find_Peak_Case2.png" alt=""></p>
+</li>
+<li><p>Peak is in the middle<br><img src="Find_Peak_Case3.png" alt=""></p>
+</li>
+</ul>
+<ul>
+<li>sequential find<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; num.size(); i ++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(num[i] &lt; num[i<span class="number">-1</span>])</span><br><span class="line">            &#123;<span class="comment">// &lt;</span></span><br><span class="line">                <span class="keyword">return</span> i<span class="number">-1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num.size()<span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>time complexity: O(n)<br>space complexity: O(1)</p>
+<ul>
+<li>binary search, recursive<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(nums, <span class="number">0</span>, nums.size()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == right) <span class="keyword">return</span> left;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] &gt; nums[mid+<span class="number">1</span>]) </span><br><span class="line">                <span class="keyword">return</span> helper(nums, left, mid);</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">                <span class="keyword">return</span> helper(nums, mid+<span class="number">1</span>, right);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>time complexity: O(logn)<br>space complexity: O(logn). In recursion loop, the search space is reduced in half, so the depth tree is log_2(n)</p>
+<ul>
+<li>binary search, iterative<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findPeakElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = nums.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = (left+right)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid]&gt; nums[mid+<span class="number">1</span>])</span><br><span class="line">                right = mid;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>time complexity: O(logn)<br>space complexity: O(1)</p>
 
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/162-Find-Peak-Element/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/162-Find-Peak-Element/" title="162. Find Peak Element">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/90-Subsets-II/">
+    		90. Subsets II
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T19:48:40.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a> / 
+    
+        <a href="/tags/backtracking/" title="backtracking">backtracking</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given a collection of integers that might contain duplicates, nums, return all possible subsets (the power set).</p>
+<p>Note: The solution set must not contain duplicate subsets.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: [1,2,2]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [2],</span><br><span class="line">  [1],</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [2,2],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>This question is very similar to <a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a> and <a href="/2018/06/05/78-Subsets/" title="78. Subsets">78. Subsets</a>. </p>
+<ol>
+<li>Sort the array</li>
+<li>When recursion, we need to check for the duplicate elements, if <code>i</code> is equal to previous item then bypass it</li>
+<li>A major difference is that we need to use <code>i</code> to do the backtrack, instead of <code>pos+1</code> in combination.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; subsetsWithDup(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        backtrack(res, tmp, nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; tmp, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        res.push_back(tmp);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = pos; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; pos &amp;&amp; nums[i] == nums[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            tmp.push_back(nums[i]);</span><br><span class="line">            backtrack(res, tmp, nums, i+<span class="number">1</span>); <span class="comment">//this is the major difference, need to throw in i, instead of pos</span></span><br><span class="line">            tmp.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/90-Subsets-II/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/90-Subsets-II/" title="90. Subsets II">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/78-Subsets/">
+    		78. Subsets
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T19:22:24.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a> / 
+    
+        <a href="/tags/backtracking/" title="backtracking">backtracking</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given a set of distinct integers, nums, return all possible subsets (the power set).</p>
+<p>Note: The solution set must not contain duplicate subsets.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: nums = [1,2,3]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [1],</span><br><span class="line">  [2],</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>DFS + backtracking.<br>This question is very similar to <a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a>.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; subsets(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">        sort(nums.begin(), nums.end())</span><br><span class="line">        backtrack(res, tmp, nums, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; tmp, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        res.push_back(tmp); <span class="comment">//add every set into the result</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = pos; i &lt; nums.size(); i++)&#123;</span><br><span class="line">            tmp.push_back(nums[i]); <span class="comment">//sequentially add every element in the ressult</span></span><br><span class="line">            backtrack(res, tmp, nums, i+<span class="number">1</span>);</span><br><span class="line">            tmp.pop_back();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/78-Subsets/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/78-Subsets/" title="78. Subsets">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">
+    		105. Construct Binary Tree from Preorder and Inorder Traversal
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T16:44:25.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p>Note:<br>You may assume that duplicates do not exist in the tree.</p>
+<p>For example, given<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">preorder = [3,9,20,15,7]</span><br><span class="line">inorder = [9,3,15,20,7]</span><br><span class="line">Return the following binary tree:</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     _______7______</span><br><span class="line">    /              \</span><br><span class="line"> __10__          ___2</span><br><span class="line">/      \        /</span><br><span class="line">4       3      _8</span><br><span class="line">         \    /</span><br><span class="line">          1  11</span><br></pre></td></tr></table></figure></p>
+<p>The preorder and inorder traversals for the binary tree above is:</p>
+<p>preorder = <code>{7,10,4,3,1,2,8,11}</code><br>inorder = <code>{4,10,3,1,7,11,8,2}</code></p>
+<p>First of all, we can see that preorder’s 1st element <code>7</code> is Root. The element <code>7</code> is the 4th element in inorder sequence. Since there is no duplicate in the sequence, there is no ambiguity.<br>The characteristic of inorder sequence is that it will follow this visit order <code>left-&gt;root-&gt;right</code>; therefore, we can see that the left elements of <code>7</code> is in <code>left subtree</code>. Other elements to the right must be in the <code>right subtree</code>.</p>
+<p>Preorder traversal follows the sequence of <code>root-&gt;left-&gt;right</code>. Therefore, the left and right subtree’s postorder traversal must be {10, 4, 3, 1} and {2, 8, 11} respectively. Since the left and right subtree are binary trees in their own right, we can solve recursively!</p>
+<p>Then how do we search the root value’s index in the inorder sequence?<br>If we use linear search, assume that the constructed binary tree is always balanced, then we can guarantee the run time complexity to be O(N log N), where N is the number of nodes. However, this is not necessarily the case and the constructed binary tree can be skewed to the left/right, which has the worst complexity of O(N^2).</p>
+<p>A more efficient way is to eliminate the search by using an efficient look-up mechanism such as <code>hash table</code>. By hashing an element’s value to its corresponding index in the inorder sequence, we can do look-ups in constant time. Now, we need only O(N) time to construct the tree, which theoretically is the most efficient way.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; map;</span><br><span class="line">        for (int i = 0; i &lt; inorder.size(); i++) map[inorder[i]] = i;</span><br><span class="line">        return buildTree(preorder, 0, preorder.size()-1, inorder, 0, inorder.size()-1, map);</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, int m1, int n1, vector&lt;int&gt;&amp; inorder, int m2, int n2, unordered_map&lt;int, int&gt;&amp; map) &#123;</span><br><span class="line">        if (m1 &gt; n1) return NULL;</span><br><span class="line">        int curindex = map[preorder[m1]];</span><br><span class="line">        int new_right_m1 = m1 + curindex - m2 + 1;</span><br><span class="line">        TreeNode *root = new TreeNode(preorder[m1]);</span><br><span class="line">        root-&gt;left = buildTree(preorder, m1+1, new_right_m1-1, inorder, m2, curindex-1, map);</span><br><span class="line">        root-&gt;right = buildTree(preorder, new_right_m1, n1, inorder, curindex+1, n2, map);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" title="105. Construct Binary Tree from Preorder and Inorder Traversal">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/algorithm/">algorithm</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/04/Tree-traversal/">
+    		Tree traversal
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T02:52:03.000Z">2018-06-04</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Tree/" title="Tree">Tree</a> / 
+    
+        <a href="/tags/tree-traversal/" title="tree traversal">tree traversal</a> / 
+    
+        <a href="/tags/preorder/" title="preorder">preorder</a> / 
+    
+        <a href="/tags/inorder/" title="inorder">inorder</a> / 
+    
+        <a href="/tags/postorder/" title="postorder">postorder</a> / 
+    
+        <a href="/tags/binary-tree/" title="binary tree">binary tree</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>example:<br><img src="tree.png" alt=""></p>
+<p>DFS:<br>Inorder:  (Left, Root, Right), 4 2 5 1 3<br>Preorder: (Root, Left, Right), 1 2 4 5 3<br>Postorder:(Left, Right, Root), 4 5 2 3 1</p>
+<p>BFS:(level order)<br>1 2 3 4 5</p>
+<p>reference:<br><a href="https://goo.gl/vCGqY8" target="_blank" rel="noopener">https://goo.gl/vCGqY8</a></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/04/Tree-traversal/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/04/Tree-traversal/" title="Tree traversal">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/04/442-Find-All-Duplicates-in-an-Array/">
+    		442. Find All Duplicates in an Array
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-04T22:18:46.000Z">2018-06-04</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/array/" title="array">array</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given an array of integers, 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.</p>
+<p>Find all the elements that appear twice in this array.</p>
+<p>Could you do it without extra space and in O(n) runtime?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input:</span><br><span class="line">[4,3,2,7,8,2,3,1]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">[2,3]</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br>First of all, we should notice that the number is ranged from <code>1...n</code>. So if we use the <code>value-1</code> as the index, it will not out of range. Therefore, we can use the input array to do the checking. When find a number <code>i</code>, flip the number at position <code>i-1</code> to negative. If the number at position <code>i-1</code> is already negative, <code>i</code> is the number that occurs twice.</p>
+<p>Example:<br>input array: [1,2,2,3]<br>round 1: [-1,2,2,3]<br>round 2: [-1,-2,2,3]<br>round 3: [-1,2,2,3] –&gt; the 2nd element become positive after flipping, so add it to result<br>round 4: [-1,2,-2,3]</p>
+<p>time complexity: O(n)<br>space complexity: O(1)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findDuplicates(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)&#123;</span><br><span class="line">            nums[<span class="built_in">abs</span>(nums[i])<span class="number">-1</span>] = -nums[<span class="built_in">abs</span>(nums[i])<span class="number">-1</span>];</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(nums[<span class="built_in">abs</span>(nums[i])<span class="number">-1</span>] &gt; <span class="number">0</span>) </span><br><span class="line">                res.push_back(<span class="built_in">abs</span>(nums [i]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/04/442-Find-All-Duplicates-in-an-Array/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/04/442-Find-All-Duplicates-in-an-Array/" title="442. Find All Duplicates in an Array">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/page/4/">前一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">后一页</a>
+    </nav>
+    
+
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/leetcode/">leetcode</a>
+        <span class="badge">(80)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/microsoft/">microsoft</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/algorithm/">algorithm</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/STL/">STL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tutorial/">tutorial</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/leetcode/" title="leetcode">leetcode (82)</a>
+  
+    <a class="tag-item" href="/tags/tree/" title="tree">tree (10)</a>
+  
+    <a class="tag-item" href="/tags/bfs/" title="bfs">bfs (4)</a>
+  
+    <a class="tag-item" href="/tags/medium/" title="medium">medium (53)</a>
+  
+    <a class="tag-item" href="/tags/array/" title="array">array (32)</a>
+  
+    <a class="tag-item" href="/tags/dfs/" title="dfs">dfs (12)</a>
+  
+    <a class="tag-item" href="/tags/easy/" title="easy">easy (4)</a>
+  
+    <a class="tag-item" href="/tags/hash-table/" title="hash table">hash table (8)</a>
+  
+    <a class="tag-item" href="/tags/linked-list/" title="linked list">linked list (8)</a>
+  
+    <a class="tag-item" href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming (19)</a>
+  
+    <a class="tag-item" href="/tags/sort/" title="sort">sort (4)</a>
+  
+    <a class="tag-item" href="/tags/merge-sort/" title="merge sort">merge sort (2)</a>
+  
+    <a class="tag-item" href="/tags/two-pointers/" title="two pointers">two pointers (4)</a>
+  
+    <a class="tag-item" href="/tags/facebook/" title="facebook">facebook (3)</a>
+  
+    <a class="tag-item" href="/tags/amazon/" title="amazon">amazon (1)</a>
+  
+    <a class="tag-item" href="/tags/microsoft/" title="microsoft">microsoft (1)</a>
+  
+    <a class="tag-item" href="/tags/stack/" title="stack">stack (4)</a>
+  
+    <a class="tag-item" href="/tags/binary-search/" title="binary search">binary search (5)</a>
+  
+    <a class="tag-item" href="/tags/string/" title="string">string (6)</a>
+  
+    <a class="tag-item" href="/tags/hard/" title="hard">hard (4)</a>
+  
+    <a class="tag-item" href="/tags/two-pointer/" title="two pointer">two pointer (2)</a>
+  
+    <a class="tag-item" href="/tags/union-find/" title="union find">union find (1)</a>
+  
+    <a class="tag-item" href="/tags/backtracking/" title="backtracking">backtracking (7)</a>
+  
+    <a class="tag-item" href="/tags/apple/" title="apple">apple (1)</a>
+  
+    <a class="tag-item" href="/tags/airbnb/" title="airbnb">airbnb (1)</a>
+  
+    <a class="tag-item" href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer (1)</a>
+  
+    <a class="tag-item" href="/tags/math/" title="math">math (8)</a>
+  
+    <a class="tag-item" href="/tags/heap/" title="heap">heap (2)</a>
+  
+    <a class="tag-item" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd&#39;s Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm (1)</a>
+  
+    <a class="tag-item" href="/tags/binary-indexed-tree/" title="binary indexed tree">binary indexed tree (1)</a>
+  
+    <a class="tag-item" href="/tags/permutation/" title="permutation">permutation (1)</a>
+  
+    <a class="tag-item" href="/tags/brainteaser/" title="brainteaser">brainteaser (1)</a>
+  
+    <a class="tag-item" href="/tags/bucket-sort/" title="bucket sort">bucket sort (1)</a>
+  
+    <a class="tag-item" href="/tags/google/" title="google">google (1)</a>
+  
+    <a class="tag-item" href="/tags/greedy/" title="greedy">greedy (2)</a>
+  
+    <a class="tag-item" href="/tags/peak/" title="peak">peak (1)</a>
+  
+    <a class="tag-item" href="/tags/greddy/" title="greddy">greddy (1)</a>
+  
+    <a class="tag-item" href="/tags/partition/" title="partition">partition (1)</a>
+  
+    <a class="tag-item" href="/tags/subset/" title="subset">subset (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
 </html>

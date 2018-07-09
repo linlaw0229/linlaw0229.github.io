@@ -1,146 +1,447 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        linlaw Techblog
-    </title>
-    <!-- favicon -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <link rel="icon" href="/css/L.ico">
+    <title>Tree traversal | linlaw Techblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="linlaw Techblog" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
     
     <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/infinite-scroll.css">
-    <script src="/css/infinite-scroll.js"></script>
-    <script>
-        infiniteScroll()
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-    <body style="background: url(/css/button-bg.png) #f3f3f3">
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            linlaw Techblog
-        </a>
-    </h1>
-    <h2 class="desc">
-        Make the change you want to see in the world.
-    </h2>
+<body class="home">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
-            
-                <li>
-                    <a href="https://github.com/linlaw0229">
-                        Github
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://www.linkedin.com/in/lawrence0229/">
-                        LinkedIn
-                    </a>
-                </li>
-                
-        </ul>
-    </nav>
-</header>
-                <main class="main">
-                    <article class="post">
-    
-        <h4 class="post-cat">
-            <a href="/categories/algorithm/">
-                algorithm
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">linlaw Techblog</span>
+                    <span class="description">Make the change you want to see in the world.</span>
+                </div>
             </a>
-        </h4>
-        
-            <h2 class="post-title">
-                Tree traversal
-            </h2>
-            <ul class="post-date">
-                <li>
-                    2018-06-04
-                </li>
-                <li>
-                    Lawrence Lin
-                </li>
-            </ul>
-            <div class="post-content">
-                <p>example:<br><img src="tree.png" alt=""></p>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
+            
+            <li rel="/2018/06/04/Tree-traversal/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/2018/06/04/Tree-traversal/index.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/2018/06/04/Tree-traversal/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/2018/06/04/Tree-traversal/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
+        </ul>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 文章页 -->
+<!-- 文章 -->
+<article class="post article">
+    <header class="text-center">
+        <h3 class="post-title"><span>Tree traversal</span></h3>
+    </header>
+    <p class="post-meta text-center">
+        Jelon 发表于
+        <time datetime="2018-06-05T02:52:03.000Z">2018-06-04</time>
+    </p>
+    <div class="post-content">
+        <p>example:<br><img src="tree.png" alt=""></p>
 <p>DFS:<br>Inorder:  (Left, Root, Right), 4 2 5 1 3<br>Preorder: (Root, Left, Right), 1 2 4 5 3<br>Postorder:(Left, Right, Root), 4 5 2 3 1</p>
 <p>BFS:(level order)<br>1 2 3 4 5</p>
 <p>reference:<br><a href="https://goo.gl/vCGqY8" target="_blank" rel="noopener">https://goo.gl/vCGqY8</a></p>
 
-            </div>
+    </div>
+    <p class="post-meta">
+        <span class="post-cat">分类：
+            <a class="cat-link" href="/categories/algorithm/">algorithm</a>
+        </span>
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/Tree/" title="Tree">Tree</a> / 
+    
+        <a href="/tags/tree-traversal/" title="tree traversal">tree traversal</a> / 
+    
+        <a href="/tags/preorder/" title="preorder">preorder</a> / 
+    
+        <a href="/tags/inorder/" title="inorder">inorder</a> / 
+    
+        <a href="/tags/postorder/" title="postorder">postorder</a> / 
+    
+        <a href="/tags/binary-tree/" title="binary tree">binary tree</a>
+    
+
+        </span>
+    </p>
 </article>
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+<!-- 分享按钮 -->
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+  <div class="article-share clearfix text-center">
+    <div class="share-area">
+      <span class="share-txt">分享到：</span>
+      <a href="javascript: window.open('http://service.weibo.com/share/share.php?url=' + encodeURIComponent(location.href) + '&title=' + document.title + '&language=zh_cn');" class="share-icon weibo"></a>
+      <a href="javascript: alert('请复制链接到微信并发送');" class="share-icon wechat"></a>
+      <a href="javascript: window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=' + encodeURIComponent(location.href) + '&title=' + document.title);" class="share-icon qqzone"></a>
+      <a href="javascript: window.open('http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(location.href) + '&desc=Jelon个人博客&title=' + document.title + '&callback=' + encodeURIComponent(location.href));" class="share-icon qq"></a>
+      <a href="javascript: window.open('http://shuo.douban.com/!service/share?href=' + encodeURIComponent(location.href) + '&name=' + document.title + '&text=' + document.title);" class="share-icon douban"></a>
+    </div>
+  </div>
 
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
 
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
+<!-- 上一篇/下一篇 -->
 
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
+<div class="article-nav clearfix">
+    
+    <span class="prev fl">
+        上一篇<br >
+        <a href="/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">
+            
+                105. Construct Binary Tree from Preorder and Inorder Traversal
+            
+        </a>
+    </span>
+    
 
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    
+    <span class="next fr">
+        下一篇<br >
+        <a href="/2018/06/04/442-Find-All-Duplicates-in-an-Array/">
+            
+                442. Find All Duplicates in an Array
+            
+        </a>
+    </span>
+    
+</div>
 
-                    </section>
-                </aside>
-        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
+<!-- 文章评论 -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
+  <script src="/js/comment.js"></script>
+  <div id="comments" class="comment">
+    <!--
+    <div class="sign-bar">
+      GitHub 已登录!
+      <span class="sign-link">登出</span>
+    </div>
+    <section class="box">
+      <div class="com-avatar"><img src="/img/jelon.jpg" alt="avatar"></div>
+      <div class="com-text">
+        <div class="main">
+          <textarea class="text-area-edited show" placeholder="欢迎评论！"></textarea>
+          <div class="text-area-preview"></div>
+        </div>
+        <div class="switch">
+          <div class="switch-item on">编辑</div>
+          <div class="switch-item">预览</div>
+        </div>
+        <div class="button">提交</div>
+      </div>
+    </section>
+    <section class="tips">注：评论支持 markdown 语法！</section>
+    <section class="list-wrap">
+      <ul class="list">
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">张德龙</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like liked">已赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">333333</div>
+          </div>
+        </li>
+        <li>
+          <div class="user-avatar">
+            <a href="/">
+              <img src="/img/jelon.jpg" alt="user-avatar">
+            </a>
+          </div>
+          <div class="user-comment">
+            <div class="user-comment-header">
+              <span class="post-name">刘德华</span>
+              <span class="post-time">2017年12月12日</span>
+              <span class="like">点赞</span>
+              <span class="like-num">2</span>
+            </div>
+            <div class="user-comment-body">vvvvv</div>
+          </div>
+        </li>
+      </ul>
+      <div class="page-nav">
+        <a href="javascript: void(0);" class="item">1</a>
+        <a href="javascript: void(0);" class="item">2</a>
+        <a href="javascript: void(0);" class="item current">3</a>
+      </div>
+    </section>
+    -->
+  </div>
+  <script>
+  JELON.Comment({
+    container: 'comments',
+    label: 'Tree-traversal' || '2018/06/04/Tree-traversal/',
+    owner: 'jangdelong',
+    repo: 'blog_comments',
+    clientId: 'b08ed25e52c57993e69c',
+    clientSecret: '1cb9545488f0380904b87350e7c5a270ae03bab7'
   });
-</script>
+  </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-    </body>
 
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/leetcode/">leetcode</a>
+        <span class="badge">(80)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/microsoft/">microsoft</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/algorithm/">algorithm</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/STL/">STL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tutorial/">tutorial</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/leetcode/" title="leetcode">leetcode (82)</a>
+  
+    <a class="tag-item" href="/tags/tree/" title="tree">tree (10)</a>
+  
+    <a class="tag-item" href="/tags/bfs/" title="bfs">bfs (4)</a>
+  
+    <a class="tag-item" href="/tags/medium/" title="medium">medium (53)</a>
+  
+    <a class="tag-item" href="/tags/array/" title="array">array (32)</a>
+  
+    <a class="tag-item" href="/tags/dfs/" title="dfs">dfs (12)</a>
+  
+    <a class="tag-item" href="/tags/easy/" title="easy">easy (4)</a>
+  
+    <a class="tag-item" href="/tags/hash-table/" title="hash table">hash table (8)</a>
+  
+    <a class="tag-item" href="/tags/linked-list/" title="linked list">linked list (8)</a>
+  
+    <a class="tag-item" href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming (19)</a>
+  
+    <a class="tag-item" href="/tags/sort/" title="sort">sort (4)</a>
+  
+    <a class="tag-item" href="/tags/merge-sort/" title="merge sort">merge sort (2)</a>
+  
+    <a class="tag-item" href="/tags/two-pointers/" title="two pointers">two pointers (4)</a>
+  
+    <a class="tag-item" href="/tags/facebook/" title="facebook">facebook (3)</a>
+  
+    <a class="tag-item" href="/tags/amazon/" title="amazon">amazon (1)</a>
+  
+    <a class="tag-item" href="/tags/microsoft/" title="microsoft">microsoft (1)</a>
+  
+    <a class="tag-item" href="/tags/stack/" title="stack">stack (4)</a>
+  
+    <a class="tag-item" href="/tags/binary-search/" title="binary search">binary search (5)</a>
+  
+    <a class="tag-item" href="/tags/string/" title="string">string (6)</a>
+  
+    <a class="tag-item" href="/tags/hard/" title="hard">hard (4)</a>
+  
+    <a class="tag-item" href="/tags/two-pointer/" title="two pointer">two pointer (2)</a>
+  
+    <a class="tag-item" href="/tags/union-find/" title="union find">union find (1)</a>
+  
+    <a class="tag-item" href="/tags/backtracking/" title="backtracking">backtracking (7)</a>
+  
+    <a class="tag-item" href="/tags/apple/" title="apple">apple (1)</a>
+  
+    <a class="tag-item" href="/tags/airbnb/" title="airbnb">airbnb (1)</a>
+  
+    <a class="tag-item" href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer (1)</a>
+  
+    <a class="tag-item" href="/tags/math/" title="math">math (8)</a>
+  
+    <a class="tag-item" href="/tags/heap/" title="heap">heap (2)</a>
+  
+    <a class="tag-item" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd&#39;s Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm (1)</a>
+  
+    <a class="tag-item" href="/tags/binary-indexed-tree/" title="binary indexed tree">binary indexed tree (1)</a>
+  
+    <a class="tag-item" href="/tags/permutation/" title="permutation">permutation (1)</a>
+  
+    <a class="tag-item" href="/tags/brainteaser/" title="brainteaser">brainteaser (1)</a>
+  
+    <a class="tag-item" href="/tags/bucket-sort/" title="bucket sort">bucket sort (1)</a>
+  
+    <a class="tag-item" href="/tags/google/" title="google">google (1)</a>
+  
+    <a class="tag-item" href="/tags/greedy/" title="greedy">greedy (2)</a>
+  
+    <a class="tag-item" href="/tags/peak/" title="peak">peak (1)</a>
+  
+    <a class="tag-item" href="/tags/greddy/" title="greddy">greddy (1)</a>
+  
+    <a class="tag-item" href="/tags/partition/" title="partition">partition (1)</a>
+  
+    <a class="tag-item" href="/tags/subset/" title="subset">subset (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
 </html>

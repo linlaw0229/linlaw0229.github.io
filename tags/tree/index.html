@@ -1,133 +1,964 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        linlaw Techblog
-    </title>
-    <!-- favicon -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <link rel="icon" href="/css/L.ico">
+    <title>`tree`标签下的文章 | linlaw Techblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="linlaw Techblog" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
     
     <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/infinite-scroll.css">
-    <script src="/css/infinite-scroll.js"></script>
-    <script>
-        infiniteScroll()
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-    <body style="background: url(/css/button-bg.png) #f3f3f3">
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            linlaw Techblog
-        </a>
-    </h1>
-    <h2 class="desc">
-        Make the change you want to see in the world.
-    </h2>
+<body class="home">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">linlaw Techblog</span>
+                    <span class="description">Make the change you want to see in the world.</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
             
-                <li>
-                    <a href="https://github.com/linlaw0229">
-                        Github
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://www.linkedin.com/in/lawrence0229/">
-                        LinkedIn
-                    </a>
-                </li>
-                
+            <li rel="/tags/tree/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/tags/tree/index.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/tags/tree/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/tags/tree/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
         </ul>
-    </nav>
-</header>
-                <main class="main">
-                    <section class="posts">
-    
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/algorithm/">
-                        algorithm
-                    </a>
-                </h4>
+        <div class="profile clearfix">
+            <div class="feeds fl">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/04/Tree-traversal/">
-                            Tree traversal
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 4, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
                         
-                            <a href="/2018/06/04/Tree-traversal/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
+</header>
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 按标签分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `tree`标签下的文章
+            
+        </strong>
+    </h3>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-</section>
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/07/08/note-Tree/">
+    		note-Tree
+    	</a>
+    </h3>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-07-09T01:44:47.000Z">2018-07-08</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/binary-tree/" title="binary tree">binary tree</a> / 
+    
+        <a href="/tags/binary-search-tree/" title="binary search tree">binary search tree</a> / 
+    
+        <a href="/tags/complete-binary-tree/" title="complete binary tree">complete binary tree</a>
+    
 
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
+        </span>
+    </p>
 
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <ul>
+<li>Complete binary tree:<br>Definition of a complete binary tree from Wikipedia:<br>In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and <span>$\2^h$</span><!-- Has MathJax --> nodes inclusive at the last level h.</li>
+</ul>
 
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/07/08/note-Tree/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/07/08/note-Tree/" title="note-Tree">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/27/337-House-Robber-III/">
+    		337. House Robber III
+    	</a>
+    </h3>
 
-                    </section>
-                </aside>
-        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-27T20:38:34.000Z">2018-06-27</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>The thief has found himself a new place for his thievery again. There is only one entrance to this area, called the “root.” Besides the root, each house has one and only one parent house. After a tour, the smart thief realized that “all houses in this place forms a binary tree”. It will automatically contact the police if two directly-linked houses were broken into on the same night.</p>
+<p>Determine the maximum amount of money the thief can rob tonight without alerting the police.</p>
+<p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">2   3</span><br><span class="line"> \   \ </span><br><span class="line">  3   1</span><br></pre></td></tr></table></figure></p>
+<p>Maximum amount of money the thief can rob = 3 + 3 + 1 = 7.</p>
+<p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  4   5</span><br><span class="line"> / \   \ </span><br><span class="line">1   3   1</span><br></pre></td></tr></table></figure></p>
+<p>Maximum amount of money the thief can rob = 4 + 5 = 9.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><a href="/2018/06/27/198-House-Robber/" title="198. House Robber">198. House Robber</a>
+<a href="/2018/06/27/213-House-Robber-II/" title="213. House Robber II">213. House Robber II</a>
+<p>This problem change the array to a tree structure but the idea is similar. We use a recursive function to sum up the value that starts from <code>root</code> or from its child(<code>root-&gt;left</code> and <code>root-&gt;right</code>). </p>
+<ul>
+<li>Solution1<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> val= <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right)&#123;</span><br><span class="line">            val+= rob(root-&gt;right-&gt;right)+ rob(root-&gt;right-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left)&#123;</span><br><span class="line">            val+= rob(root-&gt;left-&gt;right)+ rob(root-&gt;left-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> max(root-&gt;val+ val, rob(root-&gt;right)+rob(root-&gt;left));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>However, this solution has a bad time complexity. It is because we need to recalculate many things. For example, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    6</span><br><span class="line">   / \</span><br><span class="line">  4   5</span><br><span class="line"> / \   \ </span><br><span class="line">1   3   2</span><br></pre></td></tr></table></figure>
+<p>If we start from <code>6</code>, and we calculate the <code>1, 3, 2</code>(grandchildren) value 1 time.<br>However, after we calculate <code>4, 5</code>, we’ll need to calculate <code>1, 3, 2</code> again.<br>This seems not efficient enough, we can use a map to record the node that we’ve already calculated.</p>
+<ul>
+<li>Solution 2<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;TreeNode*, <span class="keyword">int</span>&gt; <span class="built_in">map</span>; <span class="comment">//use map to store every treeNode in the tree, so that we won't have to recalculate</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> robSub(root);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">robSub</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> val= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">map</span>.find(root) != <span class="built_in">map</span>.end()) <span class="keyword">return</span> <span class="built_in">map</span>.at(root);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right)&#123;</span><br><span class="line">            val+= robSub(root-&gt;right-&gt;right)+ robSub(root-&gt;right-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left)&#123;</span><br><span class="line">            val+= robSub(root-&gt;left-&gt;right)+ robSub(root-&gt;left-&gt;left);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        val = max(root-&gt;val+ val, robSub(root-&gt;right)+robSub(root-&gt;left));</span><br><span class="line">        <span class="built_in">map</span>[root]= val;</span><br><span class="line">        <span class="keyword">return</span> val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Can we do even better?<br>The major problem is we need to loop up for those already calculated subproblems.<br>Actually, for each root, there are two scenarios: it is robbed or is not. rob(root) does not distinguish between these two cases, so “information is lost as the recursion goes deeper and deeper”, which results in repeated subproblems.<br>If we were able to maintain the information about the two scenarios for each tree root, let’s see how it plays out. Redefine rob(root) as a new function which will return an <code>array of two elements</code>, the first element of which denotes the maximum amount of money that can be robbed if root is <code>not robbed</code>, while the second element signifies the maximum amount of money robbed if it <code>is robbed</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int rob(TreeNode* root) &#123;</span><br><span class="line">        vector&lt;int&gt; res= robSub(root);</span><br><span class="line">        return max(res[0], res[1]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;int&gt; robSub(TreeNode* root)&#123;</span><br><span class="line">        if(!root) return vector&lt;int&gt;(2,0);</span><br><span class="line">        vector&lt;int&gt; res(2, 0); //0: w/o root. 1: w/ root</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; left= robSub(root-&gt;left);</span><br><span class="line">        vector&lt;int&gt; right= robSub(root-&gt;right);</span><br><span class="line">        // result without root = add left[1](include left-&gt;val) and right[1](include right-&gt;val)</span><br><span class="line">        // but maximum value could be bypass root-&gt;left or root-&gt;right</span><br><span class="line">        // example:</span><br><span class="line">        // 4-1-1-3</span><br><span class="line">        res[0]= max(left[0], left[1])+ max(right[0], right[1]); </span><br><span class="line">        </span><br><span class="line">        res[1]= root-&gt;val+left[0]+right[0];</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/27/337-House-Robber-III/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/27/337-House-Robber-III/" title="337. House Robber III">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/21/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal/">
+    		106. Construct Binary Tree from Inorder and Postorder Traversal
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-21T20:51:36.000Z">2018-06-21</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>#Problem description:</p>
+<p>Given inorder and postorder traversal of a tree, construct the binary tree.</p>
+<p>Note:<br>You may assume that duplicates do not exist in the tree.</p>
+<p>For example, given</p>
+<p>inorder = [9,3,15,20,7]<br>postorder = [9,15,7,20,3]<br>Return the following binary tree:</p>
+<pre><code>3
+</code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7</p>
+<p>#Solution:<br>This problem is pretty similar to <a href="/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" title="105. Construct Binary Tree from Preorder and Inorder Traversal">105. Construct Binary Tree from Preorder and Inorder Traversal</a>.</p>
+<p>We can see the inorder and postorder array like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">           in order</span><br><span class="line">+------------+------+-------------+</span><br><span class="line">| left child | root | right child |</span><br><span class="line">+------------+------+-------------+  </span><br><span class="line"></span><br><span class="line">            post order</span><br><span class="line">+------------+-------------+------+</span><br><span class="line">| left child | right child | root |</span><br><span class="line">+------------+-------------+------+</span><br></pre></td></tr></table></figure></p>
+<p>As you can see, <code>root</code> is in the last position in <code>postorder</code> array. After we find the root, we can get the length of each subarray as follows:</p>
+<ul>
+<li>left tree:<br>inOrder[1 .. p - 1]<br>postOrder[1 .. p - 1]</li>
+<li>right tree:<br>inOrder[p + 1 .. n]<br>postOrder[p .. n - 1]</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> deal(<span class="number">0</span>, inorder.size() - <span class="number">1</span>, <span class="number">0</span>, postorder.size() - <span class="number">1</span>, inorder, postorder);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">TreeNode* <span class="title">deal</span><span class="params">(<span class="keyword">int</span> leftInorder, <span class="keyword">int</span> rightInorder, <span class="keyword">int</span> leftPostorder, <span class="keyword">int</span> rightPostorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (rightInorder &lt; leftInorder || rightPostorder &lt; leftPostorder) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        TreeNode* rt = <span class="keyword">new</span> TreeNode(postorder[ rightPostorder ]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= rightInorder - leftInorder; ++i)</span><br><span class="line">            <span class="keyword">if</span> (inorder[leftInorder + i] == rt -&gt; val) &#123;</span><br><span class="line">                p = i; <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        rt -&gt; left  = deal(leftInorder, leftInorder + p - <span class="number">1</span>, leftPostorder, leftPostorder + p - <span class="number">1</span>, inorder, postorder);</span><br><span class="line">        rt -&gt; right = deal(leftInorder + p + <span class="number">1</span>, rightInorder, leftPostorder + p, rightPostorder - <span class="number">1</span>, inorder, postorder);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> rt;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/21/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/21/106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal/" title="106. Construct Binary Tree from Inorder and Postorder Traversal">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/16/236-Lowest-Common-Ancestor-of-a-Binary-Tree/">
+    		236. Lowest Common Ancestor of a Binary Tree
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-16T21:06:25.000Z">2018-06-16</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.</p>
+<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”</p>
+<p>Given the following binary search tree:  root = [3,5,1,6,2,0,8,null,null,7,4]</p>
+<pre><code>    _______3______
+   /              \
+___5__          ___1__
+</code></pre><p>   /      \        /      \<br>   6      _2       0       8<br>         /  \<br>         7   4<br>Example 1:</p>
+<p>Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1<br>Output: 3<br>Explanation: The LCA of of nodes 5 and 1 is 3.<br>Example 2:</p>
+<p>Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4<br>Output: 5<br>Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself<br>             according to the LCA definition.<br>Note:</p>
+<p>All of the nodes’ values will be unique.<br>p and q are different and both values will exist in the binary tree.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val == p-&gt;val ||root-&gt;val == q-&gt;val) <span class="keyword">return</span> root;</span><br><span class="line">        </span><br><span class="line">        TreeNode* left = lowestCommonAncestor(root-&gt;left, p, q);</span><br><span class="line">        TreeNode* right = lowestCommonAncestor(root-&gt;right, p, q);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(left &amp;&amp; right) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="keyword">if</span>(!left) <span class="keyword">return</span> right;</span><br><span class="line">        <span class="keyword">if</span>(!right) <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>reference:<br><a href="https://goo.gl/NJbDFm" target="_blank" rel="noopener">https://goo.gl/NJbDFm</a><br><a href="https://goo.gl/7BNspr" target="_blank" rel="noopener">https://goo.gl/7BNspr</a></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/16/236-Lowest-Common-Ancestor-of-a-Binary-Tree/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/16/236-Lowest-Common-Ancestor-of-a-Binary-Tree/" title="236. Lowest Common Ancestor of a Binary Tree">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/16/654-Maximum-Binary-Tree/">
+    		654. Maximum Binary Tree
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-16T20:49:32.000Z">2018-06-16</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given an integer array with no duplicates. A maximum tree building on this array is defined as follow:</p>
+<p>The root is the maximum number in the array.<br>The left subtree is the maximum tree constructed from left part subarray divided by the maximum number.<br>The right subtree is the maximum tree constructed from right part subarray divided by the maximum number.<br>Construct the maximum tree by the given array and output the root node of this tree.</p>
+<p>Example 1:<br>Input: [3,2,1,6,0,5]<br>Output: return the tree root node representing the following tree:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   6</span><br><span class="line"> /   \</span><br><span class="line">3     5</span><br><span class="line"> \    / </span><br><span class="line">  2  0   </span><br><span class="line">    \</span><br><span class="line">     1</span><br></pre></td></tr></table></figure></p>
+<p>Note:<br>The size of the given array will be in the range [1,1000].</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">constructMaximumBinaryTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.empty()) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> mx= INT_MIN, mx_idx= <span class="number">0</span>; <span class="comment">//find the max num and it's index</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] &gt; mx)&#123;</span><br><span class="line">                mx= nums[i];</span><br><span class="line">                mx_idx= i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//spilt the nums into half</span></span><br><span class="line">        TreeNode* root= <span class="keyword">new</span> TreeNode(mx);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; left = <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(nums.begin(), nums.begin()+ mx_idx);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; right= <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(nums.begin()+mx_idx+<span class="number">1</span>, nums.end());</span><br><span class="line">        root-&gt;left = constructMaximumBinaryTree(left);</span><br><span class="line">        root-&gt;right= constructMaximumBinaryTree(right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>reference:<br><a href="https://goo.gl/Nqk7oZ" target="_blank" rel="noopener">https://goo.gl/Nqk7oZ</a></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/16/654-Maximum-Binary-Tree/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/16/654-Maximum-Binary-Tree/" title="654. Maximum Binary Tree">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/14/102-Binary-Tree-Level-Order-Traversal/">
+    		102. Binary Tree Level Order Traversal
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-14T19:32:36.000Z">2018-06-14</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/bfs/" title="bfs">bfs</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a binary tree, return the level order traversal of its nodes’ values. (ie, from left to right, level by level).</p>
+<p>For example:<br>Given binary tree [3,9,20,null,null,15,7],<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure></p>
+<p>return its level order traversal as:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [9,20],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This is a very basic problem, we can use dfs to solve this problem. One thing to notice is that we need to use a <code>depth</code> variable to store the level where we are.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; levelOrder(TreeNode *root) &#123;</span><br><span class="line">        dfs(root, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode *root, <span class="keyword">int</span> depth)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">if</span>(res.size() == depth) <span class="comment">//need to insert a new layer</span></span><br><span class="line">            res.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line"></span><br><span class="line">        res[depth].push_back(root-&gt;val);</span><br><span class="line">        dfs(root-&gt;left, depth + <span class="number">1</span>);</span><br><span class="line">        dfs(root-&gt;right, depth + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>time complexity: O(n)</p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/14/102-Binary-Tree-Level-Order-Traversal/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/14/102-Binary-Tree-Level-Order-Traversal/" title="102. Binary Tree Level Order Traversal">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/13/98-Validate-Binary-Search-Tree/">
+    		98. Validate Binary Search Tree
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-13T19:01:45.000Z">2018-06-13</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a binary tree, determine if it is a valid binary search tree (BST).</p>
+<p>Assume a BST is defined as follows:</p>
+<p>The left subtree of a node contains only nodes with keys less than the node’s key.<br>The right subtree of a node contains only nodes with keys greater than the node’s key.<br>Both the left and right subtrees must also be binary search trees.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">    2</span><br><span class="line">   / \</span><br><span class="line">  1   3</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">    5</span><br><span class="line">   / \</span><br><span class="line">  1   4</span><br><span class="line">     / \</span><br><span class="line">    3   6</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<p>Explanation: The input is: [5,1,4,null,null,3,6]. The root node’s value<br>             is 5 but its right child’s value is 4.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        TreeNode* prev = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> validate(root, prev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">validate</span><span class="params">(TreeNode* root, TreeNode* &amp;prev)</span> </span>&#123;<span class="comment">//do Inorder traversal</span></span><br><span class="line">        <span class="comment">//1. find toward left until the end</span></span><br><span class="line">        <span class="comment">//2. set this leftest node as prev</span></span><br><span class="line">        <span class="comment">//3. check if prev(left) node is smaller than root</span></span><br><span class="line">        <span class="comment">//4. check right subtree</span></span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">true</span>; </span><br><span class="line">        <span class="keyword">if</span> (!validate(root-&gt;left, prev)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (prev != <span class="literal">NULL</span> &amp;&amp; root-&gt;val &lt;= prev-&gt;val ) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">//previous node is from left side, so it should be smaller      than right side node</span></span><br><span class="line">        prev = root; </span><br><span class="line">        <span class="keyword">return</span> validate(root-&gt;right, prev);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/13/98-Validate-Binary-Search-Tree/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/13/98-Validate-Binary-Search-Tree/" title="98. Validate Binary Search Tree">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">
+    		105. Construct Binary Tree from Preorder and Inorder Traversal
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-05T16:44:25.000Z">2018-06-05</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/array/" title="array">array</a> / 
+    
+        <a href="/tags/dfs/" title="dfs">dfs</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given preorder and inorder traversal of a tree, construct the binary tree.</p>
+<p>Note:<br>You may assume that duplicates do not exist in the tree.</p>
+<p>For example, given<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">preorder = [3,9,20,15,7]</span><br><span class="line">inorder = [9,3,15,20,7]</span><br><span class="line">Return the following binary tree:</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure></p>
+<p>Solution:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     _______7______</span><br><span class="line">    /              \</span><br><span class="line"> __10__          ___2</span><br><span class="line">/      \        /</span><br><span class="line">4       3      _8</span><br><span class="line">         \    /</span><br><span class="line">          1  11</span><br></pre></td></tr></table></figure></p>
+<p>The preorder and inorder traversals for the binary tree above is:</p>
+<p>preorder = <code>{7,10,4,3,1,2,8,11}</code><br>inorder = <code>{4,10,3,1,7,11,8,2}</code></p>
+<p>First of all, we can see that preorder’s 1st element <code>7</code> is Root. The element <code>7</code> is the 4th element in inorder sequence. Since there is no duplicate in the sequence, there is no ambiguity.<br>The characteristic of inorder sequence is that it will follow this visit order <code>left-&gt;root-&gt;right</code>; therefore, we can see that the left elements of <code>7</code> is in <code>left subtree</code>. Other elements to the right must be in the <code>right subtree</code>.</p>
+<p>Preorder traversal follows the sequence of <code>root-&gt;left-&gt;right</code>. Therefore, the left and right subtree’s postorder traversal must be {10, 4, 3, 1} and {2, 8, 11} respectively. Since the left and right subtree are binary trees in their own right, we can solve recursively!</p>
+<p>Then how do we search the root value’s index in the inorder sequence?<br>If we use linear search, assume that the constructed binary tree is always balanced, then we can guarantee the run time complexity to be O(N log N), where N is the number of nodes. However, this is not necessarily the case and the constructed binary tree can be skewed to the left/right, which has the worst complexity of O(N^2).</p>
+<p>A more efficient way is to eliminate the search by using an efficient look-up mechanism such as <code>hash table</code>. By hashing an element’s value to its corresponding index in the inorder sequence, we can do look-ups in constant time. Now, we need only O(N) time to construct the tree, which theoretically is the most efficient way.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, vector&lt;int&gt;&amp; inorder) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; map;</span><br><span class="line">        for (int i = 0; i &lt; inorder.size(); i++) map[inorder[i]] = i;</span><br><span class="line">        return buildTree(preorder, 0, preorder.size()-1, inorder, 0, inorder.size()-1, map);</span><br><span class="line">    &#125;</span><br><span class="line">private:</span><br><span class="line">    TreeNode* buildTree(vector&lt;int&gt;&amp; preorder, int m1, int n1, vector&lt;int&gt;&amp; inorder, int m2, int n2, unordered_map&lt;int, int&gt;&amp; map) &#123;</span><br><span class="line">        if (m1 &gt; n1) return NULL;</span><br><span class="line">        int curindex = map[preorder[m1]];</span><br><span class="line">        int new_right_m1 = m1 + curindex - m2 + 1;</span><br><span class="line">        TreeNode *root = new TreeNode(preorder[m1]);</span><br><span class="line">        root-&gt;left = buildTree(preorder, m1+1, new_right_m1-1, inorder, m2, curindex-1, map);</span><br><span class="line">        root-&gt;right = buildTree(preorder, new_right_m1, n1, inorder, curindex+1, n2, map);</span><br><span class="line">        return root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/" title="105. Construct Binary Tree from Preorder and Inorder Traversal">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/5.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/">
+    		95. Unique Binary Search Trees II
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-05-14T16:10:35.000Z">2018-05-14</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given an integer n, generate all structurally unique BST’s (binary search trees) that store values 1 … n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input: 3</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [1,null,3,2],</span><br><span class="line">  [3,2,null,1],</span><br><span class="line">  [3,1,null,null,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [1,null,2,null,3]</span><br><span class="line">]</span><br><span class="line">Explanation:</span><br><span class="line">The above output corresponds to the 5 unique BST&apos;s shown below:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure></p>
+<p>Tree can be divided into three parts<br>Picking ith element in 1…n sequence, the subtree would be<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  V       </span><br><span class="line"> / \      L: 1...i-1</span><br><span class="line">L   R     R: i+1...n</span><br></pre></td></tr></table></figure></p>
+<p>Therefore, we need a function that could generate trees that take 2 inputs, start and end.<br>By recursively calling this subfunction, we can generate different trees.<br>One thing to notice is that, after the recursive, we should have a root node to catch these different left and right trees.<br>That is to say, if we have sequence [1,2,3,4,5] and we pick 3 as root.<br>L would be [1,2], R [4,5].<br>It’s easy to see that the Left tree could have these two shape.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   1        2                                                                       3           3</span><br><span class="line">  / \      / \          ==adding the subtree to left side with 3 as root ==&gt;       /           /</span><br><span class="line">null 2    1   null                                                                1           2</span><br><span class="line">                                                                                 / \         / \</span><br><span class="line">                                                                               null 2       1  null</span><br></pre></td></tr></table></figure></p>
+<p>The right part is the same, so I just draw left part on it.<br>Finally, push the new tree to the vector and return it to upper recursive.</p>
+<p>time: O(catalan(n)), <a href="https://goo.gl/umK2Fl" target="_blank" rel="noopener">https://goo.gl/umK2Fl</a><br>space: O(log(n)), tree space is log(n) with total node n</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">  Definition for a binary tree node.</span><br><span class="line">  struct TreeNode &#123;</span><br><span class="line">      int val;</span><br><span class="line">      TreeNode *left;</span><br><span class="line">      TreeNode *right;</span><br><span class="line">      TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line">  &#125;;</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;TreeNode*&gt; generateTrees(int n) &#123;</span><br><span class="line">        if(n == 0) return vector&lt;TreeNode*&gt;();</span><br><span class="line">        return genTree(1,n);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    vector&lt;TreeNode*&gt; genTree(int start, int end)&#123;</span><br><span class="line">        vector&lt;TreeNode*&gt; list;</span><br><span class="line">        if(start&gt;end)&#123;</span><br><span class="line">            list.push_back(NULL);</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(start == end)&#123;</span><br><span class="line">            list.push_back(new TreeNode(start));</span><br><span class="line">            return list;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vector&lt;TreeNode*&gt; left, right;</span><br><span class="line">        for(int i= start; i&lt;= end; ++i)&#123;</span><br><span class="line">            left = genTree(start, i-1);</span><br><span class="line">            right = genTree(i+1,end);</span><br><span class="line">            </span><br><span class="line">            for(auto lnode: left)</span><br><span class="line">            &#123;</span><br><span class="line">                for(auto rnode: right)</span><br><span class="line">                &#123;</span><br><span class="line">                    TreeNode* root = new TreeNode(i);</span><br><span class="line">                    root-&gt;left = lnode;</span><br><span class="line">                    root-&gt;right = rnode;</span><br><span class="line">                    list.push_back(root);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/05/14/95-Unique-Binary-Search-Trees-II/" title="95. Unique Binary Search Trees II">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/">
+    		96. Unique Binary Search Trees
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-05-14T03:52:18.000Z">2018-05-13</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/tree/" title="tree">tree</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a> / 
+    
+        <a href="/tags/snapchat/" title="snapchat">snapchat</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:<br>Given n, how many structurally unique BST’s (binary search trees) that store values 1 … n?</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">Given n = 3, there are a total of 5 unique BST&apos;s:</span><br><span class="line"></span><br><span class="line">   1         3     3      2      1</span><br><span class="line">    \       /     /      / \      \</span><br><span class="line">     3     2     1      1   3      2</span><br><span class="line">    /     /       \                 \</span><br><span class="line">   2     1         2                 3</span><br></pre></td></tr></table></figure></p>
+<p>The problem can be solved in a dynamic programming way. I’ll explain the intuition and formulas in the following.</p>
+<p>Given a sequence 1…n, to construct a Binary Search Tree (BST) out of the sequence, we could enumerate each number i in the sequence, and use the number as the root, naturally, the subsequence 1…(i-1) on its left side would lay on the left branch of the root, and similarly the right subsequence (i+1)…n lay on the right branch of the root. We then can construct the subtree from the subsequence recursively. Through the above approach, we could ensure that the BST that we construct are all unique, since they have unique roots.</p>
+<p>The problem is to calculate the number of unique BST. To do so, we need to define two functions:</p>
+<p>G(n): the number of unique BST for a sequence of length n.</p>
+<p>F(i, n), 1 &lt;= i &lt;= n: the number of unique BST, where the number i is the root of BST, and the sequence ranges from 1 to n.</p>
+<p>As one can see, G(n) is the actual function we need to calculate in order to solve the problem. And G(n) can be derived from F(i, n), which at the end, would recursively refer to G(n).</p>
+<p>First of all, given the above definitions, we can see that the total number of unique BST G(n), is the sum of BST F(i) using each number i as a root.<br>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = F(1, n) + F(2, n) + ... + F(n, n).</span><br></pre></td></tr></table></figure></p>
+<p>Particularly, the bottom cases, there is only one combination to construct a BST out of a sequence of length 1 (only a root) or 0 (empty tree).<br>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(0)=1, G(1)=1.</span><br></pre></td></tr></table></figure></p>
+<p>Given a sequence 1…n, we pick a number i out of the sequence as the root, then the number of unique BST with the specified root F(i), is the cartesian product of the number of BST for its left and right subtrees. For example, F(3, 7): the number of unique BST tree with number 3 as its root. To construct an unique BST out of the entire sequence [1, 2, 3, 4, 5, 6, 7] with 3 as the root, which is to say, we need to construct an unique BST out of its left subsequence [1, 2] and another BST out of the right subsequence [4, 5, 6, 7], and then combine them together (i.e. cartesian product). The tricky part is that we could consider the number of unique BST out of sequence [1,2] as G(2), and the number of of unique BST out of sequence [4, 5, 6, 7] as G(4). Therefore, F(3,7) = G(2) * G(4).</p>
+<p>i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F(i, n) = G(i-1) * G(n-i)	1 &lt;= i &lt;= n</span><br></pre></td></tr></table></figure></p>
+<p>Combining the above two formulas, we obtain the recursive formula for G(n). i.e.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n) = G(0) * G(n-1) + G(1) * G(n-2) + … + G(n-1) * G(0)</span><br></pre></td></tr></table></figure></p>
+<p>In terms of calculation, we need to start with the lower number, since the value of G(n) depends on the values of G(0) … G(n-1).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numTrees(int n) &#123;</span><br><span class="line">        vector&lt;int&gt; G(n+1, 0);</span><br><span class="line">        G[0] = G[1] = 1;</span><br><span class="line">    </span><br><span class="line">        for(int i=2; i&lt;=n; ++i) &#123;</span><br><span class="line">            for(int j=1; j&lt;=i; ++j) &#123;</span><br><span class="line">                G[i] += G[j-1] * G[i-j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return G[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/" title="96. Unique Binary Search Trees">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/3.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/leetcode/">leetcode</a>
+        <span class="badge">(80)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/microsoft/">microsoft</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/algorithm/">algorithm</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/STL/">STL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tutorial/">tutorial</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/leetcode/" title="leetcode">leetcode (82)</a>
+  
+    <a class="tag-item" href="/tags/tree/" title="tree">tree (10)</a>
+  
+    <a class="tag-item" href="/tags/bfs/" title="bfs">bfs (4)</a>
+  
+    <a class="tag-item" href="/tags/medium/" title="medium">medium (53)</a>
+  
+    <a class="tag-item" href="/tags/array/" title="array">array (32)</a>
+  
+    <a class="tag-item" href="/tags/dfs/" title="dfs">dfs (12)</a>
+  
+    <a class="tag-item" href="/tags/easy/" title="easy">easy (4)</a>
+  
+    <a class="tag-item" href="/tags/hash-table/" title="hash table">hash table (8)</a>
+  
+    <a class="tag-item" href="/tags/linked-list/" title="linked list">linked list (8)</a>
+  
+    <a class="tag-item" href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming (19)</a>
+  
+    <a class="tag-item" href="/tags/sort/" title="sort">sort (4)</a>
+  
+    <a class="tag-item" href="/tags/merge-sort/" title="merge sort">merge sort (2)</a>
+  
+    <a class="tag-item" href="/tags/two-pointers/" title="two pointers">two pointers (4)</a>
+  
+    <a class="tag-item" href="/tags/facebook/" title="facebook">facebook (3)</a>
+  
+    <a class="tag-item" href="/tags/amazon/" title="amazon">amazon (1)</a>
+  
+    <a class="tag-item" href="/tags/microsoft/" title="microsoft">microsoft (1)</a>
+  
+    <a class="tag-item" href="/tags/stack/" title="stack">stack (4)</a>
+  
+    <a class="tag-item" href="/tags/binary-search/" title="binary search">binary search (5)</a>
+  
+    <a class="tag-item" href="/tags/string/" title="string">string (6)</a>
+  
+    <a class="tag-item" href="/tags/hard/" title="hard">hard (4)</a>
+  
+    <a class="tag-item" href="/tags/two-pointer/" title="two pointer">two pointer (2)</a>
+  
+    <a class="tag-item" href="/tags/union-find/" title="union find">union find (1)</a>
+  
+    <a class="tag-item" href="/tags/backtracking/" title="backtracking">backtracking (7)</a>
+  
+    <a class="tag-item" href="/tags/apple/" title="apple">apple (1)</a>
+  
+    <a class="tag-item" href="/tags/airbnb/" title="airbnb">airbnb (1)</a>
+  
+    <a class="tag-item" href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer (1)</a>
+  
+    <a class="tag-item" href="/tags/math/" title="math">math (8)</a>
+  
+    <a class="tag-item" href="/tags/heap/" title="heap">heap (2)</a>
+  
+    <a class="tag-item" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd&#39;s Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm (1)</a>
+  
+    <a class="tag-item" href="/tags/binary-indexed-tree/" title="binary indexed tree">binary indexed tree (1)</a>
+  
+    <a class="tag-item" href="/tags/permutation/" title="permutation">permutation (1)</a>
+  
+    <a class="tag-item" href="/tags/brainteaser/" title="brainteaser">brainteaser (1)</a>
+  
+    <a class="tag-item" href="/tags/bucket-sort/" title="bucket sort">bucket sort (1)</a>
+  
+    <a class="tag-item" href="/tags/google/" title="google">google (1)</a>
+  
+    <a class="tag-item" href="/tags/greedy/" title="greedy">greedy (2)</a>
+  
+    <a class="tag-item" href="/tags/peak/" title="peak">peak (1)</a>
+  
+    <a class="tag-item" href="/tags/greddy/" title="greddy">greddy (1)</a>
+  
+    <a class="tag-item" href="/tags/partition/" title="partition">partition (1)</a>
+  
+    <a class="tag-item" href="/tags/subset/" title="subset">subset (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -145,6 +976,5 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-    </body>
-
+</body>
 </html>

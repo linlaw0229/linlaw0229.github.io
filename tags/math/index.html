@@ -1,346 +1,856 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        linlaw Techblog
-    </title>
-    <!-- favicon -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <link rel="icon" href="/css/L.ico">
+    <title>`math`标签下的文章 | linlaw Techblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="linlaw Techblog" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
     
     <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/infinite-scroll.css">
-    <script src="/css/infinite-scroll.js"></script>
-    <script>
-        infiniteScroll()
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-    <body style="background: url(/css/button-bg.png) #f3f3f3">
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            linlaw Techblog
-        </a>
-    </h1>
-    <h2 class="desc">
-        Make the change you want to see in the world.
-    </h2>
+<body class="home">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">linlaw Techblog</span>
+                    <span class="description">Make the change you want to see in the world.</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
             
-                <li>
-                    <a href="https://github.com/linlaw0229">
-                        Github
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://www.linkedin.com/in/lawrence0229/">
-                        LinkedIn
-                    </a>
-                </li>
-                
+            <li rel="/tags/math/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/tags/math/index.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/tags/math/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/tags/math/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
         </ul>
-    </nav>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
 </header>
-                <main class="main">
-                    <section class="posts">
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 按标签分类 -->
+
+    <h3 class="widget-hd">
+        <strong>
+            
+                `math`标签下的文章
+            
+        </strong>
+    </h3>
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/07/01/343-Integer-Break/">
-                            343. Integer Break
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            July 1, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/07/01/343-Integer-Break/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/29/264-Ugly-Number-II/">
-                            264. Ugly Number II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 29, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/29/264-Ugly-Number-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/20/523-Continuous-Subarray-Sum/">
-                            523. Continuous Subarray Sum
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 20, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/20/523-Continuous-Subarray-Sum/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <!-- 文章标题 -->
         
-        <article class="post">
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/07/01/343-Integer-Break/">
+    		343. Integer Break
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-07-02T01:08:32.000Z">2018-07-01</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/09/319-Bulb-Switcher/">
-                            319. Bulb Switcher
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 9, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/09/319-Bulb-Switcher/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/09/8-String-to-Integer-atoi/">
-                            8. String to Integer (atoi)
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 9, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/09/8-String-to-Integer-atoi/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a positive integer n, break it into the sum of at least two positive integers and maximize the product of those integers. Return the maximum product you can get.</p>
+<p>For example, given n = 2, return 1 (2 = 1 + 1); given n = 10, return 36 (10 = 3 + 3 + 4).</p>
+<p>Note: You may assume that n is not less than 2 and not larger than 58.</p>
+<p>Credits:<br>Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.<br><a href="https://goo.gl/CizU8W" target="_blank" rel="noopener">https://goo.gl/CizU8W</a></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>We can try to find the pattern,<br> num  divide into   product<br>  2       1+1          1<br>  3       2+1          2<br>  4       2+2          4<br>  5       2+3          6<br>  6       3+3          9<br>  7       3+2+2        12<br>  8       3+3+2        18</p>
+<p>We can see that, all factors should be 2 or 3 (N &gt; 4). Also, since <code>3 * 3 &gt; 2 * 2 * 2</code>, we should try to have 3 as much as possible(N&gt;4). </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">integerBreak</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(n ==<span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">3</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> product =<span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(n&gt;<span class="number">4</span>)&#123;</span><br><span class="line">            product *=<span class="number">3</span>;</span><br><span class="line">            n-=<span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        product *=n;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/07/01/343-Integer-Break/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/07/01/343-Integer-Break/" title="343. Integer Break">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/535-Encode-and-Decode-TinyURL/">
-                            535. Encode and Decode TinyURL
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/535-Encode-and-Decode-TinyURL/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/29/264-Ugly-Number-II/">
+    		264. Ugly Number II
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-29T21:37:36.000Z">2018-06-29</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/413-Arithmetic-Slices/">
-                            413. Arithmetic Slices
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a> / 
+    
+        <a href="/tags/math/" title="math">math</a> / 
+    
+        <a href="/tags/heap/" title="heap">heap</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/413-Arithmetic-Slices/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Write a program to find the n-th ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 1, 2, 3, 4, 5, 6, 8, 9, 10, 12 is the sequence of the first 10 ugly numbers.</p>
+<p>Note that 1 is typically treated as an ugly number, and n does not exceed 1690.</p>
+<p>Credits:<br>Special thanks to @jianchao.li.fighter for adding this problem and creating all test cases.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>Let’s say we have an result array that contains every ugly number in it.<br><code>result[i]: ith ugly number</code></p>
+<p>Now, how do we get the next ugly number, <code>result[i+1]</code>? The next ugly number must be one of these,<br><code>result[i]*2</code>, <code>result[i]*3</code>, <code>result[i]*5</code>. That is to say, if we know which to multiply, we can get <code>i+1th</code> ugly number. </p>
+<p>We can use three different pointer to indicate three different counter for 2, 3, and 5. Each time we compare the product of these, and the least one is next ugly number.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int nthUglyNumber(int n) &#123;</span><br><span class="line">        vector&lt;int&gt; result(1, 1);</span><br><span class="line">        int i=0, j=0, k=0; // for pointing the position of current 2, 3, 5</span><br><span class="line">        </span><br><span class="line">        while(n&gt; result.size())&#123;</span><br><span class="line">            result.push_back(min(result[i]*2, min(result[j]*3, result[k]*5))); //calculate which is the next minimum ugly number</span><br><span class="line">            if(result.back() == result[i]*2) ++i;</span><br><span class="line">            if(result.back() == result[j]*3) ++j;</span><br><span class="line">            if(result.back() == result[k]*5) ++k;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return result.back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/29/264-Ugly-Number-II/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/29/264-Ugly-Number-II/" title="264. Ugly Number II">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">
-                            357. Count Numbers with Unique Digits
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-</section>
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/20/523-Continuous-Subarray-Sum/">
+    		523. Continuous Subarray Sum
+    	</a>
+    </h3>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-21T01:27:27.000Z">2018-06-20</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
 
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
+        </span>
+    </p>
 
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>/<em><br>Given a list of non-negative numbers and a target integer k, write a function to check if the array has a continuous subarray of size at least 2 that sums up to the multiple of k, that is, sums up to n</em>k where n is also an integer.</p>
+<p>Example 1:<br><code>Input: [23, 2, 4, 6, 7],  k=6</code><br>Output: True<br>Explanation: Because [2, 4] is a continuous subarray of size 2 and sums up to 6.</p>
+<p>Example 2:<br><code>Input: [23, 2, 6, 4, 7],  k=6</code><br>Output: True<br>Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.</p>
+<p>Note:<br>The length of the array won’t exceed 10,000.<br>You may assume the sum of all the numbers is in the range of a signed 32-bit integer.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The main idea is to find whether if there’s two subarray that contains equal remainder.<br>Let’s say we have a sum of subarray from <code>i...j</code> look like this:<br>  <code>a[i]+a[i+1]+...+a[j]=n1k+q;</code></p>
+<p>If we can find a <code>n</code>, which is greater than j , that qualified for the following equation,<br>  <code>n&gt;j</code> and <code>a[i]+a[i+1]+...+a[j]+...+a[n]=n2k+q;</code></p>
+<p>We can derive a result that the sum of subarray from <code>j...n</code> should be:<br>  <code>a[j+1]+...+a[n]=(n2−n1)k</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkSubarraySum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum= <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>= &#123;&#123;<span class="number">0</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            sum+= nums[i];</span><br><span class="line">            <span class="keyword">if</span>(k != <span class="number">0</span>)</span><br><span class="line">                sum = sum%k;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">map</span>.count(sum))&#123;</span><br><span class="line">                <span class="keyword">if</span>(i- <span class="built_in">map</span>[sum] &gt;<span class="number">1</span>)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">map</span>[sum]= i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>time complexity: O(n)<br>space complexity: O(n)</p>
+<p>reference:<br><a href="https://goo.gl/sieyWJ" target="_blank" rel="noopener">https://goo.gl/sieyWJ</a><br><a href="https://goo.gl/fb8NoY" target="_blank" rel="noopener">https://goo.gl/fb8NoY</a><br><a href="https://goo.gl/fK1cNG" target="_blank" rel="noopener">https://goo.gl/fK1cNG</a></p>
 
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/20/523-Continuous-Subarray-Sum/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/20/523-Continuous-Subarray-Sum/" title="523. Continuous Subarray Sum">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/09/319-Bulb-Switcher/">
+    		319. Bulb Switcher
+    	</a>
+    </h3>
 
-                    </section>
-                </aside>
-        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-09T19:01:36.000Z">2018-06-09</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/math/" title="math">math</a> / 
+    
+        <a href="/tags/brainteaser/" title="brainteaser">brainteaser</a>
+    
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
+        </span>
+    </p>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-    </body>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [3,2,1,5,6,4] and k = 2</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [3,2,3,1,2,4,5,5,6] and k = 4</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ array’s length.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>the initial state all bulbs are off.</p>
+<p>if at last the bulb was toggled odd number of times, it is on.<br>if toggled even number of times, it is off.</p>
+<p>simple enough, and that number is determined by how many factors a number has.<br>note that every number has 1 and itself as a factor. and if it has multiple times of a factor<br>it only counted once.</p>
+<p>1 ——— 1</p>
+<p>2 ——— 1, 2</p>
+<p>3 ——— 1, 3</p>
+<p>4 ——— 1, 2, 4</p>
+<p>5 ——— 1, 5</p>
+<p>6 ——— 1, 2, 3, 6</p>
+<p>7 ——— 1, 7</p>
+<p>8 ——— 1, 2, 4, 8</p>
+<p>9 ——— 1, 3, 9</p>
+<p>see that only square numbers like 1, 4 and 9 has odd number of factors.<br>bulbs at those numbers will left on after all the rounds of toggle.</p>
+<p>so basically, we calculate how many square numbers are there within a given number.<br>and we can get it simply by calculate the square root of that number. of course the decimal part is eliminated.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;<span class="keyword">int</span>&gt; pq(nums.begin(), nums.end()); <span class="comment">//put all elements in priority queue</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k - <span class="number">1</span>; i++) </span><br><span class="line">            pq.pop(); <span class="comment">//remove the elements that is greater than Kth element</span></span><br><span class="line">        <span class="keyword">return</span> pq.top(); <span class="comment">//Now the largest one is Kth </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>reference:<br><a href="https://leetcode.com/problems/bulb-switcher/discuss/77112/Share-my-o(1)-solution-with-explanation" target="_blank" rel="noopener">https://leetcode.com/problems/bulb-switcher/discuss/77112/Share-my-o(1)-solution-with-explanation</a><br><a href="https://goo.gl/xSEhEb" target="_blank" rel="noopener">https://goo.gl/xSEhEb</a></p>
 
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/09/319-Bulb-Switcher/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/09/319-Bulb-Switcher/" title="319. Bulb Switcher">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/09/8-String-to-Integer-atoi/">
+    		8. String to Integer (atoi)
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-09T19:01:24.000Z">2018-06-09</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/string/" title="string">string</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Implement atoi which converts a string to an integer.</p>
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned.</p>
+<p>Note:</p>
+<p>Only the space character ‘ ‘ is considered as whitespace character.<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;42&quot;</span><br><span class="line">Output: 42</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;   -42&quot;</span><br><span class="line">Output: -42</span><br><span class="line">Explanation: The first non-whitespace character is &apos;-&apos;, which is the minus sign.</span><br><span class="line">             Then take as many numerical digits as possible, which gets 42.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;4193 with words&quot;</span><br><span class="line">Output: 4193</span><br><span class="line">Explanation: Conversion stops at digit &apos;3&apos; as the next character is not a numerical digit.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;words and 987&quot;</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical </span><br><span class="line">             digit or a +/- sign. Therefore no valid conversion could be performed.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;-91283472332&quot;</span><br><span class="line">Output: -2147483648</span><br><span class="line">Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.</span><br><span class="line">             Thefore INT_MIN (−231) is returned.</span><br></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
+<li>discards all leading white spaces</li>
+<li>sign of the number</li>
+<li>check overflow, </li>
+<li>invalid input</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (str[i] == <span class="string">' '</span>) &#123; <span class="comment">//remove white space</span></span><br><span class="line">            i++; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">'-'</span> || str[i] == <span class="string">'+'</span>) &#123; <span class="comment">//check the sign of string</span></span><br><span class="line">            sign = <span class="number">1</span> - <span class="number">2</span> * (str[i] == <span class="string">'-'</span>); <span class="comment">//if it equals to '-', then sign is -1</span></span><br><span class="line">            i++; <span class="comment">//move to next position</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> base = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (str[i] &gt;= <span class="string">'0'</span> &amp;&amp; str[i] &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (base &gt;  INT_MAX / <span class="number">10</span> || (base == INT_MAX / <span class="number">10</span> &amp;&amp; str[i] - <span class="string">'0'</span> &gt; <span class="number">7</span>)) &#123;</span><br><span class="line">                <span class="comment">//INT_MAX = 2147483647, so if the base equals to (INT_MAX/10), which is 214748364</span></span><br><span class="line">                <span class="comment">//we must check whether if adding the new str[i] would cause overflow</span></span><br><span class="line">                <span class="keyword">if</span> (sign == <span class="number">1</span>) <span class="keyword">return</span> INT_MAX;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> INT_MIN;</span><br><span class="line">            &#125;</span><br><span class="line">            base  = <span class="number">10</span> * base + (str[i++] - <span class="string">'0'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> base * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/09/8-String-to-Integer-atoi/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/09/8-String-to-Integer-atoi/" title="8. String to Integer (atoi)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/535-Encode-and-Decode-TinyURL/">
+    		535. Encode and Decode TinyURL
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T19:24:07.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>TinyURL is a URL shortening service where you enter a URL such as <a href="https://leetcode.com/problems/design-tinyurl" target="_blank" rel="noopener">https://leetcode.com/problems/design-tinyurl</a> and it returns a short URL such as <a href="http://tinyurl.com/4e9iAk" target="_blank" rel="noopener">http://tinyurl.com/4e9iAk</a>.</p>
+<p>Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
+<li>use two unordered_map to store the relation of original url and shorten url, <code>shot2long</code> and <code>long2short</code>.</li>
+<li>The whole process can be divided into 2 parts<ol>
+<li>encode: <ul>
+<li>input would be original string</li>
+<li>create a random <code>6 character string</code>, which means we need to have a dictionary to search which character to use.</li>
+<li>after created <code>6 character string</code>, need to check whether if it’s already used.</li>
+</ul>
+</li>
+<li>decode:<ul>
+<li>the input would be shorten url string</li>
+<li>extract 6 character string from input, search whether it is stored in the map.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Solution()&#123;</span><br><span class="line">        dist= <span class="string">"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>;</span><br><span class="line">        short2long.clear();</span><br><span class="line">        long2short.clear();</span><br><span class="line">        srand(time(<span class="literal">NULL</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Encodes a URL to a shortened URL.</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">encode</span><span class="params">(<span class="built_in">string</span> longUrl)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> _return;</span><br><span class="line">        <span class="keyword">if</span>(long2short.find(longUrl) != long2short.end())</span><br><span class="line">            _return = long2short[longUrl];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> idx= <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">string</span> tmp=<span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">                tmp.push_back(dist[rand() % <span class="number">62</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;tmp&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">while</span>(short2long.count(tmp))&#123;</span><br><span class="line">                tmp[idx] = dist[rand() % <span class="number">62</span>];</span><br><span class="line">                idx = (idx +<span class="number">1</span> )%<span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            short2long[tmp] = longUrl;</span><br><span class="line">            long2short[longUrl] = tmp;</span><br><span class="line">            _return = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cout&lt;&lt; "http://tinyurl.com/"+_return&lt;&lt; endl;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"http://tinyurl.com/"</span>+_return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decodes a shortened URL to its original URL.</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decode</span><span class="params">(<span class="built_in">string</span> shortUrl)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> _return;</span><br><span class="line">        </span><br><span class="line">        _return = shortUrl.substr(shortUrl.find_last_of(<span class="string">'/'</span>)+<span class="number">1</span>);</span><br><span class="line">        _return = short2long.count(_return) ? short2long[_return]: shortUrl;</span><br><span class="line">        <span class="keyword">return</span> _return;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; short2long, long2short;</span><br><span class="line">    <span class="built_in">string</span> dist;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Solution object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Solution solution;</span></span><br><span class="line"><span class="comment">// solution.decode(solution.encode(url));</span></span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/535-Encode-and-Decode-TinyURL/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/535-Encode-and-Decode-TinyURL/" title="535. Encode and Decode TinyURL">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/">
+    		413. Arithmetic Slices
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-05-14T20:23:00.000Z">2018-05-14</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
+<p>For example, these are arithmetic sequence:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, 3, 5, 7, 9</span><br><span class="line">7, 7, 7, 7</span><br><span class="line">3, -1, -5, -9</span><br></pre></td></tr></table></figure></p>
+<p>The following sequence is not arithmetic.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 1, 2, 5, 7</span><br></pre></td></tr></table></figure></p>
+<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
+<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
+<p>The function should return the number of arithmetic slices in the array A.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</span><br></pre></td></tr></table></figure></p>
+<p>solution1:</p>
+<p>use 1D dp array. When we have a arithmetic slice in 1…i, which can create total X arithmetic slice, and we got the i+1 element with same distance(slice) as before, the i+1 element can create additional X+1 arithmetic slice. And the sum of arithmetic slices create by sequence 1…i+1 elements would be X+(X+1).<br>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      1,3,5,7,9,15,20,25,28,29</span><br><span class="line">dp    0 0 1 2 3 0  0  1  0  0</span><br><span class="line">sum       1 3 6 6  6  7  7  7</span><br></pre></td></tr></table></figure></p>
+<p>In the above example, [1,3,5] can make the first slice.<br>When we add 7 into the sequence, it creates [3,5,7] and [1,3,5,7] slices.<br>Therefore, total slices when we consider sequence [1,3,5,7] would be<br>[1,3,5]: which is created and stored in dp[2]<br>[3,5,7], [1,3,5,7]: in dp[3]<br>Total: 3 slices</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(A.size(), 0);</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; dp.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp[i] = 1 + dp[i - 1];</span><br><span class="line">                sum += dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time: O(n)<br>Space: O(n)</p>
+<p>solution2:<br>Since if we don’t have consecutive sequence, we don’t need the dp. We can use a integer to store the slices created by previous consecutive sequence. When the consecutive sequence end, A[i]-A[i-1] != A[i-1]-A[i-2], just reset the counter to zero.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        int dp= 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; A.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp+=1;</span><br><span class="line">                sum += dp;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                dp = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Time: O(n)<br>Space: O(1)</p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/" title="413. Arithmetic Slices">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/">
+    		357. Count Numbers with Unique Digits
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-05-14T19:12:05.000Z">2018-05-14</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a> / 
+    
+        <a href="/tags/backtracking/" title="backtracking">backtracking</a> / 
+    
+        <a href="/tags/math/" title="math">math</a> / 
+    
+        <a href="/tags/google/" title="google">google</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:<br>Given a non-negative integer n, count all numbers with unique digits, x, where 0 ≤ x &lt; 10n.</p>
+<p>Example:<br>Given n = 2, return 91. (The answer should be the total numbers in the range of 0 ≤ x &lt; 100, excluding [11,22,33,44,55,66,77,88,99])</p>
+<p>Following the hint. Let f(n) = count of number with unique digits of length n.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">f(1) = 10. (0, 1, 2, 3, ...., 9)</span><br><span class="line"></span><br><span class="line">f(2) = 9 * 9. Because for each number i from 1, ..., 9, we can pick j to form a 2-digit number ij and there are 9 numbers that are different from i for j to choose from.</span><br><span class="line"></span><br><span class="line">f(3) = f(2) * 8 = 9 * 9 * 8. Because for each number with unique digits of length 2, say ij, we can pick k to form a 3 digit number ijk and there are 8 numbers that are different from i and j for k to choose from.</span><br><span class="line"></span><br><span class="line">Similarly f(4) = f(3) * 7 = 9 * 9 * 8 * 7....</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">f(10) = 9 * 9 * 8 * 7 * 6 * ... * 1</span><br><span class="line"></span><br><span class="line">f(11) = 0 = f(12) = f(13)....</span><br></pre></td></tr></table></figure></p>
+<p>any number with length &gt; 10 couldn’t be unique digits number.</p>
+<p>The problem is asking for numbers from 0 to 10^n. Hence return f(1) + f(2) + .. + f(n)</p>
+<p>As @4acreg suggests, There are only 11 different ans. You can create a lookup table for it. This problem is O(1) in essence</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countNumbersWithUniqueDigits(int n) &#123;</span><br><span class="line">        if (n == 0) &#123;</span><br><span class="line">            return 1;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        int ans = 10, base = 9;</span><br><span class="line">        for (int i = 2; i &lt;= n &amp;&amp; i &lt;= 10; i++) &#123;</span><br><span class="line">            base *= (9 - i + 2);</span><br><span class="line">            ans += base;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">        if(n == 0) return 1;</span><br><span class="line">        int res = 10; //original case</span><br><span class="line">        int uniqueDigits = 9;</span><br><span class="line">        int available = 9;</span><br><span class="line">        </span><br><span class="line">        while(n-- &gt;1 &amp;&amp; available &gt;0)&#123;</span><br><span class="line">            uniqueDigits = uniqueDigits* available; //recursively multiply the remain digits</span><br><span class="line">            res += uniqueDigits; //The answer ask from 0&lt;=x&lt;= 10^n, so need to add the result</span><br><span class="line">            available--;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">        */</span><br></pre></td></tr></table></figure>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/05/14/357-Count-Numbers-with-Unique-Digits/" title="357. Count Numbers with Unique Digits">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <span class="page-number current">1</span>
+    </nav>
+    
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/leetcode/">leetcode</a>
+        <span class="badge">(80)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/microsoft/">microsoft</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/algorithm/">algorithm</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/STL/">STL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tutorial/">tutorial</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/leetcode/" title="leetcode">leetcode (82)</a>
+  
+    <a class="tag-item" href="/tags/tree/" title="tree">tree (10)</a>
+  
+    <a class="tag-item" href="/tags/bfs/" title="bfs">bfs (4)</a>
+  
+    <a class="tag-item" href="/tags/medium/" title="medium">medium (53)</a>
+  
+    <a class="tag-item" href="/tags/array/" title="array">array (32)</a>
+  
+    <a class="tag-item" href="/tags/dfs/" title="dfs">dfs (12)</a>
+  
+    <a class="tag-item" href="/tags/easy/" title="easy">easy (4)</a>
+  
+    <a class="tag-item" href="/tags/hash-table/" title="hash table">hash table (8)</a>
+  
+    <a class="tag-item" href="/tags/linked-list/" title="linked list">linked list (8)</a>
+  
+    <a class="tag-item" href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming (19)</a>
+  
+    <a class="tag-item" href="/tags/sort/" title="sort">sort (4)</a>
+  
+    <a class="tag-item" href="/tags/merge-sort/" title="merge sort">merge sort (2)</a>
+  
+    <a class="tag-item" href="/tags/two-pointers/" title="two pointers">two pointers (4)</a>
+  
+    <a class="tag-item" href="/tags/facebook/" title="facebook">facebook (3)</a>
+  
+    <a class="tag-item" href="/tags/amazon/" title="amazon">amazon (1)</a>
+  
+    <a class="tag-item" href="/tags/microsoft/" title="microsoft">microsoft (1)</a>
+  
+    <a class="tag-item" href="/tags/stack/" title="stack">stack (4)</a>
+  
+    <a class="tag-item" href="/tags/binary-search/" title="binary search">binary search (5)</a>
+  
+    <a class="tag-item" href="/tags/string/" title="string">string (6)</a>
+  
+    <a class="tag-item" href="/tags/hard/" title="hard">hard (4)</a>
+  
+    <a class="tag-item" href="/tags/two-pointer/" title="two pointer">two pointer (2)</a>
+  
+    <a class="tag-item" href="/tags/union-find/" title="union find">union find (1)</a>
+  
+    <a class="tag-item" href="/tags/backtracking/" title="backtracking">backtracking (7)</a>
+  
+    <a class="tag-item" href="/tags/apple/" title="apple">apple (1)</a>
+  
+    <a class="tag-item" href="/tags/airbnb/" title="airbnb">airbnb (1)</a>
+  
+    <a class="tag-item" href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer (1)</a>
+  
+    <a class="tag-item" href="/tags/math/" title="math">math (8)</a>
+  
+    <a class="tag-item" href="/tags/heap/" title="heap">heap (2)</a>
+  
+    <a class="tag-item" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd&#39;s Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm (1)</a>
+  
+    <a class="tag-item" href="/tags/binary-indexed-tree/" title="binary indexed tree">binary indexed tree (1)</a>
+  
+    <a class="tag-item" href="/tags/permutation/" title="permutation">permutation (1)</a>
+  
+    <a class="tag-item" href="/tags/brainteaser/" title="brainteaser">brainteaser (1)</a>
+  
+    <a class="tag-item" href="/tags/bucket-sort/" title="bucket sort">bucket sort (1)</a>
+  
+    <a class="tag-item" href="/tags/google/" title="google">google (1)</a>
+  
+    <a class="tag-item" href="/tags/greedy/" title="greedy">greedy (2)</a>
+  
+    <a class="tag-item" href="/tags/peak/" title="peak">peak (1)</a>
+  
+    <a class="tag-item" href="/tags/greddy/" title="greddy">greddy (1)</a>
+  
+    <a class="tag-item" href="/tags/partition/" title="partition">partition (1)</a>
+  
+    <a class="tag-item" href="/tags/subset/" title="subset">subset (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
 </html>

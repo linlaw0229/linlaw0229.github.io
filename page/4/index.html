@@ -1,402 +1,949 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta name="keywords" content="hexo, autumn">
-    <title>
-        linlaw Techblog
-    </title>
-    <!-- favicon -->
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
+    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
     
-    <link rel="icon" href="/css/L.ico">
+    <title>linlaw Techblog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
+    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
+    <meta name="description" content="Jelon个人前端小站" >
+
+    
+    <link rel="alternative" href="/atom.xml" title="linlaw Techblog" type="application/atom+xml" >
+    
+    
+    <link rel="shortcut icon" href="/favicon.ico" >
     
     <link rel="stylesheet" href="/css/style.css">
+    <!--[if lt IE 9]>
+    <script src="/js/html5.js"></script>
+    <![endif]-->
+    
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-    <!-- highlight -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
-    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad()
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/infinite-scroll.css">
-    <script src="/css/infinite-scroll.js"></script>
-    <script>
-        infiniteScroll()
 
-        // for mobile menu
-        $(function() {
-            $('.social-button').click(function() {
-                if ($('.social-links').hasClass('hide-links')) {
-                    $('.social-links').removeClass('hide-links')
-                } else {
-                    $('.social-links').addClass('hide-links')
-                }
-            })
-        })
-    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-    <body style="background: url(/css/button-bg.png) #f3f3f3">
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
-            <header class="header">
-    <h1 class="title">
-        <a href="/" class="logo">
-            linlaw Techblog
-        </a>
-    </h1>
-    <h2 class="desc">
-        Make the change you want to see in the world.
-    </h2>
+<body class="home">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
+    <div class="browsehappy">
+        当前网页 <strong>不支持</strong>
+        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
+    </div>
+    <![endif]-->
 
-    <nav class="links">
-        <button class="social-button">
-            menu
-        </button>
-        <ul class="social-links hide-links">
+    <!-- 博客头部 -->
+    <header class="header">
+    <section class="container header-main">
+        <div class="logo">
+            <a href="/">
+                <div class="cover">
+                    <span class="name">linlaw Techblog</span>
+                    <span class="description">Make the change you want to see in the world.</span>
+                </div>
+            </a>
+        </div>
+        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
+        <ul class="menu hidden" id="JELON__menu">
             
-                <li>
-                    <a href="https://github.com/linlaw0229">
-                        Github
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="https://www.linkedin.com/in/lawrence0229/">
-                        LinkedIn
-                    </a>
-                </li>
-                
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
+            </li>
+            
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
+            </li>
+            
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
+            </li>
+            
+            <li rel="/page/4/index.html" class="item ">
+                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
+            </li>
+            
         </ul>
-    </nav>
+        <div class="profile clearfix">
+            <div class="feeds fl">
+                
+                
+                <p class="links">
+                    
+                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
+                        |
+                    
+                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
+                        
+                    
+                </p>
+                <p class="sns">
+                    
+                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
+                    
+                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
+                    
+                    <a href="javascript: void(0);" class="wechat">
+                        <b>■</b>
+                        公众号
+                        <span class="popover">
+                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
+                            <i class="arrow"></i>
+                        </span>
+                    </a>
+                </p>
+                
+            </div>
+            <div class="avatar fr">
+                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
+            </div>
+        </div>
+    </section>
 </header>
-                <main class="main">
-                    <section class="posts">
+
+
+    <!-- 博客正文 -->
+    <div class="container body clearfix">
+        <section class="content">
+            <div class="content-main widget">
+                <!-- 首页 -->
+
     
-        <article class="post">
+    <h3 class="widget-hd">
+        <strong>
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/09/319-Bulb-Switcher/">
-                            319. Bulb Switcher
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 9, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/09/319-Bulb-Switcher/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+                最近动态
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/09/8-String-to-Integer-atoi/">
-                            8. String to Integer (atoi)
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            June 9, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/09/8-String-to-Integer-atoi/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        </strong>
+    </h3>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/STL/">STL</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/12/STL-container-Stack/">
+    		STL container-Stack
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-12T19:06:13.000Z">2018-06-12</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/08/148-Sort-List/">
-                            148. Sort List
-                        </a>
-                    </h1>
+    
+        <a href="/tags/STL/" title="STL">STL</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 8, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/08/148-Sort-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/07/347-Top-K-Frequent-Elements/">
-                            347. Top K Frequent Elements
-                        </a>
-                    </h1>
+                <p>Definition:<br><code>LIFO</code> stack<br>Stacks are a type of container adaptor, specifically designed to operate in a LIFO context (last-in first-out), where elements are inserted and extracted only from one end of the container.</p>
+<p>One thing to be notice is that there’re several different container that would be used to </p>
 
-                    <ul class="post-date">
-                        <li>
-                            June 7, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/07/347-Top-K-Frequent-Elements/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/12/STL-container-Stack/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/12/STL-container-Stack/" title="STL container-Stack">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/49-Group-Anagrams/">
-                            49. Group Anagrams
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/2.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/49-Group-Anagrams/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/10/241-Different-Ways-to-Add-Parentheses/">
+    		241. Different Ways to Add Parentheses
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-10T22:32:03.000Z">2018-06-10</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/138-Copy-List-with-Random-Pointer/">
-                            138. Copy List with Random Pointer
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/138-Copy-List-with-Random-Pointer/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/535-Encode-and-Decode-TinyURL/">
-                            535. Encode and Decode TinyURL
-                        </a>
-                    </h1>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;2-1-1&quot;</span><br><span class="line">Output: [0, 2]</span><br><span class="line">Explanation: </span><br><span class="line">((2-1)-1) = 0 </span><br><span class="line">(2-(1-1)) = 2</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;2*3-4*5&quot;</span><br><span class="line">Output: [-34, -14, -10, -10, 10]</span><br><span class="line">Explanation: </span><br><span class="line">(2*(3-(4*5))) = -34 </span><br><span class="line">((2*3)-(4*5)) = -14 </span><br><span class="line">((2*(3-4))*5) = -10 </span><br><span class="line">(2*((3-4)*5)) = -10 </span><br><span class="line">(((2*3)-4)*5) = 10</span><br></pre></td></tr></table></figure>
+<p>#Solution:<br>The key of this problem is that every operators in the string could be the last operator to be operated.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; diffWaysToCompute(<span class="built_in">string</span> input) &#123;</span><br><span class="line">        <span class="comment">//output every results of calculation</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; input.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(input[i] == <span class="string">'+'</span> || input[i] == <span class="string">'-'</span> || input[i] == <span class="string">'*'</span>)&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result1= diffWaysToCompute(input.substr(<span class="number">0</span>, i));</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result2= diffWaysToCompute(input.substr(i+<span class="number">1</span>));</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">auto</span> n1: result1)&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">auto</span> n2: result2)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(input[i] == <span class="string">'+'</span>)</span><br><span class="line">                            res.push_back(n1+n2);</span><br><span class="line">                        <span class="keyword">else</span> <span class="keyword">if</span>(input[i] == <span class="string">'-'</span>)</span><br><span class="line">                            res.push_back(n1-n2);</span><br><span class="line">                        <span class="keyword">else</span></span><br><span class="line">                            res.push_back(n1*n2);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(res.empty())</span><br><span class="line">            res.push_back(atoi(input.c_str()));</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/535-Encode-and-Decode-TinyURL/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/10/241-Different-Ways-to-Add-Parentheses/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/10/241-Different-Ways-to-Add-Parentheses/" title="241. Different Ways to Add Parentheses">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/">
-                            340. Longest Substring with At Most K Distinct Characters
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/0.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-        <article class="post">
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/09/319-Bulb-Switcher/">
+    		319. Bulb Switcher
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-09T19:01:36.000Z">2018-06-09</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/">
-                            159. Longest Substring with At Most Two Distinct Characters
-                        </a>
-                    </h1>
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/math/" title="math">math</a> / 
+    
+        <a href="/tags/brainteaser/" title="brainteaser">brainteaser</a>
+    
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/159-Longest-Substring-with-At-Most-Two-Distinct-Characters/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
             
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Find the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [3,2,1,5,6,4] and k = 2</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [3,2,3,1,2,4,5,5,6] and k = 4</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ array’s length.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>the initial state all bulbs are off.</p>
+<p>if at last the bulb was toggled odd number of times, it is on.<br>if toggled even number of times, it is off.</p>
+<p>simple enough, and that number is determined by how many factors a number has.<br>note that every number has 1 and itself as a factor. and if it has multiple times of a factor<br>it only counted once.</p>
+<p>1 ——— 1</p>
+<p>2 ——— 1, 2</p>
+<p>3 ——— 1, 3</p>
+<p>4 ——— 1, 2, 4</p>
+<p>5 ——— 1, 5</p>
+<p>6 ——— 1, 2, 3, 6</p>
+<p>7 ——— 1, 7</p>
+<p>8 ——— 1, 2, 4, 8</p>
+<p>9 ——— 1, 3, 9</p>
+<p>see that only square numbers like 1, 4 and 9 has odd number of factors.<br>bulbs at those numbers will left on after all the rounds of toggle.</p>
+<p>so basically, we calculate how many square numbers are there within a given number.<br>and we can get it simply by calculate the square root of that number. of course the decimal part is eliminated.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findKthLargest</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;<span class="keyword">int</span>&gt; pq(nums.begin(), nums.end()); <span class="comment">//put all elements in priority queue</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k - <span class="number">1</span>; i++) </span><br><span class="line">            pq.pop(); <span class="comment">//remove the elements that is greater than Kth element</span></span><br><span class="line">        <span class="keyword">return</span> pq.top(); <span class="comment">//Now the largest one is Kth </span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>reference:<br><a href="https://leetcode.com/problems/bulb-switcher/discuss/77112/Share-my-o(1)-solution-with-explanation" target="_blank" rel="noopener">https://leetcode.com/problems/bulb-switcher/discuss/77112/Share-my-o(1)-solution-with-explanation</a><br><a href="https://goo.gl/xSEhEb" target="_blank" rel="noopener">https://goo.gl/xSEhEb</a></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/09/319-Bulb-Switcher/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/09/319-Bulb-Switcher/" title="319. Bulb Switcher">
                 
-                    <h1 class="post-title">
-                        <a href="/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/">
-                            3. Longest Substring Without Repeating Characters
-                        </a>
-                    </h1>
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    <ul class="post-date">
-                        <li>
-                            June 6, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
         
-</section>
-                </main>
-                <aside class="aside">
-                    <section class="aside-section">
-                        
-    <h1>Categories</h1>
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/09/8-String-to-Integer-atoi/">
+    		8. String to Integer (atoi)
+    	</a>
+    </h3>
 
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-09T19:01:24.000Z">2018-06-09</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/string/" title="string">string</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
 
-                    </section>
-                    <section class="aside-section">
-                        
-    <h1>Archives</h1>
+        </span>
+    </p>
 
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Implement atoi which converts a string to an integer.</p>
+<p>The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.</p>
+<p>The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.</p>
+<p>If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.</p>
+<p>If no valid conversion could be performed, a zero value is returned.</p>
+<p>Note:</p>
+<p>Only the space character ‘ ‘ is considered as whitespace character.<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, INT_MAX (231 − 1) or INT_MIN (−231) is returned.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: &quot;42&quot;</span><br><span class="line">Output: 42</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: &quot;   -42&quot;</span><br><span class="line">Output: -42</span><br><span class="line">Explanation: The first non-whitespace character is &apos;-&apos;, which is the minus sign.</span><br><span class="line">             Then take as many numerical digits as possible, which gets 42.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: &quot;4193 with words&quot;</span><br><span class="line">Output: 4193</span><br><span class="line">Explanation: Conversion stops at digit &apos;3&apos; as the next character is not a numerical digit.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: &quot;words and 987&quot;</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The first non-whitespace character is &apos;w&apos;, which is not a numerical </span><br><span class="line">             digit or a +/- sign. Therefore no valid conversion could be performed.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: &quot;-91283472332&quot;</span><br><span class="line">Output: -2147483648</span><br><span class="line">Explanation: The number &quot;-91283472332&quot; is out of the range of a 32-bit signed integer.</span><br><span class="line">             Thefore INT_MIN (−231) is returned.</span><br></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
+<li>discards all leading white spaces</li>
+<li>sign of the number</li>
+<li>check overflow, </li>
+<li>invalid input</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(<span class="built_in">string</span> str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sign = <span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (str[i] == <span class="string">' '</span>) &#123; <span class="comment">//remove white space</span></span><br><span class="line">            i++; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (str[i] == <span class="string">'-'</span> || str[i] == <span class="string">'+'</span>) &#123; <span class="comment">//check the sign of string</span></span><br><span class="line">            sign = <span class="number">1</span> - <span class="number">2</span> * (str[i] == <span class="string">'-'</span>); <span class="comment">//if it equals to '-', then sign is -1</span></span><br><span class="line">            i++; <span class="comment">//move to next position</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> base = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (str[i] &gt;= <span class="string">'0'</span> &amp;&amp; str[i] &lt;= <span class="string">'9'</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (base &gt;  INT_MAX / <span class="number">10</span> || (base == INT_MAX / <span class="number">10</span> &amp;&amp; str[i] - <span class="string">'0'</span> &gt; <span class="number">7</span>)) &#123;</span><br><span class="line">                <span class="comment">//INT_MAX = 2147483647, so if the base equals to (INT_MAX/10), which is 214748364</span></span><br><span class="line">                <span class="comment">//we must check whether if adding the new str[i] would cause overflow</span></span><br><span class="line">                <span class="keyword">if</span> (sign == <span class="number">1</span>) <span class="keyword">return</span> INT_MAX;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> INT_MIN;</span><br><span class="line">            &#125;</span><br><span class="line">            base  = <span class="number">10</span> * base + (str[i++] - <span class="string">'0'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> base * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/09/8-String-to-Integer-atoi/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/09/8-String-to-Integer-atoi/" title="8. String to Integer (atoi)">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/9.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
-                    </section>
-                    <section class="aside-section tag">
-                        
-    <h1>Tags</h1>
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/08/148-Sort-List/">
+    		148. Sort List
+    	</a>
+    </h3>
 
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-08T20:14:23.000Z">2018-06-08</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/linked-list/" title="linked list">linked list</a> / 
+    
+        <a href="/tags/sort/" title="sort">sort</a> / 
+    
+        <a href="/tags/merge-sort/" title="merge sort">merge sort</a>
+    
 
-                    </section>
-                </aside>
-        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
+        </span>
+    </p>
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Sort a linked list in O(n log n) time using constant space complexity.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: 4-&gt;2-&gt;1-&gt;3</span><br><span class="line">Output: 1-&gt;2-&gt;3-&gt;4</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: -1-&gt;5-&gt;3-&gt;4-&gt;0</span><br><span class="line">Output: -1-&gt;0-&gt;3-&gt;4-&gt;5</span><br></pre></td></tr></table></figure>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The description is asking for algorithm that runs within O(nlogn). Therefore, only quicksort, merge sort, heap sort can meet the requirement. </p>
+<ol>
+<li>First of all, we cut the list into half, the code is widely use, make sure to memorize it.</li>
+<li>Then we keep cut it into half, until there’s only one node left.</li>
+<li>Start merging the list and sort it.</li>
+</ol>
+<p><img src="sortlist.jpg" alt=""></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">sortList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head || !head-&gt;next) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode *prev= head, *slow= head, *fast= head;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="literal">NULL</span> &amp;&amp; fast-&gt;next != <span class="literal">NULL</span>)&#123; </span><br><span class="line">            <span class="comment">//fast runs twice than slow, so when fast reach end, prev would be the half</span></span><br><span class="line">            prev = slow;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        prev-&gt;next = <span class="literal">NULL</span>; </span><br><span class="line">        <span class="comment">//cut list into half</span></span><br><span class="line">        <span class="comment">//1. head-&gt;...-&gt;prev-&gt;NULL</span></span><br><span class="line">        <span class="comment">//2. slow-&gt;...-&gt;endNode-&gt;NULL</span></span><br><span class="line">        </span><br><span class="line">        ListNode* l1 = sortList(head);</span><br><span class="line">        ListNode* l2 = sortList(slow);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> merge(l1, l2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode* <span class="title">merge</span><span class="params">(ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!l1) <span class="keyword">return</span> l2; </span><br><span class="line">        <span class="keyword">if</span> (!l2) <span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">            l1-&gt;next = merge(l1-&gt;next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            l2-&gt;next = merge(l1, l2-&gt;next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>time complexity: O(nlogn)<br>space complexity: O(logn), it’s the tree’s depth</p>
+<p>reference:<br><a href="https://goo.gl/uJF4wn" target="_blank" rel="noopener">https://goo.gl/uJF4wn</a></p>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-    </body>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/08/148-Sort-List/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/08/148-Sort-List/" title="148. Sort List">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/8.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
 
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/07/347-Top-K-Frequent-Elements/">
+    		347. Top K Frequent Elements
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-07T16:26:14.000Z">2018-06-07</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/heap/" title="heap">heap</a> / 
+    
+        <a href="/tags/bucket-sort/" title="bucket sort">bucket sort</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a non-empty array of integers, return the k most frequent elements.</p>
+<p>For example,<br>Given [1,1,1,2,2,3] and k = 2, return [1,2].</p>
+<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.<br>Your algorithm’s time complexity must be better than O(n log n), where n is the array’s size.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>In the problem description, it ask for an algorithm that has time complexity better than O(n log n). We can use bucket sort.</p>
+<ol>
+<li>Create a map to count the element appearance in array, use elements value as key, which takes O(n)</li>
+<li>Then create a 2d array to classify elements with item’s frequency</li>
+<li>Search from the highest to kth frequently item.</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; topKFrequent(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> n: nums)</span><br><span class="line">            ++<span class="built_in">map</span>[n]; <span class="comment">//put elements in map, increase the frequency</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; buckets(nums.size()+<span class="number">1</span>); <span class="comment">//size()+1 is because the sequence might full with the same element</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> p: <span class="built_in">map</span>)</span><br><span class="line">            buckets[p.second].push_back(p.first); <span class="comment">//use frequency as index, put elements with same frequency into the same box</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= buckets.size()<span class="number">-1</span>; i&gt;=<span class="number">0</span> &amp;&amp; ans.size() &lt; k; --i)&#123; <span class="comment">//start from right side, because we want to find top k frequent</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> num: buckets[i])&#123;</span><br><span class="line">                ans.push_back(num);</span><br><span class="line">                <span class="keyword">if</span>(ans.size() == k)</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>time complexity: O(n)<br>space complexity: O(n)</p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/07/347-Top-K-Frequent-Elements/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/07/347-Top-K-Frequent-Elements/" title="347. Top K Frequent Elements">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/7.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/49-Group-Anagrams/">
+    		49. Group Anagrams
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T20:07:58.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given an array of strings, group anagrams together.</p>
+<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>Note:</p>
+<p>All inputs will be in lowercase.<br>The order of your output does not matter.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The idea is to use an <code>unordered_map</code> to store those strings that are anagrams. We use the <code>sorted string</code> as the key and the string itself as the value. The strings are stored in a multiset since there may be duplicates. Moreover, multiset will sort them by default as we desire.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; groupAnagrams(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">multiset</span>&lt;<span class="built_in">string</span>&gt;&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> s: strs)&#123;</span><br><span class="line">            <span class="built_in">string</span> tmp = s; </span><br><span class="line">            sort(tmp.begin(), tmp.end());  <span class="comment">//use the sorted string as key to store every similar strings</span></span><br><span class="line">            <span class="built_in">map</span>[tmp].insert(s);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> m: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tmp(m.second.begin(), m.second.end());</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>time complexity: O(nlogn)</p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/49-Group-Anagrams/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/49-Group-Anagrams/" title="49. Group Anagrams">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/138-Copy-List-with-Random-Pointer/">
+    		138. Copy List with Random Pointer
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T19:26:11.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/linked-list/" title="linked list">linked list</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.<br>Return a deep copy of the list.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p><img style="width: 100%; height: 100%" src="138. Copy List with Random Pointer.jpg"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list with a random pointer.</span></span><br><span class="line"><span class="comment"> * struct RandomListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int label;</span></span><br><span class="line"><span class="comment"> *     RandomListNode *next, *random;</span></span><br><span class="line"><span class="comment"> *     RandomListNode(int x) : label(x), next(NULL), random(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">RandomListNode *<span class="title">copyRandomList</span><span class="params">(RandomListNode *head)</span> </span>&#123;</span><br><span class="line">        RandomListNode *newHead, *l1, *l2;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">for</span> (l1 = head; l1 != <span class="literal">NULL</span>; l1 = l1-&gt;next-&gt;next) &#123;</span><br><span class="line">            l2 = <span class="keyword">new</span> RandomListNode(l1-&gt;label);</span><br><span class="line">            l2-&gt;next = l1-&gt;next;</span><br><span class="line">            l1-&gt;next = l2;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        newHead = head-&gt;next;</span><br><span class="line">        <span class="keyword">for</span> (l1 = head; l1 != <span class="literal">NULL</span>; l1 = l1-&gt;next-&gt;next) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;random != <span class="literal">NULL</span>) l1-&gt;next-&gt;random = l1-&gt;random-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (l1 = head; l1 != <span class="literal">NULL</span>; l1 = l1-&gt;next) &#123;</span><br><span class="line">            l2 = l1-&gt;next;</span><br><span class="line">            l1-&gt;next = l2-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (l2-&gt;next != <span class="literal">NULL</span>) l2-&gt;next = l2-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>reference:<br><a href="https://goo.gl/bq52sh" target="_blank" rel="noopener">https://goo.gl/bq52sh</a><br><a href="https://leetcode.com/problems/copy-list-with-random-pointer/discuss/43491/A-solution-with-constant-space-complexity-O(1)-and-linear-time-complexity-O(N)/42652" target="_blank" rel="noopener">https://leetcode.com/problems/copy-list-with-random-pointer/discuss/43491/A-solution-with-constant-space-complexity-O(1)-and-linear-time-complexity-O(N)/42652</a></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/138-Copy-List-with-Random-Pointer/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/138-Copy-List-with-Random-Pointer/" title="138. Copy List with Random Pointer">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/535-Encode-and-Decode-TinyURL/">
+    		535. Encode and Decode TinyURL
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T19:24:07.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/medium/" title="medium">medium</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/math/" title="math">math</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>TinyURL is a URL shortening service where you enter a URL such as <a href="https://leetcode.com/problems/design-tinyurl" target="_blank" rel="noopener">https://leetcode.com/problems/design-tinyurl</a> and it returns a short URL such as <a href="http://tinyurl.com/4e9iAk" target="_blank" rel="noopener">http://tinyurl.com/4e9iAk</a>.</p>
+<p>Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original URL.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
+<li>use two unordered_map to store the relation of original url and shorten url, <code>shot2long</code> and <code>long2short</code>.</li>
+<li>The whole process can be divided into 2 parts<ol>
+<li>encode: <ul>
+<li>input would be original string</li>
+<li>create a random <code>6 character string</code>, which means we need to have a dictionary to search which character to use.</li>
+<li>after created <code>6 character string</code>, need to check whether if it’s already used.</li>
+</ul>
+</li>
+<li>decode:<ul>
+<li>the input would be shorten url string</li>
+<li>extract 6 character string from input, search whether it is stored in the map.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Solution()&#123;</span><br><span class="line">        dist= <span class="string">"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"</span>;</span><br><span class="line">        short2long.clear();</span><br><span class="line">        long2short.clear();</span><br><span class="line">        srand(time(<span class="literal">NULL</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Encodes a URL to a shortened URL.</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">encode</span><span class="params">(<span class="built_in">string</span> longUrl)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> _return;</span><br><span class="line">        <span class="keyword">if</span>(long2short.find(longUrl) != long2short.end())</span><br><span class="line">            _return = long2short[longUrl];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> idx= <span class="number">0</span>;</span><br><span class="line">            <span class="built_in">string</span> tmp=<span class="string">""</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">                tmp.push_back(dist[rand() % <span class="number">62</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;tmp&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">            <span class="keyword">while</span>(short2long.count(tmp))&#123;</span><br><span class="line">                tmp[idx] = dist[rand() % <span class="number">62</span>];</span><br><span class="line">                idx = (idx +<span class="number">1</span> )%<span class="number">5</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            short2long[tmp] = longUrl;</span><br><span class="line">            long2short[longUrl] = tmp;</span><br><span class="line">            _return = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//cout&lt;&lt; "http://tinyurl.com/"+_return&lt;&lt; endl;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"http://tinyurl.com/"</span>+_return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decodes a shortened URL to its original URL.</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decode</span><span class="params">(<span class="built_in">string</span> shortUrl)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> _return;</span><br><span class="line">        </span><br><span class="line">        _return = shortUrl.substr(shortUrl.find_last_of(<span class="string">'/'</span>)+<span class="number">1</span>);</span><br><span class="line">        _return = short2long.count(_return) ? short2long[_return]: shortUrl;</span><br><span class="line">        <span class="keyword">return</span> _return;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; short2long, long2short;</span><br><span class="line">    <span class="built_in">string</span> dist;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Solution object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Solution solution;</span></span><br><span class="line"><span class="comment">// solution.decode(solution.encode(url));</span></span><br></pre></td></tr></table></figure>
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/535-Encode-and-Decode-TinyURL/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/535-Encode-and-Decode-TinyURL/" title="535. Encode and Decode TinyURL">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+        <!-- 文章 -->
+<article class="post">
+    <header>
+        <!-- 标签这有且只能显示一个 -->
+        
+        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
+        
+        <!-- 文章标题 -->
+        
+    <h3 class="post-title">
+    	<a href="http://linlaw0229.github.io/2018/06/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/">
+    		340. Longest Substring with At Most K Distinct Characters
+    	</a>
+    </h3>
+
+    </header>
+    <p class="post-meta">
+        Jelon 发表于
+        <time datetime="2018-06-06T19:18:21.000Z">2018-06-06</time>
+        &nbsp;&nbsp;
+        <span class="post-tags">
+            标签：
+            
+    
+        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
+    
+        <a href="/tags/hash-table/" title="hash table">hash table</a> / 
+    
+        <a href="/tags/string/" title="string">string</a> / 
+    
+        <a href="/tags/hard/" title="hard">hard</a>
+    
+
+        </span>
+    </p>
+
+    <div class="post-content">
+        <div class="post-excerpt">
+            
+                <p>Problem description:</p>
+<p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<p>For example, Given s = “eceba” and k = 2,</p>
+<p>T is “ece” which its length is 3.</p>
+<p>Solution:<br>This problem is pretty similar to . Just change the checking size part to k.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, left = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; m;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.size(); ++i) &#123;</span><br><span class="line">            ++m[s[i]];</span><br><span class="line">            <span class="keyword">while</span> (m.size() &gt; k) &#123;</span><br><span class="line">                <span class="keyword">if</span> (--m[s[left]] == <span class="number">0</span>) m.erase(s[left]);</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            res = max(res, i - left + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+
+            
+            <p class="more">
+                <a href="http://linlaw0229.github.io/2018/06/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/">阅读剩下更多</a>
+            </p>
+        </div>
+        <div class="post-thumbnail" data-img="">
+            <a href="http://linlaw0229.github.io/2018/06/06/340-Longest-Substring-with-At-Most-K-Distinct-Characters/" title="340. Longest Substring with At Most K Distinct Characters">
+                
+                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/6.jpg" alt="默认配图" >
+                
+            </a>
+        </div>
+    </div>
+</article>
+
+    
+
+    
+    <nav class="page-navigator">
+        <a class="extend prev" rel="prev" href="/page/3/">前一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/">后一页</a>
+    </nav>
+    
+
+
+
+
+            </div>
+
+        </section>
+        <!-- 侧栏部分 -->
+<aside class="sidebar">
+    <section class="widget">
+        <h3 class="widget-hd"><strong>文章分类</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+    <li>
+        <a href="/categories/leetcode/">leetcode</a>
+        <span class="badge">(80)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/microsoft/">microsoft</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/algorithm/">algorithm</a>
+        <span class="badge">(3)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/STL/">STL</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+    <li>
+        <a href="/categories/tutorial/">tutorial</a>
+        <span class="badge">(1)</span>
+    </li>
+    
+</ul>
+    </section>
+
+    
+    <section class="widget">
+        <h3 class="widget-hd"><strong>热门标签</strong></h3>
+        <!-- 文章标签 -->
+<div class="widget-bd tag-wrap">
+  
+    <a class="tag-item" href="/tags/leetcode/" title="leetcode">leetcode (82)</a>
+  
+    <a class="tag-item" href="/tags/tree/" title="tree">tree (10)</a>
+  
+    <a class="tag-item" href="/tags/bfs/" title="bfs">bfs (4)</a>
+  
+    <a class="tag-item" href="/tags/medium/" title="medium">medium (53)</a>
+  
+    <a class="tag-item" href="/tags/array/" title="array">array (32)</a>
+  
+    <a class="tag-item" href="/tags/dfs/" title="dfs">dfs (12)</a>
+  
+    <a class="tag-item" href="/tags/easy/" title="easy">easy (4)</a>
+  
+    <a class="tag-item" href="/tags/hash-table/" title="hash table">hash table (8)</a>
+  
+    <a class="tag-item" href="/tags/linked-list/" title="linked list">linked list (8)</a>
+  
+    <a class="tag-item" href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming (19)</a>
+  
+    <a class="tag-item" href="/tags/sort/" title="sort">sort (4)</a>
+  
+    <a class="tag-item" href="/tags/merge-sort/" title="merge sort">merge sort (2)</a>
+  
+    <a class="tag-item" href="/tags/two-pointers/" title="two pointers">two pointers (4)</a>
+  
+    <a class="tag-item" href="/tags/facebook/" title="facebook">facebook (3)</a>
+  
+    <a class="tag-item" href="/tags/amazon/" title="amazon">amazon (1)</a>
+  
+    <a class="tag-item" href="/tags/microsoft/" title="microsoft">microsoft (1)</a>
+  
+    <a class="tag-item" href="/tags/stack/" title="stack">stack (4)</a>
+  
+    <a class="tag-item" href="/tags/binary-search/" title="binary search">binary search (5)</a>
+  
+    <a class="tag-item" href="/tags/string/" title="string">string (6)</a>
+  
+    <a class="tag-item" href="/tags/hard/" title="hard">hard (4)</a>
+  
+    <a class="tag-item" href="/tags/two-pointer/" title="two pointer">two pointer (2)</a>
+  
+    <a class="tag-item" href="/tags/union-find/" title="union find">union find (1)</a>
+  
+    <a class="tag-item" href="/tags/backtracking/" title="backtracking">backtracking (7)</a>
+  
+    <a class="tag-item" href="/tags/apple/" title="apple">apple (1)</a>
+  
+    <a class="tag-item" href="/tags/airbnb/" title="airbnb">airbnb (1)</a>
+  
+    <a class="tag-item" href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer (1)</a>
+  
+    <a class="tag-item" href="/tags/math/" title="math">math (8)</a>
+  
+    <a class="tag-item" href="/tags/heap/" title="heap">heap (2)</a>
+  
+    <a class="tag-item" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd&#39;s Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm (1)</a>
+  
+    <a class="tag-item" href="/tags/binary-indexed-tree/" title="binary indexed tree">binary indexed tree (1)</a>
+  
+    <a class="tag-item" href="/tags/permutation/" title="permutation">permutation (1)</a>
+  
+    <a class="tag-item" href="/tags/brainteaser/" title="brainteaser">brainteaser (1)</a>
+  
+    <a class="tag-item" href="/tags/bucket-sort/" title="bucket sort">bucket sort (1)</a>
+  
+    <a class="tag-item" href="/tags/google/" title="google">google (1)</a>
+  
+    <a class="tag-item" href="/tags/greedy/" title="greedy">greedy (2)</a>
+  
+    <a class="tag-item" href="/tags/peak/" title="peak">peak (1)</a>
+  
+    <a class="tag-item" href="/tags/greddy/" title="greddy">greddy (1)</a>
+  
+    <a class="tag-item" href="/tags/partition/" title="partition">partition (1)</a>
+  
+    <a class="tag-item" href="/tags/subset/" title="subset">subset (1)</a>
+  
+</div>
+    </section>
+    
+
+    
+
+    
+    <!-- 友情链接 -->
+    <section class="widget">
+        <h3 class="widget-hd"><strong>友情链接</strong></h3>
+        <!-- 文章分类 -->
+<ul class="widget-bd">
+    
+        <li>
+            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
+        </li>
+    
+        <li>
+            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
+        </li>
+    
+        <li>
+            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
+        </li>
+    
+</ul>
+    </section>
+    
+</aside>
+<!-- / 侧栏部分 -->
+    </div>
+
+    <!-- 博客底部 -->
+    <footer class="footer">
+    &copy;
+    
+        2016-2018
+    
+
+    <a href="/">Jelon Loves You</a>
+</footer>
+<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+
+    <!--博客js脚本 -->
+    <!-- 这里放网站js脚本 -->
+<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
 </html>
