@@ -1,1013 +1,402 @@
-<!doctype html>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
 <head>
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=11,IE=10,IE=9,IE=8" >
-    <meta name="baidu-site-verification" content="dIcXMeY8Ya" />
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="keywords" content="hexo, autumn">
+    <title>
+        linlaw Techblog
+    </title>
+    <!-- favicon -->
     
-    <title>linlaw Techblog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
-    <meta name="keywords" content="Jelon, 前端, Web, 张德龙, 前端开发" >
-    <meta name="description" content="Jelon个人前端小站" >
-
-    
-    <link rel="alternative" href="/atom.xml" title="linlaw Techblog" type="application/atom+xml" >
-    
-    
-    <link rel="shortcut icon" href="/favicon.ico" >
+    <link rel="icon" href="/css/L.ico">
     
     <link rel="stylesheet" href="/css/style.css">
-    <!--[if lt IE 9]>
-    <script src="/js/html5.js"></script>
-    <![endif]-->
-    
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?fd459238242776d173cdc64918fb32f2";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
+    <!-- highlight -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/github-gist.min.css">
+    <script src="//cdn.bootcss.com/highlight.js/9.2.0/highlight.min.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad()
+    </script>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/infinite-scroll.css">
+    <script src="/css/infinite-scroll.js"></script>
+    <script>
+        infiniteScroll()
 
+        // for mobile menu
+        $(function() {
+            $('.social-button').click(function() {
+                if ($('.social-links').hasClass('hide-links')) {
+                    $('.social-links').removeClass('hide-links')
+                } else {
+                    $('.social-links').addClass('hide-links')
+                }
+            })
+        })
+    </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-<body class="home">
-    <!-- hexo-inject:begin --><!-- hexo-inject:end --><!--[if lt IE 9]>
-    <div class="browsehappy">
-        当前网页 <strong>不支持</strong>
-        你正在使用的浏览器. 为了正常的访问, 请 <a href="http://browsehappy.com/">升级你的浏览器</a>.
-    </div>
-    <![endif]-->
+    <body style="background: url(/css/button-bg.png) #f3f3f3">
+        <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container">
+            <header class="header">
+    <h1 class="title">
+        <a href="/" class="logo">
+            linlaw Techblog
+        </a>
+    </h1>
+    <h2 class="desc">
+        Make the change you want to see in the world.
+    </h2>
 
-    <!-- 博客头部 -->
-    <header class="header">
-    <section class="container header-main">
-        <div class="logo">
-            <a href="/">
-                <div class="cover">
-                    <span class="name">linlaw Techblog</span>
-                    <span class="description">Make the change you want to see in the world.</span>
-                </div>
-            </a>
-        </div>
-        <div class="dropnav icon-paragraph-justify" id="JELON__btnDropNav"></div>
-        <ul class="menu hidden" id="JELON__menu">
+    <nav class="links">
+        <button class="social-button">
+            menu
+        </button>
+        <ul class="social-links hide-links">
             
-            <li rel="/page/6/index.html" class="item ">
-                <a href="/" title="首页" class="icon-home">&nbsp;首页</a>
-            </li>
-            
-            <li rel="/page/6/index.html" class="item ">
-                <a href="/lab/" title="实验室" class="icon-lab">&nbsp;实验室</a>
-            </li>
-            
-            <li rel="/page/6/index.html" class="item ">
-                <a href="/about/" title="关于" class="icon-about">&nbsp;关于</a>
-            </li>
-            
-            <li rel="/page/6/index.html" class="item ">
-                <a href="/comment/" title="留言" class="icon-comment">&nbsp;留言</a>
-            </li>
-            
-        </ul>
-        <div class="profile clearfix">
-            <div class="feeds fl">
-                
-                
-                <p class="links">
-                    
-                        <a href="https://github.com/jangdelong" target="_blank">Github</a>
-                        |
-                    
-                        <a href="https://pages.coding.me" target="_blank">Hosted by Coding Pages</a>
-                        
-                    
-                </p>
-                <p class="sns">
-                    
-                        <a href="http://weibo.com/jangdelong" class="sinaweibo" target="_blank"><b>■</b> 新浪微博</a>
-                    
-                        <a href="https://www.facebook.com/profile.php?id=100011855760219&amp;ref=bookmarks" class="qqweibo" target="_blank"><b>■</b> Facebook</a>
-                    
-                    <a href="javascript: void(0);" class="wechat">
-                        <b>■</b>
-                        公众号
-                        <span class="popover">
-                            <img src="/img/wechat_mp.jpg" width="120" height="120" alt="我的微信订阅号">
-                            <i class="arrow"></i>
-                        </span>
+                <li>
+                    <a href="https://github.com/linlaw0229">
+                        Github
                     </a>
-                </p>
+                </li>
                 
-            </div>
-            <div class="avatar fr">
-                <img src="/img/jelon.jpg" alt="avatar" title="Jelon" >
-            </div>
-        </div>
-    </section>
-</header>
-
-
-    <!-- 博客正文 -->
-    <div class="container body clearfix">
-        <section class="content">
-            <div class="content-main widget">
-                <!-- 首页 -->
-
-    
-    <h3 class="widget-hd">
-        <strong>
-            
-                最近动态
-            
-        </strong>
-    </h3>
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/04/64-Minimum-Path-Sum/">
-    		64. Minimum Path Sum
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-04T21:42:41.000Z">2018-06-04</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>Problem description:<br>Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.</p>
-<p>Note: You can only move either down or right at any point in time.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [1,3,1],</span><br><span class="line">  [1,5,1],</span><br><span class="line">  [4,2,1]</span><br><span class="line">]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Because the path 1→3→1→1→1 minimizes the sum.</span><br></pre></td></tr></table></figure></p>
-<p>Solution:</p>
-<ol>
-<li>2D array DP<br>Use an extra matrix <code>dp</code> of the same size as the original matrix. In this matrix, <code>dp(i, j)</code> represents the minimum sum of the path from the index <code>(i, j)</code> to the bottom rightmost element. We start by initializing the bottom rightmost element of <code>dp</code> as the last element of the given matrix. Then for each element starting from the bottom right, we traverse backwards and fill in the matrix with the required minimum sums. Now, we need to note that at every element, we can move either rightwards or downwards. Therefore, for filling in the minimum sum, we use the equation:</li>
-</ol>
-<p><code>dp(i,j)=grid(i,j)+min(dp(i+1,j),dp(i,j+1))</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span>&amp; s = grid;</span><br><span class="line">        <span class="keyword">int</span> n = grid.size();</span><br><span class="line">        <span class="keyword">int</span> m = grid[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = n<span class="number">-1</span>; i&gt;=<span class="number">0</span>; --i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = m<span class="number">-1</span>; j&gt;=<span class="number">0</span>; --j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == n<span class="number">-1</span> &amp;&amp; j != m<span class="number">-1</span>)    <span class="comment">//edge case, last row</span></span><br><span class="line">                    s[i][j] += s[i][j+<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i != n<span class="number">-1</span> &amp;&amp; j == m<span class="number">-1</span>)</span><br><span class="line">                    s[i][j] += s[i+<span class="number">1</span>][j];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i != n<span class="number">-1</span> &amp;&amp; j != m<span class="number">-1</span>)</span><br><span class="line">                    s[i][j] = s[i][j] + min(s[i][j+<span class="number">1</span>], s[i+<span class="number">1</span>][j]);</span><br><span class="line">            &#125;          </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>time complexity: O(mn)<br>space complexity: O(mn)</p>
-<ol start="2">
-<li>1D array<br>We can do the same work using a <code>dp</code> array of the row size, since for making the current entry all we need is the dp entry for the bottom and the right element. Thus, we start by initializing only the last element of the array as the last element of the given matrix. The last entry is the bottom rightmost element of the given matrix. Then, we start moving towards the left and update the entry <code>dp(j)</code> as:</li>
-</ol>
-<p><code>dp(j)=grid(i,j)+min(dp(j),dp(j+1))</code></p>
-<p>We repeat the same process for every row as we move upwards. At the end dp(0)dp(0) gives the required minimum sum.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minPathSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = grid.size(), m= grid[<span class="number">0</span>].size();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dp(m, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= n<span class="number">-1</span>; i&gt;= <span class="number">0</span>; --i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = m<span class="number">-1</span>; j&gt;= <span class="number">0</span>; --j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i == n<span class="number">-1</span> &amp;&amp; j != m<span class="number">-1</span>) dp[j] = grid[i][j]+ dp[j+<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i != n<span class="number">-1</span> &amp;&amp; j == m<span class="number">-1</span>) dp[j] = grid[i][j]+ dp[j];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(i != n<span class="number">-1</span> &amp;&amp; j != m<span class="number">-1</span>) dp[j] = grid[i][j] + min(dp[j], dp[j+<span class="number">1</span>]);</span><br><span class="line">                <span class="keyword">else</span> dp[j] = grid[i][j];</span><br><span class="line">                    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>time complexity: O(mn)<br>space complexity: O(n)</p>
-
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/04/64-Minimum-Path-Sum/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/04/64-Minimum-Path-Sum/" title="64. Minimum Path Sum">
+                <li>
+                    <a href="https://www.linkedin.com/in/lawrence0229/">
+                        LinkedIn
+                    </a>
+                </li>
                 
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/04/377-Combination-Sum-IV/">
-    		377. Combination Sum IV
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-04T19:34:06.000Z">2018-06-04</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>Problem description:</p>
-<p>Given an integer array with all positive numbers and no duplicates, find the number of possible combinations that add up to a positive integer target.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">nums = [1, 2, 3]</span><br><span class="line">target = 4</span><br><span class="line"></span><br><span class="line">The possible combination ways are:</span><br><span class="line">(1, 1, 1, 1)</span><br><span class="line">(1, 1, 2)</span><br><span class="line">(1, 2, 1)</span><br><span class="line">(1, 3)</span><br><span class="line">(2, 1, 1)</span><br><span class="line">(2, 2)</span><br><span class="line">(3, 1)</span><br><span class="line"></span><br><span class="line">Note that different sequences are counted as different combinations.</span><br><span class="line"></span><br><span class="line">Therefore the output is 7.</span><br></pre></td></tr></table></figure></p>
-<p>Follow up:</p>
-<ul>
-<li>What if negative numbers are allowed in the given array?</li>
-<li>How does it change the problem?</li>
-<li>What limitation we need to add to the question to allow negative numbers?</li>
-</ul>
-<p>Solution:<br>Think about the recurrence relation first. How does the # of combinations of the target related to the # of combinations of numbers that are smaller than the target?</p>
-<p>So we know that target is the sum of numbers in the array. Imagine we only need one more number to reach target, this number can be any one in the array, right? So the # of combinations of target, comb[target] = sum(comb[target - nums[i]]), where 0 &lt;= i &lt; nums.length, and target &gt;= nums[i].</p>
-<p>In the example given, we can actually find the # of combinations of 4 with the # of combinations of 3(4 - 1), 2(4- 2) and 1(4 - 3). As a result, comb[4] = comb[4-1] + comb[4-2] + comb[4-3] = comb[3] + comb[2] + comb[1].</p>
-<p>In the code, I use a dp array to represent the combination array.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int combinationSum4(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(target + 1);</span><br><span class="line">        dp[0] = 1;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">          </span><br><span class="line">        for (int i = 1; i &lt;= target; ++i) &#123;</span><br><span class="line">            for (auto n : nums) &#123;</span><br><span class="line">                if (i &lt; n) break; //can not use n as i&apos;s candidate</span><br><span class="line">                dp[i] += dp[i - n];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return dp.back();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/04/377-Combination-Sum-IV/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/04/377-Combination-Sum-IV/" title="377. Combination Sum IV">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/04/216-Combination-Sum-III/">
-    		216. Combination Sum III
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-04T19:30:03.000Z">2018-06-04</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/dfs/" title="dfs">dfs</a> / 
-    
-        <a href="/tags/backtracking/" title="backtracking">backtracking</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>Problem description:</p>
-<p>Find all possible combinations of k numbers that add up to a number n, given that only numbers from 1 to 9 can be used and each combination should be a unique set of numbers.</p>
-<p>Note:</p>
-<p>All numbers will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: k = 3, n = 7</span><br><span class="line">Output: [[1,2,4]]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: k = 3, n = 9</span><br><span class="line">Output: [[1,2,6], [1,3,5], [2,3,4]]</span><br></pre></td></tr></table></figure>
-<p>Solution:<br>DFS + backtracking.<br>This question is very similar to <a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a> and . However, we need to create the candidates array, or you can use for loop to walk through 1~9.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum3(int k, int n) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        vector&lt;int&gt; candidates= &#123;1,2,3,4,5,6,7,8,9&#125;;</span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        backtrack(candidates, res, tmp, k, n, 0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void backtrack(vector&lt;int&gt;&amp; candidates, vector&lt;vector&lt;int&gt;&gt;&amp; res, vector&lt;int&gt;&amp; tmp, int k, int remain, int pos)&#123;</span><br><span class="line">        if(k ==0 &amp;&amp; remain == 0) </span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        else&#123; //tmp.size &lt; k, n still need to fill value</span><br><span class="line">            for(int i = pos; i&lt; candidates.size() &amp;&amp; k&gt;0 &amp;&amp; remain&gt;0; i++)&#123;</span><br><span class="line">                tmp.push_back(candidates[i]);</span><br><span class="line">                backtrack(candidates, res, tmp, k-1, remain- candidates[i], i+1);</span><br><span class="line">                tmp.resize(tmp.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/04/216-Combination-Sum-III/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/04/216-Combination-Sum-III/" title="216. Combination Sum III">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/4.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/01/40-Combination-Sum-II/">
-    		40. Combination Sum II
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-02T01:28:07.000Z">2018-06-01</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/dfs/" title="dfs">dfs</a> / 
-    
-        <a href="/tags/backtracking/" title="backtracking">backtracking</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
-<p>Each number in candidates may only be used once in the combination.</p>
-<p>Note:</p>
-<p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: candidates = [10,1,2,7,6,1,5], target = 8,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [1, 7],</span><br><span class="line">  [1, 2, 5],</span><br><span class="line">  [2, 6],</span><br><span class="line">  [1, 1, 6]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,5,2,1,2], target = 5,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [1,2,2],</span><br><span class="line">  [5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>DFS + backtracking.<br>This question is very similar to <a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a>. The only difference is that the candidates array have duplicate elements, and we can not have same combination set in result array.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum2(vector&lt;int&gt;&amp; candidates, int target) &#123;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line"></span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        backtrack(candidates, tmp, res, target, 0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void backtrack(vector&lt;int&gt;&amp; candidates, vector&lt;int&gt;&amp; tmp, vector&lt;vector&lt;int&gt;&gt;&amp; res, int remain, int pos)&#123;</span><br><span class="line">        </span><br><span class="line">        if(remain == 0) res.push_back(tmp);</span><br><span class="line">        else if(remain &lt; 0) return;</span><br><span class="line">        else&#123;</span><br><span class="line">            for(int i = pos; i&lt; candidates.size(); i++)&#123;</span><br><span class="line">                //skip duplicate, because the question is asked for unique combination</span><br><span class="line">                if(i &gt; pos &amp;&amp; candidates[i] == candidates[i-1]) continue; </span><br><span class="line">                </span><br><span class="line">                tmp.push_back(candidates[i]);</span><br><span class="line">                backtrack(candidates, tmp, res, remain-candidates[i], i+1);</span><br><span class="line">                tmp.resize(tmp.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/01/40-Combination-Sum-II/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/01/40-Combination-Sum-II/" title="40. Combination Sum II">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/01/39-Combination-Sum/">
-    		39. Combination Sum
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-01T20:42:53.000Z">2018-06-01</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/dfs/" title="dfs">dfs</a> / 
-    
-        <a href="/tags/backtracking/" title="backtracking">backtracking</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p>
-<p>The same repeated number may be chosen from candidates unlimited number of times.</p>
-<p>Note:</p>
-<p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,6,7], target = 7,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,5], target = 8,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [2,2,2,2],</span><br><span class="line">  [2,3,3],</span><br><span class="line">  [3,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>DFS + backtracking.<br>In backtrack(), I use the following 5 inputs.</p>
-<ul>
-<li>vector&lt;vector<int>&gt;&amp; res, store every combination here</int></li>
-<li>vector<int>&amp; temp, this is buffer for recursive, increase/decrease element depends on depth of dfs</int></li>
-<li>vector<int>&amp; candidates, </int></li>
-<li>int remain, what we targeting, need to input remain-i when dfs into next level</li>
-<li>int start, this is because we can not have duplicate sets, to record what elements we already passed or visited.</li>
-</ul>
-<p>Time complexity: O(n*2^n)<br>The number of recursive calls, T(n) satisfies the recurrence T(n) = T(n - 1) + T(n - 2) + … + T(1) + T(0),which solves to T(n) = O(2^n). Since we spend O(n) time within a call, the time complexity is O(n2^n);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; combinationSum(vector&lt;int&gt;&amp; candidates, int target) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        vector&lt;int&gt; tmp;</span><br><span class="line">        backtrack(res, tmp, candidates, target, 0);</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">private :</span><br><span class="line">    void backtrack(vector&lt;vector&lt;int&gt;&gt;&amp; res, vector&lt;int&gt;&amp; temp, vector&lt;int&gt;&amp; candidates, int remain, int start)&#123;</span><br><span class="line">        if(remain &lt; 0) return; //did not match the target</span><br><span class="line">        else if(remain == 0) res.push_back(temp); //put into the result</span><br><span class="line">        else&#123;</span><br><span class="line">            for(int i = start; i&lt; candidates.size(); i++)&#123;</span><br><span class="line">                //search candidate[i] have any combanition</span><br><span class="line">                temp.push_back(candidates[i]); </span><br><span class="line">                backtrack(res, temp, candidates, remain-candidates[i], i); </span><br><span class="line">                </span><br><span class="line">                temp.resize(temp.size()-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>reference:<br><a href="https://goo.gl/HkoJaT" target="_blank" rel="noopener">https://goo.gl/HkoJaT</a><br><a href="https://goo.gl/XX6WAv" target="_blank" rel="noopener">https://goo.gl/XX6WAv</a><br><a href="http://www.1point3acres.com/bbs/thread-117602-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-117602-1-1.html</a></p>
-
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/01/39-Combination-Sum/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/01/289-Game-of-Life/">
-    		289. Game of Life
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-01T18:33:34.000Z">2018-06-01</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>According to the Wikipedia’s article: “The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.”</p>
-<p>Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p>
-<ul>
-<li>Any live cell with fewer than two live neighbors dies, as if caused by under-population.</li>
-<li>Any live cell with two or three live neighbors lives on to the next generation.</li>
-<li>Any live cell with more than three live neighbors dies, as if by over-population..</li>
-<li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.<br>Write a function to compute the next state (after one update) of the board given its current state.</li>
-</ul>
-<p>Follow up:<br>Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.<br>In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>To solve it in place, we use 2 bits to store 2 states:</p>
-<p>[2nd bit, 1st bit] = [next state, current state]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00  dead (next) &lt;- dead (current)</span><br><span class="line">01  dead (next) &lt;- live (current)  </span><br><span class="line">10  live (next) &lt;- dead (current)  </span><br><span class="line">11  live (next) &lt;- live (current)</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>In the beginning, every cell is either 00 or 01.</li>
-<li>Notice that 1st state is independent of 2nd state.</li>
-<li>Imagine all cells are instantly changing from the 1st to the 2nd state, at the same time.</li>
-<li>Let’s count # of neighbors from 1st state and set 2nd state bit.</li>
-<li>Since every 2nd state is by default dead, no need to consider transition 01 -&gt; 00.</li>
-<li>In the end, delete every cell’s 1st state by doing &gt;&gt; 1.</li>
-</ul>
-<p>For each cell’s 1st bit, check the 8 pixels around itself, and set the cell’s 2nd bit.</p>
-<p>Transition 01 -&gt; 11: when board == 1 and lives &gt;= 2 &amp;&amp; lives &lt;= 3.<br>Transition 00 -&gt; 10: when board == 0 and lives == 3.<br>To get the current state, simply do</p>
-<p>board[i][j] &amp; 1<br>To get the next state, simply do</p>
-<p>board[i][j] &gt;&gt; 1</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void gameOfLife(vector&lt;vector&lt;int&gt;&gt;&amp; board) &#123;</span><br><span class="line">        if(board.empty() || board.size() == 0) return;</span><br><span class="line">        int m = board.size(), n= board[0].size();</span><br><span class="line">        </span><br><span class="line">        for(int i = 0; i&lt; m; i++)&#123;</span><br><span class="line">            for(int j = 0; j&lt; n; j++)&#123;</span><br><span class="line">                int lives = liveNeighbor(board, m,n,i,j);</span><br><span class="line">                // In the beginning, every 2nd bit is 0;</span><br><span class="line">                // So we only need to care about when will the 2nd bit become 1.</span><br><span class="line"></span><br><span class="line">                if(board[i][j] == 1 &amp;&amp; lives &gt;= 2 &amp;&amp; lives &lt;= 3)&#123;</span><br><span class="line">                    board[i][j] = 3; // Make the 2nd bit 1: 01 ---&gt; 11</span><br><span class="line">                &#125; </span><br><span class="line">                if(board[i][j] ==0 &amp;&amp; lives == 3)&#123;</span><br><span class="line">                    board[i][j]= 2; // Make the 2nd bit 1: 00 ---&gt; 10</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i= 0; i&lt; m; ++i)</span><br><span class="line">            for(int j =0; j&lt; n; ++j)</span><br><span class="line">                board[i][j] &gt;&gt;=1; // Get the 2nd state.</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    int liveNeighbor(vector&lt;vector&lt;int&gt;&gt;&amp; board, int m, int n, int i, int j)&#123;</span><br><span class="line">        int lives= 0;</span><br><span class="line">        for(int x= max(i-1, 0); x&lt;= min(i+1, m-1); x++)&#123;</span><br><span class="line">            for(int y= max(j-1, 0); y &lt;= min(j+1, n-1); y++)&#123;</span><br><span class="line">                lives+= board[x][y] &amp;1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        lives -= board[i][j] &amp;1;</span><br><span class="line">        return lives;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/01/289-Game-of-Life/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/01/289-Game-of-Life/" title="289. Game of Life">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/06/01/31-Next-Permutation/">
-    		31. Next Permutation
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-06-01T16:09:18.000Z">2018-06-01</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/permutation/" title="permutation">permutation</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>Problem description:</p>
-<p>Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
-<p>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).</p>
-<p>The replacement must be in-place and use only constant extra memory.</p>
-<p>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,2,3 → 1,3,2</span><br><span class="line">3,2,1 → 1,2,3</span><br><span class="line">1,1,5 → 1,5,1</span><br></pre></td></tr></table></figure></p>
-<p>Solution:<br>index: 0,1,2,3,4,5<br>value: 2,3,6,5,4,1</p>
-<p><strong>1. from right to left, find the first number which not increase in a ascending order. In this case which is 3.</strong><br><strong>2. here we can have two situations:</strong></p>
-<p>We cannot find the number, all the numbers increasing in a ascending order. This means this permutation is the last permutation, we need to rotate back to the first permutation. So we reverse the whole array, for example, 6,5,4,3,2,1 we turn it to 1,2,3,4,5,6.</p>
-<p>We can find the number, then the next step, we will start from right most to leftward, try to find the first number which is larger than 3, in this case it is 4.<br>Then we swap 3 and 4, the list turn to 2,4,6,5,3,1.<br>Last, we reverse numbers on the right of 4, we finally get 2,4,1,3,5,6.</p>
-<p>Time complexity: O(3*n)=O(n).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int k = -1; //for checking whether the array is in descending order</span><br><span class="line">    	for (int i = nums.size() - 2; i &gt;= 0; i--) &#123;</span><br><span class="line">    		if (nums[i] &lt; nums[i + 1]) &#123; //From right to left, find 1st number that is not ascending order</span><br><span class="line">    			k = i;</span><br><span class="line">    			break;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125; </span><br><span class="line">    	if (k == -1) &#123; </span><br><span class="line">            //can not find the number, this means the array is already the largest type, </span><br><span class="line">            //so reverse it would have the smallest</span><br><span class="line">    	    reverse(nums.begin(), nums.end());</span><br><span class="line">    	    return;</span><br><span class="line">    	&#125;</span><br><span class="line">    	int l = -1; //From right to left, trying to find 1st number that is greater than nums[k]</span><br><span class="line">    	for (int i = nums.size() - 1; i &gt; k; i--) &#123;</span><br><span class="line">    		if (nums[i] &gt; nums[k]) &#123;</span><br><span class="line">    			l = i;</span><br><span class="line">    			break;</span><br><span class="line">    		&#125; </span><br><span class="line">    	&#125; </span><br><span class="line">    	swap(nums[k], nums[l]); </span><br><span class="line">    	reverse(nums.begin() + k + 1, nums.end()); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>Another solution:</strong></p>
-<p>Just for info: There’s a library function that does the job, even going from totally reverse sorted to sorted:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    next_permutation(begin(nums), end(nums));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>Another Solution</strong></p>
-<p>Using library functions for all building blocks of the algorithm. Very nice how they all play together, notice the total lack of +1/-1, it all fits exactly.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void nextPermutation(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">    auto i = is_sorted_until(nums.rbegin(), nums.rend());</span><br><span class="line">    if (i != nums.rend())</span><br><span class="line">        swap(*i, *upper_bound(nums.rbegin(), i, *i));</span><br><span class="line">    reverse(nums.rbegin(), i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/06/01/31-Next-Permutation/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/06/01/31-Next-Permutation/" title="31. Next Permutation">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/05/31/73-Set-Matrix-Zeroes/">
-    		73. Set Matrix Zeroes
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-05-31T20:21:25.000Z">2018-05-31</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>Problem description:</p>
-<p>Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: </span><br><span class="line">[</span><br><span class="line">  [1,1,1],</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [1,1,1]</span><br><span class="line">]</span><br><span class="line">Output: </span><br><span class="line">[</span><br><span class="line">  [1,0,1],</span><br><span class="line">  [0,0,0],</span><br><span class="line">  [1,0,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: </span><br><span class="line">[</span><br><span class="line">  [0,1,2,0],</span><br><span class="line">  [3,4,5,2],</span><br><span class="line">  [1,3,1,5]</span><br><span class="line">]</span><br><span class="line">Output: </span><br><span class="line">[</span><br><span class="line">  [0,0,0,0],</span><br><span class="line">  [0,4,5,0],</span><br><span class="line">  [0,3,1,0]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<p>Follow up:</p>
-<ul>
-<li>A straight forward solution using O(mn) space is probably a bad idea.</li>
-<li>A simple improvement uses O(m + n) space, but still not the best solution.</li>
-<li>Could you devise a constant space solution?</li>
-</ul>
-<p>Solution:</p>
-<ol>
-<li>fr = first row, fc = first col</li>
-<li>Use first row and first column as markers. If matrix[i][j] = 0, mark respected row and col marker = 0 indicating that later this respective row and col must be marked 0; And because you are altering first row and column, we need to have two variables to track their own status. </li>
-<li><p>For example, if any one of the first row is 0, fr = 0, at the end need to set all first row to 0;</p>
-<p>time complexity: O(mn)<br>space complexity: O(1)</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    void setZeroes(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        bool fr= false, fc= false;</span><br><span class="line">        for(int i = 0; i&lt; matrix.size(); ++i)&#123;</span><br><span class="line">            for(int j= 0; j&lt; matrix[0].size(); ++j)&#123;</span><br><span class="line">                if(matrix[i][j] == 0)&#123;</span><br><span class="line">                    if(i == 0) fr = true;</span><br><span class="line">                    if(j == 0) fc = true;</span><br><span class="line">                    matrix[i][0] = 0;</span><br><span class="line">                    matrix[0][j] = 0;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        for(int i = 1; i&lt; matrix.size(); ++i)&#123;</span><br><span class="line">            for(int j = 1; j&lt; matrix[0].size(); ++j)&#123;</span><br><span class="line">                if(matrix[i][0] == 0 || matrix[0][j] == 0)</span><br><span class="line">                    matrix[i][j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(fc)&#123;</span><br><span class="line">            for(int i = 0; i&lt; matrix.size(); ++i)</span><br><span class="line">                matrix[i][0] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if(fr)&#123;</span><br><span class="line">            for(int j = 0; j&lt; matrix[0].size(); ++j)</span><br><span class="line">                matrix[0][j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/05/31/73-Set-Matrix-Zeroes/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/05/31/73-Set-Matrix-Zeroes/" title="73. Set Matrix Zeroes">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/05/31/79-Word-Search/">
-    		79. Word Search
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-05-31T19:42:56.000Z">2018-05-31</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/backtracking/" title="backtracking">backtracking</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>#Problem description:</p>
-<p>Given a 2D board and a word, find if the word exists in the grid.</p>
-<p>The word can be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">board =</span><br><span class="line">[</span><br><span class="line">  [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;E&apos;],</span><br><span class="line">  [&apos;S&apos;,&apos;F&apos;,&apos;C&apos;,&apos;S&apos;],</span><br><span class="line">  [&apos;A&apos;,&apos;D&apos;,&apos;E&apos;,&apos;E&apos;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Given word = &quot;ABCCED&quot;, return true.</span><br><span class="line">Given word = &quot;SEE&quot;, return true.</span><br><span class="line">Given word = &quot;ABCB&quot;, return false.</span><br></pre></td></tr></table></figure>
-<p>#Solution:</p>
-<ol>
-<li>use DFS to find whether the word exist</li>
-<li>create a 2D bool array to record used elements in each DFS, the range should be [rowNum][colNum]</li>
-<li>find word with start in each slot[i][j]</li>
-</ol>
-<p>In auxiliary function:<br>First we check pos is equal to word.length(), return true if it’s the same.<br>Second, if anything is out of range, then return false.<br>Third, return false if (we already visited this slot) || ([i][j] is different from the word[pos])</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool exist(vector&lt;vector&lt;char&gt;&gt;&amp; board, string word) &#123;</span><br><span class="line">        if(board.empty() || !word.length()) return false; //nothing in board || nothing in word</span><br><span class="line">        int rowNum= board.size(), colNum= board[0].size();</span><br><span class="line">        vector&lt;vector&lt;bool&gt;&gt; visited(rowNum, vector&lt;bool&gt;(colNum, false)); //create a visit array to check if visited</span><br><span class="line">        </span><br><span class="line">        for(int i =0; i&lt; rowNum; ++i)&#123;</span><br><span class="line">            for(int j= 0; j&lt; colNum; ++j)&#123;</span><br><span class="line">                //use [i][j] as start point, search for word</span><br><span class="line">                if(exist(board, visited, word, i, j, 0)) return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool exist(vector&lt;vector&lt;char&gt;&gt;&amp; board, vector&lt;vector&lt;bool&gt;&gt;&amp; visited, string word, int i, int j, int pos) &#123;</span><br><span class="line">        if(pos == word.length()) return true;</span><br><span class="line">        if( i&lt; 0 || j&lt; 0 || i&gt; board.size()-1 || j&gt;board[0].size()-1) return false; //edge case for size</span><br><span class="line">        if(visited[i][j] || board[i][j] != word.at(pos)) return false; </span><br><span class="line">        //already came this slot || [i][j] is different from word[pos]</span><br><span class="line">        </span><br><span class="line">        visited[i][j] = true;</span><br><span class="line">        </span><br><span class="line">        //DFS</span><br><span class="line">        if (exist(board, visited, word, i - 1, j, pos + 1) //check toward left</span><br><span class="line">            || exist(board, visited, word, i + 1, j, pos + 1) //check toward right</span><br><span class="line">            || exist(board, visited, word, i, j - 1, pos + 1) //check toward top</span><br><span class="line">            || exist(board, visited, word, i, j + 1, pos + 1)) //check toward bottom</span><br><span class="line">            return true; </span><br><span class="line">        </span><br><span class="line">        visited[i][j] = false; //this slot can not make a same search word</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Reference:<br><a href="https://goo.gl/QLs5yW" target="_blank" rel="noopener">https://goo.gl/QLs5yW</a></p>
-
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/05/31/79-Word-Search/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/05/31/79-Word-Search/" title="79. Word Search">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-        <!-- 文章 -->
-<article class="post">
-    <header>
-        <!-- 标签这有且只能显示一个 -->
-        
-        <a class="cat-link" href="/categories/leetcode/">leetcode</a>
-        
-        <!-- 文章标题 -->
-        
-    <h3 class="post-title">
-    	<a href="http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/">
-    		287. Find the Duplicate Number
-    	</a>
-    </h3>
-
-    </header>
-    <p class="post-meta">
-        Jelon 发表于
-        <time datetime="2018-05-31T16:19:17.000Z">2018-05-31</time>
-        &nbsp;&nbsp;
-        <span class="post-tags">
-            标签：
-            
-    
-        <a href="/tags/leetcode/" title="leetcode">leetcode</a> / 
-    
-        <a href="/tags/medium/" title="medium">medium</a> / 
-    
-        <a href="/tags/array/" title="array">array</a> / 
-    
-        <a href="/tags/binary-search/" title="binary search">binary search</a> / 
-    
-        <a href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd's Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm</a>
-    
-
-        </span>
-    </p>
-
-    <div class="post-content">
-        <div class="post-excerpt">
-            
-                <p>Problem description:</p>
-<p>Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [1,3,4,2,2]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [3,1,3,4,2]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
-<p>Note:</p>
-<ul>
-<li>You must not modify the array (assume the array is read only).</li>
-<li>You must use only constant, O(1) extra space.</li>
-<li>Your runtime complexity should be less than O(n2).</li>
-<li>There is only one duplicate number in the array, but it could be repeated more than once.</li>
-</ul>
-<p>Solution:</p>
-<h2 id="1-Floyd’s-Tortoise-and-Hare-Algorithm"><a href="#1-Floyd’s-Tortoise-and-Hare-Algorithm" class="headerlink" title="1. Floyd’s Tortoise and Hare Algorithm"></a>1. Floyd’s Tortoise and Hare Algorithm</h2><p>The first while loop ensures you goes in the correct cycle which has duplicates. For example:<br>index = [0 1 2 3 4 5 6 7]; nums = [5 2 1 3 5 7 6 4].<br>(slow)nums[slow] = (0)5 (5)7 (7)4 (4)5; fast = (0)5 (7)4 (5)7 (4)5; —-&gt; when they meets at (idx=4)(value=5), you know you have a cycle.</p>
-<p>Take a look at the cycle by the indices and values:</p>
-<p>idx: 0—&gt;5—&gt;7—&gt;4–&gt;(goes back to idx=5)</p>
-<p>val: 5—&gt;7—&gt;4—&gt;5–&gt;(goes back to val=7)</p>
-<p>The second while loop will stop when “fast=0” and “slow=4” (their values = 5, the duplicate number). The duplicate number 5 is the reason why the two pointers will meet at a same index (next number). In fact, the second loop will always stop right before they meet at the first item of the cycle. </p>
-<p>*Proof of second step:</p>
-<p>Distance traveled by tortoise while meeting = x + y<br>Distance traveled by hare while meeting = (x + y + z) + y = x + 2y + z<br>Since hare travels with double the speed of tortoise,<br>so 2(x+y)= x+2y+z =&gt; x+2y+z = 2x+2y =&gt; x=z</p>
-<p>Hence by moving tortoise to start of linked list, and making both animals to move one node at a time, they both have same distance to cover .<br>They will reach at the point where the loop starts in the linked list</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        if (nums.size() &gt; 1)</span><br><span class="line">        &#123;</span><br><span class="line">            int slow = nums[0];</span><br><span class="line">            int fast = nums[nums[0]];</span><br><span class="line">            while (slow != fast)</span><br><span class="line">            &#123;</span><br><span class="line">                //printf(&quot;slow:%d, fast:%d\n&quot;, slow, fast);</span><br><span class="line">                slow = nums[slow];</span><br><span class="line">                fast = nums[nums[fast]];</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            fast = 0;</span><br><span class="line">            while (fast != slow)</span><br><span class="line">            &#123;</span><br><span class="line">                //printf(&quot;slow:%d, fast:%d\n&quot;, slow, fast);</span><br><span class="line">                fast = nums[fast];</span><br><span class="line">                slow = nums[slow];</span><br><span class="line">            &#125;</span><br><span class="line">            //printf(&quot;slow:%d, fast:%d\n&quot;, slow, fast);</span><br><span class="line">            return slow;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="2-Binary-search"><a href="#2-Binary-search" class="headerlink" title="2. Binary search"></a>2. Binary search</h2><p>This solution is based on binary search.</p>
-<p>At first the search space is numbers between 1 to n. Each time I select a number mid (which is the one in the middle) and count all the numbers equal to or less than mid. Then if the count is more than mid, the search space will be [1 mid] otherwise [mid+1 n]. I do this until search space is only one number.</p>
-<p>Let’s say n=10 and I select mid=5. Then I count all the numbers in the array which are less than equal mid. If the there are more than 5 numbers that are less than 5, then by Pigeonhole Principle (<a href="https://en.wikipedia.org/wiki/Pigeonhole_principle" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Pigeonhole_principle</a>) one of them has occurred more than once. So I shrink the search space from [1 10] to [1 5]. Otherwise the duplicate number is in the second half so for the next step the search space would be [6 10].</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int findDuplicate(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n=nums.size()-1;</span><br><span class="line">        int low=1;</span><br><span class="line">        int high=n;</span><br><span class="line">        int mid;</span><br><span class="line">        while(low&lt;high)&#123;</span><br><span class="line">            mid=(low+high)/2;</span><br><span class="line">            </span><br><span class="line">            int count=0;</span><br><span class="line">            for(int num:nums)&#123;</span><br><span class="line">                if(num&lt;=mid) count++;</span><br><span class="line">            &#125;</span><br><span class="line">            printf(&quot;low=%d, high=%d, mid=%d, count=%d\n&quot;, low, high, mid, count);</span><br><span class="line">            if(count&gt;mid) high=mid;</span><br><span class="line">            else low=mid+1; </span><br><span class="line">        &#125;</span><br><span class="line">        return low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-            
-            <p class="more">
-                <a href="http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/">阅读剩下更多</a>
-            </p>
-        </div>
-        <div class="post-thumbnail" data-img="">
-            <a href="http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/" title="287. Find the Duplicate Number">
-                
-                    <img class="thumbnail" src="/img/default.png" data-echo="/img/thumbnail/1.jpg" alt="默认配图" >
-                
-            </a>
-        </div>
-    </div>
-</article>
-
-    
-
-    
-    <nav class="page-navigator">
-        <a class="extend prev" rel="prev" href="/page/5/">前一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">后一页</a>
+        </ul>
     </nav>
+</header>
+                <main class="main">
+                    <section class="posts">
     
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/04/64-Minimum-Path-Sum/">
+                            64. Minimum Path Sum
+                        </a>
+                    </h1>
 
+                    <ul class="post-date">
+                        <li>
+                            June 4, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/04/64-Minimum-Path-Sum/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/04/377-Combination-Sum-IV/">
+                            377. Combination Sum IV
+                        </a>
+                    </h1>
 
+                    <ul class="post-date">
+                        <li>
+                            June 4, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/04/377-Combination-Sum-IV/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/04/216-Combination-Sum-III/">
+                            216. Combination Sum III
+                        </a>
+                    </h1>
 
+                    <ul class="post-date">
+                        <li>
+                            June 4, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/04/216-Combination-Sum-III/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/01/40-Combination-Sum-II/">
+                            40. Combination Sum II
+                        </a>
+                    </h1>
 
-            </div>
+                    <ul class="post-date">
+                        <li>
+                            June 1, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/01/40-Combination-Sum-II/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/01/39-Combination-Sum/">
+                            39. Combination Sum
+                        </a>
+                    </h1>
 
-        </section>
-        <!-- 侧栏部分 -->
-<aside class="sidebar">
-    <section class="widget">
-        <h3 class="widget-hd"><strong>文章分类</strong></h3>
-        <!-- 文章分类 -->
-<ul class="widget-bd">
-    
-    <li>
-        <a href="/categories/leetcode/">leetcode</a>
-        <span class="badge">(80)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/microsoft/">microsoft</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/algorithm/">algorithm</a>
-        <span class="badge">(3)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/STL/">STL</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-    <li>
-        <a href="/categories/tutorial/">tutorial</a>
-        <span class="badge">(1)</span>
-    </li>
-    
-</ul>
-    </section>
+                    <ul class="post-date">
+                        <li>
+                            June 1, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/01/39-Combination-Sum/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/01/289-Game-of-Life/">
+                            289. Game of Life
+                        </a>
+                    </h1>
 
-    
-    <section class="widget">
-        <h3 class="widget-hd"><strong>热门标签</strong></h3>
-        <!-- 文章标签 -->
-<div class="widget-bd tag-wrap">
-  
-    <a class="tag-item" href="/tags/leetcode/" title="leetcode">leetcode (82)</a>
-  
-    <a class="tag-item" href="/tags/tree/" title="tree">tree (10)</a>
-  
-    <a class="tag-item" href="/tags/bfs/" title="bfs">bfs (4)</a>
-  
-    <a class="tag-item" href="/tags/medium/" title="medium">medium (53)</a>
-  
-    <a class="tag-item" href="/tags/array/" title="array">array (32)</a>
-  
-    <a class="tag-item" href="/tags/dfs/" title="dfs">dfs (12)</a>
-  
-    <a class="tag-item" href="/tags/easy/" title="easy">easy (4)</a>
-  
-    <a class="tag-item" href="/tags/hash-table/" title="hash table">hash table (8)</a>
-  
-    <a class="tag-item" href="/tags/linked-list/" title="linked list">linked list (8)</a>
-  
-    <a class="tag-item" href="/tags/dynamic-programming/" title="dynamic programming">dynamic programming (19)</a>
-  
-    <a class="tag-item" href="/tags/sort/" title="sort">sort (4)</a>
-  
-    <a class="tag-item" href="/tags/merge-sort/" title="merge sort">merge sort (2)</a>
-  
-    <a class="tag-item" href="/tags/two-pointers/" title="two pointers">two pointers (4)</a>
-  
-    <a class="tag-item" href="/tags/facebook/" title="facebook">facebook (3)</a>
-  
-    <a class="tag-item" href="/tags/amazon/" title="amazon">amazon (1)</a>
-  
-    <a class="tag-item" href="/tags/microsoft/" title="microsoft">microsoft (1)</a>
-  
-    <a class="tag-item" href="/tags/stack/" title="stack">stack (4)</a>
-  
-    <a class="tag-item" href="/tags/binary-search/" title="binary search">binary search (5)</a>
-  
-    <a class="tag-item" href="/tags/string/" title="string">string (6)</a>
-  
-    <a class="tag-item" href="/tags/hard/" title="hard">hard (4)</a>
-  
-    <a class="tag-item" href="/tags/two-pointer/" title="two pointer">two pointer (2)</a>
-  
-    <a class="tag-item" href="/tags/union-find/" title="union find">union find (1)</a>
-  
-    <a class="tag-item" href="/tags/backtracking/" title="backtracking">backtracking (7)</a>
-  
-    <a class="tag-item" href="/tags/apple/" title="apple">apple (1)</a>
-  
-    <a class="tag-item" href="/tags/airbnb/" title="airbnb">airbnb (1)</a>
-  
-    <a class="tag-item" href="/tags/divide-and-conquer/" title="divide and conquer">divide and conquer (1)</a>
-  
-    <a class="tag-item" href="/tags/math/" title="math">math (8)</a>
-  
-    <a class="tag-item" href="/tags/heap/" title="heap">heap (2)</a>
-  
-    <a class="tag-item" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/" title="Floyd&#39;s Tortoise and Hare Algorithm">Floyd's Tortoise and Hare Algorithm (1)</a>
-  
-    <a class="tag-item" href="/tags/binary-indexed-tree/" title="binary indexed tree">binary indexed tree (1)</a>
-  
-    <a class="tag-item" href="/tags/permutation/" title="permutation">permutation (1)</a>
-  
-    <a class="tag-item" href="/tags/brainteaser/" title="brainteaser">brainteaser (1)</a>
-  
-    <a class="tag-item" href="/tags/bucket-sort/" title="bucket sort">bucket sort (1)</a>
-  
-    <a class="tag-item" href="/tags/google/" title="google">google (1)</a>
-  
-    <a class="tag-item" href="/tags/greedy/" title="greedy">greedy (2)</a>
-  
-    <a class="tag-item" href="/tags/peak/" title="peak">peak (1)</a>
-  
-    <a class="tag-item" href="/tags/greddy/" title="greddy">greddy (1)</a>
-  
-    <a class="tag-item" href="/tags/partition/" title="partition">partition (1)</a>
-  
-    <a class="tag-item" href="/tags/subset/" title="subset">subset (1)</a>
-  
-</div>
-    </section>
-    
+                    <ul class="post-date">
+                        <li>
+                            June 1, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/01/289-Game-of-Life/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/06/01/31-Next-Permutation/">
+                            31. Next Permutation
+                        </a>
+                    </h1>
 
-    
+                    <ul class="post-date">
+                        <li>
+                            June 1, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/06/01/31-Next-Permutation/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/31/73-Set-Matrix-Zeroes/">
+                            73. Set Matrix Zeroes
+                        </a>
+                    </h1>
 
-    
-    <!-- 友情链接 -->
-    <section class="widget">
-        <h3 class="widget-hd"><strong>友情链接</strong></h3>
-        <!-- 文章分类 -->
-<ul class="widget-bd">
-    
-        <li>
-            <a href="http://blog.sina.com.cn/u/1825875765" target="_blank" title="网络安全博客">Haoren博客</a>
-        </li>
-    
-        <li>
-            <a href="http://blog.csdn.net/yeweiouyang" target="_blank" title="技术博客">Maxwell博客</a>
-        </li>
-    
-        <li>
-            <a href="http://xuanzh.cc/" target="_blank" title="技术博客">朱旋个人博客</a>
-        </li>
-    
-</ul>
-    </section>
-    
-</aside>
-<!-- / 侧栏部分 -->
-    </div>
+                    <ul class="post-date">
+                        <li>
+                            May 31, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/31/73-Set-Matrix-Zeroes/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/31/79-Word-Search/">
+                            79. Word Search
+                        </a>
+                    </h1>
 
-    <!-- 博客底部 -->
-    <footer class="footer">
-    &copy;
-    
-        2016-2018
-    
+                    <ul class="post-date">
+                        <li>
+                            May 31, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/31/79-Word-Search/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                <h4 class="post-cat">
+                    <a href="/categories/leetcode/">
+                        leetcode
+                    </a>
+                </h4>
+                
+                    <h1 class="post-title">
+                        <a href="/2018/05/31/287-Find-the-Duplicate-Number/">
+                            287. Find the Duplicate Number
+                        </a>
+                    </h1>
 
-    <a href="/">Jelon Loves You</a>
-</footer>
-<div class="back-to-top" id="JELON__backToTop" title="返回顶部">返回顶部</div>
+                    <ul class="post-date">
+                        <li>
+                            May 31, 2018
+                        </li>
+                        <li>
+                            Lawrence Lin
+                        </li>
+                    </ul>
+                    <div class="post-content ">
+                        
+                            <a href="/2018/05/31/287-Find-the-Duplicate-Number/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+</section>
+                </main>
+                <aside class="aside">
+                    <section class="aside-section">
+                        
+    <h1>Categories</h1>
 
-    <!--博客js脚本 -->
-    <!-- 这里放网站js脚本 -->
-<script src="/js/main.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-</body>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/STL/">STL</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/microsoft/">microsoft</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tutorial/">tutorial</a></li></ul>
+
+                    </section>
+                    <section class="aside-section">
+                        
+    <h1>Archives</h1>
+
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 07</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 06</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 05</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 04</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/">2018 . 03</a></li></ul>
+
+                    </section>
+                    <section class="aside-section tag">
+                        
+    <h1>Tags</h1>
+
+    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search-tree/">binary search tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/complete-binary-tree/">complete binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/partition/">partition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/peak/">peak</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subset/">subset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+
+                    </section>
+                </aside>
+        </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+    </body>
+
 </html>
