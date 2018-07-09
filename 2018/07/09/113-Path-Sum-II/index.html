@@ -72,289 +72,66 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/25/48-Rotate-Image/">
-                            48. Rotate Image
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 25, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/25/48-Rotate-Image/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/21/369-Plus-One-Linked-List/">
-                            369. Plus One Linked List
-                        </a>
-                    </h1>
+            <h2 class="post-title">
+                113. Path Sum II
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-07-09
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a binary tree and a sum, find all root-to-leaf paths where each path’s sum equals the given sum.</p>
+<p>Note: A leaf is a node with no children.</p>
+<p>Example:</p>
+<p>Given the below binary tree and sum = 22,</p>
+<pre><code>  5
+ / \
+4   8
+</code></pre><p>   /   / \<br>  11  13  4<br> /  \    / \<br>7    2  5   1<br>Return:</p>
+<p>[<br>   [5,4,11,2],<br>   [5,8,4,5]<br>]</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This is a typical backtracking question. Design a backtrack helper function, use preorder traversal to include the path.</p>
+<p>/**</p>
+<ul>
+<li>Definition for a binary tree node.</li>
+<li>struct TreeNode {</li>
+<li>int val;</li>
+<li>TreeNode *left;</li>
+<li>TreeNode *right;</li>
+<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
+<li><p>};<br><em>/<br>class Solution {<br>public:<br> vector&lt;vector<int>&gt; pathSum(TreeNode</int></em> root, int sum) {</p>
+<pre><code>vector&lt;vector&lt;int&gt;&gt; res;
+vector&lt;int&gt; tmp;
+helper(res, tmp, sum, root);
+return res;
+</code></pre><p> }</p>
+<p> void helper(vector&lt;vector<int>&gt;&amp; res, vector<int>&amp; tmp, int sum, TreeNode* root){</int></int></p>
+<pre><code>if(!root) return;
 
-                    <ul class="post-date">
-                        <li>
-                            May 21, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/21/369-Plus-One-Linked-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/19/445-Add-Two-Numbers-II/">
-                            445. Add Two Numbers II
-                        </a>
-                    </h1>
+tmp.push_back(root-&gt;val);
+//preorder traversal
+if(!root-&gt;left &amp;&amp; !root-&gt;right &amp;&amp; sum-root-&gt;val ==0) res.push_back(tmp);
+if(root-&gt;left) helper(res, tmp, sum-root-&gt;val, root-&gt;left);
+if(root-&gt;right) helper(res, tmp, sum-root-&gt;val, root-&gt;right);
+tmp.pop_back();
+</code></pre><p> }<br>};</p>
+</li>
+</ul>
+<p>reference:<br><a href="https://goo.gl/VPHfpv" target="_blank" rel="noopener">https://goo.gl/VPHfpv</a></p>
 
-                    <ul class="post-date">
-                        <li>
-                            May 19, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/19/445-Add-Two-Numbers-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/15/15-3Sum/">
-                            15. 3Sum
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 15, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/15/15-3Sum/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/413-Arithmetic-Slices/">
-                            413. Arithmetic Slices
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/413-Arithmetic-Slices/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">
-                            357. Count Numbers with Unique Digits
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">
-                            95. Unique Binary Search Trees II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/13/96-Unique-Binary-Search-Trees/">
-                            96. Unique Binary Search Trees
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 13, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/12/221-Maximal-Square/">
-                            221. Maximal Square
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 12, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/12/221-Maximal-Square/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/12/85-Maximal-Rectangle/">
-                            85. Maximal Rectangle
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 12, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/12/85-Maximal-Rectangle/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
