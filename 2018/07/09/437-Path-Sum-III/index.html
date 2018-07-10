@@ -20,8 +20,8 @@
         hljs.initHighlightingOnLoad()
     </script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="/css/infinite-scroll.css">
-    <script src="/css/infinite-scroll.js"></script>
+    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
+    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
     <script>
         infiniteScroll()
 
@@ -80,6 +80,30 @@
             </a>
         </h4>
         
+        <h4 class="post-cat">
+            <a href="/categories/microsoft/">
+                microsoft
+            </a>
+        </h4>
+        
+        <h4 class="post-cat">
+            <a href="/categories/algorithm/">
+                algorithm
+            </a>
+        </h4>
+        
+        <h4 class="post-cat">
+            <a href="/categories/STL/">
+                STL
+            </a>
+        </h4>
+        
+        <h4 class="post-cat">
+            <a href="/categories/tutorial/">
+                tutorial
+            </a>
+        </h4>
+        
             <h2 class="post-title">
                 437. Path Sum III
             </h2>
@@ -110,25 +134,7 @@
 </ol>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This question we can also use preorder traversal to solve it. That is to say, we visit current node, then check left and right subtree.</p>
 <p>We need to maintain a variable <code>pre</code>, to store the sum of previous nodes. If <code>root-&gt;cal+pre</code> equal to target, then at least return 1. After that, we still need to check whether if adding other subtree can achieve target(might have zero or negative numbers).</p>
-<p>/**</p>
-<ul>
-<li>Definition for a binary tree node.</li>
-<li>struct TreeNode {</li>
-<li>int val;</li>
-<li>TreeNode *left;</li>
-<li>TreeNode *right;</li>
-<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
-<li>};<br><em>/<br>class Solution {<br>public:<br> int pathSum(TreeNode</em> root, int sum) {<pre><code>if(!root) return 0;
-//can start from root or left subtree or right subtree
-return helper(root, sum, 0)+ pathSum(root-&gt;left, sum)+pathSum(root-&gt;right, sum);
-</code></pre> }<br> int helper(TreeNode* root, int sum, int pre){<pre><code>if(!root) return 0;
-//use pre to store previous levels sum
-//if root-&gt;cal+pre equal to target, then at least return 1
-//but still need to check whether if adding other subtree can achieve target(might have zero or negative numbers)
-int cur= pre+ root-&gt;val;
-return (cur== sum)+ helper(root-&gt;left, sum, cur)+ helper(root-&gt;right, sum, cur);
-</code></pre> }<br>};</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int pathSum(TreeNode* root, int sum) &#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        //can start from root or left subtree or right subtree</span><br><span class="line">        return helper(root, sum, 0)+ pathSum(root-&gt;left, sum)+pathSum(root-&gt;right, sum);</span><br><span class="line">    &#125;</span><br><span class="line">    int helper(TreeNode* root, int sum, int pre)&#123;</span><br><span class="line">        if(!root) return 0;</span><br><span class="line">        //use pre to store previous levels sum</span><br><span class="line">        //if root-&gt;cal+pre equal to target, then at least return 1</span><br><span class="line">        //but still need to check whether if adding other subtree can achieve target(might have zero or negative numbers)</span><br><span class="line">        int cur= pre+ root-&gt;val;</span><br><span class="line">        return (cur== sum)+ helper(root-&gt;left, sum, cur)+ helper(root-&gt;right, sum, cur);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>reference:<br><a href="http://www.cnblogs.com/grandyang/p/6007336.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/6007336.html</a><br><a href="https://goo.gl/bYjbbn" target="_blank" rel="noopener">https://goo.gl/bYjbbn</a></p>
 
             </div>
