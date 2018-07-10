@@ -20,8 +20,8 @@
         hljs.initHighlightingOnLoad()
     </script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
-    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
+    <link rel="stylesheet" href="/css/infinite-scroll.css">
+    <script src="/css/infinite-scroll.js"></script>
     <script>
         infiniteScroll()
 
@@ -128,28 +128,30 @@
 <li>if the tree is perfect binary tree(complete and full), it will have <code>2^h -1</code> nodes</li>
 </ol>
 <p>We use two pointer to count the height of <code>left</code> and <code>right</code>. If they’re equal, then the subtree of this root have totally <code>2^h -1</code> nodes. If not equal, then we recursively search <code>root-&gt;left</code> and <code>root-&gt;right</code>.</p>
-<p>/**</p>
-<ul>
-<li>Definition for a binary tree node.</li>
-<li>struct TreeNode {</li>
-<li>int val;</li>
-<li>TreeNode *left;</li>
-<li>TreeNode *right;</li>
-<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
-<li><p>};<br><em>/<br>class Solution {<br>public:<br> int countNodes(TreeNode</em> root) {</p>
-<pre><code>if(!root) return 0;
+<pre><code>/**
+* Definition for a binary tree node.
+* struct TreeNode {
+*     int val;
+*     TreeNode *left;
+*     TreeNode *right;
+*     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+* };
+*/
+class Solution {
+public:
+    int countNodes(TreeNode* root) {
+        if(!root) return 0;
 
-int hl= 0, hr= 0;
-TreeNode* l= root, *r= root;
-while(l){ hl++; l= l-&gt;left;}
-while(r){ hr++; r= r-&gt;right;}
+        int hl= 0, hr= 0;
+        TreeNode* l= root, *r= root;
+        while(l){ hl++; l= l-&gt;left;}
+        while(r){ hr++; r= r-&gt;right;}
 
-if(hl== hr) return pow(2, hl)-1;
-else return 1+countNodes(root-&gt;left)+ countNodes(root-&gt;right);
-</code></pre><p> }<br>};</p>
-</li>
-</ul>
-<p>time complexity: </p>
+        if(hl== hr) return pow(2, hl)-1;
+        else return 1+countNodes(root-&gt;left)+ countNodes(root-&gt;right);
+    }
+};
+</code></pre><p>time complexity: </p>
 <p>reference:<br><a href="https://goo.gl/SAq511" target="_blank" rel="noopener">https://goo.gl/SAq511</a><br><a href="https://goo.gl/o9PEje" target="_blank" rel="noopener">https://goo.gl/o9PEje</a></p>
 
             </div>

@@ -20,8 +20,8 @@
         hljs.initHighlightingOnLoad()
     </script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
-    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
+    <link rel="stylesheet" href="/css/infinite-scroll.css">
+    <script src="/css/infinite-scroll.js"></script>
     <script>
         infiniteScroll()
 
@@ -125,23 +125,26 @@
 4   8
 </code></pre><p>   /   / \<br>  11  13  4<br> /  \      \<br>7    2      1<br>return true, as there exist a root-to-leaf path 5-&gt;4-&gt;11-&gt;2 which sum is 22.</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The basic idea is to subtract the value of current node from sum until it reaches a leaf node and the subtraction equals 0, then we know that we got a hit. Otherwise the subtraction at the end could not be 0.</p>
-<p>/**</p>
-<ul>
-<li>Definition for a binary tree node.</li>
-<li>struct TreeNode {</li>
-<li>int val;</li>
-<li>TreeNode *left;</li>
-<li>TreeNode *right;</li>
-<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
-<li><p>};<br><em>/<br>class Solution {<br>public:<br> bool hasPathSum(TreeNode</em> root, int sum) {</p>
-<pre><code>if(!root) return false;
-if(!root-&gt;left &amp;&amp; !root-&gt;right &amp;&amp; sum-root-&gt;val==0) return true;
+<pre><code>/**
+* Definition for a binary tree node.
+* struct TreeNode {
+*     int val;
+*     TreeNode *left;
+*     TreeNode *right;
+*     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+* };
+*/
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int sum) {
 
-return hasPathSum(root-&gt;left, sum-root-&gt;val) || hasPathSum(root-&gt;right, sum-root-&gt;val);
-</code></pre><p> }<br>};</p>
-</li>
-</ul>
-<p>reference:<br><a href="https://goo.gl/MkXt4r" target="_blank" rel="noopener">https://goo.gl/MkXt4r</a></p>
+        if(!root) return false;
+        if(!root-&gt;left &amp;&amp; !root-&gt;right &amp;&amp; sum-root-&gt;val==0) return true;
+
+        return hasPathSum(root-&gt;left, sum-root-&gt;val) || hasPathSum(root-&gt;right, sum-root-&gt;val);
+    }
+};
+</code></pre><p>reference:<br><a href="https://goo.gl/MkXt4r" target="_blank" rel="noopener">https://goo.gl/MkXt4r</a></p>
 
             </div>
 </article>

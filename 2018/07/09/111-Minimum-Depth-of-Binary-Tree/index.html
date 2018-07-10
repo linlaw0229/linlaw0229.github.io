@@ -20,8 +20,8 @@
         hljs.initHighlightingOnLoad()
     </script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.1.min.css">
-    <script src="http://osly086qe.bkt.clouddn.com/hexo-infinite-scroll-v1.0.3.min.js"></script>
+    <link rel="stylesheet" href="/css/infinite-scroll.css">
+    <script src="/css/infinite-scroll.js"></script>
     <script>
         infiniteScroll()
 
@@ -120,27 +120,33 @@
 <p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
 <p>Note: A leaf is a node with no children.</p>
 <p>Example:</p>
-<p>Given binary tree [3,9,20,null,null,15,7],</p>
-<pre><code>3
-</code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7<br>return its minimum depth = 2.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>/**</p>
-<ul>
-<li>Definition for a binary tree node.</li>
-<li>struct TreeNode {</li>
-<li>int val;</li>
-<li>TreeNode *left;</li>
-<li>TreeNode *right;</li>
-<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
-<li><p>};<br><em>/<br>class Solution {<br>public:<br> int minDepth(TreeNode</em> root) {</p>
-<pre><code>if(!root) return 0; //NULL node no height
-if(!root-&gt;left) return 1+minDepth(root-&gt;right); //edge case for no left subtree
-if(!root-&gt;right) return 1+minDepth(root-&gt;left);
+<p>Given binary tree <code>[3,9,20,null,null,15,7]</code>,</p>
+<pre><code>  3
+/ \
+9  20
+  /  \
+15   7
+</code></pre><p>return its minimum depth = 2.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><pre><code>/**
+* Definition for a binary tree node.
+* struct TreeNode {
+*     int val;
+*     TreeNode *left;
+*     TreeNode *right;
+*     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+* };
+*/
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(!root) return 0; //NULL node no height
+        if(!root-&gt;left) return 1+minDepth(root-&gt;right); //edge case for no left subtree
+        if(!root-&gt;right) return 1+minDepth(root-&gt;left);
 
-return 1+min(minDepth(root-&gt;left), minDepth(root-&gt;right));
-</code></pre><p> }<br>};</p>
-</li>
-</ul>
-<p>reference:<br><a href="https://goo.gl/mNYNmX" target="_blank" rel="noopener">https://goo.gl/mNYNmX</a></p>
+        return 1+min(minDepth(root-&gt;left), minDepth(root-&gt;right));
+    }
+};
+</code></pre><p>reference:<br><a href="https://goo.gl/mNYNmX" target="_blank" rel="noopener">https://goo.gl/mNYNmX</a></p>
 
             </div>
 </article>
