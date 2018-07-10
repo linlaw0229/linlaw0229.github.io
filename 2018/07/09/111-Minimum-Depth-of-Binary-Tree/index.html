@@ -72,289 +72,54 @@
     </nav>
 </header>
                 <main class="main">
-                    <section class="posts">
+                    <article class="post">
     
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/">
-                            81. Search in Rotated Sorted Array II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 29, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/29/81-Search-in-Rotated-Sorted-Array-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
+        <h4 class="post-cat">
+            <a href="/categories/leetcode/">
+                leetcode
+            </a>
+        </h4>
         
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/">
-                            153. Find Minimum in Rotated Sorted Array
-                        </a>
-                    </h1>
+            <h2 class="post-title">
+                111. Minimum Depth of Binary Tree
+            </h2>
+            <ul class="post-date">
+                <li>
+                    2018-07-09
+                </li>
+                <li>
+                    Lawrence Lin
+                </li>
+            </ul>
+            <div class="post-content">
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a binary tree, find its minimum depth.</p>
+<p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
+<p>Note: A leaf is a node with no children.</p>
+<p>Example:</p>
+<p>Given binary tree [3,9,20,null,null,15,7],</p>
+<pre><code>3
+</code></pre><p>   / \<br>  9  20<br>    /  \<br>   15   7<br>return its minimum depth = 2.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>/**</p>
+<ul>
+<li>Definition for a binary tree node.</li>
+<li>struct TreeNode {</li>
+<li>int val;</li>
+<li>TreeNode *left;</li>
+<li>TreeNode *right;</li>
+<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
+<li><p>};<br><em>/<br>class Solution {<br>public:<br> int minDepth(TreeNode</em> root) {</p>
+<pre><code>if(!root) return 0; //NULL node no height
+if(!root-&gt;left) return 1+minDepth(root-&gt;right); //edge case for no left subtree
+if(!root-&gt;right) return 1+minDepth(root-&gt;left);
 
-                    <ul class="post-date">
-                        <li>
-                            May 25, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/25/48-Rotate-Image/">
-                            48. Rotate Image
-                        </a>
-                    </h1>
+return 1+min(minDepth(root-&gt;left), minDepth(root-&gt;right));
+</code></pre><p> }<br>};</p>
+</li>
+</ul>
+<p>reference:<br><a href="https://goo.gl/mNYNmX" target="_blank" rel="noopener">https://goo.gl/mNYNmX</a></p>
 
-                    <ul class="post-date">
-                        <li>
-                            May 25, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/25/48-Rotate-Image/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/21/369-Plus-One-Linked-List/">
-                            369. Plus One Linked List
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 21, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/21/369-Plus-One-Linked-List/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/19/445-Add-Two-Numbers-II/">
-                            445. Add Two Numbers II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 19, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/19/445-Add-Two-Numbers-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/15/15-3Sum/">
-                            15. 3Sum
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 15, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/15/15-3Sum/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/413-Arithmetic-Slices/">
-                            413. Arithmetic Slices
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/413-Arithmetic-Slices/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/">
-                            357. Count Numbers with Unique Digits
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/357-Count-Numbers-with-Unique-Digits/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/">
-                            95. Unique Binary Search Trees II
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 14, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/14/95-Unique-Binary-Search-Trees-II/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                <h4 class="post-cat">
-                    <a href="/categories/leetcode/">
-                        leetcode
-                    </a>
-                </h4>
-                
-                    <h1 class="post-title">
-                        <a href="/2018/05/13/96-Unique-Binary-Search-Trees/">
-                            96. Unique Binary Search Trees
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            May 13, 2018
-                        </li>
-                        <li>
-                            Lawrence Lin
-                        </li>
-                    </ul>
-                    <div class="post-content ">
-                        
-                            <a href="/2018/05/13/96-Unique-Binary-Search-Trees/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+            </div>
+</article>
                 </main>
                 <aside class="aside">
                     <section class="aside-section">
