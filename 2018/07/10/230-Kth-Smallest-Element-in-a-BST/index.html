@@ -129,33 +129,56 @@
         </h4>
         
             <h2 class="post-title">
-                413. Arithmetic Slices
+                230. Kth Smallest Element in a BST
             </h2>
             <ul class="post-date">
                 <li>
-                    2018-05-14
+                    2018-07-10
                 </li>
                 <li>
                     Lawrence Lin
                 </li>
             </ul>
             <div class="post-content">
-                <p>Problem description:</p>
-<p>A sequence of number is called arithmetic if it consists of at least three elements and if the difference between any two consecutive elements is the same.</p>
-<p>For example, these are arithmetic sequence:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1, 3, 5, 7, 9</span><br><span class="line">7, 7, 7, 7</span><br><span class="line">3, -1, -5, -9</span><br></pre></td></tr></table></figure></p>
-<p>The following sequence is not arithmetic.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1, 1, 2, 5, 7</span><br></pre></td></tr></table></figure></p>
-<p>A zero-indexed array A consisting of N numbers is given. A slice of that array is any pair of integers (P, Q) such that 0 &lt;= P &lt; Q &lt; N.</p>
-<p>A slice (P, Q) of array A is called arithmetic if the sequence:<br>A[P], A[p + 1], …, A[Q - 1], A[Q] is arithmetic. In particular, this means that P + 1 &lt; Q.</p>
-<p>The function should return the number of arithmetic slices in the array A.</p>
-<p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A = [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">return: 3, for 3 arithmetic slices in A: [1, 2, 3], [2, 3, 4] and [1, 2, 3, 4] itself.</span><br></pre></td></tr></table></figure></p>
-<p>solution1:</p>
-<p>use 1D dp array. When we have a arithmetic slice in 1…i, which can create total X arithmetic slice, and we got the i+1 element with same distance(slice) as before, the i+1 element can create additional X+1 arithmetic slice. And the sum of arithmetic slices create by sequence 1…i+1 elements would be X+(X+1).<br>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      1,3,5,7,9,15,20,25,28,29</span><br><span class="line">dp    0 0 1 2 3 0  0  1  0  0</span><br><span class="line">sum       1 3 6 6  6  7  7  7</span><br></pre></td></tr></table></figure></p>
-<p>In the above example, [1,3,5] can make the first slice.<br>When we add 7 into the sequence, it creates [3,5,7] and [1,3,5,7] slices.<br>Therefore, total slices when we consider sequence [1,3,5,7] would be<br>[1,3,5]: which is created and stored in dp[2]<br>[3,5,7], [1,3,5,7]: in dp[3]<br>Total: 3 slices</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        vector&lt;int&gt; dp(A.size(), 0);</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; dp.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp[i] = 1 + dp[i - 1];</span><br><span class="line">                sum += dp[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Time: O(n)<br>Space: O(n)</p>
-<p>solution2:<br>Since if we don’t have consecutive sequence, we don’t need the dp. We can use a integer to store the slices created by previous consecutive sequence. When the consecutive sequence end, A[i]-A[i-1] != A[i-1]-A[i-2], just reset the counter to zero.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int numberOfArithmeticSlices(vector&lt;int&gt;&amp; A) &#123;</span><br><span class="line">        int dp= 0;</span><br><span class="line">        int sum = 0;</span><br><span class="line">        for (int i = 2; i &lt; A.size(); i++) &#123;</span><br><span class="line">            if (A[i] - A[i - 1] == A[i - 1] - A[i - 2]) &#123;</span><br><span class="line">                dp+=1;</span><br><span class="line">                sum += dp;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">                dp = 0;</span><br><span class="line">        &#125;</span><br><span class="line">        return sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Time: O(n)<br>Space: O(1)</p>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
+<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
+<p>Example 1:</p>
+<p>Input: root = <code>[3,1,4,null,2]</code>, k = 1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">1   4</span><br><span class="line"> \</span><br><span class="line">  2</span><br></pre></td></tr></table></figure></p>
+<p>Output: 1<br>Example 2:</p>
+<p>Input: root = <code>[5,3,6,2,4,null,null,1]</code>, k = 3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">      5</span><br><span class="line">     / \</span><br><span class="line">    3   6</span><br><span class="line">   / \</span><br><span class="line">  2   4</span><br><span class="line"> /</span><br><span class="line">1</span><br></pre></td></tr></table></figure></p>
+<p>Output: 3<br>Follow up:<br>What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
+<li>use a variable to count ith smallest</li>
+<li><p>whenever the count is zero, return the res</p>
+<p>   /**</p>
+<ul>
+<li>Definition for a binary tree node.</li>
+<li>struct TreeNode {</li>
+<li>int val;</li>
+<li>TreeNode *left;</li>
+<li>TreeNode *right;</li>
+<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
+<li><p>};<br>*/<br>class Solution {<br>public:<br>  int res= 0;<br>  int count= 0;</p>
+<p>  int kthSmallest(TreeNode* root, int k) {</p>
+<pre><code>count= k;
+helper(root);
+return res;
+</code></pre><p>  }<br>  void helper(TreeNode* root){</p>
+<pre><code>//inorder traversal, find the left most first
+if(root-&gt;left) helper(root-&gt;left);
+
+count--; 
+if(count == 0){
+    res= root-&gt;val;
+    return;
+}
+if(root-&gt;right) helper(root-&gt;right);
+</code></pre><p>  }<br>};</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>reference:<br><a href="https://goo.gl/Ed7PGv" target="_blank" rel="noopener">https://goo.gl/Ed7PGv</a></p>
 
             </div>
 </article>
