@@ -154,9 +154,43 @@
             <div class="post-content">
                 <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>/*<br>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
 <p>Each element in the array represents your maximum jump length at that position.</p>
-<p>Determine if you are able to reach the last index.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [2,3,1,1,4]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [3,2,1,0,4]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: You will always arrive at index 3 no matter what. Its maximum</span><br><span class="line">             jump length is 0, which makes it impossible to reach the last index.</span><br></pre></td></tr></table></figure>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lastPos = nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i + nums[i] &gt;= lastPos) &#123; <span class="comment">//(current position + steps in this position) &gt; lastPos</span></span><br><span class="line">                lastPos = i;              <span class="comment">//if get to this slot, then we can get to last index</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lastPos == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>Determine if you are able to reach the last index.</p>
+<p>Example 1:</p>
+<p>Input: <code>[2,3,1,1,4]</code><br>Output: true<br>Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</p>
+<p>Example 2:</p>
+<p>Input: <code>[3,2,1,0,4]</code><br>Output: false<br>Explanation: You will always arrive at index 3 no matter what. Its maximum<br>             jump length is 0, which makes it impossible to reach the last index.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><pre><code>class Solution {
+public:
+    bool canJump(vector&lt;int&gt;&amp; nums) {
+
+        int lastPos = nums.size() - 1;
+        for (int i = nums.size() - 1; i &gt;= 0; i--) {
+            if (i + nums[i] &gt;= lastPos) { //(current position + steps in this position) &gt; lastPos
+                lastPos = i;              //if get to this slot, then we can get to last index
+            }
+        }
+        return lastPos == 0;
+    }
+};
+</code></pre><h1 id="second-time"><a href="#second-time" class="headerlink" title="second time:"></a>second time:</h1><ul>
+<li>use a pointer <code>reach</code> to denote the farthest position can reach</li>
+<li>use another pointer <code>i</code> to denote the current position. It should be smaller than <code>array size</code> and <code>reach</code>. Because if <code>i</code> reaches the <code>reach</code>, it means the <code>reach</code> derived from previous steps can not reach to <code>i</code>, so will never reach to position <code>i</code>.</li>
+</ul>
+<pre><code>class Solution {
+public:
+    bool canJump(vector&lt;int&gt;&amp; nums) {
+
+        int reach=0; //where is the farest that it can reach
+        int i=0; //current location
+        while(i&lt; nums.size() &amp;&amp; i&lt;=reach){
+            reach=max(reach, i+nums[i]);
+            i++;
+        }
+
+        return reach&gt;=nums.size()-1; //check whether reach is greater than array size
+    }
+};
+</code></pre>
             </div>
 </article>
                 </main>
