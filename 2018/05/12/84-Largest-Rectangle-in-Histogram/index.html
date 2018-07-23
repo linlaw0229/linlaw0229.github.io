@@ -129,14 +129,14 @@
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/tutorial/">
-                tutorial
+            <a href="/categories/note/">
+                note
             </a>
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/note/">
-                note
+            <a href="/categories/tutorial/">
+                tutorial
             </a>
         </h4>
         
@@ -154,8 +154,78 @@
             <div class="post-content">
                 <p>Problem description:<br>  Given n non-negative integers representing the histogram’s bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.<br>  <img src="1.png" alt=""><br>  Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].<br>  <img src="2.png" alt=""><br>  The largest rectangle is shown in the shaded area, which has area = 10 unit.</p>
 <p>  Example:<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,1,5,6,2,3]</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure></p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int largestRectangleArea(vector&lt;int&gt;&amp; height) &#123;            </span><br><span class="line">        int ret = 0;</span><br><span class="line">        height.push_back(0);</span><br><span class="line">        vector&lt;int&gt; index;</span><br><span class="line">        for(auto n: height)</span><br><span class="line">            cout&lt;&lt;n&lt;&lt;endl;</span><br><span class="line">            </span><br><span class="line">            for(int i = 0; i &lt; height.size(); i++)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt; &quot;i: &quot;&lt;&lt;i&lt;&lt;endl;</span><br><span class="line">                if(i == 4) cout&lt;&lt;index.size()&lt;&lt;endl;</span><br><span class="line">                while(index.size() &gt; 0 &amp;&amp; height[index.back()] &gt;= height[i])</span><br><span class="line">                &#123;</span><br><span class="line">                    int h = height[index.back()];</span><br><span class="line">                    cout&lt;&lt; &quot;h:&quot; &lt;&lt;h;</span><br><span class="line">                    index.pop_back();</span><br><span class="line">                    </span><br><span class="line">                    int sidx = index.size() &gt; 0 ? index.back() : -1;</span><br><span class="line">                    cout&lt;&lt; &quot;, sidx:&quot; &lt;&lt;sidx;</span><br><span class="line">                    if(h * (i-sidx-1) &gt; ret)</span><br><span class="line">                        ret = h * (i-sidx-1);</span><br><span class="line">                    cout&lt;&lt; &quot;, calculate:&quot; &lt;&lt;h * (i-sidx-1)&lt;&lt;endl;</span><br><span class="line">                &#125;</span><br><span class="line">                cout&lt;&lt; &quot;ret: &quot;&lt;&lt;ret&lt;&lt;endl;</span><br><span class="line">                index.push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            return ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>  Reference:<br>  <a href="https://goo.gl/JusVW4" target="_blank" rel="noopener">https://goo.gl/JusVW4</a><br>  leetcode.com/problems/maximal-rectangle/discuss/29054/Share-my-DP-solution/27983</p>
+<pre><code>class Solution {
+public:
+    int largestRectangleArea(vector&lt;int&gt;&amp; height) {            
+        int ret = 0;
+        height.push_back(0);
+        vector&lt;int&gt; index;
+        for(auto n: height)
+            cout&lt;&lt;n&lt;&lt;endl;
+
+            for(int i = 0; i &lt; height.size(); i++)
+            {
+                cout&lt;&lt; &quot;i: &quot;&lt;&lt;i&lt;&lt;endl;
+                if(i == 4) cout&lt;&lt;index.size()&lt;&lt;endl;
+                while(index.size() &gt; 0 &amp;&amp; height[index.back()] &gt;= height[i])
+                {
+                    int h = height[index.back()];
+                    cout&lt;&lt; &quot;h:&quot; &lt;&lt;h;
+                    index.pop_back();
+
+                    int sidx = index.size() &gt; 0 ? index.back() : -1;
+                    cout&lt;&lt; &quot;, sidx:&quot; &lt;&lt;sidx;
+                    if(h * (i-sidx-1) &gt; ret)
+                        ret = h * (i-sidx-1);
+                    cout&lt;&lt; &quot;, calculate:&quot; &lt;&lt;h * (i-sidx-1)&lt;&lt;endl;
+                }
+                cout&lt;&lt; &quot;ret: &quot;&lt;&lt;ret&lt;&lt;endl;
+                index.push_back(i);
+            }
+
+            return ret;
+    }
+};
+</code></pre><h1 id="Second-time"><a href="#Second-time" class="headerlink" title="Second time"></a>Second time</h1><p>This is a relatively straightforward solution. Use a pointer to find toward right, if a histogram <code>i</code> is greater than <code>i+1</code>, then we find a left boundary of this histogram <code>i</code>. At this time, we traverse back toward left, find every <code>minimum height</code> and multiply with the width to get the area.<br>指針往右遍歷, 當height[i]&lt; height[i+1]: keep go right, 因如果後面比較高, 則maximum area 至少包含後面的 histogram.</p>
+<p>example:<br><code>[2,4,6,5,3]</code></p>
+<ol>
+<li>reach 6, next is 5.<br> minimum height* width= area<pre><code>6*1= 6
+4*2= 8
+2*3= 6
+</code></pre></li>
+<li>reach 5, next is 3, smaller than 5.<pre><code>5*1= 5
+5*2= 10
+4*3= 12
+2*4= 8
+</code></pre></li>
+<li>reach 3, end condition<pre><code>3*1= 3
+3*2= 6
+3*3= 9
+3*4= 12
+2*5= 10
+</code></pre></li>
+<li>max area is 12</li>
+</ol>
+<p>#Solution:</p>
+<pre><code>//O(n^2)
+class Solution {
+public:
+    int largestRectangleArea(vector&lt;int&gt;&amp; heights) {
+        int res= 0;
+        for(int i= 0; i&lt; heights.size(); i++){ //go toward left
+            if(i== heights.size()-1 || heights[i]&gt; heights[i+1]){ //reached end || height[i]&gt; height[i+1]
+                int minh= heights[i];
+                for(int j= i; j&gt;=0; j--){ //go toward right, find every rectangle
+                    minh= min(minh, heights[j]);
+                    int area= minh* (i-j+1);
+                    res= max(res, area);
+                }
+            }
+        }
+        return res;
+    }
+};
+</code></pre><p>  Reference:<br>  <a href="https://goo.gl/JusVW4" target="_blank" rel="noopener">https://goo.gl/JusVW4</a><br>  leetcode.com/problems/maximal-rectangle/discuss/29054/Share-my-DP-solution/27983</p>
 
             </div>
 </article>
@@ -179,7 +249,7 @@
                         
     <h1>Tags</h1>
 
-    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search-tree/">binary search tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/complete-binary-tree/">complete binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/partition/">partition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/peak/">peak</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subset/">subset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
+    <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Floyd-s-Tortoise-and-Hare-Algorithm/">Floyd's Tortoise and Hare Algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STL/">STL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tree/">Tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/airbnb/">airbnb</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/amazon/">amazon</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apple/">apple</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/backtracking/">backtracking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search-tree/">binary search tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/blockchain/">blockchain</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/brainteaser/">brainteaser</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bucket-sort/">bucket sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/complete-binary-tree/">complete binary tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/cycle-detection/">cycle detection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/divide-and-conquer/">divide and conquer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/easy/">easy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/facebook/">facebook</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/google/">google</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greddy/">greddy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hard/">hard</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/inorder/">inorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/job/">job</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/math/">math</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/medium/">medium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/merge-sort/">merge sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/microsoft/">microsoft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/partition/">partition</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/peak/">peak</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/permutation/">permutation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postorder/">postorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/preorder/">preorder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/refer/">refer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/snapchat/">snapchat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/space-complexity/">space complexity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/subset/">subset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree-traversal/">tree traversal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tutorial/">tutorial</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointer/">two pointer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/two-pointers/">two pointers</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a></li></ul>
 
                     </section>
                 </aside>
