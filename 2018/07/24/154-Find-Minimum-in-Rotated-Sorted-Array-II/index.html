@@ -153,30 +153,51 @@
         </h4>
         
             <h2 class="post-title">
-                79. Word Search
+                154. Find Minimum in Rotated Sorted Array II
             </h2>
             <ul class="post-date">
                 <li>
-                    2018-05-31
+                    2018-07-24
                 </li>
                 <li>
                     Lawrence Lin
                 </li>
             </ul>
             <div class="post-content">
-                <p>#Problem description:</p>
-<p>Given a 2D board and a word, find if the word exists in the grid.</p>
-<p>The word can be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line"></span><br><span class="line">board =</span><br><span class="line">[</span><br><span class="line">  [&apos;A&apos;,&apos;B&apos;,&apos;C&apos;,&apos;E&apos;],</span><br><span class="line">  [&apos;S&apos;,&apos;F&apos;,&apos;C&apos;,&apos;S&apos;],</span><br><span class="line">  [&apos;A&apos;,&apos;D&apos;,&apos;E&apos;,&apos;E&apos;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Given word = &quot;ABCCED&quot;, return true.</span><br><span class="line">Given word = &quot;SEE&quot;, return true.</span><br><span class="line">Given word = &quot;ABCB&quot;, return false.</span><br></pre></td></tr></table></figure>
-<p>#Solution:</p>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.</p>
+<p>(i.e.,  <code>[0,1,2,4,5,6,7]</code> might become  <code>[4,5,6,7,0,1,2]</code>).</p>
+<p>Find the minimum element.</p>
+<p>The array may contain duplicates.</p>
+<p>Example 1:</p>
+<p>Input: <code>[1,3,5]</code><br>Output: 1<br>Example 2:</p>
+<p>Input: <code>[2,2,2,0,1]</code><br>Output: 0</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This question is a follow up for  <a href="/2018/05/25/153-Find-Minimum-in-Rotated-Sorted-Array/" title="153. Find Minimum in Rotated Sorted Array">153. Find Minimum in Rotated Sorted Array</a>. We can still use binary search to solve this question. </p>
 <ol>
-<li>use DFS to find whether the word exist</li>
-<li>create a 2D bool array to record used elements in each DFS, the range should be [rowNum][colNum]</li>
-<li>find word with start in each slot[i][j]</li>
+<li>two pointers, <code>left</code> and <code>right</code>. In the end, we return the <code>nums[left]</code></li>
+<li>calculate <code>mid</code> to find middle element.</li>
+<li>Since the array is sorted, if <code>nums[mid] &gt; nums[right]</code> then we set <code>left</code> to <code>mid+1</code> because we know the smallest element is on the right side and it’s started position would at least be mid+1.</li>
+<li>One thing to notice is that the array contains duplicate elements, if <code>nums[mid] == nums[right]</code> we reduce the right pointer.</li>
 </ol>
-<p>In auxiliary function:<br>First we check pos is equal to word.length(), return true if it’s the same.<br>Second, if anything is out of range, then return false.<br>Third, return false if (we already visited this slot) || ([i][j] is different from the word[pos])</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool exist(vector&lt;vector&lt;char&gt;&gt;&amp; board, string word) &#123;</span><br><span class="line">        if(board.empty() || !word.length()) return false; //nothing in board || nothing in word</span><br><span class="line">        int rowNum= board.size(), colNum= board[0].size();</span><br><span class="line">        vector&lt;vector&lt;bool&gt;&gt; visited(rowNum, vector&lt;bool&gt;(colNum, false)); //create a visit array to check if visited</span><br><span class="line">        </span><br><span class="line">        for(int i =0; i&lt; rowNum; ++i)&#123;</span><br><span class="line">            for(int j= 0; j&lt; colNum; ++j)&#123;</span><br><span class="line">                //use [i][j] as start point, search for word</span><br><span class="line">                if(exist(board, visited, word, i, j, 0)) return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool exist(vector&lt;vector&lt;char&gt;&gt;&amp; board, vector&lt;vector&lt;bool&gt;&gt;&amp; visited, string word, int i, int j, int pos) &#123;</span><br><span class="line">        if(pos == word.length()) return true;</span><br><span class="line">        if( i&lt; 0 || j&lt; 0 || i&gt; board.size()-1 || j&gt;board[0].size()-1) return false; //edge case for size</span><br><span class="line">        if(visited[i][j] || board[i][j] != word.at(pos)) return false; </span><br><span class="line">        //already came this slot || [i][j] is different from word[pos]</span><br><span class="line">        </span><br><span class="line">        visited[i][j] = true;</span><br><span class="line">        </span><br><span class="line">        //DFS</span><br><span class="line">        if (exist(board, visited, word, i - 1, j, pos + 1) //check toward left</span><br><span class="line">            || exist(board, visited, word, i + 1, j, pos + 1) //check toward right</span><br><span class="line">            || exist(board, visited, word, i, j - 1, pos + 1) //check toward top</span><br><span class="line">            || exist(board, visited, word, i, j + 1, pos + 1)) //check toward bottom</span><br><span class="line">            return true; </span><br><span class="line">        </span><br><span class="line">        visited[i][j] = false; //this slot can not make a same search word</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>Reference:<br><a href="https://goo.gl/QLs5yW" target="_blank" rel="noopener">https://goo.gl/QLs5yW</a></p>
+<p>For the duplicate elements, it might drag the time complexity to <code>O(n)</code> if it looks like the following array.<br><code>&quot;1 1 1 1 1 0 1 1 1 1 1 1 1 1&quot;</code></p>
+<pre><code>class Solution {
+public:
+    int findMin(vector&lt;int&gt;&amp; nums) {
+        int left= 0, right= nums.size()-1;
+        int mid= 0;
+        while(left&lt; right){
+            mid= left+ (right-left)/2;
+            if(nums[mid]&gt; nums[right])
+                left= mid+1; //set to mid+1 is because nums[mid] is definitely not the smallest element
+            else if(nums[mid]&lt; nums[right])
+                right= mid;
+            else
+                //nums[mid]== nums[right]
+                right--;
+        }
+        return nums[left];
+    }
+};
+</code></pre><p>reference:</p>
 
             </div>
 </article>
