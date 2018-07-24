@@ -164,9 +164,76 @@
 <li>Use two pointers, one goes from i+1 toward right, the other one goes from n toward left</li>
 <li>If the sum of two pointers can not make the sequence zero, move the point.<br>To clarify, we can only move one pointer to make the result close to zero.</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">input nums[-1, 0, 1, 2, -1, -4]</span><br><span class="line">sort  nums[-4, -1, -1, 0, 1, 2]</span><br><span class="line"></span><br><span class="line">start from nums[0]= -4, pointer1= nums[1], pointer2= nums[6-1]</span><br></pre></td></tr></table></figure>
-<p>Solution:<br>Time: O(n^2)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        vector&lt;vector&lt;int&gt;&gt; res;</span><br><span class="line">        if(nums.size() &lt;= 2) return res; //edge case check</span><br><span class="line">        </span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        for(int i = 0; i &lt; nums.size()-2; ++i)&#123; //-2 is because last possible 3Sum sequence could be last 3 item, </span><br><span class="line">                                                //and the center is n-2</span><br><span class="line">            </span><br><span class="line">            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1]) //pass duplicate elements</span><br><span class="line">                continue;</span><br><span class="line">            </span><br><span class="line">            int j=i+1, k=nums.size()-1;</span><br><span class="line">            int target = 0-nums[i]; //because the other two elements would make sequence zero</span><br><span class="line">            </span><br><span class="line">            while(j&lt; k)&#123;</span><br><span class="line">                if(nums[j]+ nums[k] == target)&#123;</span><br><span class="line">                    res.push_back(vector&lt;int&gt;&#123;nums[i], nums[j], nums[k]&#125;);</span><br><span class="line">                    j++;</span><br><span class="line">                    k--;</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[j]==nums[j-1]) j++;//skip same element</span><br><span class="line">                    while(j&lt;k &amp;&amp; nums[k]==nums[k+1]) k--;//skip same element</span><br><span class="line">                &#125;</span><br><span class="line">                else if(nums[j]+ nums[k]&gt;target)&#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125;</span><br><span class="line">                else&#123;</span><br><span class="line">                    j++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>Example:<br>input nums<code>[-1, 0, 1, 2, -1, -4]</code><br>sort  nums<code>[-4, -1, -1, 0, 1, 2]</code></p>
+<p>start from nums[0]= -4, pointer1= nums[1], pointer2= nums[6-1]</p>
+<p>Solution:<br>Time: <code>O(n^2)</code></p>
+<pre><code>class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) {
+        vector&lt;vector&lt;int&gt;&gt; res;
+        if(nums.size() &lt;= 2) return res; //edge case check
 
+        sort(nums.begin(), nums.end());
+        for(int i = 0; i &lt; nums.size()-2; ++i){ //-2 is because last possible 3Sum sequence could be last 3 item, 
+                                                //and the center is n-2
+
+            if(i&gt;0 &amp;&amp; nums[i] == nums[i-1]) //pass duplicate elements
+                continue;
+
+            int j=i+1, k=nums.size()-1;
+            int target = 0-nums[i]; //because the other two elements would make sequence zero
+
+            while(j&lt; k){
+                if(nums[j]+ nums[k] == target){
+                    res.push_back(vector&lt;int&gt;{nums[i], nums[j], nums[k]});
+                    j++;
+                    k--;
+                    while(j&lt;k &amp;&amp; nums[j]==nums[j-1]) j++;//skip same element
+                    while(j&lt;k &amp;&amp; nums[k]==nums[k+1]) k--;//skip same element
+                }
+                else if(nums[j]+ nums[k]&gt;target){
+                    k--;
+                }
+                else{
+                    j++;
+                }
+            }
+        }
+
+        return res;
+
+    }
+};
+</code></pre><h1 id="second-time"><a href="#second-time" class="headerlink" title="second time"></a>second time</h1><pre><code>class Solution {
+public:
+    vector&lt;vector&lt;int&gt;&gt; threeSum(vector&lt;int&gt;&amp; nums) {
+        /*
+        1. sort array
+        2. totally three pointers, one pointer as a start point, other two traverse
+        3. two traverse pointer, left and right, decrease or increase beased on different conditions
+        */
+        if(nums.size()&lt; 3) return vector&lt;vector&lt;int&gt;&gt;();
+
+        sort(nums.begin(), nums.end());
+        vector&lt;vector&lt;int&gt;&gt; res;
+        for(int i= 0; i&lt; nums.size()-2; i++){
+            if(i&gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue;
+            int left= i+1, right= nums.size()-1;
+            while(left&lt; right){
+                int result= nums[i]+ nums[left]+ nums[right];
+                if(result == 0) {
+                    res.push_back(vector&lt;int&gt;{nums[i], nums[left++], nums[right--]});
+                    while(left&lt; right &amp;&amp; nums[left]== nums[left-1]) left++;
+                    while(left&lt; right &amp;&amp; nums[right]== nums[right+1]) right--;
+                }
+                else if(result &lt; 0) left++;
+                else right--;
+            }
+        }
+        return res;
+    }
+};
+</code></pre>
             </div>
 </article>
                 </main>
