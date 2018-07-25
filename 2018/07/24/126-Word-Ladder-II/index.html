@@ -153,47 +153,85 @@
         </h4>
         
             <h2 class="post-title">
-                617. Merge Two Binary Trees
+                126. Word Ladder II
             </h2>
             <ul class="post-date">
                 <li>
-                    2018-07-10
+                    2018-07-24
                 </li>
                 <li>
                     Lawrence Lin
                 </li>
             </ul>
             <div class="post-content">
-                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.</p>
-<p>You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree.</p>
-<p>Example 1:<br>Input:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Tree 1                     Tree 2                  </span><br><span class="line">    1                         2                             </span><br><span class="line">   / \                       / \                            </span><br><span class="line">  3   2                     1   3                        </span><br><span class="line">     /                       \   \                      </span><br><span class="line">    5                         4   7</span><br></pre></td></tr></table></figure></p>
-<p>Output:<br>Merged tree:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    3</span><br><span class="line">    / \</span><br><span class="line">  4   5</span><br><span class="line">  / \   \ </span><br><span class="line">5   4   7</span><br></pre></td></tr></table></figure></p>
-<p>Note: The merging process must start from the root nodes of both trees.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><pre><code>/**
-* Definition for a binary tree node.
-* struct TreeNode {
-*     int val;
-*     TreeNode *left;
-*     TreeNode *right;
-*     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-* };
-*/
-class Solution {
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given two words (beginWord and endWord), and a dictionary’s word list, find all shortest transformation sequence(s) from beginWord to endWord, such that:</p>
+<p>Only one letter can be changed at a time<br>Each transformed word must exist in the word list. Note that beginWord is not a transformed word.<br>Note:</p>
+<p>Return an empty list if there is no such transformation sequence.<br>All words have the same length.<br>All words contain only lowercase alphabetic characters.<br>You may assume no duplicates in the word list.<br>You may assume beginWord and endWord are non-empty and are not the same.<br>Example 1:</p>
+<p>Input:<br>beginWord = “hit”,<br>endWord = “cog”,<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”,”cog”]</p>
+<p>Output:<br>[<br>  [“hit”,”hot”,”dot”,”dog”,”cog”],<br>  [“hit”,”hot”,”lot”,”log”,”cog”]<br>]<br>Example 2:</p>
+<p>Input:<br>beginWord = “hit”<br>endWord = “cog”<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”]</p>
+<p>Output: []</p>
+<p>Explanation: The endWord “cog” is not in wordList, therefore no possible transformation.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This is a follow up for <a href="/2018/06/14/127-Word-Ladder/" title="127. Word Ladder">127. Word Ladder</a>. If you have this question on interview, maybe go with a naive BFS solution, then improve it with bi-direction BFS. </p>
+<p>The solution came with one direction BFS, the step is as follows.</p>
+<ol>
+<li>Use BFS to solve question, so we need a queue. <code>queue&lt;vector&lt;string&gt;&gt; paths</code>, to store the paths in current level.</li>
+<li>A dictionary that help to search if a mutate string is in wordlist. The mutate string is created by the same method in <a href="/2018/06/14/127-Word-Ladder/" title="127. Word Ladder">127. Word Ladder</a>. For each character in a word, try to change it to another character, and check whether if it’s in the dictionary.</li>
+<li>Once we know the words in previous level(can think of as the BFS level), we can not use those words again, so we need a set(<code>unordered_set&lt;string&gt; words</code>) to record the used string on this level.</li>
+<li>Maintain a <code>minlevel</code> to speed up the process. Because if we can find a path to find <code>endWord</code> in 5 hops, then we don’t need to find any path that is greater than 5.</li>
+</ol>
+<pre><code>class Solution {
 public:
-    TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2) {
-        if(!t1 &amp;&amp; !t2) return NULL;
+    vector&lt;vector&lt;string&gt;&gt; findLadders(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) {
+        vector&lt;vector&lt;string&gt;&gt; res; 
+        unordered_set&lt;string&gt; dict(wordList.begin(), wordList.end()); //for lookup if the changed word in dictionary or not
+        vector&lt;string&gt; p{beginWord}; 
+        queue&lt;vector&lt;string&gt;&gt; paths;
 
-        if(t1 &amp;&amp; t2){
-            TreeNode* tmp= new TreeNode(t1-&gt;val+t2-&gt;val);
-            tmp-&gt;left= mergeTrees(t1-&gt;left, t2-&gt;left);
-            tmp-&gt;right= mergeTrees(t1-&gt;right, t2-&gt;right);
-            return tmp;
+        paths.push(p);
+        int level = 1, minLevel = INT_MAX;
+        unordered_set&lt;string&gt; words;
+
+        while (!paths.empty()) {
+            auto t = paths.front(); //start with beginWord
+            paths.pop();
+
+            if (t.size() &gt; level) {
+                for (string w : words) dict.erase(w); //to remove the word that already used on level 1
+                words.clear();
+                level = t.size();
+                if (level &gt; minLevel) break;
+            }
+            string last = t.back(); //last element of curent path, try to find next word to link
+            for (int i = 0; i &lt; last.size(); ++i) {
+                string newLast = last;
+                for (char ch = &apos;a&apos;; ch &lt;= &apos;z&apos;; ++ch) {
+                    newLast[i] = ch;
+                    if (!dict.count(newLast)) continue; 
+
+                    //can find another word after changing one character in dictionary
+                    words.insert(newLast); //put it into set, so we won&apos;t use it again
+
+                    /*
+                    example: 
+                    t: abc-&gt;abd-&gt;acd
+                    newPath= abc-&gt;abd-&gt;acd + acc
+                    */
+                    vector&lt;string&gt; nextPath = t; 
+                    nextPath.push_back(newLast);
+
+                    if (newLast == endWord) {
+                        res.push_back(nextPath);
+                        minLevel = level;
+                    } 
+                    else paths.push(nextPath);
+                }
+            }
         }
-        else
-            return t1? t1:t2;
+        return res;
     }
 };
-</code></pre><p>reference:<br><a href="https://goo.gl/Nxp7M6" target="_blank" rel="noopener">https://goo.gl/Nxp7M6</a></p>
+</code></pre><p>reference:<br><a href="https://www.youtube.com/watch?v=lmypbtgdpuQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=lmypbtgdpuQ</a><br><a href="http://www.cnblogs.com/grandyang/p/4548184.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4548184.html</a><br><a href="https://goo.gl/4rcWS6" target="_blank" rel="noopener">https://goo.gl/4rcWS6</a><br><a href="https://goo.gl/t1vxXg" target="_blank" rel="noopener">https://goo.gl/t1vxXg</a></p>
 
             </div>
 </article>

@@ -87,14 +87,14 @@
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/facebook/">
-                facebook
+            <a href="/categories/amazon/">
+                amazon
             </a>
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/amazon/">
-                amazon
+            <a href="/categories/facebook/">
+                facebook
             </a>
         </h4>
         
@@ -105,14 +105,14 @@
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/linkedin/">
-                linkedin
+            <a href="/categories/uber/">
+                uber
             </a>
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/uber/">
-                uber
+            <a href="/categories/linkedin/">
+                linkedin
             </a>
         </h4>
         
@@ -123,14 +123,14 @@
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/programming-language/study/">
-                study
+            <a href="/categories/algorithm/">
+                algorithm
             </a>
         </h4>
         
         <h4 class="post-cat">
-            <a href="/categories/algorithm/">
-                algorithm
+            <a href="/categories/programming-language/study/">
+                study
             </a>
         </h4>
         
@@ -167,13 +167,13 @@
                 <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given two words (beginWord and endWord), and a dictionary’s word list, find the length of shortest transformation sequence from beginWord to endWord, such that:</p>
 <p>Only one letter can be changed at a time.<br>Each transformed word must exist in the word list. Note that beginWord is not a transformed word.<br>Note:</p>
 <p>Return 0 if there is no such transformation sequence.<br>All words have the same length.<br>All words contain only lowercase alphabetic characters.<br>You may assume no duplicates in the word list.<br>You may assume beginWord and endWord are non-empty and are not the same.<br>Example 1:</p>
-<p>Input:<br>beginWord = “hit”,<br>endWord = “cog”,<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”,”cog”]</p>
+<p>Input:<br>beginWord = “hit”,<br>endWord = “cog”,<br>wordList = <code>[&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;,&quot;cog&quot;]</code></p>
 <p>Output: 5</p>
-<p>Explanation: As one shortest transformation is “hit” -&gt; “hot” -&gt; “dot” -&gt; “dog” -&gt; “cog”,<br>return its length 5.<br>Example 2:</p>
-<p>Input:<br>beginWord = “hit”<br>endWord = “cog”<br>wordList = [“hot”,”dot”,”dog”,”lot”,”log”]</p>
+<p>Explanation: As one shortest transformation is <code>&quot;hit&quot; -&gt; &quot;hot&quot; -&gt; &quot;dot&quot; -&gt; &quot;dog&quot; -&gt; &quot;cog&quot;</code>,<br>return its length 5.<br>Example 2:</p>
+<p>Input:<br>beginWord = “hit”<br>endWord = “cog”<br>wordList = <code>[&quot;hot&quot;,&quot;dot&quot;,&quot;dog&quot;,&quot;lot&quot;,&quot;log&quot;]</code></p>
 <p>Output: 0</p>
 <p>Explanation: The endWord “cog” is not in wordList, therefore no possible transformation.</p>
-<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The key idea is to substitute every single character in the <code>beginWord</code> and check whether if there’s any match in the <code>wordList</code>. One thing you need to notice is that you can not use a word twice; therefore, once a word in <code>wordList</code> is used(used means we can find a match after replacing the character), you need to remove it from the list.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int ladderLength(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;</span><br><span class="line">        unordered_set&lt;string&gt; dict(wordList.begin(), wordList.end()); //put into unordered_set for efficient search</span><br><span class="line">        if (!dict.count(endWord)) return 0;</span><br><span class="line">        </span><br><span class="line">        queue&lt;string&gt; q;</span><br><span class="line">        q.push(beginWord);</span><br><span class="line">        </span><br><span class="line">        int l = beginWord.length();</span><br><span class="line">        int step = 0;</span><br><span class="line">        </span><br><span class="line">        while (!q.empty()) &#123;</span><br><span class="line">            ++step;</span><br><span class="line">            for (int size = q.size(); size &gt; 0; size--) &#123; </span><br><span class="line">                string w = q.front(); //pick a word in queue to do the search</span><br><span class="line">                q.pop();</span><br><span class="line">                for (int i = 0; i &lt; l; i++) &#123; //the description stated that the length of each word would be the same</span><br><span class="line">                    char ch = w[i]; //change each character to find if there&apos;s a match</span><br><span class="line">                    for (int j = &apos;a&apos;; j &lt;= &apos;z&apos;; j++) &#123;</span><br><span class="line">                        w[i] = j;</span><br><span class="line">                        // Found the solution</span><br><span class="line">                        if (w == endWord) return step + 1;</span><br><span class="line">                        </span><br><span class="line">                        // Not in dict, skip it</span><br><span class="line">                        if (!dict.count(w)) continue;</span><br><span class="line">                        </span><br><span class="line">                        // Remove new word from dict, becasue we can only use each word in dictionary once</span><br><span class="line">                        dict.erase(w);</span><br><span class="line">                        </span><br><span class="line">                        // Add new word into queue</span><br><span class="line">                        q.push(w);                    </span><br><span class="line">                    &#125;</span><br><span class="line">                    w[i] = ch;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The key idea is to substitute every single character in the <code>beginWord</code> and check whether if there’s any match in the <code>wordList</code>. One thing you need to notice is that you can not use a word twice; therefore, once a word in <code>wordList</code> is used(used means we can find a match after replacing the character), you need to remove it from the list.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int ladderLength(string beginWord, string endWord, vector&lt;string&gt;&amp; wordList) &#123;</span><br><span class="line">        unordered_set&lt;string&gt; dict(wordList.begin(), wordList.end()); //put into unordered_set for efficient search</span><br><span class="line">        if (!dict.count(endWord)) return 0;</span><br><span class="line">        </span><br><span class="line">        queue&lt;string&gt; q;</span><br><span class="line">        q.push(beginWord);</span><br><span class="line">        </span><br><span class="line">        int l = beginWord.length();</span><br><span class="line">        int step = 0;</span><br><span class="line">        </span><br><span class="line">        while (!q.empty()) &#123;</span><br><span class="line">            ++step;</span><br><span class="line">            for (int size = q.size(); size &gt; 0; size--) &#123; </span><br><span class="line">                string w = q.front(); //pick a word in queue to do the search</span><br><span class="line">                q.pop();</span><br><span class="line">                for (int i = 0; i &lt; l; i++) &#123; //the description stated that the length of each word would be the same</span><br><span class="line">                    char ch = w[i]; //change each character to find if there&apos;s a match</span><br><span class="line">                    for (int j = &apos;a&apos;; j &lt;= &apos;z&apos;; j++) &#123;</span><br><span class="line">                        w[i] = j;</span><br><span class="line">                        // Found the solution</span><br><span class="line">                        if (w == endWord) return step + 1;</span><br><span class="line">                        </span><br><span class="line">                        // Not in dict, skip it</span><br><span class="line">                        if (!dict.count(w)) continue;</span><br><span class="line">                        </span><br><span class="line">                        // Remove new word from dict, because we can only use each word in dictionary once</span><br><span class="line">                        dict.erase(w);</span><br><span class="line">                        </span><br><span class="line">                        // Add new word into queue</span><br><span class="line">                        q.push(w);                    </span><br><span class="line">                    &#125;</span><br><span class="line">                    w[i] = ch;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>reference:<br><a href="https://goo.gl/yJo3ou" target="_blank" rel="noopener">https://goo.gl/yJo3ou</a><br><a href="https://goo.gl/JNAsQE" target="_blank" rel="noopener">https://goo.gl/JNAsQE</a></p>
 
             </div>
