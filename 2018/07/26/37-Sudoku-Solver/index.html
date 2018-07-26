@@ -153,23 +153,77 @@
         </h4>
         
             <h2 class="post-title">
-                54. Spiral Matrix
+                37. Sudoku Solver
             </h2>
             <ul class="post-date">
                 <li>
-                    2018-05-30
+                    2018-07-26
                 </li>
                 <li>
                     Lawrence Lin
                 </li>
             </ul>
             <div class="post-content">
-                <p>Problem description:</p>
-<p>Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line"> [ 1, 2, 3 ],</span><br><span class="line"> [ 4, 5, 6 ],</span><br><span class="line"> [ 7, 8, 9 ]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  [1, 2, 3, 4],</span><br><span class="line">  [5, 6, 7, 8],</span><br><span class="line">  [9,10,11,12]</span><br><span class="line">]</span><br><span class="line">Output: [1,2,3,4,8,12,11,10,9,5,6,7]</span><br></pre></td></tr></table></figure>
-<p>Solution:<br>This is a very simple and easy to understand solution. I traverse right and increment rowBegin, then traverse down and decrement colEnd, then I traverse left and decrement rowEnd, and finally I traverse up and increment colBegin.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; spiralOrder(vector&lt;vector&lt;int&gt;&gt;&amp; matrix) &#123;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        if(matrix.size()== 0) return res;</span><br><span class="line">        if(matrix[0].size()== 0) return res;</span><br><span class="line">        </span><br><span class="line">        int rowBegin = 0;</span><br><span class="line">        int rowEnd = matrix.size()-1;</span><br><span class="line">        int colBegin = 0;</span><br><span class="line">        int colEnd = matrix[0].size() - 1;</span><br><span class="line">        </span><br><span class="line">        while (rowBegin &lt;= rowEnd &amp;&amp; colBegin &lt;= colEnd) &#123;</span><br><span class="line">            // Traverse Right</span><br><span class="line">            for (int j = colBegin; j &lt;= colEnd; j ++) &#123;</span><br><span class="line">                res.push_back(matrix[rowBegin][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            rowBegin++;</span><br><span class="line">            </span><br><span class="line">            // Traverse Down</span><br><span class="line">            for (int j = rowBegin; j &lt;= rowEnd; j ++) &#123;</span><br><span class="line">                res.push_back(matrix[j][colEnd]);</span><br><span class="line">            &#125;</span><br><span class="line">            colEnd--;</span><br><span class="line">            </span><br><span class="line">            if (rowBegin &lt;= rowEnd) &#123;</span><br><span class="line">                // Traverse Left</span><br><span class="line">                for (int j = colEnd; j &gt;= colBegin; j --) &#123;</span><br><span class="line">                    res.push_back(matrix[rowEnd][j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            rowEnd--;</span><br><span class="line">            </span><br><span class="line">            if (colBegin &lt;= colEnd) &#123;</span><br><span class="line">                // Traver Up</span><br><span class="line">                for (int j = rowEnd; j &gt;= rowBegin; j --) &#123;</span><br><span class="line">                    res.push_back(matrix[j][colBegin]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            colBegin ++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return res;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+                <h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Write a program to solve a Sudoku puzzle by filling the empty cells.</p>
+<p>A sudoku solution must satisfy all of the following rules:</p>
+<p>Each of the digits 1-9 must occur exactly once in each row.<br>Each of the digits 1-9 must occur exactly once in each column.<br>Each of the the digits 1-9 must occur exactly once in each of the 9 3x3 sub-boxes of the grid.<br>Empty cells are indicated by the character ‘.’.</p>
+<p><img src="1.png" alt=""><br>A sudoku puzzle…</p>
+<p><img src="2.png" alt=""><br>…and its solution numbers marked in red.</p>
+<p>Note:</p>
+<p>The given board contain only digits 1-9 and the character ‘.’.<br>You may assume that the given Sudoku puzzle will have a single unique solution.<br>The given board size is always 9x9.</p>
+<h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>For this question, we can use recursive/backtracking to solve it. </p>
+<ol>
+<li>Find a <code>&#39;.&#39;</code> location that need to fill in a number</li>
+<li>Check if this position can be filled in with some number. The checking can be done by scanning the same row, the same column, the same 3*3 box.</li>
+<li>If we can fill the position with a number, then we use recursive to find next <code>&#39;.&#39;</code> position to be filled. One thing to notice is that, when we do the recursive, we might found out that this current result is false. At this time, we can use backtracking to previous level, and try to put other number in the previous position.</li>
+</ol>
+<pre><code>class Solution {
+public:
+    void solveSudoku(vector&lt;vector&lt;char&gt;&gt;&amp; board) {
+        /*
+        1. find location, &apos;.&apos;, to check 
+        2. determine what number can this position use. 
+            By checking whether if same row || same column || same box, have this number.
+        3. after filling this position, we can pass this board to the recursive and check next &apos;.&apos; to be filled.
+        */
+        if(board.empty() || board[0].size() == 0) return;
+        solve(board);
+    }
+
+    bool solve(vector&lt;vector&lt;char&gt;&gt;&amp; board){
+        for(int i= 0; i&lt; board.size(); i++){
+            for(int j= 0; j&lt; board[0].size(); j++){
+                if(board[i][j]== &apos;.&apos;){ //a location needs to be filled
+                    for(char c= &apos;1&apos;; c&lt;= &apos;9&apos;; c++){ //try from 1 through 9
+                        if(isValid(board, i, j, c)){ //check if this &apos;c&apos; can put in the position
+                            board[i][j]= c; //put c into the location
+                          if(solve(board)) //if this is the solution
+                                return true;
+                            else
+                                board[i][j]= &apos;.&apos;; //go back and try another char
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    bool isValid(vector&lt;vector&lt;char&gt;&gt;&amp; board, int row, int col, char c){
+        for(int i= 0; i&lt; 9; i++){
+            if(board[i][col] != &apos;.&apos; &amp;&amp; board[i][col]== c) return false; //check row by row, found c is already used
+            if(board[row][i] != &apos;.&apos; &amp;&amp; board[row][i]== c) return false;
+            int boxR= 3*(row/3)+ i/3;
+            int boxC= 3*(col/3)+ i%3;
+            if(board[boxR][boxC] != &apos;.&apos; &amp;&amp; board[boxR][boxC]== c) return false;
+        }
+        return true;
+    }
+
+};
+</code></pre><p>reference:<br><a href="https://www.youtube.com/watch?v=b6CxF17Y_k4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=b6CxF17Y_k4</a><br><a href="https://goo.gl/PaqSwh" target="_blank" rel="noopener">https://goo.gl/PaqSwh</a></p>
+
             </div>
 </article>
                 </main>
