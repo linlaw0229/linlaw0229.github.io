@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>401. Binary Watch</title>
+      <link href="/2018/07/29/401-Binary-Watch/"/>
+      <url>/2018/07/29/401-Binary-Watch/</url>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>A binary watch has 4 LEDs on the top which represent the hours (0-11), and the 6 LEDs on the bottom represent the minutes (0-59).</p><p>Each LED represents a zero or one, with the least significant bit on the right.</p><p><img src="401.jpg" alt=""></p><p>For example, the above binary watch reads “3:25”.</p><p>Given a non-negative integer n which represents the number of LEDs that are currently on, return all possible times the watch could represent.</p><p>Example:</p><p>Input: n = 1<br>Return: [“1:00”, “2:00”, “4:00”, “8:00”, “0:01”, “0:02”, “0:04”, “0:08”, “0:16”, “0:32”]<br>Note:<br>The order of output does not matter.<br>The hour must not contain a leading zero, for example “01:00” is not valid, it should be “1:00”.<br>The minute must be consist of two digits and may contain a leading zero, for example “10:2” is not valid, it should be “10:02”.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>We can use backtracking to solve this problem. </p><ol><li>Think <code>hours</code> and <code>minutes</code> as a combined array.</li><li>Like a combination problem. If we want to pick <code>n</code> elements from <code>hours</code> and <code>minutes</code>, we will pick <code>n-i</code> elements from <code>minutes</code> while we pick <code>i</code> elements from <code>hours</code>.</li></ol><ul><li>example: if n= 2:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[&quot;3:00&quot;,&quot;5:00&quot;,&quot;9:00&quot;,&quot;1:01&quot;,&quot;1:02&quot;, ...]`</span><br><span class="line"> 1+2:00 ,1+4:00,1+8:00, 1:01</span><br><span class="line">                        i=4(equal to hour.size())</span><br><span class="line">                        generate minute then call helper again</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; hour = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>&#125;, minute = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">16</span>, <span class="number">32</span>&#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; readBinaryWatch(<span class="keyword">int</span> num) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        helper(res, make_pair(<span class="number">0</span>, <span class="number">0</span>), num, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res, pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; time, <span class="keyword">int</span> num, <span class="keyword">int</span> start_point)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (num == <span class="number">0</span>) &#123;</span><br><span class="line">            res.push_back(to_string(time.first) +  (time.second &lt; <span class="number">10</span> ?  <span class="string">":0"</span> : <span class="string">":"</span>) + to_string(time.second));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = start_point; i &lt; hour.size() + minute.size(); i++)</span><br><span class="line">            <span class="keyword">if</span> (i &lt; hour.size()) &#123;    </span><br><span class="line">                time.first += hour[i];</span><br><span class="line">                <span class="keyword">if</span> (time.first &lt; <span class="number">12</span>)     helper(res, time, num - <span class="number">1</span>, i + <span class="number">1</span>);     <span class="comment">// "hour" should be less than 12.</span></span><br><span class="line">                time.first -= hour[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;     </span><br><span class="line">                time.second += minute[i - hour.size()];</span><br><span class="line">                <span class="keyword">if</span> (time.second &lt; <span class="number">60</span>)    helper(res, time, num - <span class="number">1</span>, i + <span class="number">1</span>);     <span class="comment">// "minute" should be less than 60.</span></span><br><span class="line">                time.second -= minute[i - hour.size()];</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy </tag>
+            
+            <tag> backtracking </tag>
+            
+            <tag> bit manipulation </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>186. Reverse Words in a String II</title>
       <link href="/2018/07/27/186-Reverse-Words-in-a-String-II/"/>
       <url>/2018/07/27/186-Reverse-Words-in-a-String-II/</url>
@@ -268,9 +293,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> bfs </tag>
             
             <tag> string </tag>
             
@@ -355,9 +380,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -390,9 +415,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -502,9 +527,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -1086,9 +1111,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1213,13 +1238,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1244,11 +1269,11 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1296,9 +1321,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -1450,11 +1475,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -1966,9 +1991,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2020,11 +2045,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2049,11 +2074,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2136,9 +2161,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2211,11 +2236,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2240,11 +2265,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2269,11 +2294,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2298,9 +2323,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2348,9 +2373,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2373,9 +2398,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2400,9 +2425,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -2429,9 +2454,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2454,9 +2479,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2479,9 +2504,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2504,9 +2529,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2529,9 +2554,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> two pointers </tag>
             
@@ -2556,9 +2581,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -2608,9 +2633,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2683,9 +2708,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
