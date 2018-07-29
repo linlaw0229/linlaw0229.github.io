@@ -7,33 +7,7 @@
 <p>Output: 3<br>Follow up:<br>What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
 <h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol>
 <li>use a variable to count ith smallest</li>
-<li><p>whenever the count is zero, return the res</p>
-<p>   /**</p>
-<ul>
-<li>Definition for a binary tree node.</li>
-<li>struct TreeNode {</li>
-<li>int val;</li>
-<li>TreeNode *left;</li>
-<li>TreeNode *right;</li>
-<li>TreeNode(int x) : val(x), left(NULL), right(NULL) {}</li>
-<li><p>};<br>*/<br>class Solution {<br>public:<br>  int res= 0;<br>  int count= 0;</p>
-<p>  int kthSmallest(TreeNode* root, int k) {</p>
-<pre><code>count= k;
-helper(root);
-return res;
-</code></pre><p>  }<br>  void helper(TreeNode* root){</p>
-<pre><code>//inorder traversal, find the left most first
-if(root-&gt;left) helper(root-&gt;left);
-
-count--; 
-if(count == 0){
-    res= root-&gt;val;
-    return;
-}
-if(root-&gt;right) helper(root-&gt;right);
-</code></pre><p>  }<br>};</p>
-</li>
-</ul>
+<li>whenever the count is zero, return the res<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Definition for a binary tree node.</span></span><br><span class="line"><span class="comment">* struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">*     int val;</span></span><br><span class="line"><span class="comment">*     TreeNode *left;</span></span><br><span class="line"><span class="comment">*     TreeNode *right;</span></span><br><span class="line"><span class="comment">*     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment">* &#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> res= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> count= <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        count= k;</span><br><span class="line">        helper(root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="comment">//inorder traversal, find the left most first</span></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left) helper(root-&gt;left);</span><br><span class="line">        </span><br><span class="line">        count--; </span><br><span class="line">        <span class="keyword">if</span>(count == <span class="number">0</span>)&#123;</span><br><span class="line">            res= root-&gt;val;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right) helper(root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>reference:<br><a href="https://goo.gl/Ed7PGv" target="_blank" rel="noopener">https://goo.gl/Ed7PGv</a></p>
