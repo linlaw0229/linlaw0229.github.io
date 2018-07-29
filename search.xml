@@ -6,7 +6,7 @@
       <title>186. Reverse Words in a String II</title>
       <link href="/2018/07/27/186-Reverse-Words-in-a-String-II/"/>
       <url>/2018/07/27/186-Reverse-Words-in-a-String-II/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given an input string , reverse the string word by word. </p><p>Example:</p><p>Input:  <code>[&quot;t&quot;,&quot;h&quot;,&quot;e&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;]</code><br>Output: <code>[&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;t&quot;,&quot;h&quot;,&quot;e&quot;]</code><br>Note: </p><p>A word is defined as a sequence of non-space characters.<br>The input string does not contain leading or trailing spaces.<br>The words are always separated by a single space.<br>Follow up: Could you do it in-place without allocating extra space?</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>We can reverse the string first, then use two pointers to find space <code>&#39; &#39;</code>. </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseWords</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&amp; str)</span> </span>&#123;</span><br><span class="line">        reverse(str.begin(), str.end());</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>, n= str.size();</span><br><span class="line">        <span class="keyword">while</span>(right&lt; n)&#123;</span><br><span class="line">            <span class="keyword">while</span>(right&lt; n &amp;&amp; str[right]!= <span class="string">' '</span>) right++;</span><br><span class="line">            reverse(str.begin()+left, str.begin()+right);</span><br><span class="line">            left= ++right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: O(n)</p><p>reference:<br><a href="https://goo.gl/mLq9PF" target="_blank" rel="noopener">https://goo.gl/mLq9PF</a><br><a href="https://goo.gl/PztRhh" target="_blank" rel="noopener">https://goo.gl/PztRhh</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given an input string , reverse the string word by word. </p><p>Example:</p><p>Input:  <code>[&quot;t&quot;,&quot;h&quot;,&quot;e&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;]</code><br>Output: <code>[&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;t&quot;,&quot;h&quot;,&quot;e&quot;]</code><br>Note: </p><p>A word is defined as a sequence of non-space characters.<br>The input string does not contain leading or trailing spaces.<br>The words are always separated by a single space.<br>Follow up: Could you do it in-place without allocating extra space?</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>We can reverse the string first, then use two pointers to find space <code>&#39; &#39;</code>. </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseWords</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&amp; str)</span> </span>&#123;</span><br><span class="line">        reverse(str.begin(), str.end());</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>, n= str.size();</span><br><span class="line">        <span class="keyword">while</span>(right&lt; n)&#123;</span><br><span class="line">            <span class="keyword">while</span>(right&lt; n &amp;&amp; str[right]!= <span class="string">' '</span>) right++;</span><br><span class="line">            reverse(str.begin()+left, str.begin()+right);</span><br><span class="line">            left= ++right;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$</p><p>reference:<br><a href="https://goo.gl/mLq9PF" target="_blank" rel="noopener">https://goo.gl/mLq9PF</a><br><a href="https://goo.gl/PztRhh" target="_blank" rel="noopener">https://goo.gl/PztRhh</a></p>]]></content>
       
       <categories>
           
@@ -235,6 +235,8 @@
             
             <tag> array </tag>
             
+            <tag> hard </tag>
+            
             <tag> amazon </tag>
             
             <tag> google </tag>
@@ -242,8 +244,6 @@
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> hard </tag>
             
             <tag> sort </tag>
             
@@ -268,9 +268,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> string </tag>
             
@@ -355,9 +355,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -390,9 +390,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -502,9 +502,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -593,9 +593,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1086,9 +1086,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1188,9 +1188,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1213,13 +1213,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1244,11 +1244,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1296,9 +1296,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -1325,9 +1325,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1350,9 +1350,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1450,11 +1450,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -1858,9 +1858,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> string </tag>
-            
             <tag> hard </tag>
+            
+            <tag> string </tag>
             
             <tag> hash table </tag>
             
@@ -1885,13 +1885,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> string </tag>
-            
             <tag> hard </tag>
             
-            <tag> two pointers </tag>
+            <tag> string </tag>
             
             <tag> hash table </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -1916,9 +1916,9 @@
             
             <tag> string </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -1966,9 +1966,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -2020,11 +2020,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2049,11 +2049,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2136,9 +2136,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2211,11 +2211,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2240,11 +2240,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2269,11 +2269,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2298,9 +2298,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2348,9 +2348,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2373,9 +2373,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> backtracking </tag>
             
@@ -2400,9 +2400,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2429,9 +2429,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2454,9 +2454,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2479,9 +2479,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2504,9 +2504,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2529,9 +2529,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2556,9 +2556,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2608,9 +2608,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2683,9 +2683,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2865,9 +2865,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> stack </tag>
             
@@ -2919,9 +2919,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> string </tag>
-            
             <tag> hard </tag>
+            
+            <tag> string </tag>
             
             <tag> dynamic programming </tag>
             
