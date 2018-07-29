@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>784. Letter Case Permutation</title>
+      <link href="/2018/07/29/784-Letter-Case-Permutation/"/>
+      <url>/2018/07/29/784-Letter-Case-Permutation/</url>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a string S, we can transform every letter individually to be lowercase or uppercase to create another string.  Return a list of all possible strings we could create.</p><p>Examples:<br>Input: S = “a1b2”<br>Output: <code>[&quot;a1b2&quot;, &quot;a1B2&quot;, &quot;A1b2&quot;, &quot;A1B2&quot;]</code></p><p>Input: S = “3z4”<br>Output: <code>[&quot;3z4&quot;, &quot;3Z4&quot;]</code></p><p>Input: S = “12345”<br>Output: <code>[&quot;12345&quot;]</code><br>Note:</p><p>S will be a string with length at most 12.<br>S will consist only of letters or digits.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol><li>use toupper and tolower function in c++</li><li>backtracking function(int start, res, string)</li><li>for every character in S, determine if it’s number or letter</li><li>backtrack the string</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; letterCasePermutation(<span class="built_in">string</span> S) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        helper(res, S, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res, <span class="built_in">string</span>&amp; s, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pos == s.length())&#123;</span><br><span class="line">            res.push_back(s);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> c= s[pos]; <span class="comment">//initial character</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">            helper(res, s, pos+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            helper(res, s, pos+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">isupper</span>(c))&#123; <span class="comment">//1A</span></span><br><span class="line">                s[pos]= <span class="built_in">tolower</span>(s[pos]); <span class="comment">//change to 1a</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123; <span class="comment">//1a</span></span><br><span class="line">                s[pos]= <span class="built_in">toupper</span>(s[pos]); <span class="comment">//change to 1A</span></span><br><span class="line">            &#125;</span><br><span class="line">            helper(res, s, pos+<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="http://www.cplusplus.com/reference/cctype/isdigit/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/cctype/isdigit/</a><br><a href="https://goo.gl/NCcQDz" target="_blank" rel="noopener">https://goo.gl/NCcQDz</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> backtracking </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> east </tag>
+            
+            <tag> yelp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>401. Binary Watch</title>
       <link href="/2018/07/29/401-Binary-Watch/"/>
       <url>/2018/07/29/401-Binary-Watch/</url>
