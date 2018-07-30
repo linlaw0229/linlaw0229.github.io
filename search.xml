@@ -3,6 +3,71 @@
   
     
     <entry>
+      <title>306. Additive Number</title>
+      <link href="/2018/07/30/306-Additive-Number/"/>
+      <url>/2018/07/30/306-Additive-Number/</url>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Additive number is a string whose digits can form additive sequence.</p><p>A valid additive sequence should contain at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.</p><p>Given a string containing only digits ‘0’-‘9’, write a function to determine if it’s an additive number.</p><p>Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1, 2, 03 or 1, 02, 3 is invalid.</p><p>Example 1:</p><p>Input: “112358”<br>Output: true<br>Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8.<br>             1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8<br>Example 2:</p><p>Input: “199100199”<br>Output: true<br>Explanation: The additive sequence is: 1, 99, 100, 199.<br>             1 + 99 = 100, 99 + 100 = 199<br>Follow up:<br>How would you handle overflow for very large input integers?</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol><li>think about how to devide the string. it should be three part.</li><li>need a sub function for add string.</li><li>a sub function to check if three strings can form additive sequence.</li></ol><p>draw a graph to help understand and test.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool isAdditiveNumber(string num) &#123;</span><br><span class="line">        /*</span><br><span class="line">        1. think about how to devide the string. it should be three part.</span><br><span class="line">        2. need a sub function for add string.</span><br><span class="line">        3. a sub function to check if three strings can form additive sequence.</span><br><span class="line">        */</span><br><span class="line">        for(int i= 1; i&lt;= num.length()/2; i++)&#123; //start from 1 is because substr is [0, i)</span><br><span class="line">            for(int j= 1; j&lt;= (num.length()-i)/2; j++)&#123;</span><br><span class="line">                if(check(num.substr(0, i), num.substr(i, j), num.substr(i+j))) //</span><br><span class="line">                    return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    bool check(string num1, string num2, string num3)&#123;</span><br><span class="line">        if(num1.length()&gt; 1 &amp;&amp; num1[0] == &apos;0&apos; || num2.length()&gt; 1 &amp;&amp; num2[0] == &apos;0&apos;)</span><br><span class="line">            return false;</span><br><span class="line">        string sum = add(num1, num2);</span><br><span class="line">        if(sum == num3) return true;</span><br><span class="line">        </span><br><span class="line">        //can not divide num3 to sum because length of sum is larger, return false</span><br><span class="line">        //num3 does not contain equal string of sum in itself, return false</span><br><span class="line">        if(sum.length() &gt;= num3.length() || num3.substr(0, sum.length()) != sum)</span><br><span class="line">            return false;</span><br><span class="line">        else&#123;</span><br><span class="line">            //recursively find following string</span><br><span class="line">            return check(num2, sum, num3.substr(sum.length()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    string add(string num1, string num2)&#123;</span><br><span class="line">        /*</span><br><span class="line">        1. start from right to left, then reverse the string</span><br><span class="line">        2. make sure the carry is added</span><br><span class="line">        3. use (char - &apos;0&apos;) to calculate digits</span><br><span class="line">        */</span><br><span class="line">        string res;</span><br><span class="line">        int sum= 0, carry= 0;</span><br><span class="line">        int n= num1.length()-1, m= num2.length()-1;</span><br><span class="line">        while(n&gt;= 0 ||m &gt;= 0)&#123;</span><br><span class="line">            sum= carry+ (n&gt;= 0 ? num1[n--]-&apos;0&apos;: 0)+ (m&gt;= 0? num2[m--]-&apos;0&apos;: 0);</span><br><span class="line">            res.push_back(sum%10 + &apos;0&apos;);</span><br><span class="line">            carry= sum/10;</span><br><span class="line">        &#125;</span><br><span class="line">        if(carry) res.push_back(carry+ &apos;0&apos;);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/eQGcxW" target="_blank" rel="noopener">https://goo.gl/eQGcxW</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> backtracking </tag>
+            
+            <tag> google </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> epic system </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>note-Docker</title>
+      <link href="/2018/07/29/note-Docker/"/>
+      <url>/2018/07/29/note-Docker/</url>
+      <content type="html"><![CDATA[<p>Docker presents in the entire software development workflow, but mainly use in deployment.<br><img src="img1.png" alt=""></p><p>Dockerfile: describe the dependency<br>create docker image<br>run-time instance of docker image<br>docker hub: <a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a><br>reference:<br><a href="https://www.youtube.com/user/dockerrun" target="_blank" rel="noopener">https://www.youtube.com/user/dockerrun</a><br><a href="https://www.udemy.com/understanding-docker-performing-selenium-automation/" target="_blank" rel="noopener">https://www.udemy.com/understanding-docker-performing-selenium-automation/</a></p>]]></content>
+      
+      <categories>
+          
+          <category> note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>89. Gray Code</title>
+      <link href="/2018/07/29/89-Gray-Code/"/>
+      <url>/2018/07/29/89-Gray-Code/</url>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>The gray code is a binary numeral system where two successive values differ in only one bit.</p><p>Given a non-negative integer n representing the total number of bits in the code, print the sequence of gray code. A gray code sequence must begin with 0.</p><p>Example 1:</p><p>Input: 2<br>Output: [0,1,3,2]<br>Explanation:<br>00 - 0<br>01 - 1<br>11 - 3<br>10 - 2</p><p>For a given n, a gray code sequence may not be uniquely defined.<br>For example, [0,2,3,1] is also a valid gray code sequence.</p><p>00 - 0<br>10 - 2<br>11 - 3<br>01 - 1<br>Example 2:</p><p>Input: 0<br>Output: [0]<br>Explanation: We define the gray code sequence to begin with 0.<br>             A gray code sequence of n has size = 2n, which for n = 0 the size is 20 = 1.<br>             Therefore, for n = 0 the gray code sequence is [0].</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>So we start with the <code>k-1</code>th bit from the right. We first do not do anything to it. See we have already initialized a 32-bit bitset (which is essentially a boolean array) with all <code>0</code>s. Without doing anything to this bit, we call the <code>helper</code> function to do the next task with <code>k+1</code> that is to do the next bit after it. It goes on till we reach the <code>zero</code>th bit. We now have bitset containing the bits we selected at those positions. NOW, we backtrack. Next up after calling helper is, you see, we do a flip. So we flip the 0 and make it a 1 or vice versa and we do the same operation again. We choose. We explore. We unchoose.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; grayCode(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="built_in">bitset</span>&lt;32&gt; bits;</span><br><span class="line">        helper(res, bits, n);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; res, <span class="built_in">bitset</span>&lt;<span class="number">32</span>&gt;&amp; bits, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(k== <span class="number">0</span>) res.push_back(bits.to_ulong());</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            helper(res, bits, k<span class="number">-1</span>); <span class="comment">//get 0000 0000 first</span></span><br><span class="line">            bits.flip(k<span class="number">-1</span>);   <span class="comment">//change to 0000 0001</span></span><br><span class="line">            helper(res, bits, k<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/VBu5Bc" target="_blank" rel="noopener">https://goo.gl/VBu5Bc</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>784. Letter Case Permutation</title>
       <link href="/2018/07/29/784-Letter-Case-Permutation/"/>
       <url>/2018/07/29/784-Letter-Case-Permutation/</url>
@@ -322,9 +387,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> string </tag>
             
@@ -409,9 +474,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -444,9 +509,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -556,9 +621,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1140,9 +1205,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1267,13 +1332,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1298,11 +1363,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1350,9 +1415,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -1504,11 +1569,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -1860,9 +1925,9 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> linked list </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -2020,9 +2085,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -2074,11 +2139,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2103,11 +2168,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2190,9 +2255,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2265,11 +2330,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2294,11 +2359,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2323,11 +2388,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2352,9 +2417,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2402,9 +2467,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2427,9 +2492,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> backtracking </tag>
             
@@ -2454,9 +2519,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2483,9 +2548,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2508,9 +2573,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2533,9 +2598,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2558,9 +2623,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2583,9 +2648,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2610,9 +2675,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2662,9 +2727,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2737,9 +2802,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2919,9 +2984,9 @@
             
             <tag> facebook </tag>
             
-            <tag> hash table </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> hash table </tag>
             
             <tag> stack </tag>
             
