@@ -3,6 +3,60 @@
   
     
     <entry>
+      <title>255. Verify Preorder Sequence in Binary Search Tree</title>
+      <link href="/2018/08/01/255-Verify-Preorder-Sequence-in-Binary-Search-Tree/"/>
+      <url>/2018/08/01/255-Verify-Preorder-Sequence-in-Binary-Search-Tree/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an array of numbers, verify whether it is the correct preorder traversal sequence of a binary search tree.</p><p>You may assume each number in the sequence is unique.</p><p>Consider the following binary search tree:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    5</span><br><span class="line">   / \</span><br><span class="line">  2   6</span><br><span class="line"> / \</span><br><span class="line">1   3</span><br></pre></td></tr></table></figure></p><p>Example 1:</p><p>Input: <code>[5,2,6,1,3]</code><br>Output: false<br>Example 2:</p><p>Input: <code>[5,2,1,3,6]</code><br>Output: true<br>Follow up:<br>Could you do it using only constant space complexity?</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ol><li>Walk through the preorder traversal, <code>left subtree value &lt; root&#39;s value &lt; right subtree&#39;s value</code></li><li>We can see that, <code>root value&lt; upcoming right value in the array</code></li><li>If we know the root value, we can use it to determine whether if upcoming value is valid. So we use a <code>lower</code> to denote the lower_bound, which is also the root value, of the tree.</li><li>Use a stack to store the array from <code>root</code> to <code>left subtree</code>, whenever reach a node has greater value, pop value out of stack. Then store the last pop out value as lower bound.</li></ol><p><img src="255.png" width="50%" height="50%"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Push 50</span><br><span class="line">Push 17 </span><br><span class="line">Push 9</span><br><span class="line">(read 14, 14 &gt; 9)</span><br><span class="line">Pop 9 (lower bound = 9)</span><br><span class="line">Push 14</span><br><span class="line">Push 12</span><br><span class="line">(read 23, 23 &gt; 12)</span><br><span class="line">Pop 12</span><br><span class="line">Pop 14</span><br><span class="line">Pop 17 (lower bound = 17)</span><br><span class="line">Push 23</span><br><span class="line">(read 76, 76 &gt; 23)</span><br><span class="line">Pop 23</span><br><span class="line">Pop 50 (lowerbound = 50)</span><br><span class="line">Push 76</span><br><span class="line">Push 54</span><br><span class="line">(read 72, 72 &gt; 54)</span><br><span class="line">Pop 54 (lower bound = 54)</span><br><span class="line">Push 72</span><br><span class="line">Push 67</span><br></pre></td></tr></table></figure></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">verifyPreorder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; stk;</span><br><span class="line">        <span class="keyword">int</span> lower_bound= INT_MIN;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: preorder)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n&lt; lower_bound)</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">while</span>(!stk.empty() &amp;&amp; n&gt; stk.top())&#123;</span><br><span class="line">                lower_bound= stk.top();</span><br><span class="line">                stk.pop();</span><br><span class="line">            &#125;</span><br><span class="line">            stk.push(n);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>131. Palindrome Partitioning</title>
+      <link href="/2018/07/30/131-Palindrome-Partitioning/"/>
+      <url>/2018/07/30/131-Palindrome-Partitioning/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p><p>Return all possible palindrome partitioning of s.</p><p>Example:</p><p>Input: “aab”<br>Output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [&quot;aa&quot;,&quot;b&quot;],</span><br><span class="line">  [&quot;a&quot;,&quot;a&quot;,&quot;b&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>This is a similar backtracking problem. For this kind of question, we’ll use a <code>helper</code> function to help us check every possible sequence meet the requirement or not. </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; partition(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. a sub function to check is palindrome or not</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tmp;</span><br><span class="line">        helper(res, tmp, s, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; tmp, <span class="built_in">string</span> s, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start== s.length())&#123;</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= start; i&lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ispalin(s, start, i))&#123;</span><br><span class="line">                tmp.push_back(s.substr(start, i-start+<span class="number">1</span>));</span><br><span class="line">                helper(res, tmp, s, i+<span class="number">1</span>);</span><br><span class="line">                tmp.pop_back();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">ispalin</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(start&lt;= end)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[start++] != s[end--])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: O(n*n!)</p><p>reference:<br><a href="https://goo.gl/bBS1Eh" target="_blank" rel="noopener">https://goo.gl/bBS1Eh</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> backtracking </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> pure storage </tag>
+            
+            <tag> uber </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>77. Combinations</title>
       <link href="/2018/07/30/77-Combinations/"/>
       <url>/2018/07/30/77-Combinations/</url>
@@ -16,6 +70,8 @@
       
       
         <tags>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -33,7 +89,7 @@
       <title>306. Additive Number</title>
       <link href="/2018/07/30/306-Additive-Number/"/>
       <url>/2018/07/30/306-Additive-Number/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Additive number is a string whose digits can form additive sequence.</p><p>A valid additive sequence should contain at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.</p><p>Given a string containing only digits ‘0’-‘9’, write a function to determine if it’s an additive number.</p><p>Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1, 2, 03 or 1, 02, 3 is invalid.</p><p>Example 1:</p><p>Input: “112358”<br>Output: true<br>Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8.<br>             1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8<br>Example 2:</p><p>Input: “199100199”<br>Output: true<br>Explanation: The additive sequence is: 1, 99, 100, 199.<br>             1 + 99 = 100, 99 + 100 = 199<br>Follow up:<br>How would you handle overflow for very large input integers?</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol><li>think about how to devide the string. it should be three part.</li><li>need a sub function for add string.</li><li>a sub function to check if three strings can form additive sequence.</li></ol><p>draw a graph to help understand and test.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isAdditiveNumber</span><span class="params">(<span class="built_in">string</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. think about how to devide the string. it should be three part.</span></span><br><span class="line"><span class="comment">        2. need a sub function for add string.</span></span><br><span class="line"><span class="comment">        3. a sub function to check if three strings can form additive sequence.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">1</span>; i&lt;= num.length()/<span class="number">2</span>; i++)&#123; <span class="comment">//start from 1 is because substr is [0, i)</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">1</span>; j&lt;= (num.length()-i)/<span class="number">2</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(num.substr(<span class="number">0</span>, i), num.substr(i, j), num.substr(i+j))) <span class="comment">//</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2, <span class="built_in">string</span> num3)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num1.length()&gt; <span class="number">1</span> &amp;&amp; num1[<span class="number">0</span>] == <span class="string">'0'</span> || num2.length()&gt; <span class="number">1</span> &amp;&amp; num2[<span class="number">0</span>] == <span class="string">'0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">string</span> sum = add(num1, num2);</span><br><span class="line">        <span class="keyword">if</span>(sum == num3) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//can not divide num3 to sum because length of sum is larger, return false</span></span><br><span class="line">        <span class="comment">//num3 does not contain equal string of sum in itself, return false</span></span><br><span class="line">        <span class="keyword">if</span>(sum.length() &gt;= num3.length() || num3.substr(<span class="number">0</span>, sum.length()) != sum)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//recursively find following string</span></span><br><span class="line">            <span class="keyword">return</span> check(num2, sum, num3.substr(sum.length()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2)</span></span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. start from right to left, then reverse the string</span></span><br><span class="line"><span class="comment">        2. make sure the carry is added</span></span><br><span class="line"><span class="comment">        3. use (char - '0') to calculate digits</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">int</span> sum= <span class="number">0</span>, carry= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n= num1.length()<span class="number">-1</span>, m= num2.length()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;= <span class="number">0</span> ||m &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            sum= carry+ (n&gt;= <span class="number">0</span> ? num1[n--]-<span class="string">'0'</span>: <span class="number">0</span>)+ (m&gt;= <span class="number">0</span>? num2[m--]-<span class="string">'0'</span>: <span class="number">0</span>);</span><br><span class="line">            res.push_back(sum%<span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">            carry= sum/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(carry) res.push_back(carry+ <span class="string">'0'</span>);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/eQGcxW" target="_blank" rel="noopener">https://goo.gl/eQGcxW</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Additive number is a string whose digits can form additive sequence.</p><p>A valid additive sequence should contain at least three numbers. Except for the first two numbers, each subsequent number in the sequence must be the sum of the preceding two.</p><p>Given a string containing only digits ‘0’-‘9’, write a function to determine if it’s an additive number.</p><p>Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1, 2, 03 or 1, 02, 3 is invalid.</p><p>Example 1:</p><p>Input: “112358”<br>Output: true<br>Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8.<br>             1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8<br>Example 2:</p><p>Input: “199100199”<br>Output: true<br>Explanation: The additive sequence is: 1, 99, 100, 199.<br>             1 + 99 = 100, 99 + 100 = 199<br>Follow up:<br>How would you handle overflow for very large input integers?</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ol><li>think about how to devide the string. it should be three part.</li><li>need a sub function for add string.</li><li>a sub function to check if three strings can form additive sequence.</li></ol><p>draw a graph to help understand and test.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isAdditiveNumber</span><span class="params">(<span class="built_in">string</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. think about how to devide the string. it should be three part.</span></span><br><span class="line"><span class="comment">        2. need a sub function for add string.</span></span><br><span class="line"><span class="comment">        3. a sub function to check if three strings can form additive sequence.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">1</span>; i&lt;= num.length()/<span class="number">2</span>; i++)&#123; <span class="comment">//start from 1 is because substr is [0, i)</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">1</span>; j&lt;= (num.length()-i)/<span class="number">2</span>; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(check(num.substr(<span class="number">0</span>, i), num.substr(i, j), num.substr(i+j))) <span class="comment">//</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2, <span class="built_in">string</span> num3)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num1.length()&gt; <span class="number">1</span> &amp;&amp; num1[<span class="number">0</span>] == <span class="string">'0'</span> || num2.length()&gt; <span class="number">1</span> &amp;&amp; num2[<span class="number">0</span>] == <span class="string">'0'</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">string</span> sum = add(num1, num2);</span><br><span class="line">        <span class="keyword">if</span>(sum == num3) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//can not divide num3 to sum because length of sum is larger, return false</span></span><br><span class="line">        <span class="comment">//num3 does not contain equal string of sum in itself, return false</span></span><br><span class="line">        <span class="keyword">if</span>(sum.length() &gt;= num3.length() || num3.substr(<span class="number">0</span>, sum.length()) != sum)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//recursively find following string</span></span><br><span class="line">            <span class="keyword">return</span> check(num2, sum, num3.substr(sum.length()));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2)</span></span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. start from right to left, then reverse the string</span></span><br><span class="line"><span class="comment">        2. make sure the carry is added</span></span><br><span class="line"><span class="comment">        3. use (char - '0') to calculate digits</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">int</span> sum= <span class="number">0</span>, carry= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> n= num1.length()<span class="number">-1</span>, m= num2.length()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(n&gt;= <span class="number">0</span> ||m &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">            sum= carry+ (n&gt;= <span class="number">0</span> ? num1[n--]-<span class="string">'0'</span>: <span class="number">0</span>)+ (m&gt;= <span class="number">0</span>? num2[m--]-<span class="string">'0'</span>: <span class="number">0</span>);</span><br><span class="line">            res.push_back(sum%<span class="number">10</span> + <span class="string">'0'</span>);</span><br><span class="line">            carry= sum/<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(carry) res.push_back(carry+ <span class="string">'0'</span>);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/eQGcxW" target="_blank" rel="noopener">https://goo.gl/eQGcxW</a></p>]]></content>
       
       <categories>
           
@@ -165,9 +221,9 @@
             
             <tag> medium </tag>
             
-            <tag> string </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
@@ -273,13 +329,13 @@
             
             <tag> medium </tag>
             
+            <tag> uber </tag>
+            
             <tag> hash table </tag>
             
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> uber </tag>
             
             <tag> apple </tag>
             
@@ -304,9 +360,9 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> uber </tag>
+            
+            <tag> hash table </tag>
             
             <tag> linkedin </tag>
             
@@ -385,6 +441,8 @@
             
             <tag> amazon </tag>
             
+            <tag> uber </tag>
+            
             <tag> google </tag>
             
             <tag> facebook </tag>
@@ -392,8 +450,6 @@
             <tag> microsoft </tag>
             
             <tag> sort </tag>
-            
-            <tag> uber </tag>
             
         </tags>
       
@@ -418,11 +474,11 @@
             
             <tag> bfs </tag>
             
-            <tag> string </tag>
-            
             <tag> backtracking </tag>
             
             <tag> amazon </tag>
+            
+            <tag> string </tag>
             
             <tag> google </tag>
             
@@ -451,9 +507,9 @@
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> uber </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -1309,9 +1365,9 @@
             
             <tag> medium </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> string </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -2891,11 +2947,11 @@
             
             <tag> medium </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -2978,9 +3034,9 @@
             
             <tag> medium </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> apple </tag>
             
@@ -3011,9 +3067,9 @@
             
             <tag> hash table </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> stack </tag>
             
@@ -3067,9 +3123,9 @@
             
             <tag> hard </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> string </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
