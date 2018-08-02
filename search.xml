@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>767. Reorganize String</title>
+      <link href="/2018/08/02/767-Reorganize-String/"/>
+      <url>/2018/08/02/767-Reorganize-String/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string S, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.</p><p>If possible, output any possible result.  If not possible, return the empty string.</p><p>Example 1:</p><p>Input: S = “aab”<br>Output: “aba”<br>Example 2:</p><p>Input: S = “aaab”<br>Output: “”<br>Note:</p><p>S will consist of lowercase letters and have length in range [1, 500].</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>When we first see this problem, we should use an example to walk through it, and we can see that we need to know what character has the greatest occurrence in the string.</p><ol><li>Use an unordered_map to count occurrence</li><li>Use priority queue to store the occurrence, it will automatically sort it. </li><li>Put the character into the result string, take <code>2 different character</code> at a time, this can ensure the outcome will not have same adjacent character.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reorganizeString</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. count the frequency of each char</span></span><br><span class="line"><span class="comment">        2. put into priority queue</span></span><br><span class="line"><span class="comment">        3. the top 2 elements in queue must be the most frequently element, put them into result string first</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: S)</span><br><span class="line">            <span class="built_in">map</span>[c]++;</span><br><span class="line">        </span><br><span class="line">        priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt;&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n.second&gt; (S.length()+<span class="number">1</span>)/<span class="number">2</span>) <span class="keyword">return</span> <span class="string">""</span>; <span class="comment">//Pigeonhole principal </span></span><br><span class="line">            q.push(&#123;n.second, n.first&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">while</span>(q.size()&gt;= <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">auto</span> tmp1= q.top(); q.pop();</span><br><span class="line">            <span class="keyword">auto</span> tmp2= q.top(); q.pop();</span><br><span class="line">            res.push_back(tmp1.second);</span><br><span class="line">            res.push_back(tmp2.second);</span><br><span class="line">            <span class="keyword">if</span>(--tmp1.first &gt; <span class="number">0</span>) q.push(tmp1);</span><br><span class="line">            <span class="keyword">if</span>(--tmp2.first &gt; <span class="number">0</span>) q.push(tmp2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!q.empty())</span><br><span class="line">            res.push_back(q.top().second);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> uber </tag>
+            
+            <tag> google </tag>
+            
+            <tag> heap </tag>
+            
+            <tag> greedy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>452. Minimum Number of Arrows to Burst Balloons</title>
       <link href="/2018/08/02/452-Minimum-Number-of-Arrows-to-Burst-Balloons/"/>
       <url>/2018/08/02/452-Minimum-Number-of-Arrows-to-Burst-Balloons/</url>
@@ -341,9 +370,9 @@
             
             <tag> medium </tag>
             
-            <tag> string </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
@@ -449,11 +478,11 @@
             
             <tag> medium </tag>
             
+            <tag> uber </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> uber </tag>
             
             <tag> hash table </tag>
             
@@ -561,13 +590,13 @@
             
             <tag> amazon </tag>
             
+            <tag> uber </tag>
+            
             <tag> google </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> uber </tag>
             
             <tag> sort </tag>
             
@@ -594,11 +623,11 @@
             
             <tag> array </tag>
             
-            <tag> string </tag>
-            
             <tag> backtracking </tag>
             
             <tag> amazon </tag>
+            
+            <tag> string </tag>
             
             <tag> google </tag>
             
