@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>452. Minimum Number of Arrows to Burst Balloons</title>
+      <link href="/2018/08/02/452-Minimum-Number-of-Arrows-to-Burst-Balloons/"/>
+      <url>/2018/08/02/452-Minimum-Number-of-Arrows-to-Burst-Balloons/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>There are a number of spherical balloons spread in two-dimensional space. For each balloon, provided input is the start and end coordinates of the horizontal diameter. Since it’s horizontal, y-coordinates don’t matter and hence the x-coordinates of start and end of the diameter suffice. Start is always smaller than end. There will be at most 104 balloons.</p><p>An arrow can be shot up exactly vertically from different points along the x-axis. A balloon with xstart and xend bursts by an arrow shot at x if xstart ≤ x ≤ xend. There is no limit to the number of arrows that can be shot. An arrow once shot keeps travelling up infinitely. The problem is to find the minimum number of arrows that must be shot to burst all balloons.</p><p>Example:</p><p>Input:<br><code>[[10,16], [2,8], [1,6], [7,12]]</code></p><p>Output:<br>2</p><p>Explanation:<br>One way is to shoot one arrow for example at x = 6 (bursting the balloons [2,8] and [1,6]) and another arrow at x = 11 (bursting the other two balloons).</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The question is saying that we have many balloons, which might overlap, and how many arrows make them burst.<br>Take the example from question, the graph would look like this.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    ---(2,8)---            ---(10,16)---</span><br><span class="line">  ---(1,6)---       ---(7,12)---</span><br><span class="line">|-------------------------------------------|</span><br></pre></td></tr></table></figure><p>From the graph, it’s easy to come out with the answer that we need two arrows. So let’s transfer it to code.</p><ol><li>We need to sort the input <code>points</code>, and we can use STL sorting directly. Since the STL sorting pairs will sort the first element in advance, if the first element are equal, then it’ll sort based on second element.</li><li>We can see that if the <code>end</code> value overlaps other’s <code>start</code> value, we can use one arrow to burst them.</li><li>If a balloon’s <code>start</code> is greater than current <code>end</code> value, then we need a new arrow.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findMinArrowShots</span><span class="params">(<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(points.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        sort(points.begin(), points.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> res= <span class="number">1</span>, end= points[<span class="number">0</span>].second;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">1</span>; i&lt; points.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(points[i].first&lt;= end)</span><br><span class="line">                <span class="comment">//can cover ith balloon</span></span><br><span class="line">                end= min(end, points[i].second);</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//can not use previous arrow to shot current balloon, need new arrow</span></span><br><span class="line">                res++;</span><br><span class="line">                end= points[i].second;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(nlogn)$<br>reference:<br><a href="http://www.cnblogs.com/grandyang/p/6050562.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/6050562.html</a><br><a href="https://goo.gl/oBHFYw" target="_blank" rel="noopener">https://goo.gl/oBHFYw</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> google </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> greedy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>763. Partition Labels</title>
       <link href="/2018/08/01/763-Partition-Labels/"/>
       <url>/2018/08/01/763-Partition-Labels/</url>
