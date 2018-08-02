@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>402. Remove K Digits</title>
+      <link href="/2018/08/02/402-Remove-K-Digits/"/>
+      <url>/2018/08/02/402-Remove-K-Digits/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a non-negative integer num represented as a string, remove k digits from the number so that the new number is the smallest possible.</p><p>Note:<br>The length of num is less than 10002 and will be ≥ k.<br>The given num does not contain any leading zero.<br>Example 1:</p><p>Input: num = “1432219”, k = 3<br>Output: “1219”<br>Explanation: Remove the three digits 4, 3, and 2 to form the new number 1219 which is the smallest.<br>Example 2:</p><p>Input: num = “10200”, k = 1<br>Output: “200”<br>Explanation: Remove the leading 1 and the number is 200. Note that the output must not contain leading zeroes.<br>Example 3:</p><p>Input: num = “10”, k = 2<br>Output: “0”<br>Explanation: Remove all the digits from the number and it is left with nothing which is 0.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use a string as a stack, push_back every digit that is smaller than <code>res.back()</code>. </p><p>example:<br>num: “12311421”<br>k: 3</p><p>1<br>12<br>123<br>11<br>111<br>1114<br>1112<br>11121</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">removeKdigits</span><span class="params">(<span class="built_in">string</span> num, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> res= <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">int</span> n= num.length(), keep= n-k;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c: num)&#123;</span><br><span class="line">            <span class="keyword">while</span>(k &amp;&amp; res.size() &amp;&amp; res.back()&gt; c)&#123;</span><br><span class="line">                <span class="comment">//if 1st digit is greater than second digit, it will get remove too</span></span><br><span class="line">                res.pop_back();</span><br><span class="line">                --k;</span><br><span class="line">            &#125;</span><br><span class="line">            res.push_back(c);</span><br><span class="line">        &#125;</span><br><span class="line">        res.resize(keep); <span class="comment">//if only 1 digit and remove 1 digit, then resize res to 0</span></span><br><span class="line">        <span class="keyword">while</span>(!res.empty() &amp;&amp; res[<span class="number">0</span>] == <span class="string">'0'</span>) res.erase(res.begin());</span><br><span class="line">        <span class="keyword">return</span> res.empty()? <span class="string">"0"</span>: res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/8fQRQR" target="_blank" rel="noopener">https://goo.gl/8fQRQR</a><br><a href="http://www.cnblogs.com/grandyang/p/5883736.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/5883736.html</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> google </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> stack </tag>
+            
+            <tag> greedy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>767. Reorganize String</title>
       <link href="/2018/08/02/767-Reorganize-String/"/>
       <url>/2018/08/02/767-Reorganize-String/</url>
@@ -19,9 +48,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> google </tag>
+            
+            <tag> uber </tag>
             
             <tag> heap </tag>
             
@@ -131,9 +160,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> google </tag>
             
@@ -370,9 +399,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> string </tag>
+            
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
@@ -478,11 +507,11 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> uber </tag>
             
             <tag> hash table </tag>
             
@@ -586,11 +615,7 @@
             
             <tag> array </tag>
             
-            <tag> hard </tag>
-            
             <tag> amazon </tag>
-            
-            <tag> uber </tag>
             
             <tag> google </tag>
             
@@ -598,7 +623,11 @@
             
             <tag> microsoft </tag>
             
+            <tag> uber </tag>
+            
             <tag> sort </tag>
+            
+            <tag> hard </tag>
             
         </tags>
       
@@ -619,15 +648,15 @@
       
         <tags>
             
+            <tag> array </tag>
+            
             <tag> bfs </tag>
             
-            <tag> array </tag>
+            <tag> string </tag>
             
             <tag> backtracking </tag>
             
             <tag> amazon </tag>
-            
-            <tag> string </tag>
             
             <tag> google </tag>
             
@@ -706,9 +735,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -741,9 +770,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -853,9 +882,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -1437,9 +1466,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1564,13 +1593,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1595,11 +1624,11 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1647,9 +1676,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -1801,11 +1830,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -2209,11 +2238,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> hard </tag>
-            
             <tag> string </tag>
             
             <tag> hash table </tag>
+            
+            <tag> hard </tag>
             
         </tags>
       
@@ -2236,13 +2265,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> hard </tag>
-            
             <tag> string </tag>
             
             <tag> hash table </tag>
             
             <tag> two pointers </tag>
+            
+            <tag> hard </tag>
             
         </tags>
       
@@ -2317,9 +2346,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2371,11 +2400,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2400,11 +2429,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2487,9 +2516,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2562,11 +2591,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2591,11 +2620,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2620,11 +2649,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2649,9 +2678,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2699,9 +2728,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2724,9 +2753,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2751,9 +2780,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -2780,9 +2809,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2805,9 +2834,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2830,9 +2859,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2855,9 +2884,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2880,9 +2909,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> two pointers </tag>
             
@@ -2907,9 +2936,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -2959,9 +2988,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3034,9 +3063,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3270,11 +3299,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> hard </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> hard </tag>
             
         </tags>
       
