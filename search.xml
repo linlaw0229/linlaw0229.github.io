@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>763. Partition Labels</title>
+      <link href="/2018/08/01/763-Partition-Labels/"/>
+      <url>/2018/08/01/763-Partition-Labels/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>A string S of lowercase letters is given. We want to partition this string into as many parts as possible so that each letter appears in at most one part, and return a list of integers representing the size of these parts.</p><p>Example 1:<br>Input: S = “ababcbacadefegdehijhklij”<br>Output: [9,7,8]<br>Explanation:<br>The partition is “ababcbaca”, “defegde”, “hijhklij”.<br>This is a partition so that each letter appears in at most one part.<br>A partition like “ababcbacadefegde”, “hijhklij” is incorrect, because it splits S into less parts.<br>Note:</p><p>S will have length in range [1, 500].<br>S will consist of lowercase letters (‘a’ to ‘z’) only.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ol><li>Use an unordered_map to store the last position of occurred character.</li><li>Traverse the array, remember the maximum of last position for every showing character.</li><li>If current position is the last position of a character, then make a cut.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; partitionLabels(<span class="built_in">string</span> S) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; S.length(); i++)</span><br><span class="line">            <span class="built_in">map</span>[S[i]]= i;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">int</span> last= <span class="number">0</span>, start= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; S.length(); i++)&#123;</span><br><span class="line">            last= max(last, <span class="built_in">map</span>[S[i]]);</span><br><span class="line">            <span class="keyword">if</span>(i == last)&#123;</span><br><span class="line">                <span class="comment">//find a cutting point where this character will not appear in the folowing string anymore</span></span><br><span class="line">                res.push_back(i- start+<span class="number">1</span>);</span><br><span class="line">                start= i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="http://www.cnblogs.com/grandyang/p/8654822.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/8654822.html</a><br><a href="https://goo.gl/HRrkCn" target="_blank" rel="noopener">https://goo.gl/HRrkCn</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
+            
+            <tag> greedy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>232. Implement Queue using Stacks</title>
       <link href="/2018/08/01/232-Implement-Queue-using-Stacks/"/>
       <url>/2018/08/01/232-Implement-Queue-using-Stacks/</url>
@@ -287,9 +314,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> string </tag>
+            
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
@@ -395,11 +422,11 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> uber </tag>
             
             <tag> hash table </tag>
             
@@ -507,13 +534,13 @@
             
             <tag> amazon </tag>
             
-            <tag> uber </tag>
-            
             <tag> google </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> uber </tag>
             
             <tag> sort </tag>
             
@@ -540,11 +567,11 @@
             
             <tag> array </tag>
             
+            <tag> string </tag>
+            
             <tag> backtracking </tag>
             
             <tag> amazon </tag>
-            
-            <tag> string </tag>
             
             <tag> google </tag>
             
