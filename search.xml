@@ -3,6 +3,41 @@
   
     
     <entry>
+      <title>207. Course Schedule</title>
+      <link href="/2018/08/08/207-Course-Schedule/"/>
+      <url>/2018/08/08/207-Course-Schedule/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>There are a total of n courses you have to take, labeled from 0 to n-1.</p><p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p><p>Given the total number of courses and a list of prerequisite pairs, is it possible for you to finish all courses?</p><p>Example 1:</p><p>Input: 2, [[1,0]]<br>Output: true<br>Explanation: There are a total of 2 courses to take.<br>             To take course 1 you should have finished course 0. So it is possible.<br>Example 2:</p><p>Input: 2, [[1,0],[0,1]]<br>Output: false<br>Explanation: There are a total of 2 courses to take.<br>             To take course 1 you should have finished course 0, and to take course 0 you should<br>             also have finished course 1. So it is impossible.<br>Note:</p><p>The input prerequisites is a graph represented by a list of edges, not adjacency matrices. Read more about how a graph is represented.<br>You may assume that there are no duplicate edges in the input prerequisites.</p><h3 id="Solution1-DFS"><a href="#Solution1-DFS" class="headerlink" title="Solution1 DFS:"></a>Solution1 DFS:</h3><p>We can use DFS to solve this question. From above example, <code>Input: 2, [[1,0],[0,1]]</code>, we can see that if the graph contains a <code>cycle</code>, we can not finish all the courses. </p><p>First of all, let’s see how we generate a graph. we can use a <code>vector&lt;unordered_set&gt;</code> to do so. Every index stores the courses that can be taken after finish the <code>index</code> course. </p><p>Second, we need to traverse the graph and find if there’s any cycle. The idea of finding a cycle is to record the nodes that we’ve already traversed on current path. If we encounter a node that we’ve already traversed, then it must contains a cycle in the graph. After current path is checked, reset it to <code>false</code>.</p><p>Third, another visited array to store which node is already traversed. help to save time.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canFinish</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. create a graph for dfs</span></span><br><span class="line"><span class="comment">        2. if we can find a cycle, then we can not finish all courses. </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt;&gt; graph(numCourses);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: prerequisites)&#123;</span><br><span class="line">            graph[n.second].insert(n.first); </span><br><span class="line">            <span class="comment">// [1, 0]: To take course 1 you should have finished course 0</span></span><br><span class="line">            <span class="comment">// So we need an edge from 0-&gt;1, because we need to get to 0 then 1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; visited(numCourses, <span class="literal">false</span>), onpath(numCourses, <span class="literal">false</span>); <span class="comment">//the second one is to check cycle</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; numCourses; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[i] &amp;&amp; dfscycle(graph, visited, onpath, i))</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfscycle</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; graph, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&amp; visited, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&amp; onpath, <span class="keyword">int</span> index)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(visited[index]) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">//already traversed this node in big picture</span></span><br><span class="line">        </span><br><span class="line">        onpath[index]= visited[index]= <span class="literal">true</span>; <span class="comment">//set to true denoted that we traverse this node</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> neighbor: graph[index])&#123; <span class="comment">//check all next level as node index is the prerequist</span></span><br><span class="line">            <span class="keyword">if</span>(onpath[neighbor] || dfscycle(graph, visited, onpath, neighbor)) </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">//1. onpath[neighbor] is true, means that this neighbor is already in this subpath, so we have a cycle</span></span><br><span class="line">            <span class="comment">//2. dfscycle, go further and find a cycle in subpath</span></span><br><span class="line">        &#125;</span><br><span class="line">        onpath[index]= <span class="literal">false</span>; <span class="comment">//reset to false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Solution2-BFS"><a href="#Solution2-BFS" class="headerlink" title="Solution2 BFS:"></a>Solution2 BFS:</h3><p>The BFS solution is to apply topological sort. The idea is to check if every node does not have any indegree after we traverse the graph. </p><p>First, we need to generate a graph. Pretty similar to DFS solution above.<br>Second, we need a indegree array, size is numCourses. Add one if a course have prerequisite.<br>  After calculated the indegree, some of the node might not have any indegree, so we start to traverse from them.</p><p>Third, BFS. If a node’s indegree becomes <code>zero</code>, then we need to push it into the queue.<br>Finally, check indegree array to see if all zero.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canFinish</span><span class="params">(<span class="keyword">int</span> numCourses, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&amp; prerequisites)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//BFS</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. calculate indegree for every node</span></span><br><span class="line"><span class="comment">        2. BFS, push every node with indegree 0 into queue</span></span><br><span class="line"><span class="comment">        3. check if every node has indegree 0</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; graph(numCourses);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; indegree(numCourses, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: prerequisites)&#123;</span><br><span class="line">            indegree[n.first]++;</span><br><span class="line">            graph[n.second].push_back(n.first);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; numCourses; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(indegree[i] == <span class="number">0</span>) q.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">auto</span> tmp= q.front(); q.pop();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; !graph[tmp].empty() &amp;&amp; i&lt; graph[tmp].size(); i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(--indegree[graph[tmp][i]] == <span class="number">0</span>) q.push(graph[tmp][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; numCourses; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(indegree[i] != <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://www.youtube.com/watch?v=zkTOIVUdW-I" target="_blank" rel="noopener">https://www.youtube.com/watch?v=zkTOIVUdW-I</a><br><a href="https://goo.gl/iN1qG3" target="_blank" rel="noopener">https://goo.gl/iN1qG3</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> dfs </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> google </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> topological sort </tag>
+            
+            <tag> graph </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>402. Remove K Digits</title>
       <link href="/2018/08/02/402-Remove-K-Digits/"/>
       <url>/2018/08/02/402-Remove-K-Digits/</url>
@@ -160,9 +195,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> google </tag>
             
@@ -615,6 +650,8 @@
             
             <tag> array </tag>
             
+            <tag> hard </tag>
+            
             <tag> amazon </tag>
             
             <tag> google </tag>
@@ -626,8 +663,6 @@
             <tag> uber </tag>
             
             <tag> sort </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
@@ -648,9 +683,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> string </tag>
             
@@ -735,9 +770,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -770,9 +805,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -882,9 +917,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1466,9 +1501,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1593,13 +1628,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1624,11 +1659,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1676,9 +1711,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -1830,11 +1865,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -2238,11 +2273,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> hard </tag>
+            
             <tag> string </tag>
             
             <tag> hash table </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
@@ -2265,13 +2300,13 @@
             
             <tag> leetcode </tag>
             
+            <tag> hard </tag>
+            
             <tag> string </tag>
             
             <tag> hash table </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
@@ -2346,9 +2381,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -2400,11 +2435,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2429,11 +2464,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2516,9 +2551,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2591,11 +2626,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2620,11 +2655,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2649,11 +2684,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2678,9 +2713,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2728,9 +2763,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2753,9 +2788,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> backtracking </tag>
             
@@ -2780,9 +2815,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2809,9 +2844,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2834,9 +2869,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2859,9 +2894,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2884,9 +2919,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2909,9 +2944,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2936,9 +2971,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2988,9 +3023,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3063,9 +3098,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -3299,11 +3334,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> hard </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
