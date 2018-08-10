@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>332. Reconstruct Itinerary</title>
+      <link href="/2018/08/10/332-Reconstruct-Itinerary/"/>
+      <url>/2018/08/10/332-Reconstruct-Itinerary/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a list of airline tickets represented by pairs of departure and arrival airports [from, to], reconstruct the itinerary in order. All of the tickets belong to a man who departs from JFK. Thus, the itinerary must begin with JFK.</p><p>Note:</p><p>If there are multiple valid itineraries, you should return the itinerary that has the smallest lexical order when read as a single string. For example, the itinerary [“JFK”, “LGA”] has a smaller lexical order than <code>[&quot;JFK&quot;, &quot;LGB&quot;]</code>.<br>All airports are represented by three capital letters (IATA code).<br>You may assume all tickets form at least one valid itinerary.<br>Example 1:</p><p>Input: tickets = <code>[[&quot;MUC&quot;, &quot;LHR&quot;], [&quot;JFK&quot;, &quot;MUC&quot;], [&quot;SFO&quot;, &quot;SJC&quot;], [&quot;LHR&quot;, &quot;SFO&quot;]]</code><br>Output: <code>[&quot;JFK&quot;, &quot;MUC&quot;, &quot;LHR&quot;, &quot;SFO&quot;, &quot;SJC&quot;]</code><br>Example 2:</p><p>Input: tickets = <code>[[&quot;JFK&quot;,&quot;SFO&quot;],[&quot;JFK&quot;,&quot;ATL&quot;],[&quot;SFO&quot;,&quot;ATL&quot;],[&quot;ATL&quot;,&quot;JFK&quot;],[&quot;ATL&quot;,&quot;SFO&quot;]]</code><br>Output: <code>[&quot;JFK&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</code><br>Explanation: Another possible reconstruction is <code>[&quot;JFK&quot;,&quot;SFO&quot;,&quot;ATL&quot;,&quot;JFK&quot;,&quot;ATL&quot;,&quot;SFO&quot;]</code>. But it is larger in lexical order.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>We can first show an example with the graph.</p><p><img style="width: 50%; height: 50%" src="1.jpg"></p><p>After we have the graph, we can use DFS to solve the problem. We traverse down a path until it stuck, then we go back to previous node and traverse other paths of previous node.</p><p>We can use <code>unordered_map</code> to store the paths. <code>multiset</code> can use to help sorting the incoming tickets in smaller lexical order.<br><img style="width: 50%; height: 50%" src="2.jpg"></p><p>The step goes like this:</p><ol><li>construct the graph</li><li>start visit “JFK”</li><li>if “JFK” has paths, then start from the first one, and erase it. To erase it is because we visit the path, if we come back later, we’ll then traverse the second path from “JFK”.</li><li>The result is in reverse order. </li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; findItinerary(<span class="built_in">vector</span>&lt;pair&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt;&gt; tickets) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">multiset</span>&lt;<span class="built_in">string</span>&gt;&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: tickets)&#123;</span><br><span class="line">            <span class="built_in">map</span>[n.first].insert(n.second);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        dfs(<span class="built_in">map</span>, <span class="string">"JFK"</span>, res);</span><br><span class="line">        reverse(res.begin(), res.end());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">multiset</span>&lt;<span class="built_in">string</span>&gt;&gt;&amp; <span class="built_in">map</span>, <span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">map</span>[s].size())&#123;</span><br><span class="line">            <span class="built_in">string</span> tmp= *<span class="built_in">map</span>[s].begin();</span><br><span class="line">            <span class="built_in">map</span>[s].erase(<span class="built_in">map</span>[s].begin());</span><br><span class="line">            dfs(<span class="built_in">map</span>, tmp, res);</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(s);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/xDedxi" target="_blank" rel="noopener">https://goo.gl/xDedxi</a><br><a href="http://www.cnblogs.com/grandyang/p/5183210.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/5183210.html</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> dfs </tag>
+            
+            <tag> graph </tag>
+            
+            <tag> yelp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>207. Course Schedule</title>
       <link href="/2018/08/08/207-Course-Schedule/"/>
       <url>/2018/08/08/207-Course-Schedule/</url>
@@ -384,9 +411,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> east </tag>
-            
             <tag> yelp </tag>
+            
+            <tag> east </tag>
             
         </tags>
       
