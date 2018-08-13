@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>516. Longest Palindromic Subsequence</title>
+      <link href="/2018/08/13/516-Longest-Palindromic-Subsequence/"/>
+      <url>/2018/08/13/516-Longest-Palindromic-Subsequence/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string s, find the longest palindromic subsequence’s length in s. You may assume that the maximum length of s is 1000.</p><p>Example 1:<br>Input: “bbbab”<br>Output: 4<br>One possible longest palindromic subsequence is “bbbb”.</p><p>Example 2:<br>Input: “cbbd”<br>Output: 2<br>One possible longest palindromic subsequence is “bb”.</p><h3 id="Solution1-DFS"><a href="#Solution1-DFS" class="headerlink" title="Solution1 DFS:"></a>Solution1 DFS:</h3><p>Use a 2D array and two pointers to check longest palindromic subsequence. memo[i][j] means the longest palindromic subsequence on between <code>i</code> and <code>j</code>.</p><p>example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b b b a b</span><br><span class="line">  i     j</span><br></pre></td></tr></table></figure></p><p>if s[i] == s[j], the length would increase 2.<br><code>memo[start][end]= helper(s, start+1, end-1, memo)+2;</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b b b a b</span><br><span class="line">  i   j</span><br></pre></td></tr></table></figure><p>if s[i]!= s[j], the length should be <code>max(memo[i+1][j], memo[i][j-1])</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestPalindromeSubseq</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n= s.length();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; memo(n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(n, <span class="number">-1</span>));</span><br><span class="line">        <span class="keyword">return</span> helper(s, <span class="number">0</span>, n<span class="number">-1</span>, memo);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">helper</span><span class="params">(<span class="built_in">string</span> &amp;s, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; memo)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(memo[start][end] != <span class="number">-1</span>) <span class="keyword">return</span> memo[start][end];</span><br><span class="line">        <span class="keyword">if</span>(start&gt; end) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(start == end) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(s[start] == s[end])</span><br><span class="line">            memo[start][end]= helper(s, start+<span class="number">1</span>, end<span class="number">-1</span>, memo)+<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            memo[start][end]= max(helper(s, start+<span class="number">1</span>, end, memo), helper(s, start, end<span class="number">-1</span>, memo));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> memo[start][end];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Solution2-DP"><a href="#Solution2-DP" class="headerlink" title="Solution2 DP:"></a>Solution2 DP:</h3><p>Similar to previous idea. Use a pointer <code>i</code> to denote the length that we traverse right now. Another pointer <code>j</code> to denote check the palindromic substring.</p><p>example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b b b a b</span><br><span class="line">  j i</span><br></pre></td></tr></table></figure></p><p><code>dp[i][j]= dp[i-1][j+1]+2</code> </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b b b a b</span><br><span class="line">  j   i</span><br></pre></td></tr></table></figure><p><code>dp[i][j]= max(dp[i-1][j], dp[i][j+1])</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">longestPalindromeSubseq</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(s.length(), <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(s.length(), <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; s.length(); i++)&#123;</span><br><span class="line">            dp[i][i]= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= i<span class="number">-1</span>; j&gt;= <span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i] == s[j])</span><br><span class="line">                    dp[i][j]= dp[i<span class="number">-1</span>][j+<span class="number">1</span>]+<span class="number">2</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    dp[i][j]= max(dp[i<span class="number">-1</span>][j], dp[i][j+<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[s.length()<span class="number">-1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> linkedin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>647. Palindromic Substrings</title>
       <link href="/2018/08/13/647-Palindromic-Substrings/"/>
       <url>/2018/08/13/647-Palindromic-Substrings/</url>
@@ -79,9 +106,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -106,11 +133,11 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -284,9 +311,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> google </tag>
             
@@ -552,11 +579,11 @@
             
             <tag> easy </tag>
             
-            <tag> hash table </tag>
-            
             <tag> google </tag>
             
             <tag> facebook </tag>
+            
+            <tag> hash table </tag>
             
             <tag> binary search </tag>
             
@@ -631,13 +658,13 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> uber </tag>
+            
+            <tag> hash table </tag>
             
             <tag> apple </tag>
             
@@ -662,9 +689,9 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> uber </tag>
+            
+            <tag> hash table </tag>
             
             <tag> design </tag>
             
@@ -772,9 +799,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> string </tag>
             
@@ -859,9 +886,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -894,9 +921,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -1006,9 +1033,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1097,9 +1124,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1590,9 +1617,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1692,9 +1719,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1717,13 +1744,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1748,11 +1775,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1800,9 +1827,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -1829,9 +1856,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1854,9 +1881,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1954,11 +1981,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -2364,9 +2391,9 @@
             
             <tag> hard </tag>
             
-            <tag> hash table </tag>
-            
             <tag> string </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -2391,9 +2418,9 @@
             
             <tag> hard </tag>
             
-            <tag> hash table </tag>
-            
             <tag> string </tag>
+            
+            <tag> hash table </tag>
             
             <tag> two pointers </tag>
             
@@ -2418,9 +2445,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> hash table </tag>
-            
             <tag> string </tag>
+            
+            <tag> hash table </tag>
             
             <tag> two pointers </tag>
             
@@ -2470,9 +2497,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -2524,11 +2551,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2553,11 +2580,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2640,9 +2667,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2715,11 +2742,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2744,11 +2771,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2773,11 +2800,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> backtracking </tag>
             
@@ -2802,9 +2829,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2852,9 +2879,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2877,9 +2904,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> backtracking </tag>
             
@@ -2904,9 +2931,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2933,9 +2960,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2958,9 +2985,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2983,9 +3010,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3008,9 +3035,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3033,9 +3060,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -3060,9 +3087,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -3112,9 +3139,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3187,9 +3214,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -3367,9 +3394,9 @@
             
             <tag> array </tag>
             
-            <tag> hash table </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> hash table </tag>
             
             <tag> dynamic programming </tag>
             
