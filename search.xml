@@ -3,6 +3,37 @@
   
     
     <entry>
+      <title>621. Task Scheduler</title>
+      <link href="/2018/08/19/621-Task-Scheduler/"/>
+      <url>/2018/08/19/621-Task-Scheduler/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.</p><p>However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.</p><p>You need to return the least number of intervals the CPU will take to finish all the given tasks.</p><p>Example 1:<br>Input: tasks = [“A”,”A”,”A”,”B”,”B”,”B”], n = 2<br>Output: 8<br>Explanation: A -&gt; B -&gt; idle -&gt; A -&gt; B -&gt; idle -&gt; A -&gt; B.<br>Note:<br>The number of tasks is in the range [1, 10000].<br>The integer n is in the range [0, 100].</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea is to count whether if we need extra idle slots.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">leastInterval</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&amp; tasks, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">map</span>(<span class="number">26</span>, <span class="number">0</span>); <span class="comment">//only 26 character</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c: tasks) </span><br><span class="line">            <span class="built_in">map</span>[c - <span class="string">'A'</span>]++; <span class="comment">//count which task has the largest frequency</span></span><br><span class="line">        </span><br><span class="line">        sort(<span class="built_in">map</span>.begin(), <span class="built_in">map</span>.end());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> max_val = <span class="built_in">map</span>[<span class="number">25</span>] - <span class="number">1</span>; <span class="comment">//last element do not need cool down</span></span><br><span class="line">        <span class="keyword">int</span> idle_slots = max_val * n;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">24</span>; i &gt;= <span class="number">0</span> &amp;&amp; <span class="built_in">map</span>[i] &gt; <span class="number">0</span>; i--) &#123; </span><br><span class="line">            <span class="comment">//already set up the largest one, so start at i=24</span></span><br><span class="line">            idle_slots -= min(<span class="built_in">map</span>[i], max_val);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//if idle slot &gt; 0, some of the task need extra. </span></span><br><span class="line">        <span class="comment">//idle slot &lt; 0, don't need idle slots</span></span><br><span class="line">        <span class="keyword">return</span> idle_slots &gt; <span class="number">0</span> ? idle_slots + tasks.size() : tasks.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><h3 id="Second-time"><a href="#Second-time" class="headerlink" title="Second time"></a>Second time</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int leastInterval(vector&lt;char&gt;&amp; tasks, int n) &#123;</span><br><span class="line">        /*</span><br><span class="line">        idea: count how many extra idle slot needed.</span><br><span class="line">        1. count which task will be the most.</span><br><span class="line">        2. the last task do not need idle slot, so remember to deduct 1</span><br><span class="line">        */</span><br><span class="line">        </span><br><span class="line">        map&lt;int, int&gt; map;</span><br><span class="line">        </span><br><span class="line">        for(auto c: tasks)&#123;</span><br><span class="line">            map[c-&apos;A&apos;]++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        vector&lt;int&gt; after;</span><br><span class="line">        for(auto m: map)&#123;</span><br><span class="line">            after.push_back(m.second);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        sort(after.begin(), after.end());</span><br><span class="line">        int max_val= after[after.size()-1]-1;</span><br><span class="line">        int idle_slot= n* max_val;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        for(int i= after.size()-2; i&gt;= 0; i--)&#123;</span><br><span class="line">            idle_slot-= min(after[i], max_val);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return idle_slot &lt; 0? tasks.size(): idle_slot+tasks.size();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/DaFYrA" target="_blank" rel="noopener">https://goo.gl/DaFYrA</a><br><a href="https://goo.gl/unPm4P" target="_blank" rel="noopener">https://goo.gl/unPm4P</a><br><a href="https://goo.gl/JhFQuh" target="_blank" rel="noopener">https://goo.gl/JhFQuh</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> uber </tag>
+            
+            <tag> greedy </tag>
+            
+            <tag> queue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>253. Meeting Rooms II</title>
       <link href="/2018/08/19/253-Meeting-Rooms-II/"/>
       <url>/2018/08/19/253-Meeting-Rooms-II/</url>
@@ -145,11 +176,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -578,11 +609,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -638,11 +669,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -821,9 +852,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> easy </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> bit manipulation </tag>
             
@@ -875,11 +906,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -1217,11 +1248,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -1250,9 +1281,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -1277,9 +1308,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -1697,9 +1728,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -1724,9 +1755,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> partition </tag>
             
@@ -1751,9 +1782,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -1778,9 +1809,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -1805,9 +1836,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -1832,9 +1863,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -1886,9 +1917,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -1938,9 +1969,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -1963,11 +1994,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -1988,11 +2019,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -2527,9 +2558,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> medium </tag>
             
@@ -2685,11 +2716,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -2712,11 +2743,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -2741,9 +2772,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> hash table </tag>
             
@@ -2847,9 +2878,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -2876,9 +2907,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -2988,9 +3019,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
             
@@ -3013,9 +3044,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3038,9 +3069,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3067,9 +3098,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3096,9 +3127,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3200,9 +3231,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3510,11 +3541,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3543,9 +3574,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3570,13 +3601,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3601,11 +3632,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3628,11 +3659,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3657,13 +3688,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3688,11 +3719,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -3719,9 +3750,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -3746,13 +3777,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
