@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>29. Divide Two Integers</title>
+      <link href="/2018/08/20/29-Divide-Two-Integers/"/>
+      <url>/2018/08/20/29-Divide-Two-Integers/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.</p><p>Return the quotient after dividing dividend by divisor.</p><p>The integer division should truncate toward zero.</p><p>Example 1:</p><p>Input: dividend = 10, divisor = 3<br>Output: 3<br>Example 2:</p><p>Input: dividend = 7, divisor = -3<br>Output: -2<br>Note:</p><p>Both dividend and divisor will be 32-bit signed integers.<br>The divisor will never be 0.<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 231 − 1 when the division result overflows.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use bit manipulation to solve this problem. </p><p>Left shift the divisor and get the multiply of it. Also need to check the sign of two numbers<br>example: dividend=15, divisor=3<br>15= 3<em>4+3<br>3= 3</em>1+0</p><p>result= 4+1= 5</p><p>edge cases:</p><ul><li>divisor = 0;</li><li>dividend = INT_MIN and divisor = -1 (because abs(INT_MIN) = INT_MAX + 1).</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        use deduction to get the quotient. </span></span><br><span class="line"><span class="comment">        but deduct one by one is too slow, so we can use shifting to speed up the process</span></span><br><span class="line"><span class="comment">        ex:</span></span><br><span class="line"><span class="comment">        d1: 15, d2: 3</span></span><br><span class="line"><span class="comment">        shift d2 left to get multiply</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">if</span> (!divisor || (dividend == INT_MIN &amp;&amp; divisor == <span class="number">-1</span>))</span><br><span class="line">            <span class="keyword">return</span> INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> res= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> sign = (dividend&gt; <span class="number">0</span> ^ divisor&gt;<span class="number">0</span>)? <span class="number">-1</span>: <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> d1= <span class="built_in">labs</span>(dividend), d2= <span class="built_in">labs</span>(divisor);</span><br><span class="line">        <span class="keyword">while</span>(d1&gt;= d2)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> tmp= d2;</span><br><span class="line">            <span class="keyword">int</span> multiply= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(d1&gt;= tmp&lt;&lt;<span class="number">1</span>)&#123;</span><br><span class="line">                tmp &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">                multiply&lt;&lt;=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            d1-= tmp;</span><br><span class="line">            res+= multiply;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res*sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(logn)$</p><p>reference:<br><a href="https://goo.gl/a5wA7D" target="_blank" rel="noopener">https://goo.gl/a5wA7D</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>621. Task Scheduler</title>
       <link href="/2018/08/19/621-Task-Scheduler/"/>
       <url>/2018/08/19/621-Task-Scheduler/</url>
