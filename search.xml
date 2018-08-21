@@ -1649,26 +1649,24 @@
           
           <category> leetcode </category>
           
-          <category> google </category>
-          
-          <category> facebook </category>
-          
-          <category> microsoft </category>
-          
-          <category> linkedin </category>
-          
       </categories>
       
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
             
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
