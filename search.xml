@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>438. Find All Anagrams in a String</title>
+      <link href="/2018/08/21/438-Find-All-Anagrams-in-a-String/"/>
+      <url>/2018/08/21/438-Find-All-Anagrams-in-a-String/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string s and a non-empty string p, find all the start indices of p’s anagrams in s.</p><p>Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.</p><p>The order of output does not matter.</p><p>Example 1:</p><p>Input:<br>s: “cbaebabacd” p: “abc”</p><p>Output:<br>[0, 6]</p><p>Explanation:<br>The substring with start index = 0 is “cba”, which is an anagram of “abc”.<br>The substring with start index = 6 is “bac”, which is an anagram of “abc”.<br>Example 2:</p><p>Input:<br>s: “abab” p: “ab”</p><p>Output:<br>[0, 1, 2]</p><p>Explanation:<br>The substring with start index = 0 is “ab”, which is an anagram of “ab”.<br>The substring with start index = 1 is “ba”, which is an anagram of “ab”.<br>The substring with start index = 2 is “ab”, which is an anagram of “ab”.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; findAnagrams(<span class="built_in">string</span> s, <span class="built_in">string</span> p) &#123;</span><br><span class="line">        <span class="keyword">if</span>(s.empty()) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res, m(<span class="number">256</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: p)</span><br><span class="line">            m[c]++;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>, count= p.length();</span><br><span class="line">        <span class="keyword">while</span>(right&lt; s.length())&#123;</span><br><span class="line">            <span class="comment">//find a character in s that also appeared in p, then move right pointer and decrease the count</span></span><br><span class="line">            <span class="comment">//if a character is not in p, then the value will be negative</span></span><br><span class="line">            <span class="keyword">if</span>(m[s[right++]]-- &gt;= <span class="number">1</span>) --count; </span><br><span class="line">            <span class="keyword">if</span>(count == <span class="number">0</span>) res.push_back(left); <span class="comment">//the starting index of the anagram</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            an anagram's size would be the same as p.length()</span></span><br><span class="line"><span class="comment">            therefore, if length is equal, then we should move left pointer toward right 1 step</span></span><br><span class="line"><span class="comment">            if the value of character key in map is greater or equal then 0, it means it's a character in p</span></span><br><span class="line"><span class="comment">            because in previous step we minus 1 for all characters, so if a character in s is exists in p, then the value in map is at least 0</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            <span class="keyword">if</span>(right-left == p.length() &amp;&amp; m[s[left++]]++ &gt;= <span class="number">0</span>) ++count;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$</p><p>reference:<br><a href="https://goo.gl/5yadmE" target="_blank" rel="noopener">https://goo.gl/5yadmE</a><br><a href="https://goo.gl/8XAyZH" target="_blank" rel="noopener">https://goo.gl/8XAyZH</a><br><a href="https://goo.gl/gT32uu" target="_blank" rel="noopener">https://goo.gl/gT32uu</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy </tag>
+            
+            <tag> string </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> two pointers </tag>
+            
+            <tag> sliding window </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>76. Minimum Window Substring</title>
       <link href="/2018/08/21/76-Minimum-Window-Substring/"/>
       <url>/2018/08/21/76-Minimum-Window-Substring/</url>
@@ -54,6 +83,8 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -61,8 +92,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -112,6 +141,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -119,8 +150,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -145,11 +174,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -172,13 +201,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -387,11 +416,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -820,11 +849,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -880,11 +909,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -1063,9 +1092,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> easy </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> bit manipulation </tag>
             
@@ -1117,11 +1146,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -1459,11 +1488,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -1492,9 +1521,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -1519,9 +1548,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -1939,9 +1968,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -1966,9 +1995,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> partition </tag>
             
@@ -1993,9 +2022,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -2020,9 +2049,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -2047,9 +2076,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -2074,9 +2103,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -2128,9 +2157,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -2180,9 +2209,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -2205,11 +2234,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -2230,11 +2259,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -2769,9 +2798,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> medium </tag>
             
@@ -2927,11 +2956,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -2954,11 +2983,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -2983,9 +3012,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> hash table </tag>
             
@@ -3089,9 +3118,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3118,9 +3147,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3230,9 +3259,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
             
@@ -3255,9 +3284,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3280,9 +3309,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3309,9 +3338,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3338,9 +3367,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3442,9 +3471,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -3752,11 +3781,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3785,9 +3814,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3812,13 +3841,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3843,11 +3872,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3870,11 +3899,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3899,13 +3928,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3930,11 +3959,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -3961,9 +3990,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -3988,13 +4017,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
