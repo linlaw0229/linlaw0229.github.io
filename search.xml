@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>143. Reorder List</title>
+      <link href="/2018/08/21/143-Reorder-List/"/>
+      <url>/2018/08/21/143-Reorder-List/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a singly linked list L: L0→L1→…→Ln-1→Ln,<br>reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…</p><p>You may not modify the values in the list’s nodes, only nodes itself may be changed.</p><p>Example 1:</p><p>Given 1-&gt;2-&gt;3-&gt;4, reorder it to 1-&gt;4-&gt;2-&gt;3.<br>Example 2:</p><p>Given 1-&gt;2-&gt;3-&gt;4-&gt;5, reorder it to 1-&gt;5-&gt;2-&gt;4-&gt;3.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea is to divide the list into two half. Reverse the second half, then reassemble the list.</p><p>example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cut the list into half</span><br><span class="line">1-2-3-4-5-6</span><br><span class="line">    |     |</span><br><span class="line">   slow  fast</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">reverse the second part of the list</span><br><span class="line">1-2-3-4-5-6</span><br><span class="line">    | |    </span><br><span class="line">   mid|  </span><br><span class="line">     pre</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1-2-3-4-5-6   original</span><br><span class="line"></span><br><span class="line">      4</span><br><span class="line">1-2-3/  &gt; 6   make 4 point to tmp-&gt;next, which is 6</span><br><span class="line">      5</span><br><span class="line"></span><br><span class="line">1-2-3 5-4-6   make 5-&gt;next point to 4</span><br><span class="line">1-2-3-5-4-6   make mid-&gt;next point to 5</span><br></pre></td></tr></table></figure></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span> || head-&gt;next == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        ListNode *slow= head, *fast= head;</span><br><span class="line">        <span class="keyword">while</span>(fast-&gt;next &amp;&amp; fast-&gt;next-&gt;next)&#123; </span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode* middle = slow;</span><br><span class="line">        ListNode* preCurrent = slow-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(preCurrent-&gt;next != <span class="literal">NULL</span>)&#123; <span class="comment">//use preCurrent-&gt;next to determine whether if there's more element need to reverse</span></span><br><span class="line">            </span><br><span class="line">            ListNode *tmp = preCurrent-&gt;next; </span><br><span class="line">            preCurrent-&gt;next = tmp-&gt;next;</span><br><span class="line">            tmp-&gt;next = middle-&gt;next;</span><br><span class="line">            middle-&gt;next= tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        slow = head; <span class="comment">//first part of the list</span></span><br><span class="line">        fast = middle-&gt;next; <span class="comment">//second part of the list</span></span><br><span class="line">        <span class="keyword">while</span>(slow != middle)&#123;</span><br><span class="line">            middle-&gt;next = fast-&gt;next;</span><br><span class="line">            fast-&gt;next= slow-&gt;next;</span><br><span class="line">            slow-&gt;next= fast;</span><br><span class="line">            slow= fast-&gt;next;</span><br><span class="line">            fast= middle-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$</p><p>reference:<br><a href="https://goo.gl/5MyHcY" target="_blank" rel="noopener">https://goo.gl/5MyHcY</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> linked list </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>438. Find All Anagrams in a String</title>
       <link href="/2018/08/21/438-Find-All-Anagrams-in-a-String/"/>
       <url>/2018/08/21/438-Find-All-Anagrams-in-a-String/</url>
@@ -2904,9 +2931,9 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> linked list </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
