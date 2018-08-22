@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>247. Strobogrammatic Number II</title>
+      <link href="/2018/08/22/247-Strobogrammatic-Number-II/"/>
+      <url>/2018/08/22/247-Strobogrammatic-Number-II/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p><p>Find all strobogrammatic numbers that are of length = n.</p><p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:  n = 2</span><br><span class="line">Output: [&quot;11&quot;,&quot;69&quot;,&quot;88&quot;,&quot;96&quot;]</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>First, we use some example to find the pattern. If given n= 4.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">n = 0:   none</span><br><span class="line"></span><br><span class="line">n = 1:   0, 1, 8</span><br><span class="line"></span><br><span class="line">n = 2:   11, 69, 88, 96</span><br><span class="line"></span><br><span class="line">n = 3:   101, 609, 808, 906, 111, 619, 818, 916, 181, 689, 888, 986</span><br><span class="line"></span><br><span class="line">n = 4:   1001, 6009, 8008, 9006, 1111, 6119, 8118, 9116, 1691, 6699, 8698, 9696, 1881, 6889, 8888, 9886, 1961, 6969, 8968, 9966</span><br></pre></td></tr></table></figure><p>Observe <code>n == 0</code> and <code>n == 2</code>, we can see that the latter one is base on the previous one with [1 1], [6 9], [8 8], [9 6] on both side. The same thing happens on <code>n==1</code> and <code>n==3</code>.</p><p>One thing to notice is that when <code>n == 4</code>, we can not put <code>0</code> on each side.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; findStrobogrammatic(<span class="keyword">int</span> n) &#123;</span><br><span class="line">        <span class="keyword">return</span> find(n, n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; find(<span class="keyword">int</span> m, <span class="keyword">int</span> n) &#123; <span class="comment">//m: which layer currently at. n: which layer need to reach</span></span><br><span class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) <span class="keyword">return</span> &#123;<span class="string">""</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (m == <span class="number">1</span>) <span class="keyword">return</span> &#123;<span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"8"</span>&#125;;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; t = find(m - <span class="number">2</span>, n), res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> a : t) &#123;</span><br><span class="line">            <span class="keyword">if</span> (m != n) res.push_back(<span class="string">"0"</span> + a + <span class="string">"0"</span>); <span class="comment">//0 and 0 can not be in the front and end</span></span><br><span class="line">            res.push_back(<span class="string">"1"</span> + a + <span class="string">"1"</span>);</span><br><span class="line">            res.push_back(<span class="string">"6"</span> + a + <span class="string">"9"</span>);</span><br><span class="line">            res.push_back(<span class="string">"8"</span> + a + <span class="string">"8"</span>);</span><br><span class="line">            res.push_back(<span class="string">"9"</span> + a + <span class="string">"6"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(5^n))$, for every recursive call, there will be 5 different result for every string.<br>space complexity: $O(n/2))$, stack space</p><p>reference:<br><a href="https://goo.gl/oiRqCY" target="_blank" rel="noopener">https://goo.gl/oiRqCY</a><br><a href="https://goo.gl/mr3grV" target="_blank" rel="noopener">https://goo.gl/mr3grV</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> math </tag>
+            
+            <tag> recursion </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>426. Convert Binary Search Tree to Sorted Doubly Linked List</title>
       <link href="/2018/08/22/426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List/"/>
       <url>/2018/08/22/426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List/</url>
