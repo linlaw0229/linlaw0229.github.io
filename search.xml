@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>257. Binary Tree Paths</title>
+      <link href="/2018/08/22/257-Binary-Tree-Paths/"/>
+      <url>/2018/08/22/257-Binary-Tree-Paths/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a binary tree, return all root-to-leaf paths.</p><p>Note: A leaf is a node with no children.</p><p>Example:</p><p>Input:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">   1</span><br><span class="line"> /   \</span><br><span class="line">2     3</span><br><span class="line"> \</span><br><span class="line">  5</span><br></pre></td></tr></table></figure></p><p>Output: <code>[&quot;1-&gt;2-&gt;5&quot;, &quot;1-&gt;3&quot;]</code></p><p>Explanation: All root-to-leaf paths are: 1-&gt;2-&gt;5, 1-&gt;3</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea is to use dfs to find every leaf. The definition for leaf is it does not have left child or right child.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; binaryTreePaths(TreeNode* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;();</span><br><span class="line">        <span class="built_in">string</span> tmp= <span class="string">""</span>;</span><br><span class="line">        helper(res, tmp, root);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res, <span class="built_in">string</span> tmp, TreeNode* root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root-&gt;left &amp;&amp; !root-&gt;right) <span class="comment">//reach a leaf</span></span><br><span class="line">            res.push_back(tmp+to_string(root-&gt;val));</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left) helper(res, tmp+to_string(root-&gt;val)+<span class="string">"-&gt;"</span>, root-&gt;left);</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right) helper(res, tmp+to_string(root-&gt;val)+<span class="string">"-&gt;"</span>, root-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$, because visit every node once<br>space complexity: $O(logn)$, height of the tree<br>reference:<br><a href="https://goo.gl/RvfssD" target="_blank" rel="noopener">https://goo.gl/RvfssD</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>247. Strobogrammatic Number II</title>
       <link href="/2018/08/22/247-Strobogrammatic-Number-II/"/>
       <url>/2018/08/22/247-Strobogrammatic-Number-II/</url>
