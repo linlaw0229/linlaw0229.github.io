@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title>125. Valid Palindrome</title>
+      <link href="/2018/08/22/125-Valid-Palindrome/"/>
+      <url>/2018/08/22/125-Valid-Palindrome/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.</p><p>Note: For the purpose of this problem, we define empty string as valid palindrome.</p><p>Example 1:<br>Input: “A man, a plan, a canal: Panama”<br>Output: true</p><p>Example 2:<br>Input: “race a car”<br>Output: false</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use two pointers to solve this question.<br><code>isalnum</code> can check if the character is numeric or alphabetic.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= s.length()<span class="number">-1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(left&lt; right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!<span class="built_in">isalnum</span>(s[left])) left++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!<span class="built_in">isalnum</span>(s[right])) right--;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">tolower</span>(s[left])!= <span class="built_in">tolower</span>(s[right]))</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    left++; right--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/vyjCpj" target="_blank" rel="noopener">https://goo.gl/vyjCpj</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> apple </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>257. Binary Tree Paths</title>
       <link href="/2018/08/22/257-Binary-Tree-Paths/"/>
       <url>/2018/08/22/257-Binary-Tree-Paths/</url>
@@ -313,9 +346,9 @@
             
             <tag> amazon </tag>
             
-            <tag> hash table </tag>
-            
             <tag> two pointers </tag>
+            
+            <tag> hash table </tag>
             
             <tag> linkedin </tag>
             
@@ -3242,9 +3275,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> hash table </tag>
-            
             <tag> two pointers </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -3269,9 +3302,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> hash table </tag>
-            
             <tag> two pointers </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
