@@ -3,6 +3,41 @@
   
     
     <entry>
+      <title>133. Clone Graph</title>
+      <link href="/2018/08/22/133-Clone-Graph/"/>
+      <url>/2018/08/22/133-Clone-Graph/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.</p><p>OJ’s undirected graph serialization:<br>Nodes are labeled uniquely.</p><p>We use # as a separator for each node, and , as a separator for node label and each neighbor of the node.<br>As an example, consider the serialized graph {0,1,2#1,2#2,2}.</p><p>The graph has a total of three nodes, and therefore contains three parts as separated by #.</p><p>First node is labeled as 0. Connect node 0 to both nodes 1 and 2.<br>Second node is labeled as 1. Connect node 1 to node 2.<br>Third node is labeled as 2. Connect node 2 to node 2 (itself), thus forming a self-cycle.<br>Visually, the graph looks like the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">   1</span><br><span class="line">  / \</span><br><span class="line"> /   \</span><br><span class="line">0 --- 2</span><br><span class="line">     / \</span><br><span class="line">     \_/</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use a map to store every node that has already been copied. While adding every neighbor, call recursive function to apply dfs.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for undirected graph.</span></span><br><span class="line"><span class="comment"> * struct UndirectedGraphNode &#123;</span></span><br><span class="line"><span class="comment"> *     int label;</span></span><br><span class="line"><span class="comment"> *     vector&lt;UndirectedGraphNode *&gt; neighbors;</span></span><br><span class="line"><span class="comment"> *     UndirectedGraphNode(int x) : label(x) &#123;&#125;;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//use map to store the nodes that have already been copied</span></span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;UndirectedGraphNode*, UndirectedGraphNode*&gt; <span class="built_in">map</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function">UndirectedGraphNode *<span class="title">cloneGraph</span><span class="params">(UndirectedGraphNode *node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">map</span>.find(node) == <span class="built_in">map</span>.end())&#123; <span class="comment">//not cloned yet</span></span><br><span class="line">            UndirectedGraphNode* tmp= <span class="keyword">new</span> UndirectedGraphNode(node-&gt;label);</span><br><span class="line">            <span class="built_in">map</span>[node]= tmp;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> n: node-&gt;neighbors)&#123;</span><br><span class="line">                tmp-&gt;neighbors.push_back(cloneGraph(n));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">map</span>[node];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(V+E)$<br>space complexity: $O(n)$<br>reference:<br><a href="https://goo.gl/BGsAmT" target="_blank" rel="noopener">https://goo.gl/BGsAmT</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> dfs </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> graph </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>791. Custom Sort String</title>
       <link href="/2018/08/22/791-Custom-Sort-String/"/>
       <url>/2018/08/22/791-Custom-Sort-String/</url>
@@ -14,6 +49,16 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1017,9 +1062,9 @@
             
             <tag> amazon </tag>
             
-            <tag> topological sort </tag>
-            
             <tag> graph </tag>
+            
+            <tag> topological sort </tag>
             
         </tags>
       
