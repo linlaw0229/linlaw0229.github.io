@@ -3,6 +3,41 @@
   
     
     <entry>
+      <title>34. Find First and Last Position of Element in Sorted Array</title>
+      <link href="/2018/08/25/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array/"/>
+      <url>/2018/08/25/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.</p><p>Your algorithm’s runtime complexity must be in the order of O(log n).</p><p>If the target is not found in the array, return [-1, -1].</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [5,7,7,8,8,10], target = 8</span><br><span class="line">Output: [3,4]</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [5,7,7,8,8,10], target = 6</span><br><span class="line">Output: [-1,-1]</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>First, let’s find the left boundary of the range. We initialize the range to <code>[left=0, right=n-1]</code>. In each step, calculate the middle element <code>mid = left+(right-left)/2</code>. Now according to the relative value of A[mid] to target, there are three possibilities:</p><ol><li>If <code>A[mid] &lt; target</code>, the target range must begins on the right of mid (hence <code>left = mid+1</code> for the next iteration)</li><li>If <code>A[mid] &gt; target</code>, it means the range must begins on the left of mid (<code>right = mid-1</code>)</li><li>If <code>A[mid] = target</code>, then the range must begins on the left of or at mid (<code>right= mid</code>)</li></ol><p>With above mid finding way, the mid will always biased toward left. So we can find the <code>left boundary</code> of target.</p><p>That is to say, if we make <code>mid</code> biased toward right, we can find <code>right boundary</code> of target.<br>We can use <code>mid = left+(right-left)/2 +1</code>. </p><ol><li>If A[mid] &gt; target, then the range must begins on the left of mid (<code>right = mid-1</code>)</li><li>If A[mid] &lt; target, then the range must begins on the right of mid (hence <code>left = mid+1</code> for the next iteration)</li><li>If A[mid] = target, then the range must begins on the right of or at mid (<code>left= mid</code>)</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; searchRange(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> high= nums.size()<span class="number">-1</span>, low= <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res(<span class="number">2</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//base case</span></span><br><span class="line">        <span class="keyword">if</span>(nums.size()== <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//search for left side</span></span><br><span class="line">        <span class="keyword">while</span>(low&lt; high)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid= low+(high-low)/<span class="number">2</span>; <span class="comment">//with this mid finding, the mid will always biased toward left </span></span><br><span class="line">            <span class="keyword">if</span>(target&gt; nums[mid])</span><br><span class="line">                low= mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high= mid;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        res[<span class="number">0</span>] = (target == nums[low])? low: <span class="number">-1</span>;</span><br><span class="line">        high= nums.size()<span class="number">-1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(low&lt; high)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid= low+(high-low)/<span class="number">2</span> +<span class="number">1</span>; <span class="comment">//notice for the mid value, add one so it will biased toward right</span></span><br><span class="line">            <span class="keyword">if</span>(target&gt;=nums[mid])</span><br><span class="line">                low= mid;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                high= mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        res[<span class="number">1</span>] = (target == nums[high])? high: <span class="number">-1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(logn)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/hL7qEx" target="_blank" rel="noopener">https://goo.gl/hL7qEx</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> uber </tag>
+            
+            <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>269. Alien Dictionary</title>
       <link href="/2018/08/24/269-Alien-Dictionary/"/>
       <url>/2018/08/24/269-Alien-Dictionary/</url>
