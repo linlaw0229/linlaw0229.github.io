@@ -4,7 +4,14 @@
 <p>Input: 12345<br>Output: “Twelve Thousand Three Hundred Forty Five”<br>Example 3:</p>
 <p>Input: 1234567<br>Output: “One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven”<br>Example 4:</p>
 <p>Input: 1234567891<br>Output: “One Billion Two Hundred Thirty Four Million Five Hundred Sixty Seven Thousand Eight Hundred Ninety One”</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The hint from this question, <code>Group the number by thousands (3 digits). You can write a helper function that takes a number less than 1000 and convert just that chunk to words.</code></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Question can ask in interview:</p>
+<ol>
+<li>What format is the integer? contain dots? floating number?</li>
+<li>Input type, integer/string</li>
+<li>Output type, should be string</li>
+<li>time/space complexity restriction</li>
+</ol>
+<p>The hint from this question, <code>Group the number by thousands (3 digits). Write a helper function that takes a number less than 1000 and convert just that chunk to words.</code></p>
 <ol>
 <li><p>use some example to demonstrate how to set up the array.<br>1~19, all different words<br>20~99, different words too<br>100~999, can be constructed by previous two with <code>&quot;Hundred&quot;</code>.<br>greater than 1000, can use previous three with <code>&quot;Thousand&quot;, &quot;Million&quot;, &quot;Billion&quot;</code>.</p>
 </li>
