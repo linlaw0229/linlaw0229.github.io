@@ -9,11 +9,14 @@
 <p>Input:<br>s = <code>&quot;mississippi&quot;</code><br>p = <code>&quot;mis*is*p*.&quot;</code><br>Output: false</p>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>create dp array. dp[i][j] to be true if s[0..i) matches p[0..j)</p>
 <ol>
-<li>If p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is equal to the character on position i in string s.</li>
-<li>If p.charAt(j) == ‘.’ : dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is a ‘.’, it can match any character, so dp[i][j] follow dp[i-1][j-1].</li>
-<li>If p.charAt(j) == ‘*’:<br>there are two sub conditions:<ol>
-<li>if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  //in this case, $a*$ only counts as empty</li>
-<li>if p.charAt(i-1) == s.charAt(i) or p.charAt(i-1) == ‘.’:<br>dp[i][j] = dp[i-1][j]    //in this case, $a*$ counts as multiple a<br>or dp[i][j] = dp[i][j-1] // in this case, $a*$ counts as single a<br>or dp[i][j] = dp[i][j-2] // in this case, $a*$ counts as empty</li>
+<li><p>If p[j] == s[i] :  dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is equal to the character on position i in string s.</p>
+</li>
+<li><p>If p[j] == ‘.’ : dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is a ‘.’, it can match any character, so dp[i][j] follow dp[i-1][j-1].</p>
+</li>
+<li><p>If p[j] == ‘*’:<br>there are two sub conditions:</p>
+<ol>
+<li>if p[j-1] != s[i] : dp[i][j] = dp[i][j-2]  //in this case, $a*$ only counts as empty</li>
+<li>if p[i-1] == s[i] or p[i-1] == ‘.’:<br>dp[i][j] = dp[i-1][j]    //in this case, $a*$ counts as multiple a<br>or dp[i][j] = dp[i][j-1] // in this case, $a*$ counts as single a<br>or dp[i][j] = dp[i][j-2] // in this case, $a*$ counts as empty</li>
 </ol>
 </li>
 </ol>
