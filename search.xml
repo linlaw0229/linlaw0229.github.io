@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>158. Read N Characters Given Read4 II - Call multiple times</title>
+      <link href="/2018/08/26/158-Read-N-Characters-Given-Read4-II-Call-multiple-times/"/>
+      <url>/2018/08/26/158-Read-N-Characters-Given-Read4-II-Call-multiple-times/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>The API: int read4(char *buf) reads 4 characters at a time from a file.</p><p>The return value is the actual number of characters read. For example, it returns 3 if there is only 3 characters left in the file.</p><p>By using the read4 API, implement the function int read(char *buf, int n) that reads n characters from the file.</p><p>Note:<br>The read function may be called multiple times.</p><p>Example 1: </p><p>Given buf = “abc”<br>read(“abc”, 1) // returns “a”<br>read(“abc”, 2); // returns “bc”<br>read(“abc”, 1); // returns “”<br>Example 2: </p><p>Given buf = “abc”<br>read(“abc”, 4) // returns “abc”<br>read(“abc”, 1); // returns “”</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use two variable, readPos and writePos to store the position of read and write. Scanning from 0…n, if the position of read and write are equal, the call <code>read4</code> and give the return value to writePos because it’s the number characters read from input buffer. One thing to notice is that, if <code>writePos == 0</code>, it means input buffer is empty, we should return current location <code>i</code>.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Forward declaration of the read4 API.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read4</span><span class="params">(<span class="keyword">char</span> *buf)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @param buf Destination buffer</span></span><br><span class="line"><span class="comment">     * @param n   Maximum number of characters to read</span></span><br><span class="line"><span class="comment">     * @return    The number of characters read</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">char</span> *buf, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (readPos == writePos) &#123;</span><br><span class="line">                writePos = read4(buff); <span class="comment">//return 3 if only 3 char left</span></span><br><span class="line">                readPos = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">if</span> (writePos == <span class="number">0</span>) <span class="keyword">return</span> i;</span><br><span class="line">            &#125;</span><br><span class="line">            buf[i] = buff[readPos++];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> readPos = <span class="number">0</span>, writePos = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> buff[<span class="number">4</span>];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Another-solution"><a href="#Another-solution" class="headerlink" title="Another solution:"></a>Another solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Forward declaration of the read4 API.</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read4</span><span class="params">(<span class="keyword">char</span> *buf)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * @param buf Destination buffer</span></span><br><span class="line"><span class="comment">     * @param n   Maximum number of characters to read</span></span><br><span class="line"><span class="comment">     * @return    The number of characters read</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">char</span> buff[<span class="number">4</span>];</span><br><span class="line">    <span class="keyword">int</span> buffPtr= <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> buffCnt= <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">(<span class="keyword">char</span> *buf, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ptr= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(ptr&lt; n)&#123;</span><br><span class="line">            <span class="keyword">if</span>(buffPtr== <span class="number">0</span>)&#123;</span><br><span class="line">                buffCnt= read4(buff);</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">while</span>(ptr&lt; n &amp;&amp; buffPtr&lt; buffCnt)&#123;</span><br><span class="line">                buf[ptr++]= buff[buffPtr++];</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// all chars in buff used up, set pointer to 0</span></span><br><span class="line">            <span class="keyword">if</span>(buffPtr== buffCnt) buffPtr= <span class="number">0</span>;</span><br><span class="line">            <span class="comment">// read4 returns less than 4, end of file</span></span><br><span class="line">            <span class="keyword">if</span>(buffCnt &lt; <span class="number">4</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ptr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> string </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> uber </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>128. Longest Consecutive Sequence</title>
       <link href="/2018/08/26/128-Longest-Consecutive-Sequence/"/>
       <url>/2018/08/26/128-Longest-Consecutive-Sequence/</url>
@@ -81,9 +110,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -193,9 +222,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -265,9 +294,9 @@
             
             <tag> apple </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -358,11 +387,11 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -545,11 +574,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -750,9 +779,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -1129,9 +1158,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -1342,9 +1371,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1431,9 +1460,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -1545,9 +1574,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1576,11 +1605,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -1754,9 +1783,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> stack </tag>
             
@@ -2248,9 +2277,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2331,9 +2360,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2364,9 +2393,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2472,9 +2501,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3058,9 +3087,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3185,13 +3214,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3216,11 +3245,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -3268,9 +3297,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -3430,11 +3459,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -3952,9 +3981,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -4008,11 +4037,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4037,11 +4066,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4122,9 +4151,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4199,11 +4228,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4228,11 +4257,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4257,11 +4286,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4284,9 +4313,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4334,9 +4363,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4361,9 +4390,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4386,9 +4415,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -4415,9 +4444,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4440,9 +4469,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4465,9 +4494,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4490,9 +4519,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4515,9 +4544,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4542,9 +4571,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -4594,9 +4623,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4673,9 +4702,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
