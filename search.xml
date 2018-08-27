@@ -3,6 +3,37 @@
   
     
     <entry>
+      <title>99. Recover Binary Search Tree</title>
+      <link href="/2018/08/27/99-Recover-Binary-Search-Tree/"/>
+      <url>/2018/08/27/99-Recover-Binary-Search-Tree/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Two elements of a binary search tree (BST) are swapped by mistake.</p><p>Recover the tree without changing its structure.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,null,null,2]</span><br><span class="line"></span><br><span class="line">   1</span><br><span class="line">  /</span><br><span class="line"> 3</span><br><span class="line">  \</span><br><span class="line">   2</span><br><span class="line"></span><br><span class="line">Output: [3,1,null,null,2]</span><br><span class="line"></span><br><span class="line">   3</span><br><span class="line">  /</span><br><span class="line"> 1</span><br><span class="line">  \</span><br><span class="line">   2</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,4,null,null,2]</span><br><span class="line"></span><br><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">1   4</span><br><span class="line">   /</span><br><span class="line">  2</span><br><span class="line"></span><br><span class="line">Output: [2,1,4,null,null,3]</span><br><span class="line"></span><br><span class="line">  2</span><br><span class="line"> / \</span><br><span class="line">1   4</span><br><span class="line">   /</span><br><span class="line">  3</span><br></pre></td></tr></table></figure></p><p>Follow up:</p><p>A solution using O(n) space is pretty straight forward.<br>Could you devise a constant space solution?</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    TreeNode *first, *second; <span class="comment">//store the position that needs to be swap</span></span><br><span class="line">    TreeNode *prev; <span class="comment">// store the previous position in tree</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">recoverTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        first = second = prev = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//inorder traversal</span></span><br><span class="line">        dfs(root);</span><br><span class="line">        <span class="keyword">if</span> (first != <span class="literal">NULL</span> &amp;&amp; second != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> tmp = first -&gt; val;</span><br><span class="line">            first -&gt; val = second -&gt; val;</span><br><span class="line">            second -&gt; val = tmp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// check left first</span></span><br><span class="line">        <span class="keyword">if</span> (root -&gt; left != <span class="literal">NULL</span>) dfs(root -&gt; left);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// if there's any disorder, store the position. </span></span><br><span class="line">        <span class="keyword">if</span> (prev != <span class="literal">NULL</span> &amp;&amp; prev -&gt; val &gt; root -&gt; val) &#123;</span><br><span class="line">            <span class="keyword">if</span> (first == <span class="literal">NULL</span>) </span><br><span class="line">                first = prev;</span><br><span class="line">            <span class="keyword">if</span> (first != <span class="literal">NULL</span>) </span><br><span class="line">                second = root;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// current root become prev</span></span><br><span class="line">        prev = root;</span><br><span class="line">        <span class="comment">// right subtree</span></span><br><span class="line">        <span class="keyword">if</span> (root -&gt; right != <span class="literal">NULL</span>) dfs(root -&gt; right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(logn)$<br>reference:<br><a href="https://goo.gl/35YynW" target="_blank" rel="noopener">https://goo.gl/35YynW</a><br><a href="https://goo.gl/SVX1A6" target="_blank" rel="noopener">https://goo.gl/SVX1A6</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> dfs </tag>
+            
+            <tag> amazon </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>63. Unique Paths II</title>
       <link href="/2018/08/27/63-Unique-Paths-II/"/>
       <url>/2018/08/27/63-Unique-Paths-II/</url>
@@ -139,9 +170,9 @@
             
             <tag> amazon </tag>
             
-            <tag> union find </tag>
-            
             <tag> uber </tag>
+            
+            <tag> union find </tag>
             
         </tags>
       
@@ -1928,9 +1959,9 @@
             
             <tag> amazon </tag>
             
-            <tag> uber </tag>
-            
             <tag> pure storage </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
