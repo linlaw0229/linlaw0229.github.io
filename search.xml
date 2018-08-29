@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>311. Sparse Matrix Multiplication</title>
+      <link href="/2018/08/29/311-Sparse-Matrix-Multiplication/"/>
+      <url>/2018/08/29/311-Sparse-Matrix-Multiplication/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given two sparse matrices A and B, return the result of AB.</p><p>You may assume that A’s column number is equal to B’s row number.</p><p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line"></span><br><span class="line">A = [</span><br><span class="line">  [ 1, 0, 0],</span><br><span class="line">  [-1, 0, 3]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">B = [</span><br><span class="line">  [ 7, 0, 0 ],</span><br><span class="line">  [ 0, 0, 0 ],</span><br><span class="line">  [ 0, 0, 1 ]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line"></span><br><span class="line">     |  1 0 0 |   | 7 0 0 |   |  7 0 0 |</span><br><span class="line">AB = | -1 0 3 | x | 0 0 0 | = | -7 0 3 |</span><br><span class="line">                  | 0 0 1 |</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Matrix multiply: </p><ul><li>A[i][k]* B[k][j]= C[i][j]</li><li>C[i][j]= A[i][0]<em>B[0][j]+ A[i][1]</em>B[1][j]+ … +A[i][k]*B[k][j]</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; multiply(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; B) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res(A.size(), <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(B[<span class="number">0</span>].size(), <span class="number">0</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; A.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k= <span class="number">0</span>; k&lt; A[<span class="number">0</span>].size(); k++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(A[i][k] != <span class="number">0</span>)&#123; <span class="comment">//it's sparse matrix, this can reduce redundant calculation</span></span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; B[<span class="number">0</span>].size(); j++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(B[k][j] != <span class="number">0</span>) res[i][j]+= A[i][k]* B[k][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(AB)$, $A: A.size()*A[0].size(), B: B.size()*B[0].size()$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/yDQCx2" target="_blank" rel="noopener">https://goo.gl/yDQCx2</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> hash table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>819. Most Common Word</title>
       <link href="/2018/08/29/819-Most-Common-Word/"/>
       <url>/2018/08/29/819-Most-Common-Word/</url>
@@ -434,9 +459,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -504,9 +529,9 @@
             
             <tag> amazon </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
