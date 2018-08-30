@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>825. Friends Of Appropriate Ages</title>
+      <link href="/2018/08/29/825-Friends-Of-Appropriate-Ages/"/>
+      <url>/2018/08/29/825-Friends-Of-Appropriate-Ages/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Some people will make friend requests. The list of their ages is given and ages[i] is the age of the ith person. </p><p>Person A will NOT friend request person B (B != A) if any of the following conditions are true:</p><p>age[B] &lt;= 0.5 * age[A] + 7<br>age[B] &gt; age[A]<br>age[B] &gt; 100 &amp;&amp; age[A] &lt; 100<br>Otherwise, A will friend request B.</p><p>Note that if A requests B, B does not necessarily request A.  Also, people will not friend request themselves.</p><p>How many total friend requests are made?<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [16,16]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 2 people friend request each other.</span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [16,17,18]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Friend requests are made 17 -&gt; 16, 18 -&gt; 17.</span><br><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: [20,30,100,110,120]</span><br><span class="line">Output: </span><br><span class="line">Explanation: Friend requests are made 110 -&gt; 100, 120 -&gt; 110, 120 -&gt; 100.</span><br></pre></td></tr></table></figure></p><p>Notes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1 &lt;= ages.length &lt;= 20000.</span><br><span class="line">1 &lt;= ages[i] &lt;= 120.</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use a map to gather all the same ages together, then use a function to check whether if the input ages will send request.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numFriendRequests</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; ages)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; count;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;a: ages)</span><br><span class="line">            count[a]++; <span class="comment">//calculate the same ages together</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> res= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x: count)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> y: count)&#123;</span><br><span class="line">                <span class="keyword">if</span>(request(x.first, y.first))</span><br><span class="line">                    res += x.second * (y.second - (x.first == y.first ? <span class="number">1</span> : <span class="number">0</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">request</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> !(b &lt;= <span class="number">0.5</span> * a + <span class="number">7</span> || b &gt; a || (b &gt; <span class="number">100</span> &amp;&amp; a &lt; <span class="number">100</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n^2)$<br>space complexity: $O(n)$<br>reference:<br><a href="https://goo.gl/XQgtCY" target="_blank" rel="noopener">https://goo.gl/XQgtCY</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>311. Sparse Matrix Multiplication</title>
       <link href="/2018/08/29/311-Sparse-Matrix-Multiplication/"/>
       <url>/2018/08/29/311-Sparse-Matrix-Multiplication/</url>
@@ -459,9 +484,9 @@
             
             <tag> uber </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -529,9 +554,9 @@
             
             <tag> amazon </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
