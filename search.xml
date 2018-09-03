@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Flatten a multilevel linked list</title>
+      <link href="/2018/09/03/Flatten-a-multilevel-linked-list/"/>
+      <url>/2018/09/03/Flatten-a-multilevel-linked-list/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a linked list where in addition to the next pointer, each node has a child pointer, which may or may not point to a separate list. These child lists may have one or more children of their own, and so on, to produce a multilevel data structure, as shown in below figure.You are given the head of the first level of the list. </p><p>Flatten the list so that all the nodes appear in a single-level linked list. You need to flatten the list in way that all nodes at first level should come first, then nodes of second level, and so on.</p><p><img src="flattenList.png" alt=""></p><p>The above list should be converted to<br><code>10-&gt;5-&gt;12-&gt;7-&gt;11-&gt;4-&gt;20-&gt;13-&gt;17-&gt;6-&gt;2-&gt;16-&gt;9-&gt;8-&gt;3-&gt;19-&gt;15</code></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The problem clearly say that we need to flatten level by level. The idea of solution is, we start from first level, process all nodes one by one, if a node has a child, then we append the child at the end of list, otherwise we don’t do anything. </p><p>After the first level is processed, all next level nodes will be appended after first level. Same process is followed for the appended nodes.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">1) Take &quot;cur&quot; pointer, which will point to head of the fist level of the list</span><br><span class="line">2) Take &quot;tail&quot; pointer, which will point to end of the first level of the list</span><br><span class="line">3) Repeat the below procedure while &quot;curr&quot; is not NULL.</span><br><span class="line">    I) if current node has a child then</span><br><span class="line">a) append this new child list to the &quot;tail&quot;</span><br><span class="line">tail-&gt;next = cur-&gt;child</span><br><span class="line">b) find the last node of new child list and update &quot;tail&quot;</span><br><span class="line">tmp = cur-&gt;child;</span><br><span class="line">while (tmp-&gt;next != NULL)</span><br><span class="line">tmp = tmp-&gt;next;</span><br><span class="line">tail = tmp;</span><br><span class="line">    II) move to the next node. i.e. cur = cur-&gt;next </span><br><span class="line">Following is the implementation of the above algorithm.</span><br></pre></td></tr></table></figure></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> data;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">next</span>;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">child</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/* The main function that flattens a multilevel linked list */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">flattenList</span><span class="params">(struct Node *head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!head) <span class="keyword">return</span>;</span><br><span class="line"> </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Find tail node of first level linked list */</span></span><br><span class="line">    Node *tail = head;</span><br><span class="line">    <span class="keyword">while</span> (tail-&gt;next != <span class="literal">NULL</span>)</span><br><span class="line">        tail = tail-&gt;next;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// One by one traverse through all nodes of first level</span></span><br><span class="line">    <span class="comment">// linked list till we reach the tail node</span></span><br><span class="line">    Node *cur = head;</span><br><span class="line">    Node *tmp;</span><br><span class="line">    <span class="keyword">while</span> (cur != tail)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// If current node has a child</span></span><br><span class="line">        <span class="keyword">if</span> (cur-&gt;child)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// then append the child at the end of current list</span></span><br><span class="line">            tail-&gt;next = cur-&gt;child;</span><br><span class="line"> </span><br><span class="line">            <span class="comment">// and update the tail to new last node</span></span><br><span class="line">            tmp = cur-&gt;child;</span><br><span class="line">            <span class="keyword">while</span> (tmp-&gt;next)</span><br><span class="line">                tmp = tmp-&gt;next;</span><br><span class="line">            tail = tmp;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="comment">// Change current node</span></span><br><span class="line">        cur = cur-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/fFhM5L" target="_blank" rel="noopener">https://goo.gl/fFhM5L</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>157. Read N Characters Given Read4</title>
       <link href="/2018/09/03/157-Read-N-Characters-Given-Read4/"/>
       <url>/2018/09/03/157-Read-N-Characters-Given-Read4/</url>
@@ -17,11 +38,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -42,9 +63,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -343,9 +364,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> easy </tag>
+            
+            <tag> string </tag>
             
             <tag> amazon </tag>
             
@@ -433,13 +454,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -636,9 +657,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -663,9 +684,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> bloomberg </tag>
             
@@ -688,13 +709,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -719,11 +740,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -853,13 +874,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -917,11 +938,11 @@
             
             <tag> facebook </tag>
             
+            <tag> bfs </tag>
+            
             <tag> medium </tag>
             
             <tag> dfs </tag>
-            
-            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -990,11 +1011,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1021,11 +1042,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -1104,11 +1125,11 @@
             
             <tag> google </tag>
             
+            <tag> bfs </tag>
+            
             <tag> medium </tag>
             
             <tag> dfs </tag>
-            
-            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -1158,6 +1179,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -1165,8 +1188,6 @@
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -1191,11 +1212,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -1245,9 +1266,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -1274,13 +1295,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -1334,13 +1355,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> amazon </tag>
             
@@ -1363,11 +1384,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -1446,11 +1467,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -1512,6 +1533,8 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -1519,8 +1542,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -1570,6 +1591,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -1577,8 +1600,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1603,11 +1624,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -1630,13 +1651,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1845,11 +1866,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -1872,9 +1893,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -1886,7 +1907,7 @@
       <title>301. Remove Invalid Parentheses</title>
       <link href="/2018/08/17/301-Remove-Invalid-Parentheses/"/>
       <url>/2018/08/17/301-Remove-Invalid-Parentheses/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p><p>Note: The input string may contain letters other than the parentheses ( and ).</p><p>Example 1:</p><p>Input: “()())()”<br>Output: [“()()()”, “(())()”]<br>Example 2:</p><p>Input: “(a)())()”<br>Output: [“(a)()()”, “(a())()”]<br>Example 3:</p><p>Input: “)(“<br>Output: [“”]</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Question can ask in interview:</p><ol><li>what is invalid, if contains other characters or digits, will it be valid?</li><li>Input type, string</li><li>Output type, should be vector<string></string></li><li>time/space complexity restriction</li></ol><p>Solution:<br>We’re trying to make it valid, we need to remove a ‘)’. And should remove the extra parentheses by <code>counting redundant</code> left or right parentheses. Then use dfs to check if the string is valid or not.</p><ol><li><p>Check input is valid or not by using variable to count left parentheses and right parentheses.<br><code>count(&#39;(&#39;) &gt;= count(&#39;)&#39;)</code>, i&lt; n-1. Before reach to end of string, count of left parentheses should always be greater or equal than right parentheses. Because if right has more then left, it would be invalid.<br><code>count(&#39;(&#39;) == count(&#39;)&#39;)</code>, i == n-1. When reach to the end, if it’s a valid string, number of left == number of right.</p></li><li><p>Use dfs to check “if we remove extra parentheses, the string is valid or not”. </p></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; removeInvalidParentheses(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        1. count redundant left or right parentheses</span></span><br><span class="line"><span class="comment">        2. dfs to find after remove parentheses, the string would be valid or not. One thing to notice is to skip duplicate character</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">int</span> i= <span class="number">0</span>, l= <span class="number">0</span>, r= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span>)</span><br><span class="line">                l++;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">')'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l == <span class="number">0</span>) r++;</span><br><span class="line">                <span class="keyword">else</span> l--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        helper(s, <span class="number">0</span>, l, r, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> start, <span class="keyword">int</span> cnt1, <span class="keyword">int</span> cnt2, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt1 == <span class="number">0</span> &amp;&amp; cnt2 == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(isValid(s)) res.push_back(s);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= start; i&lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="comment">//check duplicate</span></span><br><span class="line">            <span class="keyword">if</span>(i != start &amp;&amp; s[i] == s[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(cnt1 &gt; <span class="number">0</span> &amp;&amp; s[i] == <span class="string">'('</span>) </span><br><span class="line">                helper(s.substr(<span class="number">0</span>, i)+ s.substr(i+<span class="number">1</span>), i, cnt1<span class="number">-1</span>, cnt2, res);</span><br><span class="line">            <span class="keyword">if</span>(cnt2 &gt; <span class="number">0</span> &amp;&amp; s[i] == <span class="string">')'</span>)</span><br><span class="line">                helper(s.substr(<span class="number">0</span>, i)+ s.substr(i+<span class="number">1</span>), i, cnt1, cnt2<span class="number">-1</span>, res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span>)&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">')'</span>)</span><br><span class="line">                right++;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(right&gt; left) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left == right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(2 ^ {l+r})$<br>space complexity: $O((l+r)^2)$ ~ $O(n^2)$</p><p>reference:<br><a href="https://goo.gl/KgYdwq" target="_blank" rel="noopener">https://goo.gl/KgYdwq</a><br><a href="https://goo.gl/p61yqa" target="_blank" rel="noopener">https://goo.gl/p61yqa</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p><p>Note: The input string may contain letters other than the parentheses ( and ).</p><p>Example 1:</p><p>Input: “()())()”<br>Output: [“()()()”, “(())()”]<br>Example 2:</p><p>Input: “(a)())()”<br>Output: [“(a)()()”, “(a())()”]<br>Example 3:</p><p>Input: “)(“<br>Output: [“”]</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Question can ask in interview:</p><ol><li>what is invalid, if contains other characters or digits, will it be valid?</li><li>Input type, string</li><li>Output type, should be vector<string></string></li><li>time/space complexity restriction</li></ol><p>Solution:<br>We’re trying to make it valid, we need to remove a ‘)’. And should remove the extra parentheses by <code>counting redundant</code> left or right parentheses. Then use dfs to check if the string is valid or not.</p><ol><li><p>Check input is valid or not by using variable to count left parentheses and right parentheses.<br><code>count(&#39;(&#39;) &gt;= count(&#39;)&#39;)</code>, i&lt; n-1. Before reach to end of string, count of left parentheses should always be greater or equal than right parentheses. Because if right has more then left, it would be invalid.<br><code>count(&#39;(&#39;) == count(&#39;)&#39;)</code>, i == n-1. When reach to the end, if it’s a valid string, number of left == number of right.</p></li><li><p>Use dfs to check “if we remove extra parentheses, the string is valid or not”. </p></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; removeInvalidParentheses(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        1. count redundant left or right parentheses</span></span><br><span class="line"><span class="comment">        2. dfs to find after remove parentheses, the string would be valid or not. One thing to notice is to skip duplicate character</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">int</span> i= <span class="number">0</span>, l= <span class="number">0</span>, r= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span>)</span><br><span class="line">                l++;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">')'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(l == <span class="number">0</span>) r++;</span><br><span class="line">                <span class="keyword">else</span> l--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        helper(s, <span class="number">0</span>, l, r, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">helper</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> start, <span class="keyword">int</span> cnt1, <span class="keyword">int</span> cnt2, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cnt1 == <span class="number">0</span> &amp;&amp; cnt2 == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(isValid(s)) res.push_back(s);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= start; i&lt; s.length(); i++)&#123;</span><br><span class="line">            <span class="comment">//check duplicate</span></span><br><span class="line">            <span class="keyword">if</span>(i != start &amp;&amp; s[i] == s[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(cnt1 &gt; <span class="number">0</span> &amp;&amp; s[i] == <span class="string">'('</span>) </span><br><span class="line">                helper(s.substr(<span class="number">0</span>, i)+ s.substr(i+<span class="number">1</span>), i, cnt1<span class="number">-1</span>, cnt2, res);</span><br><span class="line">            <span class="keyword">if</span>(cnt2 &gt; <span class="number">0</span> &amp;&amp; s[i] == <span class="string">')'</span>)</span><br><span class="line">                helper(s.substr(<span class="number">0</span>, i)+ s.substr(i+<span class="number">1</span>), i, cnt1, cnt2<span class="number">-1</span>, res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'('</span>)&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">')'</span>)</span><br><span class="line">                right++;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(right&gt; left) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left == right;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(2 ^ {l+r})$<br>space complexity: $O((l+r)^2)$ ~ $O(n^2)$</p><p>reference:<br><a href="https://goo.gl/KgYdwq" target="_blank" rel="noopener">https://goo.gl/KgYdwq</a><br><a href="https://goo.gl/p61yqa" target="_blank" rel="noopener">https://goo.gl/p61yqa</a></p><h3 id="second-time"><a href="#second-time" class="headerlink" title="second time:"></a>second time:</h3><p>The same idea.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; removeInvalidParentheses(<span class="built_in">string</span> s) &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. count how many invalid '(' or ')'</span></span><br><span class="line"><span class="comment">        2. use dfs to get different output</span></span><br><span class="line"><span class="comment">            isValid function</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt; stk;</span><br><span class="line">        <span class="keyword">int</span> i= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'('</span>)</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">')'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(left== <span class="number">0</span>)</span><br><span class="line">                    right++;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    left--;</span><br><span class="line">            &#125;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(res, s, left, right, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res, <span class="built_in">string</span> tmp, <span class="keyword">int</span> left, <span class="keyword">int</span> right, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">0</span> &amp;&amp; right == <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(isValid(tmp))</span><br><span class="line">                res.push_back(tmp);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= start; i&lt; tmp.length(); i++)&#123;</span><br><span class="line">            <span class="comment">//skip duplicate element</span></span><br><span class="line">            <span class="keyword">if</span>(i != start &amp;&amp; tmp[i] == tmp[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(left&gt;<span class="number">0</span> &amp;&amp; tmp[i]== <span class="string">'('</span>) </span><br><span class="line">                dfs(res, tmp.substr(<span class="number">0</span>, i)+ tmp.substr(i+<span class="number">1</span>), left<span class="number">-1</span>, right, i);</span><br><span class="line">            <span class="keyword">if</span>(right&gt;<span class="number">0</span> &amp;&amp; tmp[i] == <span class="string">')'</span>) </span><br><span class="line">                dfs(res, tmp.substr(<span class="number">0</span>, i)+ tmp.substr(i+<span class="number">1</span>), left, right<span class="number">-1</span>, i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValid</span><span class="params">(<span class="built_in">string</span> s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= <span class="number">0</span>, i= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt; s.length())&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">'('</span>)</span><br><span class="line">                left++;</span><br><span class="line">            <span class="keyword">if</span>(s[i] == <span class="string">')'</span>)</span><br><span class="line">                left--;</span><br><span class="line">            <span class="keyword">if</span>(left&lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       <categories>
           
@@ -1901,9 +1922,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2135,11 +2156,11 @@
             
             <tag> google </tag>
             
+            <tag> bfs </tag>
+            
             <tag> medium </tag>
             
             <tag> dfs </tag>
-            
-            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -2278,11 +2299,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2338,11 +2359,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -2521,9 +2542,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> easy </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> bit manipulation </tag>
             
@@ -2575,11 +2596,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -2807,9 +2828,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2917,11 +2938,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -2950,9 +2971,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -2977,9 +2998,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -3031,9 +3052,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3083,13 +3104,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3395,9 +3416,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -3422,9 +3443,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> partition </tag>
             
@@ -3449,9 +3470,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3507,9 +3528,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3534,9 +3555,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3588,9 +3609,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3640,9 +3661,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -3665,11 +3686,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -3690,11 +3711,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -3744,13 +3765,13 @@
             
             <tag> leetcode </tag>
             
+            <tag> bfs </tag>
+            
             <tag> medium </tag>
             
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> bfs </tag>
             
         </tags>
       
@@ -3904,15 +3925,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3964,9 +3985,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3989,11 +4010,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> bfs </tag>
+            
             <tag> medium </tag>
             
             <tag> dfs </tag>
-            
-            <tag> bfs </tag>
             
             <tag> union find </tag>
             
@@ -4020,9 +4041,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4237,9 +4258,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> medium </tag>
             
@@ -4395,11 +4416,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -4422,11 +4443,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -4563,9 +4584,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -4592,9 +4613,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -4704,9 +4725,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
             
@@ -4729,9 +4750,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -4754,9 +4775,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -4783,9 +4804,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -4812,9 +4833,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -4916,9 +4937,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -5226,11 +5247,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -5259,9 +5280,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -5286,13 +5307,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -5317,11 +5338,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -5344,11 +5365,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -5373,13 +5394,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -5404,11 +5425,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5435,9 +5456,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -5462,13 +5483,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
