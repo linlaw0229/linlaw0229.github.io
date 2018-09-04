@@ -3,6 +3,41 @@
   
     
     <entry>
+      <title>160. Intersection of Two Linked Lists</title>
+      <link href="/2018/09/03/160-Intersection-of-Two-Linked-Lists/"/>
+      <url>/2018/09/03/160-Intersection-of-Two-Linked-Lists/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Write a program to find the node at which the intersection of two singly linked lists begins.</p><p>For example, the following two linked lists:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">A:          a1 → a2</span><br><span class="line">                   ↘</span><br><span class="line">                     c1 → c2 → c3</span><br><span class="line">                   ↗            </span><br><span class="line">B:     b1 → b2 → b3</span><br><span class="line">begin to intersect at node c1.</span><br></pre></td></tr></table></figure></p><p>Notes:</p><ul><li>If the two linked lists have no intersection at all, return null.</li><li>The linked lists must retain their original structure after the function returns.</li><li>You may assume there are no cycles anywhere in the entire linked structure.</li><li>Your code should preferably run in O(n) time and use only O(1) memory.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Question to ask:</p><ol><li>If one of them is NULL? both NULL? should return NULL?</li></ol><p>If two linked list have intersetion, we can divide it into two situation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">example 1: same length of A, B</span><br><span class="line">    A1-&gt;A2-&gt;C1-&gt;C2-&gt;C3</span><br><span class="line">    B1-&gt;B2-&gt;C1-&gt;C2-&gt;C3</span><br><span class="line">    will meet in first iteration</span><br><span class="line">    </span><br><span class="line">example 2: diff length of A, B</span><br><span class="line">    A1-&gt;A2-&gt;A3-&gt;C1-&gt;C2-&gt;C3</span><br><span class="line">    B1-&gt;B2-&gt;C1-&gt;C2-&gt;C3</span><br><span class="line">    </span><br><span class="line">    let B go from A after it meets NULL,</span><br><span class="line">    A1-&gt;A2-&gt;A3-&gt;C1-&gt;C2-&gt;C3-&gt;B1-&gt;B2-&gt;C1-&gt;C2-&gt;C3</span><br><span class="line">    B1-&gt;B2-&gt;C1-&gt;C2-&gt;C3-&gt;A1-&gt;A2-&gt;A3-&gt;C1-&gt;C2-&gt;C3</span><br><span class="line">                                    |</span><br><span class="line">                                    will meet in second iteration</span><br></pre></td></tr></table></figure></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">getIntersectionNode</span><span class="params">(ListNode *headA, ListNode *headB)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!headA || !headB) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        ListNode *p1= headA, *p2= headB;</span><br><span class="line">        <span class="keyword">while</span>(p1 &amp;&amp; p2 &amp;&amp; p1!=p2)&#123; <span class="comment">//this contains if they are intersect in first node</span></span><br><span class="line">            p1= p1-&gt;next;</span><br><span class="line">            p2= p2-&gt;next;</span><br><span class="line">            <span class="keyword">if</span>(p1 == p2) <span class="keyword">return</span> p1;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(!p1) p1= headA;</span><br><span class="line">            <span class="keyword">if</span>(!p2) p2= headB;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> p1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/gu3Huw" target="_blank" rel="noopener">https://goo.gl/gu3Huw</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> linked list </tag>
+            
+            <tag> linkedin </tag>
+            
+            <tag> bloomberg </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>403. Frog Jump</title>
       <link href="/2018/09/03/403-Frog-Jump/"/>
       <url>/2018/09/03/403-Frog-Jump/</url>
