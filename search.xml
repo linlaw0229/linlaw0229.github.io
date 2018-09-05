@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>304. Range Sum Query 2D - Immutable</title>
+      <link href="/2018/09/05/304-Range-Sum-Query-2D-Immutable/"/>
+      <url>/2018/09/05/304-Range-Sum-Query-2D-Immutable/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a 2D matrix matrix, find the sum of the elements inside the rectangle defined by its upper left corner (row1, col1) and lower right corner (row2, col2).</p><p><img src="range_sum_query_2d.png" alt=""><br>The above rectangle (with the red border) is defined by (row1, col1) = (2, 1) and (row2, col2) = (4, 3), which contains sum = 8.</p><p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Given matrix = [</span><br><span class="line">  [3, 0, 1, 4, 2],</span><br><span class="line">  [5, 6, 3, 2, 1],</span><br><span class="line">  [1, 2, 0, 1, 5],</span><br><span class="line">  [4, 1, 0, 1, 7],</span><br><span class="line">  [1, 0, 3, 0, 5]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">sumRegion(2, 1, 4, 3) -&gt; 8</span><br><span class="line">sumRegion(1, 1, 2, 2) -&gt; 11</span><br><span class="line">sumRegion(1, 2, 2, 4) -&gt; 12</span><br></pre></td></tr></table></figure></p><p>Note:<br>You may assume that the matrix does not change.<br>There are many calls to sumRegion function.<br>You may assume that row1 ≤ row2 and col1 ≤ col2.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Construct a 2D array sums[row+1][col+1]</p><p>(notice: we add additional blank row sums[0][col+1]={0} and blank column sums[row+1][0]={0} to remove the edge case checking), so, we can have the following definition</p><p>sums[i+1][j+1] represents the sum of area from matrix[0][0] to matrix[i][j]</p><p>To calculate sums, the ideas as below</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+---------------+   +--------------+   +---------------+   +--------------+   +--------------+</span><br><span class="line">|               |   |         |    |   |   |           |   |         |    |   |   |          |</span><br><span class="line">|   (r1,c1)     |   |         |    |   |   |           |   |         |    |   |   |          |</span><br><span class="line">|   +------+    |   |         |    |   |   |           |   +---------+    |   +---+          |</span><br><span class="line">|   |      |    | = |         |    | - |   |           | - |      (r1,c2) | + |   (r1,c1)    |</span><br><span class="line">|   |      |    |   |         |    |   |   |           |   |              |   |              |</span><br><span class="line">|   +------+    |   +---------+    |   +---+           |   |              |   |              |</span><br><span class="line">|        (r2,c2)|   |       (r2,c2)|   |   (r2,c1)     |   |              |   |              |</span><br><span class="line">+---------------+   +--------------+   +---------------+   +--------------+   +--------------+</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumMatrix</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; aux;</span><br><span class="line">    NumMatrix(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; matrix) &#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix.empty() || matrix[<span class="number">0</span>].empty()) <span class="keyword">return</span>;</span><br><span class="line">        aux.clear();</span><br><span class="line">        aux.resize(matrix.size()+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(matrix[<span class="number">0</span>].size()+<span class="number">1</span>, <span class="number">0</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r= <span class="number">1</span>; r&lt;= matrix.size(); r++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c= <span class="number">1</span>; c&lt;= matrix[<span class="number">0</span>].size(); c++)&#123;</span><br><span class="line">                aux[r][c]= matrix[r<span class="number">-1</span>][c<span class="number">-1</span>]+ aux[r][c<span class="number">-1</span>]+ aux[r<span class="number">-1</span>][c]- aux[r<span class="number">-1</span>][c<span class="number">-1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRegion</span><span class="params">(<span class="keyword">int</span> row1, <span class="keyword">int</span> col1, <span class="keyword">int</span> row2, <span class="keyword">int</span> col2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> aux[row2+<span class="number">1</span>][col2+<span class="number">1</span>]- aux[row1][col2+<span class="number">1</span>]- aux[row2+<span class="number">1</span>][col1]+ aux[row1][col1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your NumMatrix object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * NumMatrix obj = new NumMatrix(matrix);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.sumRegion(row1,col1,row2,col2);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>time complexity: preprocess: $O(mn)$, query: $O(1)$<br>space complexity: $O(mn)$<br>reference:<br><a href="https://goo.gl/t9pi4v" target="_blank" rel="noopener">https://goo.gl/t9pi4v</a><br><a href="https://goo.gl/jDo3CY" target="_blank" rel="noopener">https://goo.gl/jDo3CY</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>160. Intersection of Two Linked Lists</title>
       <link href="/2018/09/03/160-Intersection-of-Two-Linked-Lists/"/>
       <url>/2018/09/03/160-Intersection-of-Two-Linked-Lists/</url>
@@ -847,9 +874,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -917,9 +944,9 @@
             
             <tag> amazon </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
