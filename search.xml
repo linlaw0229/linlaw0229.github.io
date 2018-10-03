@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title>146. LRU Cache</title>
+      <link href="/2018/10/03/146-LRU-Cache/"/>
+      <url>/2018/10/03/146-LRU-Cache/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.</p><p>get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.<br>put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p><p>Follow up:<br>Could you do both operations in O(1) time complexity?</p><p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LRUCache cache = new LRUCache( 2 /* capacity */ );</span><br><span class="line"></span><br><span class="line">cache.put(1, 1);</span><br><span class="line">cache.put(2, 2);</span><br><span class="line">cache.get(1);       // returns 1</span><br><span class="line">cache.put(3, 3);    // evicts key 2</span><br><span class="line">cache.get(2);       // returns -1 (not found)</span><br><span class="line">cache.put(4, 4);    // evicts key 1</span><br><span class="line">cache.get(1);       // returns -1 (not found)</span><br><span class="line">cache.get(3);       // returns 3</span><br><span class="line">cache.get(4);       // returns 4</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>For this question, we need to think how to track a memory block by a <code>key</code> value.<br><code>list&lt;pair&lt;int, int&gt;&gt;</code> represents the memory queue, &lt;key, value&gt;<br><code>unordered_map&lt;int, list&lt;pair&lt;int, int&gt;&gt;::iterator&gt;</code> can help us find position of memory block in list<br><code>size</code> denotes the memory capacity</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//need three variable to store information</span></span><br><span class="line">    <span class="keyword">int</span> size;</span><br><span class="line">    <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; l;</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">list</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;::iterator&gt; <span class="built_in">map</span>;</span><br><span class="line">    LRUCache(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        size= capacity;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// find if this key exist in the map</span></span><br><span class="line">        <span class="comment">// if exist, move it to the beginning in the list</span></span><br><span class="line">        <span class="keyword">auto</span> it= <span class="built_in">map</span>.find(key);</span><br><span class="line">        <span class="keyword">if</span>(it == <span class="built_in">map</span>.end()) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">//can not find, return -1</span></span><br><span class="line">        l.splice(l.begin(), l, it-&gt;second);</span><br><span class="line">        <span class="keyword">return</span> it-&gt;second-&gt;second; <span class="comment">//the value corresponding to the key is in list</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">put</span><span class="params">(<span class="keyword">int</span> key, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> it= <span class="built_in">map</span>.find(key);</span><br><span class="line">        <span class="keyword">if</span>(it != <span class="built_in">map</span>.end()) <span class="comment">//exist in the map and list, erase and make a new one</span></span><br><span class="line">            l.erase(it-&gt;second);</span><br><span class="line">        </span><br><span class="line">        l.push_front(make_pair(key, value));</span><br><span class="line">        <span class="built_in">map</span>[key]= l.begin(); </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">map</span>.size() &gt; size)&#123;</span><br><span class="line">            <span class="keyword">auto</span> index= l.rbegin()-&gt;first;</span><br><span class="line">            l.pop_back();</span><br><span class="line">            <span class="built_in">map</span>.erase(index);</span><br><span class="line">        &#125;   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your LRUCache object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * LRUCache obj = new LRUCache(capacity);</span></span><br><span class="line"><span class="comment"> * int param_1 = obj.get(key);</span></span><br><span class="line"><span class="comment"> * obj.put(key,value);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>time complexity: $O(1)$<br>space complexity: $O(n)$<br>reference:<br><a href="http://www.cnblogs.com/grandyang/p/4587511.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4587511.html</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
+            
+            <tag> apple </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> design </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>220. Contains Duplicate III</title>
       <link href="/2018/10/01/220-Contains-Duplicate-III/"/>
       <url>/2018/10/01/220-Contains-Duplicate-III/</url>
@@ -216,9 +249,9 @@
             
             <tag> tree </tag>
             
-            <tag> stack </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -1315,9 +1348,9 @@
             
             <tag> amazon </tag>
             
-            <tag> trie </tag>
-            
             <tag> design </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -1887,9 +1920,9 @@
             
             <tag> amazon </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> design </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -2649,9 +2682,9 @@
             
             <tag> amazon </tag>
             
-            <tag> stack </tag>
-            
             <tag> design </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -2709,9 +2742,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -3052,11 +3085,11 @@
             
             <tag> uber </tag>
             
+            <tag> design </tag>
+            
             <tag> hash table </tag>
             
             <tag> linkedin </tag>
-            
-            <tag> design </tag>
             
         </tags>
       
@@ -3452,9 +3485,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
