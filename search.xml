@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>240. Search a 2D Matrix II</title>
+      <link href="/2018/10/08/240-Search-a-2D-Matrix-II/"/>
+      <url>/2018/10/08/240-Search-a-2D-Matrix-II/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:</p><p>Integers in each row are sorted in ascending from left to right.<br>Integers in each column are sorted in ascending from top to bottom.<br>Example:</p><p>Consider the following matrix:</p><p>[<br>  [1,   4,  7, 11, 15],<br>  [2,   5,  8, 12, 19],<br>  [3,   6,  9, 16, 22],<br>  [10, 13, 14, 17, 24],<br>  [18, 21, 23, 26, 30]<br>]<br>Given target = 5, return true.</p><p>Given target = 20, return false.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = matrix.size();</span><br><span class="line">        <span class="keyword">if</span> (m == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> n = matrix[<span class="number">0</span>].size();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//find in m*n array</span></span><br><span class="line">        <span class="comment">//pick a row then search each column position in it, then switch to other row</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = n - <span class="number">1</span>; <span class="comment">//notice that we start from last position in a row</span></span><br><span class="line">        <span class="keyword">while</span> (i &lt; m &amp;&amp; j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (matrix[i][j] &lt; target)</span><br><span class="line">                i++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (matrix[i][j] &gt; target)</span><br><span class="line">                j--;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(nlogn)$<br>space complexity: $O(1)$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> microsoft </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> binary search </tag>
+            
+            <tag> divide and conquer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>295. Find Median from Data Stream</title>
       <link href="/2018/10/08/295-Find-Median-from-Data-Stream/"/>
       <url>/2018/10/08/295-Find-Median-from-Data-Stream/</url>
