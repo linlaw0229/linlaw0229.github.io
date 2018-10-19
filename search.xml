@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>155. Min Stack</title>
+      <link href="/2018/10/19/155-Min-Stack/"/>
+      <url>/2018/10/19/155-Min-Stack/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p><p>push(x) – Push element x onto stack.<br>pop() – Removes the element on top of the stack.<br>top() – Get the top element.<br>getMin() – Retrieve the minimum element in the stack.<br>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MinStack minStack = new MinStack();</span><br><span class="line">minStack.push(-2);</span><br><span class="line">minStack.push(0);</span><br><span class="line">minStack.push(-3);</span><br><span class="line">minStack.getMin();   --&gt; Returns -3.</span><br><span class="line">minStack.pop();</span><br><span class="line">minStack.top();      --&gt; Returns 0.</span><br><span class="line">minStack.getMin();   --&gt; Returns -2.</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>This problem is a little different from original stack, because it combines features of <code>minheap</code> and <code>stack</code>.</p><p>We can maintain two stacks. One is to store every element push into the <code>MinStack</code>, the other only stores the <code>minimum</code> element. </p><p>In the <code>push</code> function, whenever we need to push an element, check if it’s smaller than the <code>top</code> element in <code>minstk</code>.</p><p>In <code>pop</code> function, since every element are definitely in the <code>total</code>. We can check if the going-to-be-pop-out element from <code>total</code> is the same as the <code>top</code> element in <code>minstk</code>.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; total;</span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; minstk;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        total.push(x);</span><br><span class="line">        <span class="keyword">if</span>(minstk.empty() || x&lt;= minstk.top())</span><br><span class="line">            minstk.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(total.top() == minstk.top()) minstk.pop();</span><br><span class="line">        total.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> total.top();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minstk.top();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>time complexity: $O(1)$<br>space complexity: $O(n)$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> design </tag>
+            
+            <tag> stack </tag>
+            
+            <tag> bloomberg </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>703. Kth Largest Element in a Stream</title>
       <link href="/2018/10/18/703-Kth-Largest-Element-in-a-Stream/"/>
       <url>/2018/10/18/703-Kth-Largest-Element-in-a-Stream/</url>
@@ -199,9 +228,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -228,9 +257,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -278,9 +307,9 @@
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -1481,9 +1510,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -1682,9 +1711,9 @@
             
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -2065,9 +2094,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2123,9 +2152,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -3603,9 +3632,9 @@
             
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -4202,9 +4231,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -4339,9 +4368,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -4364,9 +4393,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
