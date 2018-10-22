@@ -3,6 +3,89 @@
   
     
     <entry>
+      <title>53. Maximum Subarray</title>
+      <link href="/2018/10/22/53-Maximum-Subarray/"/>
+      <url>/2018/10/22/53-Maximum-Subarray/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.</p><p>Example:</p><p>Input: [-2,1,-3,4,-1,2,1,-5,4],<br>Output: 6<br>Explanation: [4,-1,2,1] has the largest sum = 6.<br>Follow up:</p><p>If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>For this question, we can use an algorithm called <a href="https://www.geeksforgeeks.org/?p=576/" target="_blank" rel="noopener">Kadane’s Algorithm</a>. By maintaining two variables, <code>max_endhere</code> and <code>max_sofar</code>, we can calculate the maximum continuous subarray sum. </p><p>For example:<br>[2,-3,4,5]<br>i= 0: max_endhere= 2,max_sofar= 2<br>i= 1: max_endhere= -1,max_sofar= 2<br>i= 2: max_endhere= 4,max_sofar= 4<br>i= 3: max_endhere= 9,max_sofar= 9</p><p>[-2,-3,-1]<br>i= 0: max_endhere= -2,max_sofar= -2<br>i= 1: max_endhere= -3,max_sofar= -2<br>i= 2: max_endhere= -1,max_sofar= -1</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max_endhere= <span class="number">0</span>, max_sofar= INT_MIN;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max_endhere&lt;<span class="number">0</span>)</span><br><span class="line">                max_endhere = nums[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                max_endhere+= nums[i];</span><br><span class="line">            </span><br><span class="line">            max_sofar= max(max_endhere, max_sofar);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_sofar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://www.geeksforgeeks.org/?p=576/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/?p=576/</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> array </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> linkedin </tag>
+            
+            <tag> divide and conquer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>918. Maximum Sum Circular Subarray</title>
+      <link href="/2018/10/22/918-Maximum-Sum-Circular-Subarray/"/>
+      <url>/2018/10/22/918-Maximum-Sum-Circular-Subarray/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a circular array C of integers represented by A, find the maximum possible sum of a non-empty subarray of C.</p><p>Here, a circular array means the end of the array connects to the beginning of the array.  (Formally, C[i] = A[i] when 0 &lt;= i &lt; A.length, and C[i+A.length] = C[i] when i &gt;= 0.)</p><p>Also, a subarray may only include each element of the fixed buffer A at most once.  (Formally, for a subarray C[i], C[i+1], …, C[j], there does not exist i &lt;= k1, k2 &lt;= j with k1 % A.length = k2 % A.length.)</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: [1,-2,3,-2]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Subarray [3] has maximum sum 3</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: [5,-3,5]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 3:</span><br><span class="line"></span><br><span class="line">Input: [3,-1,2,-1]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: Subarray [2,-1,3] has maximum sum 2 + (-1) + 3 = 4</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 4:</span><br><span class="line"></span><br><span class="line">Input: [3,-2,2,-3]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Subarray [3] and [3,-2,2] both have maximum sum 3</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Example 5:</span><br><span class="line"></span><br><span class="line">Input: [-2,-3,-1]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: Subarray [-1] has maximum sum -1</span><br></pre></td></tr></table></figure><p>Note:</p><p>-30000 &lt;= A[i] &lt;= 30000<br>1 &lt;= A.length &lt;= 30000</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>This is a followup question of <a href="/2018/10/22/53-Maximum-Subarray/" title="53. Maximum Subarray">53. Maximum Subarray</a>. We can use a similar idea to solve it.<br>The idea is to remove the biggest negative sum in the array. Then the rest of the elements are the maximum sum in a continuous way.<br>For example:<br>[2,3,-6,-7,4,5]<br>total sum= 1: 2+3+4+5= 14, -6+(-7)= -13<br>that is to say, if we can find the elements we want to remove, then we can get the maximum continuous sum.</p><ol><li>Calculate the maximum continuous sum, <code>nocircle</code>, of the original array. If the <code>nocircle</code> is negative, it means all the elements in the array is negative. Therefore, just return the largest negative element. Which is -1 in the above example.</li><li>Sum up the array, and multiply each element with <code>-1</code> in the mean time. By doing this, we can use the same help function to get the smallest continuous sum in the original array, which is <code>[6,7]</code> in above example.</li><li>Compare the <code>nocircle</code> and <code>circle</code>, return the maximum one.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubarraySumCircular</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> nocircle= help(A), sum= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(nocircle &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> nocircle;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp= A;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;n: tmp)&#123;</span><br><span class="line">            sum+= n;</span><br><span class="line">            n*= <span class="number">-1</span>;</span><br><span class="line">        &#125;   </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> circle= sum+ help(tmp);</span><br><span class="line">        <span class="keyword">return</span> max(circle, nocircle);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">help</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max_endhere= <span class="number">0</span>, max_sofar= INT_MIN;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; A.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(max_endhere &lt; <span class="number">0</span>)</span><br><span class="line">                max_endhere= A[i];</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                max_endhere+= A[i];</span><br><span class="line">            </span><br><span class="line">            max_sofar= max(max_sofar, max_endhere);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max_sofar;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://www.geeksforgeeks.org/maximum-contiguous-circular-sum/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/maximum-contiguous-circular-sum/</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> two sigma </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>716. Max Stack</title>
+      <link href="/2018/10/19/716-Max-Stack/"/>
+      <url>/2018/10/19/716-Max-Stack/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design a max stack that supports push, pop, top, peekMax and popMax.</p><p>push(x) – Push element x onto stack.<br>pop() – Remove the element on top of the stack and return it.<br>top() – Get the element on the top.<br>peekMax() – Retrieve the maximum element in the stack.<br>popMax() – Retrieve the maximum element in the stack, and remove it. If you find more than one maximum elements, only remove the top-most one.<br>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MaxStack stack = new MaxStack();</span><br><span class="line">stack.push(5); </span><br><span class="line">stack.push(1);</span><br><span class="line">stack.push(5);</span><br><span class="line">stack.top(); -&gt; 5</span><br><span class="line">stack.popMax(); -&gt; 5</span><br><span class="line">stack.top(); -&gt; 1</span><br><span class="line">stack.peekMax(); -&gt; 5</span><br><span class="line">stack.pop(); -&gt; 1</span><br><span class="line">stack.top(); -&gt; 5</span><br></pre></td></tr></table></figure></p><p>Note:<br>-1e7 &lt;= x &lt;= 1e7<br>Number of operations won’t exceed 10000.<br>The last four operations won’t be called when stack is empty.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>This question is similar to </p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaxStack</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; total, maxstk;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        total.push(x);</span><br><span class="line">        <span class="keyword">if</span>(maxstk.empty() || x&gt;= maxstk.top())</span><br><span class="line">            maxstk.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(maxstk.top() == total.top())</span><br><span class="line">            maxstk.pop();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> tmp= total.top();</span><br><span class="line">        total.pop();</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> total.top();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">peekMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> maxstk.top();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">popMax</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">while</span>(total.top() != maxstk.top())&#123;</span><br><span class="line">            q.push(total.top()); total.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> tmp= maxstk.top();</span><br><span class="line">        maxstk.pop();</span><br><span class="line">        total.pop();</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            total.push(q.top());</span><br><span class="line">            <span class="keyword">if</span>(maxstk.empty() || q.top()&gt;= maxstk.top())</span><br><span class="line">                maxstk.push(q.top());</span><br><span class="line">            q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MaxStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MaxStack obj = new MaxStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.peekMax();</span></span><br><span class="line"><span class="comment"> * int param_5 = obj.popMax();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> design </tag>
+            
+            <tag> linkedin </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>155. Min Stack</title>
       <link href="/2018/10/19/155-Min-Stack/"/>
       <url>/2018/10/19/155-Min-Stack/</url>
@@ -228,9 +311,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -257,9 +340,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -307,9 +390,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1510,9 +1593,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -1711,9 +1794,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2094,9 +2177,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2152,9 +2235,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -3632,9 +3715,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4231,9 +4314,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4368,9 +4451,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4393,9 +4476,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
