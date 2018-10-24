@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>Interview review</title>
+      <link href="/2018/10/23/Interview-review/"/>
+      <url>/2018/10/23/Interview-review/</url>
+      <content type="html"><![CDATA[<ul><li>Thread vs Process<br>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</li></ul><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><ul><li>Throughput &amp; Latency<br><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </li></ul>]]></content>
+      
+      <categories>
+          
+          <category> study </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> interview </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>547. Friend Circles</title>
       <link href="/2018/10/23/547-Friend-Circles/"/>
       <url>/2018/10/23/547-Friend-Circles/</url>
@@ -1417,9 +1438,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -1487,9 +1508,9 @@
             
             <tag> amazon </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -5762,9 +5783,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
