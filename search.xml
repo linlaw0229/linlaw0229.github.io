@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title>103. Binary Tree Zigzag Level Order Traversal</title>
+      <link href="/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/"/>
+      <url>/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a binary tree, return the zigzag level order traversal of its nodes’ values. (ie, from left to right, then right to left for the next level and alternate between).</p><p>For example:<br>Given binary tree [3,9,20,null,null,15,7],<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  3</span><br><span class="line"> / \</span><br><span class="line">9  20</span><br><span class="line">  /  \</span><br><span class="line"> 15   7</span><br></pre></td></tr></table></figure></p><p>return its zigzag level order traversal as:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [20,9],</span><br><span class="line">  [15,7]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><h3 id="Solution1-BFS-Deque"><a href="#Solution1-BFS-Deque" class="headerlink" title="Solution1 BFS+ Deque:"></a>Solution1 BFS+ Deque:</h3><p>Use a deque to store the elements. The idea is to change direction of <code>push</code> elements into the deque and <code>pop</code> elements from deque.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; zigzagLevelOrder(TreeNode* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">deque</span>&lt;TreeNode*&gt; deq;</span><br><span class="line">        <span class="keyword">bool</span> dir= <span class="literal">false</span>;</span><br><span class="line">        deq.push_front(root);</span><br><span class="line">        <span class="keyword">while</span>(!deq.empty())&#123;</span><br><span class="line">            <span class="keyword">int</span> size= deq.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; curlevel;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; size; i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(dir)&#123;</span><br><span class="line">                    <span class="keyword">auto</span> tmp= deq.front(); deq.pop_front();</span><br><span class="line">                    curlevel.push_back(tmp-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(tmp-&gt;right) deq.push_back(tmp-&gt;right);</span><br><span class="line">                    <span class="keyword">if</span>(tmp-&gt;left) deq.push_back(tmp-&gt;left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">auto</span> tmp= deq.back(); deq.pop_back();</span><br><span class="line">                    curlevel.push_back(tmp-&gt;val);</span><br><span class="line">                    <span class="keyword">if</span>(tmp-&gt;left) deq.push_front(tmp-&gt;left);</span><br><span class="line">                    <span class="keyword">if</span>(tmp-&gt;right) deq.push_front(tmp-&gt;right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            dir = dir^<span class="number">1</span>;</span><br><span class="line">            res.push_back(curlevel);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Solution2-BFS-two-stacks"><a href="#Solution2-BFS-two-stacks" class="headerlink" title="Solution2 BFS+ two stacks:"></a>Solution2 BFS+ two stacks:</h3><p>Use two stacks, one for odd layer, the other one for even layer.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; zigzagLevelOrder(TreeNode* root) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> res;</span><br><span class="line">        <span class="built_in">stack</span>&lt;TreeNode*&gt; odd, even;</span><br><span class="line">        odd.push(root);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!odd.empty() || !even.empty())&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; level_odd;</span><br><span class="line">            <span class="keyword">while</span>(!odd.empty())&#123;</span><br><span class="line">                <span class="keyword">auto</span> tmp= odd.top(); odd.pop();</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;left) even.push(tmp-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;right) even.push(tmp-&gt;right);</span><br><span class="line">                level_odd.push_back(tmp-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!level_odd.empty()) res.push_back(level_odd);</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; level_even;</span><br><span class="line">            <span class="keyword">while</span>(!even.empty())&#123;</span><br><span class="line">                <span class="keyword">auto</span> tmp= even.top(); even.pop();</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;right) odd.push(tmp-&gt;right);</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;left) odd.push(tmp-&gt;left);</span><br><span class="line">                level_even.push_back(tmp-&gt;val);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!level_even.empty()) res.push_back(level_even);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> stack </tag>
+            
+            <tag> amazon </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>930. Binary Subarrays With Sum</title>
       <link href="/2018/10/28/930-Binary-Subarrays-With-Sum/"/>
       <url>/2018/10/28/930-Binary-Subarrays-With-Sum/</url>
@@ -90,7 +123,7 @@
       <title>Interview review</title>
       <link href="/2018/10/23/Interview-review/"/>
       <url>/2018/10/23/Interview-review/</url>
-      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><p>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</p><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><p>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</p><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a></p>]]></content>
       
       <categories>
           
@@ -122,9 +155,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -186,9 +219,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -265,11 +298,11 @@
             
             <tag> google </tag>
             
+            <tag> stack </tag>
+            
             <tag> amazon </tag>
             
             <tag> design </tag>
-            
-            <tag> stack </tag>
             
             <tag> bloomberg </tag>
             
@@ -582,13 +615,13 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -953,9 +986,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> stack </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
@@ -1136,9 +1169,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -1203,9 +1236,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1230,9 +1263,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1282,13 +1315,13 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
+            <tag> stack </tag>
             
             <tag> amazon </tag>
             
-            <tag> two pointers </tag>
+            <tag> array </tag>
             
-            <tag> stack </tag>
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -1344,9 +1377,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -1516,9 +1549,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -1588,9 +1621,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -1679,13 +1712,13 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1758,9 +1791,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1866,13 +1899,13 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2044,9 +2077,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2342,9 +2375,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2634,9 +2667,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -2897,13 +2930,13 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3046,11 +3079,11 @@
             
             <tag> easy </tag>
             
+            <tag> stack </tag>
+            
             <tag> amazon </tag>
             
             <tag> design </tag>
-            
-            <tag> stack </tag>
             
         </tags>
       
@@ -3077,9 +3110,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3480,9 +3513,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> stack </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3532,9 +3565,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -3571,9 +3604,9 @@
             
             <tag> bfs </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3654,9 +3687,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -3687,9 +3720,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -3818,9 +3851,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4502,9 +4535,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> array </tag>
             
@@ -4722,9 +4755,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -4747,9 +4780,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -4778,9 +4811,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -5904,7 +5937,7 @@
       <title>48. Rotate Image</title>
       <link href="/2018/05/25/48-Rotate-Image/"/>
       <url>/2018/05/25/48-Rotate-Image/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an n x n 2D matrix representing an image.</p><p>Rotate the image by 90 degrees (clockwise).</p><p>Note:</p><p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Given input matrix =</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ul><li>clockwise rotate:<br>first reverse up to down, then swap the symmetry <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     7 8 9     7 4 1</span><br><span class="line">4 5 6  =&gt; 4 5 6  =&gt; 8 5 2</span><br><span class="line">7 8 9     1 2 3     9 6 3</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>anticlockwise rotate:<br>first reverse left to right, then swap the symmetry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     3 2 1     3 6 9</span><br><span class="line">4 5 6  =&gt; 6 5 4  =&gt; 2 5 8</span><br><span class="line">7 8 9     9 8 7     1 4 7</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">anti_rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> vi : matrix) reverse(vi.begin(), vi.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an n x n 2D matrix representing an image.</p><p>Rotate the image by 90 degrees (clockwise).</p><p>Note:</p><p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Given input matrix =</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ul><li>clockwise rotate:<br>first reverse up to down, then swap the symmetry <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     7 8 9     7 4 1</span><br><span class="line">4 5 6  =&gt; 4 5 6  =&gt; 8 5 2</span><br><span class="line">7 8 9     1 2 3     9 6 3</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Since we only need to do three swaps in 3*3 example, the following code is more readable<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; matrix.size(); i++)&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; i; j++)&#123;</span><br><span class="line">        swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><ul><li>anticlockwise rotate:<br>first reverse left to right, then swap the symmetry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     3 2 1     3 6 9</span><br><span class="line">4 5 6  =&gt; 6 5 4  =&gt; 2 5 8</span><br><span class="line">7 8 9     9 8 7     1 4 7</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">anti_rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> vi : matrix) reverse(vi.begin(), vi.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n^2)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/qnuhzL" target="_blank" rel="noopener">https://goo.gl/qnuhzL</a></p>]]></content>
       
       <categories>
           
@@ -5998,9 +6031,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6174,11 +6207,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> stack </tag>
+            
             <tag> array </tag>
             
             <tag> hash table </tag>
-            
-            <tag> stack </tag>
             
         </tags>
       
@@ -6203,9 +6236,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
