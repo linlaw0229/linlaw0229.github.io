@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>692. Top K Frequent Words</title>
+      <link href="/2018/10/29/692-Top-K-Frequent-Words/"/>
+      <url>/2018/10/29/692-Top-K-Frequent-Words/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a non-empty list of words, return the k most frequent elements.</p><p>Your answer should be sorted by frequency from highest to lowest. If two words have the same frequency, then the word with the lower alphabetical order comes first.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;i&quot;, &quot;love&quot;, &quot;leetcode&quot;, &quot;i&quot;, &quot;love&quot;, &quot;coding&quot;], k = 2</span><br><span class="line">Output: [&quot;i&quot;, &quot;love&quot;]</span><br><span class="line">Explanation: &quot;i&quot; and &quot;love&quot; are the two most frequent words.</span><br><span class="line">    Note that &quot;i&quot; comes before &quot;love&quot; due to a lower alphabetical order.</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;the&quot;, &quot;day&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;the&quot;, &quot;the&quot;, &quot;the&quot;, &quot;sunny&quot;, &quot;is&quot;, &quot;is&quot;], k = 4</span><br><span class="line">Output: [&quot;the&quot;, &quot;is&quot;, &quot;sunny&quot;, &quot;day&quot;]</span><br><span class="line">Explanation: &quot;the&quot;, &quot;is&quot;, &quot;sunny&quot; and &quot;day&quot; are the four most frequent words,</span><br><span class="line">    with the number of occurrence being 4, 3, 2 and 1 respectively.</span><br></pre></td></tr></table></figure></p><p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ number of unique elements.<br>Input words contain only lowercase letters.<br>Follow up:<br>Try to solve it in O(n log k) time and O(n) extra space.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>We can use <code>map</code> and <code>bucket sort</code> to solve. The reason to choose <code>map</code> instead of <code>unordered_map</code> is because of the alphabetical order. </p><ol><li>Count the appearance of each word</li><li>Create buckets. Only need to create <code>words.size()</code> buckets.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; topKFrequent(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="comment">// use map to count the appearance of word</span></span><br><span class="line">        <span class="comment">// then use bucket sort to get the top k frequent elements</span></span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> word: words)</span><br><span class="line">            <span class="built_in">map</span>[word]++;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&gt; buckets(words.size());</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it: <span class="built_in">map</span>)</span><br><span class="line">            buckets[it.second].push_back(it.first);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= buckets.size()<span class="number">-1</span>; i&gt;= <span class="number">0</span> &amp;&amp; k&gt; <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">if</span>(buckets[i].size() == <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="comment">//have element in the bucket, find out how many we need to get</span></span><br><span class="line">            <span class="comment">//because we need to follow alphabetical order</span></span><br><span class="line">            <span class="keyword">int</span> n= min(k, (<span class="keyword">int</span>)buckets[i].size());</span><br><span class="line">            res.insert(res.end(), buckets[i].begin(), buckets[i].begin()+n);</span><br><span class="line">            k-=n;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(nlogn)$<br>space complexity: $O(n)$<br>reference:<br><a href="https://goo.gl/Eznk8c" target="_blank" rel="noopener">https://goo.gl/Eznk8c</a><br><a href="https://goo.gl/oMLd8T" target="_blank" rel="noopener">https://goo.gl/oMLd8T</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> hash table </tag>
+            
+            <tag> heap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>103. Binary Tree Zigzag Level Order Traversal</title>
       <link href="/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/"/>
       <url>/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/</url>
@@ -23,9 +52,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -83,7 +112,7 @@
       <title>Leetcode category</title>
       <link href="/2018/10/25/Leetcode-category/"/>
       <url>/2018/10/25/Leetcode-category/</url>
-      <content type="html"><![CDATA[<ul><li>Backtracking  <a href="/2018/05/31/79-Word-Search/" title="79. Word Search">79. Word Search</a>  <a href="/2018/08/16/17-Letter-Combinations-of-a-Phone-Number/" title="17. Letter Combinations of a Phone Number">17. Letter Combinations of a Phone Number</a></li></ul><ul><li><p>prefix sum</p><a href="/2018/10/28/930-Binary-Subarrays-With-Sum/" title="930. Binary Subarrays With Sum">930. Binary Subarrays With Sum</a></li><li><p>Tree BFS </p><a href="/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/" title="103. Binary Tree Zigzag Level Order Traversal">103. Binary Tree Zigzag Level Order Traversal</a></li></ul>]]></content>
+      <content type="html"><![CDATA[<ul><li><p>Backtracking</p><a href="/2018/05/31/79-Word-Search/" title="79. Word Search">79. Word Search</a><a href="/2018/08/16/17-Letter-Combinations-of-a-Phone-Number/" title="17. Letter Combinations of a Phone Number">17. Letter Combinations of a Phone Number</a></li></ul><ul><li><p>prefix sum</p><a href="/2018/10/28/930-Binary-Subarrays-With-Sum/" title="930. Binary Subarrays With Sum">930. Binary Subarrays With Sum</a></li><li><p>Tree BFS </p><a href="/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/" title="103. Binary Tree Zigzag Level Order Traversal">103. Binary Tree Zigzag Level Order Traversal</a></li></ul>]]></content>
       
       <categories>
           
@@ -155,9 +184,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -615,9 +644,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -1712,9 +1741,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -1899,9 +1928,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2667,9 +2696,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2930,9 +2959,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4535,9 +4564,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -4755,9 +4784,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4780,9 +4809,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4811,9 +4840,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
