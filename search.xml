@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>811. Subdomain Visit Count</title>
+      <link href="/2018/11/02/811-Subdomain-Visit-Count/"/>
+      <url>/2018/11/02/811-Subdomain-Visit-Count/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>A website domain like “discuss.leetcode.com” consists of various subdomains. At the top level, we have “com”, at the next level, we have “leetcode.com”, and at the lowest level, “discuss.leetcode.com”. When we visit a domain like “discuss.leetcode.com”, we will also visit the parent domains “leetcode.com” and “com” implicitly.</p><p>Now, call a “count-paired domain” to be a count (representing the number of visits this domain received), followed by a space, followed by the address. An example of a count-paired domain might be “9001 discuss.leetcode.com”.</p><p>We are given a list cpdomains of count-paired domains. We would like a list of count-paired domains, (in the same format as the input, and in any order), that explicitly counts the number of visits to each subdomain.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;9001 discuss.leetcode.com&quot;, &quot;9001 leetcode.com&quot;, &quot;9001 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We only have one website domain: &quot;discuss.leetcode.com&quot;. As discussed above, the subdomain &quot;leetcode.com&quot; and &quot;com&quot; will also be visited. So they will all be visited 9001 times.</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">[&quot;900 google.mail.com&quot;, &quot;50 yahoo.com&quot;, &quot;1 intel.mail.com&quot;, &quot;5 wiki.org&quot;]</span><br><span class="line">Output: </span><br><span class="line">[&quot;901 mail.com&quot;,&quot;50 yahoo.com&quot;,&quot;900 google.mail.com&quot;,&quot;5 wiki.org&quot;,&quot;5 org&quot;,&quot;1 intel.mail.com&quot;,&quot;951 com&quot;]</span><br><span class="line">Explanation: </span><br><span class="line">We will visit &quot;google.mail.com&quot; 900 times, &quot;yahoo.com&quot; 50 times, &quot;intel.mail.com&quot; once and &quot;wiki.org&quot; 5 times. For the subdomains, we will visit &quot;mail.com&quot; 900 + 1 = 901 times, &quot;com&quot; 900 + 50 + 1 = 951 times, and &quot;org&quot; 5 times.</span><br></pre></td></tr></table></figure></p><p>Notes:</p><p>The length of cpdomains will not exceed 100.<br>The length of each domain name will not exceed 100.<br>Each address will have either 1 or 2 “.” characters.<br>The input count in any count-paired domain will not exceed 10000.<br>The answer output can be returned in any order.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; subdomainVisits(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cpdomains) &#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> domain: cpdomains)&#123;</span><br><span class="line">            <span class="keyword">int</span> pos= domain.find(<span class="string">" "</span>);</span><br><span class="line">            <span class="keyword">int</span> count= stoi(domain.substr(<span class="number">0</span>, pos));</span><br><span class="line">            <span class="built_in">map</span>[domain.substr(pos+<span class="number">1</span>)]+= count;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i= pos+<span class="number">1</span>; i&lt; domain.length(); i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(domain[i] == <span class="string">'.'</span>) <span class="built_in">map</span>[domain.substr(i+<span class="number">1</span>)]+= count;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> it: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="built_in">string</span> tmp= to_string(it.second)+ <span class="string">" "</span>+it.first;</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(n)$<br>reference:<br><a href="https://goo.gl/wgn31v" target="_blank" rel="noopener">https://goo.gl/wgn31v</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy </tag>
+            
+            <tag> hash table </tag>
+            
+            <tag> citrix </tag>
+            
+            <tag> indeed </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>380. Insert Delete GetRandom O(1)</title>
       <link href="/2018/11/01/380-Insert-Delete-GetRandom-O-1/"/>
       <url>/2018/11/01/380-Insert-Delete-GetRandom-O-1/</url>
@@ -19,9 +46,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> hash table </tag>
             
@@ -133,7 +160,7 @@
       <title>leetcode review-most interview problem</title>
       <link href="/2018/10/26/leetcode-review-most-interview-problem/"/>
       <url>/2018/10/26/leetcode-review-most-interview-problem/</url>
-      <content type="html"><![CDATA[<p>Oct 26th:<br>1, 2,<br><a href="/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/" title="3. Longest Substring Without Repeating Characters">3. Longest Substring Without Repeating Characters</a>, use a <code>left</code> variable to denote the start<br><a href="/2018/06/26/5-Longest-Palindromic-Substring/" title="5. Longest Palindromic Substring">5. Longest Palindromic Substring</a> </p><p>Oct 31th:<br><a href="/2018/08/25/206-Reverse-Linked-List/" title="206. Reverse Linked List">206. Reverse Linked List</a><br><a href="/2018/07/23/238-Product-of-Array-Except-Self/" title="238. Product of Array Except Self">238. Product of Array Except Self</a><br><a href="/2018/08/16/17-Letter-Combinations-of-a-Phone-Number/" title="17. Letter Combinations of a Phone Number">17. Letter Combinations of a Phone Number</a><br><a href="/2018/06/28/139-Word-Break/" title="139. Word Break">139. Word Break</a></p><p>Nov 1st:<br><a href="/2018/06/06/49-Group-Anagrams/" title="49. Group Anagrams">49. Group Anagrams</a><br><a href="/2018/11/01/380-Insert-Delete-GetRandom-O-1/" title="380. Insert Delete GetRandom O(1)">380. Insert Delete GetRandom O(1)</a></p>]]></content>
+      <content type="html"><![CDATA[<p>Oct 26th:<br>1, 2,<br><a href="/2018/06/06/3-Longest-Substring-Without-Repeating-Characters/" title="3. Longest Substring Without Repeating Characters">3. Longest Substring Without Repeating Characters</a>, use a <code>left</code> variable to denote the start<br><a href="/2018/06/26/5-Longest-Palindromic-Substring/" title="5. Longest Palindromic Substring">5. Longest Palindromic Substring</a> </p><p>Oct 31th:<br><a href="/2018/08/25/206-Reverse-Linked-List/" title="206. Reverse Linked List">206. Reverse Linked List</a><br><a href="/2018/07/23/238-Product-of-Array-Except-Self/" title="238. Product of Array Except Self">238. Product of Array Except Self</a><br><a href="/2018/08/16/17-Letter-Combinations-of-a-Phone-Number/" title="17. Letter Combinations of a Phone Number">17. Letter Combinations of a Phone Number</a><br><a href="/2018/06/28/139-Word-Break/" title="139. Word Break">139. Word Break</a></p><p>Nov 1st:<br><a href="/2018/06/06/49-Group-Anagrams/" title="49. Group Anagrams">49. Group Anagrams</a><br><a href="/2018/11/01/380-Insert-Delete-GetRandom-O-1/" title="380. Insert Delete GetRandom O(1)">380. Insert Delete GetRandom O(1)</a><br><a href="/2018/06/16/236-Lowest-Common-Ancestor-of-a-Binary-Tree/" title="236. Lowest Common Ancestor of a Binary Tree">236. Lowest Common Ancestor of a Binary Tree</a></p>]]></content>
       
       <categories>
           
@@ -292,9 +319,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -692,9 +719,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -1242,9 +1269,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -1309,9 +1336,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -1336,9 +1363,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -1388,11 +1415,11 @@
             
             <tag> facebook </tag>
             
+            <tag> array </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1450,9 +1477,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> union find </tag>
             
@@ -1622,9 +1649,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -1694,9 +1721,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -1789,9 +1816,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -1864,9 +1891,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -1976,9 +2003,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -2150,9 +2177,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -2448,9 +2475,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3007,9 +3034,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -3183,9 +3210,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -3638,9 +3665,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -3677,9 +3704,9 @@
             
             <tag> bfs </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3760,9 +3787,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> sort </tag>
             
@@ -3793,9 +3820,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> lyft </tag>
             
@@ -3924,9 +3951,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6104,9 +6131,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -6280,9 +6307,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
             <tag> hash table </tag>
             
@@ -6309,9 +6336,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
