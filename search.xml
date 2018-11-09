@@ -3,6 +3,58 @@
   
     
     <entry>
+      <title>212. Word Search II</title>
+      <link href="/2018/11/09/212-Word-Search-II/"/>
+      <url>/2018/11/09/212-Word-Search-II/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a 2D board and a list of words from the dictionary, find all words in the board.</p><p>Each word must be constructed from letters of sequentially adjacent cell, where “adjacent” cells are those horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.</p><p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: </span><br><span class="line">words = [&quot;oath&quot;,&quot;pea&quot;,&quot;eat&quot;,&quot;rain&quot;] and board =</span><br><span class="line">[</span><br><span class="line">  [&apos;o&apos;,&apos;a&apos;,&apos;a&apos;,&apos;n&apos;],</span><br><span class="line">  [&apos;e&apos;,&apos;t&apos;,&apos;a&apos;,&apos;e&apos;],</span><br><span class="line">  [&apos;i&apos;,&apos;h&apos;,&apos;k&apos;,&apos;r&apos;],</span><br><span class="line">  [&apos;i&apos;,&apos;f&apos;,&apos;l&apos;,&apos;v&apos;]</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">Output: [&quot;eat&quot;,&quot;oath&quot;]</span><br></pre></td></tr></table></figure></p><p>Note:<br>You may assume that all inputs are consist of lowercase letters a-z.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>For this question, we can start from thinking how to search multiple words in a 2D matrix.<br>Normally when we want to search multiple words, we’ll use <code>unordered_map</code>. But the given 2D matrix are lots of characters, so when we start searching one word, we need to know if the 2D matrix exist the next character of this word.</p><p>How do we instantly know the current character is invalid? <code>HashMap</code>?<br>How do we instantly know what’s the next valid character? <code>LinkedList</code>?<br>But the next character can be chosen from a list of characters. <code>Mutil-LinkedList</code>?<br>Combing them, <code>Trie</code> is the natural choice</p><p><img src="212. Word Search II.jpg" alt=""></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">string</span> word;</span><br><span class="line">    <span class="built_in">vector</span>&lt;TrieNode*&gt; next;</span><br><span class="line">    TrieNode(): word(<span class="string">""</span>), next(<span class="built_in">vector</span>&lt;TrieNode*&gt;(<span class="number">26</span>, <span class="literal">nullptr</span>))&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TrieNode* <span class="title">buildTrie</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words)</span></span>&#123;</span><br><span class="line">        TrieNode* root= <span class="keyword">new</span> TrieNode();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> word: words)&#123;</span><br><span class="line">            TrieNode* tmp= root;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> c: word)&#123;</span><br><span class="line">                <span class="keyword">int</span> i= c- <span class="string">'a'</span>;</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;next[i] == <span class="literal">NULL</span>)</span><br><span class="line">                    tmp-&gt;next[i]= <span class="keyword">new</span> TrieNode();</span><br><span class="line">                tmp= tmp-&gt;next[i];</span><br><span class="line">            &#125;</span><br><span class="line">            tmp-&gt;word= word;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, TrieNode* cur, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i &gt;= board.size() || j &gt;= board[<span class="number">0</span>].size() || i&lt; <span class="number">0</span> || j&lt; <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">char</span> c= board[i][j];</span><br><span class="line">        <span class="keyword">if</span>(c == <span class="string">'#'</span> || cur-&gt;next[c-<span class="string">'a'</span>] == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        cur= cur-&gt;next[c-<span class="string">'a'</span>];</span><br><span class="line">        <span class="keyword">if</span>(cur-&gt;word != <span class="string">""</span>)&#123;</span><br><span class="line">            res.push_back(cur-&gt;word);</span><br><span class="line">            cur-&gt;word= <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        board[i][j]= <span class="string">'#'</span>;</span><br><span class="line">        dfs(board, cur, i+<span class="number">1</span>, j, res);</span><br><span class="line">        dfs(board, cur, i<span class="number">-1</span>, j, res);</span><br><span class="line">        dfs(board, cur, i, j+<span class="number">1</span>, res);</span><br><span class="line">        dfs(board, cur, i, j<span class="number">-1</span>, res);</span><br><span class="line">        board[i][j]= c;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; findWords(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; board, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</span><br><span class="line">        TrieNode* root= buildTrie(words);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; board.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; board[<span class="number">0</span>].size(); j++)&#123;</span><br><span class="line">                dfs(board, root, i, j, res);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> backtracking </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> trie </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>note-OS</title>
+      <link href="/2018/11/05/note-OS/"/>
+      <url>/2018/11/05/note-OS/</url>
+      <content type="html"><![CDATA[<h3 id="4-5-Atomic-Transaction"><a href="#4-5-Atomic-Transaction" class="headerlink" title="4-5 Atomic Transaction"></a>4-5 Atomic Transaction</h3><ul><li><p>Why not keep using lock?</p><ol><li>reduce concurrency</li><li>lead to deadlock</li><li>lead to priority inversion. low priority blocks high priority thread, caused high priority thread starved. example: Mars Pathfinder</li><li>lead to convoying. a performance problem caused by the overhead of repeated context switches from each time a thread attempts to acquire the lock and fails.</li><li>lack of soft&amp;hard composability: it is hard to combine small, correct lock-based modules into equally correct larger programs without modifying the modules or at least knowing about their internals.</li></ol></li><li><p>Transaction: groups of operations executed by a thread.</p></li><li>Serializability: <ul><li>idea: go without</li></ul></li></ul>]]></content>
+      
+      <categories>
+          
+          <category> note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> operating system </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>811. Subdomain Visit Count</title>
       <link href="/2018/11/02/811-Subdomain-Visit-Count/"/>
       <url>/2018/11/02/811-Subdomain-Visit-Count/</url>
@@ -46,9 +98,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -223,7 +275,7 @@
       <title>Interview review</title>
       <link href="/2018/10/23/Interview-review/"/>
       <url>/2018/10/23/Interview-review/</url>
-      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><p>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</p><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><ul><li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p><p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p></li><li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p></li><li><p>Heap<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p></li></ul><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><ul><li><p>Interface vs Abstract class<br>Interface: define required methods when an object need to collaborate with other objects.<br>Abstract class: define what needs to be inheritance in the whole inheritance system. Child class can override the method or keep the same as father class.<br>IOClass:</p></li><li><p>mutex<br>A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.</p></li><li><p>Inheritance</p><p>Diamond problem: lowest level child have several copy after inheritance, and will have ambiguity problem. The way to solve is virtual inheritance.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> A</span><br><span class="line">/ \</span><br><span class="line">B  C</span><br><span class="line">\ /</span><br><span class="line"> D</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><span class="keyword">public</span>: <span class="keyword">int</span> _a;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A&#123;<span class="keyword">public</span>: <span class="keyword">int</span> _b;&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://goo.gl/dPQVum" target="_blank" rel="noopener">https://goo.gl/dPQVum</a></p></li><li><p>Static/Dynamic binding<br>Static, compile time binding is easy. There’s no polymorphism involved. You know the type of the object when you write and compile and run the code. Sometimes a dog is just a dog.</p><p>Dynamic, runtime binding is where polymorphism comes from.</p><p>If you have a reference that’s of parent type at compile type, you can assign a child type to it at runtime. The behavior of the reference will magically change to the appropriate type at runtime. A virtual table lookup will be done to let the runtime figure out what the dynamic type is.</p></li></ul><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul><li>how HTTPS works<ol><li>browser initiate HTTPS request to webserver</li><li>webserver have public key and private key. Respond with public key.</li><li>Browser create session key.</li><li>Encrypt the session key with the public key from web server.</li><li>Webserver received the encrypted data, use private key to decrypt and get the session key.</li><li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li></ol></li></ul><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><p>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</p><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><ul><li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p><p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p></li><li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p></li><li><p>Heap<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p></li></ul><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><ul><li><p>Interface vs Abstract class<br>Interface: define required methods when an object need to collaborate with other objects.<br>Abstract class: define what needs to be inheritance in the whole inheritance system. Child class can override the method or keep the same as father class.<br>IOClass:</p></li><li><p>mutex<br>A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.</p></li><li><p>Inheritance</p><p>Diamond problem: lowest level child have several copy after inheritance, and will have ambiguity problem. The way to solve is virtual inheritance.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> A</span><br><span class="line">/ \</span><br><span class="line">B  C</span><br><span class="line">\ /</span><br><span class="line"> D</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><span class="keyword">public</span>: <span class="keyword">int</span> _a;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A&#123;<span class="keyword">public</span>: <span class="keyword">int</span> _b;&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://goo.gl/dPQVum" target="_blank" rel="noopener">https://goo.gl/dPQVum</a></p></li><li><p>Static/Dynamic binding<br>Static, compile time binding is easy. There’s no polymorphism involved. You know the type of the object when you write and compile and run the code. Sometimes a dog is just a dog.</p><p>Dynamic, runtime binding is where polymorphism comes from.</p><p>If you have a reference that’s of parent type at compile type, you can assign a child type to it at runtime. The behavior of the reference will magically change to the appropriate type at runtime. A virtual table lookup will be done to let the runtime figure out what the dynamic type is.</p></li></ul><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul><li>how HTTPS works<ol><li>browser initiate HTTPS request to webserver</li><li>webserver have public key and private key. Respond with public key.</li><li>Browser create session key.</li><li>Encrypt the session key with the public key from web server.</li><li>Webserver received the encrypted data, use private key to decrypt and get the session key.</li><li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li></ol></li></ul><h3 id="Graph-Data-structure"><a href="#Graph-Data-structure" class="headerlink" title="Graph- Data structure"></a>Graph- Data structure</h3><ul><li><p>Edge list: To represent an edge, we just have an array of two vertex numbers, or an array of objects containing the vertex numbers of the vertices that the edges are incident on. If edges have weights, add either a third element to the array or more information to the object, giving the edge’s weight. Since each edge contains just two or three numbers, the total space for an edge list is $Θ(E)$.</p></li><li><p>Adjacency matrix: For a graph with $|V|$, an adjacency matrix is a $|V|×∣V∣$ matrix of 0s and 1s, where the entry in row $i$ and column $j$ is 1 if and only if the edge $(i,j)$ is in the graph. If you want to indicate an edge weight, put it in the row $i$, column $j$ entry, and reserve a special value (perhaps null) to indicate an absent edge.<br><img src="ad_matrix.png" alt=""></p></li><li>Adjacency list</li></ul><p><a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/graph-and-its-representations/</a><br><a href="https://goo.gl/ZTSF8b" target="_blank" rel="noopener">https://goo.gl/ZTSF8b</a></p><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>]]></content>
       
       <categories>
           
@@ -319,9 +371,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -719,9 +771,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1269,9 +1321,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -1336,9 +1388,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1363,9 +1415,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1415,11 +1467,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1477,9 +1529,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -1649,9 +1701,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -1721,9 +1773,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -1816,9 +1868,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1891,9 +1943,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2003,9 +2055,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2177,9 +2229,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2475,9 +2527,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3034,9 +3086,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3210,9 +3262,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3665,9 +3717,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -3704,9 +3756,9 @@
             
             <tag> bfs </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3787,9 +3839,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -3820,9 +3872,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -3951,9 +4003,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6131,9 +6183,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6307,9 +6359,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -6336,9 +6388,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6375,7 +6427,7 @@
       <title>companylist</title>
       <link href="/2018/04/20/companylist/"/>
       <url>/2018/04/20/companylist/</url>
-      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  ExxonMobil: 9/</p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
+      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>  Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite</p><p>  SAS: 11/4 received bq online<br>  Technical Enablement Academy - Associate Systems Technical Support Engineer (Austin, TX)</p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
       
       
         <tags>
