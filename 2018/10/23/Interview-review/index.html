@@ -1,13 +1,29 @@
 <!DOCTYPE html><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>Interview review | linlaw Techblog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/8.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Interview review</h1><a id="logo" href="/.">linlaw Techblog</a><p class="description">Make the change you want to see in the world.</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> home</i></a><a href="/archives/"><i class="fa fa-archive"> archive</i></a><a href="/about/"><i class="fa fa-user"> about</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Interview review</h1><div class="post-meta">Oct 23, 2018<span> | </span><span class="category"><a href="/categories/study/">study</a></span><script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><p>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</p>
 <p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p>
 <p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p>
-<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><ul>
+<h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p><img src="memory.png" alt=""></p>
+<ul>
 <li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p>
 <p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p>
 </li>
-<li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p>
+<li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: infinitely function calls exhausted the reserved stack space<br>Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p>
 </li>
-<li><p>Heap<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p>
+<li><p>Heap<br>Can think of it as a large pool of memory that can freely use.<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p>
+<ul>
+<li>In C++:<br>use operator <code>new</code> and <code>delete</code> to manipulate heap memory.<br>In OS machine problem, applied headmap and bitmap to determine a head of allocated memory and used memory frame.</li>
+</ul>
+</li>
+<li><p>Virtual memory</p>
+<ul>
+<li><p>Any error if two processes writing on the same address?<br>Nothing is wrong. Process uses virtual memory, the same address value in two different processes maps to two different physical address.</p>
+<p>Detailed Explain:<br>virtual memory concept-&gt; addr in vm-&gt; therefore different</p>
+<ol>
+<li>concept of virtual memory<br>Virtual memory is a mechanism used by the operation system to “cheat” the process about the memory space a process can use. What a process can see is a large continuous memory space, so it feels happy about it. The real story is: the main memory(RAM) of a computer is very limited(For mac, it is 8GB).</li>
+<li>The base of virtual memory is a mapping from the virtual address to the real physical address.</li>
+<li>So if 2 processes are both running under the virtual memory mechanism, the real physical address of the OS is invisible to both of them. What they can see is the virtual memory address. Even though the see a same address, that might be mapped to different physical address underlaying.</li>
+</ol>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p>
@@ -42,7 +58,8 @@
 </li>
 </ul>
 <h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul>
-<li>how HTTPS works<ol>
+<li><p>how HTTPS works</p>
+<ol>
 <li>browser initiate HTTPS request to webserver</li>
 <li>webserver have public key and private key. Respond with public key.</li>
 <li>Browser create session key.</li>
@@ -51,13 +68,18 @@
 <li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li>
 </ol>
 </li>
+<li><p>TCP, UDP, IP<br><img src="layer_terminology.JPG" alt=""></p>
+<ul>
+<li>What is the point of UDP when we already have IP?</li>
+</ul>
+</li>
 </ul>
 <h3 id="Graph-Data-structure"><a href="#Graph-Data-structure" class="headerlink" title="Graph- Data structure"></a>Graph- Data structure</h3><ul>
 <li><p>Edge list: To represent an edge, we just have an array of two vertex numbers, or an array of objects containing the vertex numbers of the vertices that the edges are incident on. If edges have weights, add either a third element to the array or more information to the object, giving the edge’s weight. Since each edge contains just two or three numbers, the total space for an edge list is $Θ(E)$.</p>
 </li>
 <li><p>Adjacency matrix: For a graph with $|V|$, an adjacency matrix is a $|V|×∣V∣$ matrix of 0s and 1s, where the entry in row $i$ and column $j$ is 1 if and only if the edge $(i,j)$ is in the graph. If you want to indicate an edge weight, put it in the row $i$, column $j$ entry, and reserve a special value (perhaps null) to indicate an absent edge.<br><img src="ad_matrix.png" alt=""></p>
 </li>
-<li>Adjacency list</li>
+<li>Adjacency list<br><img src="ad_list.png" alt=""></li>
 </ul>
 <p><a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/graph-and-its-representations/</a><br><a href="https://goo.gl/ZTSF8b" target="_blank" rel="noopener">https://goo.gl/ZTSF8b</a></p>
 <p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>
