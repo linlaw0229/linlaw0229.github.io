@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>C++ object-oriented</title>
+      <link href="/2018/11/28/C-object-oriented/"/>
+      <url>/2018/11/28/C-object-oriented/</url>
+      <content type="html"><![CDATA[<ul><li><p>Object<br>This is the basic unit of object-oriented programming. That is both data and function that operate on data are bundled as a unit called as object.</p></li><li><p>Class<br>When you define a class, you define a blueprint for an object. This doesn’t actually define any data, but it does define what the class name means, that is, define what an object of the class will consist of and what operations can be performed on such an object.</p></li><li><p>Abstraction<br>Data abstraction refers to, providing only essential information to the outside world and hiding their background details, i.e., to represent the needed information in program without presenting the details.<br>For example, a database system hides certain details of how data is stored and created and maintained. Similar way, C++ classes provides different methods to the outside world without giving internal details about those methods and data.</p></li><li><p>Encapsulation<br>Encapsulation is placing the data and the functions that work on that data in the same place. While working with procedural languages, it is not always clear which functions work on which variables but object-oriented programming provides you framework to place the data and the relevant functions together in the same object.</p></li><li><p>Inheritance<br>One of the most useful aspects of object-oriented programming is code reusability. As the name suggests Inheritance is the process of forming a new class from an existing class that is from the existing class called as base class, new class is formed called as derived class.<br>Code reusability -&gt; Reduce the code size.</p></li><li><p>Polymorphism<br>Poly refers to many. The ability to use an operator or function in different ways. In other words, giving different meaning to the operators or functions is called polymorphism. That is a single function or an operator functioning in many ways different upon the usage is called polymorphism.</p></li><li><p>Overloading<br>The concept of overloading is also a branch of polymorphism. When the exiting operator or function is made to operate on new data type, it is said to be overloaded.</p></li></ul><p><a href="https://docs.microsoft.com/en-us/windows/desktop/fileio/i-o-completion-ports" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/windows/desktop/fileio/i-o-completion-ports</a></p>]]></content>
+      
+      <categories>
+          
+          <category> study </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> interview </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>14. Longest Common Prefix</title>
       <link href="/2018/11/20/14-Longest-Common-Prefix/"/>
       <url>/2018/11/20/14-Longest-Common-Prefix/</url>
@@ -179,9 +200,9 @@
             
             <tag> easy </tag>
             
-            <tag> citrix </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> citrix </tag>
             
             <tag> indeed </tag>
             
@@ -204,11 +225,11 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -283,9 +304,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -383,7 +404,7 @@
       <title>Interview review</title>
       <link href="/2018/10/23/Interview-review/"/>
       <url>/2018/10/23/Interview-review/</url>
-      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><ul><li>Definition<br>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</li></ul><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. Processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><ul><li>How to switch processes using interrupt<br>Store the state into <code>PCB</code>, process control block. load other process’ PCB from kernel memory, <ol><li>When the interrupt comes, the state of the current process is stored in a data structure call process control block(PCB)</li><li>The PCB is stored on a per-process ​stack​ in kernel memory</li><li>A ​handle​ to the PCB is added to a queue of processes that are ready to run, often called the ready queue.</li><li>So when the CPU wants to switch the process back, it simply load the handle of the PCB from the ready queue, and restore the context from the PCB</li></ol></li></ul><p>What is the difference between context switching and interrupt handling? <a href="https://goo.gl/RBp7LY" target="_blank" rel="noopener">https://goo.gl/RBp7LY</a><br>UCSD, I/O and Processes <a href="https://goo.gl/4Byzg8" target="_blank" rel="noopener">https://goo.gl/4Byzg8</a></p><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p><img src="memory.png" alt=""></p><ul><li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p><p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p></li><li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: infinitely function calls exhausted the reserved stack space<br>Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p></li><li><p>Heap<br>Can think of it as a large pool of memory that can freely use.<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p><ul><li>In C++:<br>use operator <code>new</code> and <code>delete</code> to manipulate heap memory.<br>In OS machine problem, applied headmap and bitmap to determine a head of allocated memory and used memory frame.</li></ul><p><a href="https://www.youtube.com/watch?v=_8-ht2AKyH4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_8-ht2AKyH4</a></p></li><li><p>Virtual memory</p><ul><li><p>Any error if two processes writing on the same address?<br>Nothing is wrong. Process uses virtual memory, the same address value in two different processes maps to two different physical address.</p><p>Detailed Explain:<br>virtual memory concept-&gt; addr in vm-&gt; therefore different</p><ol><li>concept of virtual memory<br>Virtual memory is a mechanism used by the operation system to “cheat” the process about the memory space a process can use. What a process can see is a large continuous memory space, so it feels happy about it. The real story is: the main memory(RAM) of a computer is very limited(For mac, it is 8GB).</li><li>The base of virtual memory is a mapping from the virtual address to the real physical address.</li><li>So if 2 processes are both running under the virtual memory mechanism, the real physical address of the OS is invisible to both of them. What they can see is the virtual memory address. Even though the see a same address, that might be mapped to different physical address underlaying.</li></ol></li></ul></li></ul><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><ul><li><p>Interface vs Abstract class<br>Interface: define required methods when an object need to collaborate with other objects.<br>Abstract class: define what needs to be inheritance in the whole inheritance system. Child class can override the method or keep the same as father class.<br>IOClass:</p></li><li><p>mutex<br>A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.</p></li><li><p>Inheritance</p><p>Diamond problem: lowest level child have several copy after inheritance, and will have ambiguity problem. The way to solve is virtual inheritance.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> A</span><br><span class="line">/ \</span><br><span class="line">B  C</span><br><span class="line">\ /</span><br><span class="line"> D</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><span class="keyword">public</span>: <span class="keyword">int</span> _a;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A&#123;<span class="keyword">public</span>: <span class="keyword">int</span> _b;&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://goo.gl/dPQVum" target="_blank" rel="noopener">https://goo.gl/dPQVum</a></p></li><li><p>Static/Dynamic binding<br>Static, compile time binding is easy. There’s no polymorphism involved. You know the type of the object when you write and compile and run the code. Sometimes a dog is just a dog.</p><p>Dynamic, runtime binding is where polymorphism comes from.</p><p>If you have a reference that’s of parent type at compile type, you can assign a child type to it at runtime. The behavior of the reference will magically change to the appropriate type at runtime. A virtual table lookup will be done to let the runtime figure out what the dynamic type is.</p></li></ul><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul><li><p>how HTTPS works</p><ol><li>browser initiate HTTPS request to webserver</li><li>webserver have public key and private key. Respond with public key.</li><li>Browser create session key.</li><li>Encrypt the session key with the public key from web server.</li><li>Webserver received the encrypted data, use private key to decrypt and get the session key.</li><li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li></ol></li><li><p>TCP, UDP, IP<br><img src="layer_terminology.JPG" alt=""></p><ul><li>What is the point of UDP when we already have IP?</li></ul></li></ul><h3 id="Graph-Data-structure"><a href="#Graph-Data-structure" class="headerlink" title="Graph- Data structure"></a>Graph- Data structure</h3><ul><li><p>Edge list: To represent an edge, we just have an array of two vertex numbers, or an array of objects containing the vertex numbers of the vertices that the edges are incident on. If edges have weights, add either a third element to the array or more information to the object, giving the edge’s weight. Since each edge contains just two or three numbers, the total space for an edge list is $Θ(E)$.</p></li><li><p>Adjacency matrix: For a graph with $|V|$, an adjacency matrix is a $|V|×∣V∣$ matrix of 0s and 1s, where the entry in row $i$ and column $j$ is 1 if and only if the edge $(i,j)$ is in the graph. If you want to indicate an edge weight, put it in the row $i$, column $j$ entry, and reserve a special value (perhaps null) to indicate an absent edge.<br><img src="ad_matrix.png" alt=""></p></li><li>Adjacency list<br><img src="ad_list.png" alt=""></li></ul><p><a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/graph-and-its-representations/</a><br><a href="https://goo.gl/ZTSF8b" target="_blank" rel="noopener">https://goo.gl/ZTSF8b</a></p><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><ul><li>Definition<br>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</li></ul><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. Processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><ul><li><p>How to switch processes using interrupt<br>Store the state into <code>PCB</code>, process control block. load other process’ PCB from kernel memory, </p><ol><li>When the interrupt comes, the state of the current process is stored in a data structure call process control block(PCB)</li><li>The PCB is stored on a per-process ​stack​ in kernel memory</li><li>A ​handle​ to the PCB is added to a queue of processes that are ready to run, often called the ready queue.</li><li>So when the CPU wants to switch the process back, it simply load the handle of the PCB from the ready queue, and restore the context from the PCB</li></ol></li><li><p>Difference between process switching and thread switching<br>The main distinction between a thread switch and a process switch is that during a thread switch, the virtual <code>memory space</code> remains the same, while it does not during a process switch. Both types involve handing control over to the operating system kernel to perform the context switch. The process of switching in and out of the OS kernel along with the cost of switching out the registers is the largest fixed cost of performing a context switch.</p></li></ul><p>What is the difference between context switching and interrupt handling? <a href="https://goo.gl/RBp7LY" target="_blank" rel="noopener">https://goo.gl/RBp7LY</a><br>UCSD, I/O and Processes <a href="https://goo.gl/4Byzg8" target="_blank" rel="noopener">https://goo.gl/4Byzg8</a><br>thread context switch vs process context switch, <a href="https://goo.gl/CqgHjE" target="_blank" rel="noopener">https://goo.gl/CqgHjE</a></p><h3 id="Deadlock"><a href="#Deadlock" class="headerlink" title="Deadlock"></a>Deadlock</h3><p>Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. A multi-threaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock.</p><ul><li>The reason of deadlock:<br>Deadlock can arise if following four conditions hold simultaneously (Necessary Conditions)<br><code>Mutual Exclusion &amp;&amp; Hold and Wait &amp;&amp; No preemption &amp;&amp; Circular wait</code></li></ul><ol><li>Mutual Exclusion: One or more than one resource non-sharable (Only one process can use at a time)</li><li>Hold and Wait: A process is holding at least one resource and waiting for resources.</li><li>No Preemption: A resource cannot be taken from a process unless the process releases the resource.</li><li>Circular Wait: A set of processes are waiting for each other in circular form.</li></ol><ul><li>Deadlock prevention:</li></ul><p>Try to eliminate one of the four condition</p><ol><li><p>Eliminate Mutual Exclusion<br>It is not possible to dis-satisfy the mutual exclusion because some resources, for example, printer, is inherently non-shareable.</p></li><li><p>Eliminate Hold and wait<br>Allocate all required resources to the process before start of its execution, this way “hold and wait” condition is eliminated but it will lead to <code>low device utilization</code>.</p></li></ol><p>Process will make new request for resources after releasing the current set of resources. This solution may lead to <code>starvation</code>.</p><ol start="3"><li><p>Eliminate No Preemption<br>Preempt resources from process when resources required by other high priority process.</p></li><li><p>Eliminate Circular Wait<br>Each resource will be assigned with a numerical number. A process can request for the resources only in increasing order of numbering.</p></li></ol><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p><img src="memory.png" alt=""></p><ul><li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p><p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p></li><li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: infinitely function calls exhausted the reserved stack space<br>Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p></li><li><p>Heap<br>Can think of it as a large pool of memory that can freely use.<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p><ul><li>In C++:<br>use operator <code>new</code> and <code>delete</code> to manipulate heap memory.<br>In OS machine problem, applied headmap and bitmap to determine a head of allocated memory and used memory frame.</li></ul><p><a href="https://www.youtube.com/watch?v=_8-ht2AKyH4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_8-ht2AKyH4</a></p></li><li><p>Virtual memory</p><ul><li><p>Any error if two processes writing on the same address?<br>Nothing is wrong. Process uses virtual memory, the same address value in two different processes maps to two different physical address.</p><p>Detailed Explain:<br>virtual memory concept-&gt; addr in vm-&gt; therefore different</p><ol><li>concept of virtual memory<br>Virtual memory is a mechanism used by the operation system to “cheat” the process about the memory space a process can use. What a process can see is a large continuous memory space, so it feels happy about it. The real story is: the main memory(RAM) of a computer is very limited(For mac, it is 8GB).</li><li>The base of virtual memory is a mapping from the virtual address to the real physical address.</li><li>So if 2 processes are both running under the virtual memory mechanism, the real physical address of the OS is invisible to both of them. What they can see is the virtual memory address. Even though the see a same address, that might be mapped to different physical address underlaying.</li></ol></li></ul></li></ul><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><ul><li><p>Interface vs Abstract class<br>Interface: define required methods when an object need to collaborate with other objects.<br>Abstract class: define what needs to be inheritance in the whole inheritance system. Child class can override the method or keep the same as father class.<br>IOClass:</p></li><li><p>mutex<br>A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.</p></li><li><p>Inheritance</p><p>Diamond problem: lowest level child have several copy after inheritance, and will have ambiguity problem. The way to solve is virtual inheritance.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> A</span><br><span class="line">/ \</span><br><span class="line">B  C</span><br><span class="line">\ /</span><br><span class="line"> D</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><span class="keyword">public</span>: <span class="keyword">int</span> _a;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A&#123;<span class="keyword">public</span>: <span class="keyword">int</span> _b;&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://goo.gl/dPQVum" target="_blank" rel="noopener">https://goo.gl/dPQVum</a></p></li><li><p>Static/Dynamic binding<br>Static, compile time binding is easy. There’s no polymorphism involved. You know the type of the object when you write and compile and run the code. Sometimes a dog is just a dog.</p><p>Dynamic, runtime binding is where polymorphism comes from.</p><p>If you have a reference that’s of parent type at compile type, you can assign a child type to it at runtime. The behavior of the reference will magically change to the appropriate type at runtime. A virtual table lookup will be done to let the runtime figure out what the dynamic type is.</p></li></ul><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul><li><p>how HTTPS works</p><ol><li>browser initiate HTTPS request to webserver</li><li>webserver have public key and private key. Respond with public key.</li><li>Browser create session key.</li><li>Encrypt the session key with the public key from web server.</li><li>Webserver received the encrypted data, use private key to decrypt and get the session key.</li><li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li></ol></li><li><p>TCP, UDP, IP<br><img src="layer_terminology.JPG" alt=""></p><ul><li>What is the point of UDP when we already have IP?</li></ul></li></ul><h3 id="Graph-Data-structure"><a href="#Graph-Data-structure" class="headerlink" title="Graph- Data structure"></a>Graph- Data structure</h3><ul><li><p>Edge list: To represent an edge, we just have an array of two vertex numbers, or an array of objects containing the vertex numbers of the vertices that the edges are incident on. If edges have weights, add either a third element to the array or more information to the object, giving the edge’s weight. Since each edge contains just two or three numbers, the total space for an edge list is $Θ(E)$.</p></li><li><p>Adjacency matrix: For a graph with $|V|$, an adjacency matrix is a $|V|×∣V∣$ matrix of 0s and 1s, where the entry in row $i$ and column $j$ is 1 if and only if the edge $(i,j)$ is in the graph. If you want to indicate an edge weight, put it in the row $i$, column $j$ entry, and reserve a special value (perhaps null) to indicate an absent edge.<br><img src="ad_matrix.png" alt=""></p></li><li>Adjacency list<br><img src="ad_list.png" alt=""></li></ul><p><a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/graph-and-its-representations/</a><br><a href="https://goo.gl/ZTSF8b" target="_blank" rel="noopener">https://goo.gl/ZTSF8b</a></p><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>]]></content>
       
       <categories>
           
@@ -415,11 +436,11 @@
       
         <tags>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -479,9 +500,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -875,13 +896,13 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1101,9 +1122,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1217,9 +1238,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1350,9 +1371,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1429,9 +1450,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -1496,9 +1517,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1521,11 +1542,11 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1575,11 +1596,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1637,9 +1658,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -1695,9 +1716,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1807,11 +1828,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -1879,11 +1900,11 @@
             
             <tag> apple </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -1972,13 +1993,13 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2051,9 +2072,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2159,13 +2180,13 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2337,9 +2358,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2364,9 +2385,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -2635,9 +2656,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2743,9 +2764,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -2927,9 +2948,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2956,9 +2977,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3045,9 +3066,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -3159,9 +3180,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3190,13 +3211,13 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3368,11 +3389,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3825,9 +3846,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -3862,11 +3883,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3945,11 +3966,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -3978,11 +3999,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -4086,9 +4107,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4111,9 +4132,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4668,9 +4689,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4795,13 +4816,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4826,11 +4847,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4878,9 +4899,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -5015,9 +5036,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5040,11 +5061,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -5071,9 +5092,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5562,9 +5583,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -5618,11 +5639,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5647,11 +5668,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5732,9 +5753,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5809,11 +5830,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5838,11 +5859,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5867,11 +5888,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5894,9 +5915,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5944,9 +5965,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5971,9 +5992,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5996,9 +6017,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -6025,9 +6046,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6050,9 +6071,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6075,9 +6096,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6100,9 +6121,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6125,9 +6146,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6156,9 +6177,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -6210,9 +6231,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6289,11 +6310,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6467,9 +6488,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -6496,9 +6517,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
