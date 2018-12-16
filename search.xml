@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>958. Check Completeness of a Binary Tree</title>
+      <link href="/2018/12/16/958-Check-Completeness-of-a-Binary-Tree/"/>
+      <url>/2018/12/16/958-Check-Completeness-of-a-Binary-Tree/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a binary tree, determine if it is a complete binary tree.</p><p>Definition of a complete binary tree from Wikipedia:<br>In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.</p><p>Example 1:</p><p><img src="1.png" alt=""></p><p>Input: <code>[1,2,3,4,5,6]</code><br>Output: true<br>Explanation: Every level before the last is full (ie. levels with node-values {1} and {2, 3}), and all nodes in the last level ({4, 5, 6}) are as far left as possible.</p><p>Example 2:</p><p><img src="2.png" alt=""></p><p>Input: <code>[1,2,3,4,5,null,7]</code><br>Output: false<br>Explanation: The node with value 7 isn’t as far left as possible.</p><p>Note:</p><p>The tree will have between 1 and 100 nodes.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>When level-order traversal in a complete tree, after the last node, all nodes in the queue should be null.<br>Otherwise, the tree is not complete.</p><p>I use the preorder traversal to trace the tree. It is because we need to walk the level from left to right.<br>example:<br>we can see that the X is the last node in this level. After X, we’ll go to next level, which should all be NULL.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 3 4 X</span><br></pre></td></tr></table></figure></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isCompleteTree</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//idea is to check if there're other node is also empty after we already find an empty node</span></span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">bool</span> end= <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="keyword">auto</span> cur= q.front(); q.pop();</span><br><span class="line">            <span class="keyword">if</span>(!cur)</span><br><span class="line">                end= <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(end) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                q.push(cur-&gt;left);</span><br><span class="line">                q.push(cur-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>322. Coin Change</title>
       <link href="/2018/12/04/322-Coin-Change/"/>
       <url>/2018/12/04/322-Coin-Change/</url>
@@ -271,11 +296,11 @@
       
         <tags>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -482,11 +507,11 @@
       
         <tags>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -546,9 +571,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -942,13 +967,13 @@
             
             <tag> google </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1168,9 +1193,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1284,9 +1309,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1417,9 +1442,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1479,7 +1504,7 @@
       <title>4. Median of Two Sorted Arrays</title>
       <link href="/2018/08/28/4-Median-of-Two-Sorted-Arrays/"/>
       <url>/2018/08/28/4-Median-of-Two-Sorted-Arrays/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p><p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p><p>You may assume nums1 and nums2 cannot be both empty.</p><p>Example 1:</p><p>nums1 = [1, 3]<br>nums2 = [2]</p><p>The median is 2.0<br>Example 2:</p><p>nums1 = [1, 2]<br>nums2 = [3, 4]</p><p>The median is (2 + 3)/2 = 2.5</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>If the total number of elements are odd, then what we have to do is to find the <code>K</code>th number of element.<br>If the total number of elements are even, then what we have to do is to find the <code>K</code>th and <code>K+1</code> number of element, then divided it to half to get the median.<br>For example:<br><code>3 4 5 6 7 8</code>, the median is <code>5.5</code><br><code>3 4 5 6 7 8 9</code>, the median is <code>6</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> total = nums1.size()+ nums2.size();</span><br><span class="line">        <span class="keyword">if</span>(total %<span class="number">2</span> == <span class="number">1</span>) <span class="comment">//the array have odd number of elements, can find a middle one</span></span><br><span class="line">            <span class="keyword">return</span> findKth(nums1, <span class="number">0</span>, nums2, <span class="number">0</span>, total/<span class="number">2</span> +<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="comment">//can not find a middle one, so need to find two numbers and divide by 2</span></span><br><span class="line">            <span class="keyword">return</span> (findKth(nums1, <span class="number">0</span>, nums2, <span class="number">0</span>, total/<span class="number">2</span>)+ findKth(nums1, <span class="number">0</span>, nums2, <span class="number">0</span>, total/<span class="number">2</span> +<span class="number">1</span>))/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findKth</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums1, <span class="keyword">int</span> i, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> j, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums1.size()- i &gt; nums2.size()- j) <span class="keyword">return</span> findKth(nums2, j, nums1, i, k);</span><br><span class="line">        <span class="keyword">if</span>(nums1.size() == i) <span class="keyword">return</span> nums2[j+k<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">1</span>) <span class="keyword">return</span> min(nums1[i], nums2[j]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> pa= min(i+k/<span class="number">2</span>, <span class="keyword">int</span>(nums1.size()) );</span><br><span class="line">        <span class="keyword">int</span> pb= j+k-pa+i;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums1[pa<span class="number">-1</span>] &lt; nums2[pb<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> findKth(nums1, pa, nums2, j, k-pa+i);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums1[pa<span class="number">-1</span>]&gt; nums2[pb<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> findKth(nums1, i, nums2, pb, k-pb+j);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> nums1[pa<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>There are two sorted arrays nums1 and nums2 of size m and n respectively.</p><p>Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p><p>You may assume nums1 and nums2 cannot be both empty.</p><p>Example 1:</p><p>nums1 = [1, 3]<br>nums2 = [2]</p><p>The median is 2.0<br>Example 2:</p><p>nums1 = [1, 2]<br>nums2 = [3, 4]</p><p>The median is (2 + 3)/2 = 2.5</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The median is used for dividing a set into <code>two equal length</code> subsets, that one subset is always greater than the other</p><p>If the total number of elements are odd, then what we have to do is to find the <code>K</code>th number of element.<br>If the total number of elements are even, then what we have to do is to find the <code>K</code>th and <code>K+1</code> number of element, then divided it to half to get the median.<br>For example:<br><code>3 4 5 6 7 8</code>, the median is <code>5.5</code><br><code>3 4 5 6 7 8 9</code>, the median is <code>6</code></p><ol><li>find the total length</li><li></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> total = nums1.size()+ nums2.size();</span><br><span class="line">        <span class="keyword">if</span>(total %<span class="number">2</span> == <span class="number">1</span>) <span class="comment">//the array have odd number of elements, can find a middle one</span></span><br><span class="line">            <span class="keyword">return</span> findKth(nums1, <span class="number">0</span>, nums2, <span class="number">0</span>, total/<span class="number">2</span> +<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="comment">//can not find a middle one, so need to find two numbers and divide by 2</span></span><br><span class="line">            <span class="keyword">return</span> (findKth(nums1, <span class="number">0</span>, nums2, <span class="number">0</span>, total/<span class="number">2</span>)+ findKth(nums1, <span class="number">0</span>, nums2, <span class="number">0</span>, total/<span class="number">2</span> +<span class="number">1</span>))/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">findKth</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;nums1, <span class="keyword">int</span> i, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> j, <span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums1.size()- i &gt; nums2.size()- j) <span class="keyword">return</span> findKth(nums2, j, nums1, i, k);</span><br><span class="line">        <span class="keyword">if</span>(nums1.size() == i) <span class="keyword">return</span> nums2[j+k<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">1</span>) <span class="keyword">return</span> min(nums1[i], nums2[j]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> pa= min(i+k/<span class="number">2</span>, <span class="keyword">int</span>(nums1.size()) );</span><br><span class="line">        <span class="keyword">int</span> pb= j+k-pa+i;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums1[pa<span class="number">-1</span>] &lt; nums2[pb<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> findKth(nums1, pa, nums2, j, k-pa+i);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(nums1[pa<span class="number">-1</span>]&gt; nums2[pb<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">return</span> findKth(nums1, i, nums2, pb, k-pb+j);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> nums1[pa<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
       
       <categories>
           
@@ -1496,9 +1521,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -1563,9 +1588,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -1588,11 +1613,11 @@
             
             <tag> dynamic programming </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -1642,11 +1667,11 @@
             
             <tag> facebook </tag>
             
+            <tag> array </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1704,9 +1729,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> union find </tag>
             
@@ -1762,9 +1787,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1874,11 +1899,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -1946,11 +1971,11 @@
             
             <tag> apple </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -2039,13 +2064,13 @@
             
             <tag> facebook </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2118,9 +2143,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -2226,13 +2251,13 @@
             
             <tag> google </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2404,9 +2429,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -2431,9 +2456,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2702,9 +2727,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -2810,9 +2835,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -3023,9 +3048,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -3112,9 +3137,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> linkedin </tag>
             
@@ -3226,9 +3251,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -3257,13 +3282,13 @@
             
             <tag> google </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3435,11 +3460,11 @@
             
             <tag> google </tag>
             
+            <tag> dfs </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
-            
-            <tag> dfs </tag>
             
         </tags>
       
@@ -3892,9 +3917,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -3929,11 +3954,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -4012,11 +4037,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -4045,11 +4070,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -4153,9 +4178,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -4178,9 +4203,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4735,9 +4760,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4862,13 +4887,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4893,11 +4918,11 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4945,9 +4970,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -5107,11 +5132,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> dfs </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -5629,9 +5654,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -5685,11 +5710,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5714,11 +5739,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5799,9 +5824,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5876,11 +5901,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5905,11 +5930,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5934,11 +5959,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5961,9 +5986,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6011,9 +6036,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6038,9 +6063,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6063,9 +6088,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -6092,9 +6117,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6117,9 +6142,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6142,9 +6167,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6167,9 +6192,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6192,9 +6217,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> two pointers </tag>
             
@@ -6223,9 +6248,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> linkedin </tag>
             
@@ -6277,9 +6302,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6356,11 +6381,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6534,9 +6559,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
             <tag> hash table </tag>
             
@@ -6563,9 +6588,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
