@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>929. Unique Email Addresses</title>
+      <link href="/2018/12/21/929-Unique-Email-Addresses/"/>
+      <url>/2018/12/21/929-Unique-Email-Addresses/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Every email consists of a local name and a domain name, separated by the @ sign.</p><p>For example, in <a href="mailto:alice@leetcode.com" target="_blank" rel="noopener">alice@leetcode.com</a>, alice is the local name, and leetcode.com is the domain name.</p><p>Besides lowercase letters, these emails may contain ‘.’s or ‘+’s.</p><p>If you add periods (‘.’) between some characters in the local name part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, “<a href="mailto:alice.z@leetcode.com" target="_blank" rel="noopener">alice.z@leetcode.com</a>“ and “<a href="mailto:alicez@leetcode.com" target="_blank" rel="noopener">alicez@leetcode.com</a>“ forward to the same email address.  (Note that this rule does not apply for domain names.)</p><p>If you add a plus (‘+’) in the local name, everything after the first plus sign will be ignored. This allows certain emails to be filtered, for example <a href="mailto:m.y+name@email.com" target="_blank" rel="noopener">m.y+name@email.com</a> will be forwarded to <a href="mailto:my@email.com" target="_blank" rel="noopener">my@email.com</a>.  (Again, this rule does not apply for domain names.)</p><p>It is possible to use both of these rules at the same time.</p><p>Given a list of emails, we send one email to each address in the list.  How many different addresses actually receive mails? </p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>1 &lt;= emails[i].length &lt;= 100<br>1 &lt;= emails.length &lt;= 100<br>Each emails[i] contains exactly one ‘@’ character.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numUniqueEmails</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; emails)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;<span class="built_in">string</span>&gt; result;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> email: emails)&#123;</span><br><span class="line">            <span class="keyword">int</span> idx = email.find_first_of(<span class="string">'@'</span>);</span><br><span class="line">            <span class="built_in">string</span> local= email.substr(<span class="number">0</span>, idx);</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">string</span> domain= email.substr(idx);</span><br><span class="line">            <span class="comment">//printf("%s\n%s\n\n", local.c_str(), domain.c_str());</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">//string.erase(begin, end)</span></span><br><span class="line">            <span class="comment">//remove_if() return a pointer</span></span><br><span class="line">            local.erase(remove_if(local.begin(), local.end(), [](<span class="keyword">auto</span> &amp;c)&#123; <span class="keyword">return</span> c == <span class="string">'.'</span>;&#125; ), local.end() );</span><br><span class="line">            <span class="comment">//printf("%s\n\n", local.c_str());</span></span><br><span class="line">            result.insert(local.substr(<span class="number">0</span>, local.find_first_of(<span class="string">'+'</span>))+ domain );</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result.size();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$</p><p>reference:<br><a href="http://www.cplusplus.com/reference/algorithm/remove_if/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/algorithm/remove_if/</a><br><a href="http://www.cplusplus.com/reference/string/string/erase/" target="_blank" rel="noopener">http://www.cplusplus.com/reference/string/string/erase/</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+            <tag> google </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> adobe </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>958. Check Completeness of a Binary Tree</title>
       <link href="/2018/12/16/958-Check-Completeness-of-a-Binary-Tree/"/>
       <url>/2018/12/16/958-Check-Completeness-of-a-Binary-Tree/</url>
@@ -296,11 +323,11 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -507,11 +534,11 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -571,9 +598,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -967,13 +994,13 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1193,9 +1220,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1309,9 +1336,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1442,9 +1469,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1521,9 +1548,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -1588,9 +1615,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1613,11 +1640,11 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1667,11 +1694,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1729,9 +1756,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -1787,9 +1814,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1899,11 +1926,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -1971,11 +1998,11 @@
             
             <tag> apple </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -2064,13 +2091,13 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2143,9 +2170,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2251,13 +2278,13 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2429,9 +2456,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2456,9 +2483,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -2727,9 +2754,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2835,9 +2862,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -3048,9 +3075,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3137,9 +3164,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -3251,9 +3278,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3282,13 +3309,13 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3460,11 +3487,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3917,9 +3944,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -3954,11 +3981,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4037,11 +4064,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -4070,11 +4097,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -4178,9 +4205,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4203,9 +4230,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4760,9 +4787,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4887,13 +4914,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4918,11 +4945,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4970,9 +4997,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -5132,11 +5159,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -5654,9 +5681,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -5710,11 +5737,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5739,11 +5766,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5824,9 +5851,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5901,11 +5928,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5930,11 +5957,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5959,11 +5986,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5986,9 +6013,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6036,9 +6063,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6063,9 +6090,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6088,9 +6115,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -6117,9 +6144,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6142,9 +6169,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6167,9 +6194,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6192,9 +6219,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6217,9 +6244,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6248,9 +6275,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -6302,9 +6329,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6381,11 +6408,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6559,9 +6586,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -6588,9 +6615,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
