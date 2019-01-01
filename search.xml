@@ -3,6 +3,58 @@
   
     
     <entry>
+      <title>41. First Missing Positive</title>
+      <link href="/2019/01/01/41-First-Missing-Positive/"/>
+      <url>/2019/01/01/41-First-Missing-Positive/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an unsorted integer array, find the smallest missing positive integer.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,0]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,4,-1,1]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p><p>Example 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [7,8,9,11,12]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>Your algorithm should run in O(n) time and uses constant extra space.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea of this question is we can traverse the whole array once, putting every element in a slot.<br>So, how do we know where we should put this element?</p><p>Let’s check and observe the example.</p><ol><li>Input: [1,2,0]</li></ol><ul><li>Zero and negative number does not count: The question is asking for missing positive number.</li><li>we can put the number <code>nums[i]</code> in slot <code>i-1</code></li></ul><ol start="2"><li>Input: [3,4,-1,1]<br>[-1,4,3,1]<br>[-1,1,3,4]<br>Output: 2</li></ol><ul><li>if we put the numbers into the slot that we observed earlier, we can get [-1,1,3,4]; however, if we stop here, <code>1</code> is not in the right place. Therefore, we need to keep swapping until the <code>i</code>th element contains correct number or a zero/negative number.</li></ul><ol start="3"><li>Input: [7,8,9,11,12]<br>Output: 1</li></ol><ul><li>every element in the array exceed the size of array</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        Thoughts:</span></span><br><span class="line"><span class="comment">        Since we can only do it in O(n) time, ony way to put all elements in order is to traverse all element once</span></span><br><span class="line"><span class="comment">        We can put n in A[n-1] slot</span></span><br><span class="line"><span class="comment">        Then walk through the array, if the number in A[n-1] is not n, then return it</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//[1,2,0]</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">            <span class="keyword">while</span>(nums[i]&gt; <span class="number">0</span> &amp;&amp; nums[i]&lt;= nums.size() &amp;&amp; nums[nums[i]<span class="number">-1</span>] != nums[i])</span><br><span class="line">                swap(nums[i], nums[nums[i]<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; nums.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] != i+<span class="number">1</span>)</span><br><span class="line">                <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.size()+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/Rq1yXX" target="_blank" rel="noopener">https://goo.gl/Rq1yXX</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> google </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>35. Search Insert Position</title>
+      <link href="/2018/12/30/35-Search-Insert-Position/"/>
+      <url>/2018/12/30/35-Search-Insert-Position/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p><p>You may assume no duplicates in the array.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 5</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 2</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p><p>Example 3:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 7</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure></p><p>Example 4:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 0</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> left= <span class="number">0</span>, right= nums.size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid= left+ (right-left)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(target &gt; nums[mid])</span><br><span class="line">                left= mid+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                right= mid<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(logn)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/yDCBXv" target="_blank" rel="noopener">https://goo.gl/yDCBXv</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> array </tag>
+            
+            <tag> binary search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>27. Remove Element</title>
       <link href="/2018/12/30/27-Remove-Element/"/>
       <url>/2018/12/30/27-Remove-Element/</url>
@@ -585,9 +637,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> stack </tag>
             
@@ -717,9 +769,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -1177,9 +1229,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -2274,9 +2326,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -2461,9 +2513,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3229,9 +3281,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -3492,9 +3544,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -5097,9 +5149,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> array </tag>
             
@@ -5317,9 +5369,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -5342,9 +5394,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -5373,9 +5425,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -6154,7 +6206,7 @@
       <title>39. Combination Sum</title>
       <link href="/2018/06/01/39-Combination-Sum/"/>
       <url>/2018/06/01/39-Combination-Sum/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p><p>The same repeated number may be chosen from candidates unlimited number of times.</p><p>Note:</p><p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,6,7], target = 7,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,5], target = 8,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [2,2,2,2],</span><br><span class="line">  [2,3,3],</span><br><span class="line">  [3,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>DFS + backtracking.<br>In backtrack(), I use the following 5 inputs.</p><ul><li>vector&lt;vector<int>&gt;&amp; res, store every combination here</int></li><li>vector<int>&amp; temp, this is buffer for recursive, increase/decrease element depends on depth of dfs</int></li><li>vector<int>&amp; candidates, </int></li><li>int remain, what we targeting, need to input remain-i when dfs into next level</li><li>int start, this is because we can not have duplicate sets, to record what elements we already passed or visited.</li></ul><p>Time complexity: O(n*2^n)<br>The number of recursive calls, T(n) satisfies the recurrence T(n) = T(n - 1) + T(n - 2) + … + T(1) + T(0),which solves to T(n) = O(2^n). Since we spend O(n) time within a call, the time complexity is O(n2^n);</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combinationSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">        backtrack(res, tmp, candidates, target, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span> :</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; temp, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> remain, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(remain &lt; <span class="number">0</span>) <span class="keyword">return</span>; <span class="comment">//did not match the target</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(remain == <span class="number">0</span>) res.push_back(temp); <span class="comment">//put into the result</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i&lt; candidates.size(); i++)&#123;</span><br><span class="line">                <span class="comment">//search candidate[i] have any combanition</span></span><br><span class="line">                temp.push_back(candidates[i]); </span><br><span class="line">                backtrack(res, temp, candidates, remain-candidates[i], i); </span><br><span class="line">                </span><br><span class="line">                temp.resize(temp.size()<span class="number">-1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/HkoJaT" target="_blank" rel="noopener">https://goo.gl/HkoJaT</a><br><a href="https://goo.gl/XX6WAv" target="_blank" rel="noopener">https://goo.gl/XX6WAv</a><br><a href="http://www.1point3acres.com/bbs/thread-117602-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-117602-1-1.html</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.</p><p>The same repeated number may be chosen from candidates unlimited number of times.</p><p>Note:</p><p>All numbers (including target) will be positive integers.<br>The solution set must not contain duplicate combinations.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,6,7], target = 7,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [7],</span><br><span class="line">  [2,2,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input: candidates = [2,3,5], target = 8,</span><br><span class="line">A solution set is:</span><br><span class="line">[</span><br><span class="line">  [2,2,2,2],</span><br><span class="line">  [2,3,3],</span><br><span class="line">  [3,5]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>DFS + backtracking.<br>In backtrack(), I use the following 5 inputs.</p><ul><li>vector&lt;vector<int>&gt;&amp; res, store every combination here</int></li><li>vector<int>&amp; temp, this is buffer for recursive, add/remove element depends on depth of dfs</int></li><li>vector<int>&amp; candidates, </int></li><li>int remain, what we targeting, need to input remain-i when dfs into next level</li><li>int start, this is because we can not have duplicate sets, to record what elements we already passed or visited.</li></ul><p>Time complexity: O(n*2^n)<br>The number of recursive calls, T(n) satisfies the recurrence T(n) = T(n - 1) + T(n - 2) + … + T(1) + T(0),which solves to T(n) = O(2^n). Since we spend O(n) time within a call, the time complexity is O(n2^n);</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combinationSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">        sort(candidates.begin(), candidates.end());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; tmp;</span><br><span class="line">        backtrack(res, tmp, candidates, target, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span> :</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; res, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; temp, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; candidates, <span class="keyword">int</span> remain, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(remain &lt; <span class="number">0</span>) <span class="keyword">return</span>; <span class="comment">//did not match the target</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(remain == <span class="number">0</span>) res.push_back(temp); <span class="comment">//put into the result</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i&lt; candidates.size(); i++)&#123;</span><br><span class="line">                <span class="comment">//search candidate[i] have any combanition</span></span><br><span class="line">                temp.push_back(candidates[i]); </span><br><span class="line">                backtrack(res, temp, candidates, remain-candidates[i], i); </span><br><span class="line">                </span><br><span class="line">                temp.resize(temp.size()<span class="number">-1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/HkoJaT" target="_blank" rel="noopener">https://goo.gl/HkoJaT</a><br><a href="https://goo.gl/XX6WAv" target="_blank" rel="noopener">https://goo.gl/XX6WAv</a><br><a href="http://www.1point3acres.com/bbs/thread-117602-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-117602-1-1.html</a></p>]]></content>
       
       <categories>
           
