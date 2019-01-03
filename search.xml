@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>43. Multiply Strings</title>
+      <link href="/2019/01/02/43-Multiply-Strings/"/>
+      <url>/2019/01/02/43-Multiply-Strings/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: num1 = &quot;2&quot;, num2 = &quot;3&quot;</span><br><span class="line">Output: &quot;6&quot;</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: num1 = &quot;123&quot;, num2 = &quot;456&quot;</span><br><span class="line">Output: &quot;56088&quot;</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>The length of both num1 and num2 is &lt; 110.<br>Both num1 and num2 contain only digits 0-9.<br>Both num1 and num2 do not contain any leading zero, except the number 0 itself.<br>You must not use any built-in BigInteger library or convert the inputs to integer directly.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Things to note:</p><ol><li>The product of two numbers cannot exceed the sum of the two lengths. (e.g. 99 * 99 cannot be five digit)</li><li>The position of result:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int d1 = num1.charAt(i) - &apos;0&apos;;</span><br><span class="line">int d2 = num2.charAt(j) - &apos;0&apos;;</span><br><span class="line">products[i + j + 1] += d1 * d2;</span><br></pre></td></tr></table></figure></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">multiply</span><span class="params">(<span class="built_in">string</span> num1, <span class="built_in">string</span> num2)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. the length of result string is (num1.length+ num2.length)</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        </span><br><span class="line">        string res(num1.length()+num2.length(), '0');</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= num1.size()<span class="number">-1</span>; i&gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">int</span> carry= <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= num2.size()<span class="number">-1</span>; j&gt;= <span class="number">0</span>; j--)&#123;</span><br><span class="line">                <span class="keyword">int</span> tmp= (res[i+j+<span class="number">1</span>]- <span class="string">'0'</span>)+ (num1[i]-<span class="string">'0'</span>)* (num2[j]-<span class="string">'0'</span>)+ carry;</span><br><span class="line">                res[i+j+<span class="number">1</span>] = tmp%<span class="number">10</span>+<span class="string">'0'</span>; <span class="comment">//because i and j both starts at size-1</span></span><br><span class="line">                carry= tmp/<span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res[i]+= carry;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">size_t</span> startpos = res.find_first_not_of(<span class="string">"0"</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">string</span>::npos != startpos) &#123;</span><br><span class="line">            <span class="keyword">return</span> res.substr(startpos);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"0"</span>;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> string </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
+            <tag> math </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>41. First Missing Positive</title>
       <link href="/2019/01/01/41-First-Missing-Positive/"/>
       <url>/2019/01/01/41-First-Missing-Positive/</url>
@@ -175,13 +204,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -223,11 +252,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -279,11 +308,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -304,11 +333,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -452,11 +481,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> paypal </tag>
             
@@ -560,9 +589,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> hash table </tag>
             
@@ -602,9 +631,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -631,15 +660,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> tree </tag>
+            
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> stack </tag>
             
@@ -769,9 +798,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -800,11 +829,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> lyft </tag>
             
@@ -833,9 +862,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -968,9 +997,9 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
             <tag> medium </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> amazon </tag>
             
@@ -1063,9 +1092,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -1223,19 +1252,19 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1285,9 +1314,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> easy </tag>
             
@@ -1312,13 +1341,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1451,11 +1480,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -1542,11 +1571,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -1569,9 +1598,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -1594,11 +1623,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -1675,11 +1704,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -1702,9 +1731,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -1727,9 +1756,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -1783,9 +1812,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -1842,17 +1871,17 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> tree </tag>
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
         </tags>
       
@@ -1873,13 +1902,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -1929,11 +1958,11 @@
             
             <tag> facebook </tag>
             
+            <tag> array </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -1991,9 +2020,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> union find </tag>
             
@@ -2018,11 +2047,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> medium </tag>
             
             <tag> yelp </tag>
             
@@ -2045,11 +2074,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -2157,15 +2186,15 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
+            <tag> array </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -2225,6 +2254,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -2233,11 +2264,9 @@
             
             <tag> apple </tag>
             
-            <tag> medium </tag>
+            <tag> array </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -2295,11 +2324,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2324,15 +2353,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
-            
-            <tag> amazon </tag>
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -2355,9 +2384,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -2405,9 +2434,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -2457,9 +2486,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -2482,11 +2511,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -2507,19 +2536,19 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2600,9 +2629,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> easy </tag>
             
@@ -2627,9 +2656,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -2654,11 +2683,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> linked list </tag>
             
@@ -2683,17 +2712,17 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> tree </tag>
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
         </tags>
       
@@ -2714,11 +2743,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -2743,11 +2772,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> easy </tag>
             
@@ -2801,9 +2830,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> sort </tag>
             
@@ -2828,11 +2857,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -2921,6 +2950,8 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -2928,8 +2959,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -2956,9 +2985,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -2989,9 +3018,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3070,9 +3099,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -3095,9 +3124,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -3126,13 +3155,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3157,6 +3186,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -3166,8 +3197,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3279,11 +3308,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> bfs </tag>
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -3306,11 +3335,11 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
-            
-            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -3364,6 +3393,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -3373,8 +3404,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -3395,11 +3424,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -3424,9 +3453,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> amazon </tag>
             
@@ -3451,6 +3480,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -3458,8 +3489,6 @@
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3484,13 +3513,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -3540,17 +3569,17 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3575,11 +3604,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3604,9 +3633,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -3633,11 +3662,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -3718,15 +3747,15 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
+            <tag> dfs </tag>
             
             <tag> stack </tag>
-            
-            <tag> dfs </tag>
             
         </tags>
       
@@ -3747,13 +3776,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> stack </tag>
             
@@ -3778,9 +3807,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> amazon </tag>
             
@@ -3807,13 +3836,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> backtracking </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3836,13 +3865,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> epic system </tag>
             
@@ -3955,13 +3984,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4015,9 +4044,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -4063,13 +4092,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -4123,9 +4152,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> stack </tag>
             
@@ -4179,9 +4208,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -4206,6 +4235,8 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -4216,11 +4247,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
+            <tag> array </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -4293,17 +4322,17 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
+            <tag> array </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -4326,17 +4355,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> lyft </tag>
             
@@ -4359,9 +4388,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -4386,9 +4415,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -4465,9 +4494,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4488,15 +4517,15 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -4800,9 +4829,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -4827,9 +4856,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> partition </tag>
             
@@ -4854,11 +4883,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -4879,6 +4908,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -4886,8 +4917,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4912,11 +4941,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -4939,11 +4968,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> heap </tag>
             
@@ -4993,11 +5022,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5045,11 +5074,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5070,9 +5099,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> easy </tag>
             
@@ -5095,13 +5124,13 @@
       
         <tags>
             
-            <tag> string </tag>
-            
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> string </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5149,9 +5178,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -5309,17 +5338,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> apple </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> apple </tag>
             
             <tag> amazon </tag>
             
@@ -5369,9 +5398,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5394,9 +5423,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -5425,9 +5454,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5642,11 +5671,11 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> string </tag>
             
             <tag> math </tag>
             
@@ -5800,11 +5829,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -5827,11 +5856,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -5914,9 +5943,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -5968,11 +5997,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -5997,11 +6026,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6109,9 +6138,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
             
@@ -6134,11 +6163,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6159,11 +6188,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6188,11 +6217,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6217,11 +6246,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6321,11 +6350,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6504,13 +6533,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -6637,17 +6666,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -6670,11 +6699,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -6697,15 +6726,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -6728,13 +6757,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6755,13 +6784,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> snapchat </tag>
             
@@ -6784,15 +6813,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
             
             <tag> airbnb </tag>
             
@@ -6815,15 +6844,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> leetcode </tag>
+            <tag> array </tag>
             
             <tag> stack </tag>
-            
-            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -6846,13 +6875,13 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
+            <tag> hard </tag>
             
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -6873,13 +6902,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
@@ -6889,7 +6918,7 @@
       <title>companylist</title>
       <link href="/2018/04/20/companylist/"/>
       <url>/2018/04/20/companylist/</url>
-      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>  Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite</p><p>  SAS: 11/4 received bq online<br>  Technical Enablement Academy - Associate Systems Technical Support Engineer (Austin, TX)</p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
+      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>  Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite</p><p>  SAS: 11/4 received bq online<br>  Technical Enablement Academy - Associate Systems Technical Support Engineer (Austin, TX)</p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
       
       
         <tags>
