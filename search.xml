@@ -3,6 +3,46 @@
   
     
     <entry>
+      <title>note-Recursion and DP</title>
+      <link href="/2019/01/16/note-Recursion-and-DP/"/>
+      <url>/2019/01/16/note-Recursion-and-DP/</url>
+      <content type="html"><![CDATA[<ul><li><p>Bottom-Up approach:<br>more intuitive. The key is to think about how to build solution for one case off of the previous case</p></li><li><p>Top-Down approach:<br>how to divide the problem for case N into subproblems, be careful of overlap between cases.</p></li></ul><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> note </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> recursion </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>46. Permutations</title>
+      <link href="/2019/01/02/46-Permutations/"/>
+      <url>/2019/01/02/46-Permutations/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>43. Multiply Strings</title>
       <link href="/2019/01/02/43-Multiply-Strings/"/>
       <url>/2019/01/02/43-Multiply-Strings/</url>
@@ -17,13 +57,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -204,13 +244,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -252,11 +292,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -308,11 +348,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
         </tags>
       
@@ -333,11 +373,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -481,11 +521,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> paypal </tag>
             
@@ -589,9 +629,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -631,9 +671,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -660,15 +700,15 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> tree </tag>
             
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
             
             <tag> stack </tag>
             
@@ -726,7 +766,7 @@
       <title>Leetcode category</title>
       <link href="/2018/10/25/Leetcode-category/"/>
       <url>/2018/10/25/Leetcode-category/</url>
-      <content type="html"><![CDATA[<ul><li><p>Backtracking</p><a href="/2018/05/31/79-Word-Search/" title="79. Word Search">79. Word Search</a><a href="/2018/08/16/17-Letter-Combinations-of-a-Phone-Number/" title="17. Letter Combinations of a Phone Number">17. Letter Combinations of a Phone Number</a></li></ul><ul><li><p>prefix sum</p><a href="/2018/10/28/930-Binary-Subarrays-With-Sum/" title="930. Binary Subarrays With Sum">930. Binary Subarrays With Sum</a></li><li><p>Tree BFS </p><a href="/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/" title="103. Binary Tree Zigzag Level Order Traversal">103. Binary Tree Zigzag Level Order Traversal</a></li><li><p>Palindrome</p><a href="/2018/06/26/5-Longest-Palindromic-Substring/" title="5. Longest Palindromic Substring">5. Longest Palindromic Substring</a></li><li><p>Linkedin list</p><a href="/2018/06/06/138-Copy-List-with-Random-Pointer/" title="138. Copy List with Random Pointer">138. Copy List with Random Pointer</a></li></ul>]]></content>
+      <content type="html"><![CDATA[<ul><li><p>Backtracking</p><a href="/2018/05/31/79-Word-Search/" title="79. Word Search">79. Word Search</a><a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a><a href="/2018/06/01/39-Combination-Sum/" title="39. Combination Sum">39. Combination Sum</a><a href="/2018/08/16/17-Letter-Combinations-of-a-Phone-Number/" title="17. Letter Combinations of a Phone Number">17. Letter Combinations of a Phone Number</a></li></ul><ul><li><p>prefix sum</p><a href="/2018/10/28/930-Binary-Subarrays-With-Sum/" title="930. Binary Subarrays With Sum">930. Binary Subarrays With Sum</a></li><li><p>Tree BFS </p><a href="/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/" title="103. Binary Tree Zigzag Level Order Traversal">103. Binary Tree Zigzag Level Order Traversal</a></li><li><p>Palindrome</p><a href="/2018/06/26/5-Longest-Palindromic-Substring/" title="5. Longest Palindromic Substring">5. Longest Palindromic Substring</a></li><li><p>Linkedin list</p><a href="/2018/06/06/138-Copy-List-with-Random-Pointer/" title="138. Copy List with Random Pointer">138. Copy List with Random Pointer</a></li></ul>]]></content>
       
       <categories>
           
@@ -829,11 +869,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> lyft </tag>
             
@@ -862,9 +902,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -997,9 +1037,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -1092,9 +1132,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -1252,19 +1292,19 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1314,9 +1354,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> easy </tag>
             
@@ -1341,13 +1381,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1480,11 +1520,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -1571,11 +1611,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -1598,9 +1638,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1623,11 +1663,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -1704,11 +1744,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -1731,9 +1771,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -1756,9 +1796,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -1812,9 +1852,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -1871,17 +1911,17 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> tree </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1902,13 +1942,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -1958,11 +1998,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2020,9 +2060,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -2047,11 +2087,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> yelp </tag>
             
@@ -2074,11 +2114,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -2186,15 +2226,15 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -2254,8 +2294,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -2264,9 +2302,11 @@
             
             <tag> apple </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -2324,11 +2364,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2353,15 +2393,15 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> facebook </tag>
+            <tag> amazon </tag>
             
             <tag> dfs </tag>
-            
-            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -2384,9 +2424,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2434,9 +2474,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2486,9 +2526,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2511,11 +2551,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2536,19 +2576,19 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2629,9 +2669,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> easy </tag>
             
@@ -2656,9 +2696,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -2683,11 +2723,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> linked list </tag>
             
@@ -2712,17 +2752,17 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> dfs </tag>
+            <tag> tree </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2743,11 +2783,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -2772,11 +2812,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> easy </tag>
             
@@ -2830,9 +2870,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -2857,11 +2897,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -2950,8 +2990,6 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -2959,6 +2997,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -2985,9 +3025,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3018,9 +3058,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3099,9 +3139,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -3124,9 +3164,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -3155,13 +3195,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3186,8 +3226,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -3197,6 +3235,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3308,11 +3348,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -3335,11 +3375,11 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -3393,8 +3433,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -3404,6 +3442,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3424,11 +3464,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -3453,9 +3493,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3480,8 +3520,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -3489,6 +3527,8 @@
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3513,13 +3553,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -3569,17 +3609,17 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3604,11 +3644,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3633,9 +3673,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -3662,11 +3702,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -3747,15 +3787,15 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3776,13 +3816,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3807,9 +3847,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3836,13 +3876,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3865,13 +3905,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> epic system </tag>
             
@@ -3984,13 +4024,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4044,9 +4084,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4092,13 +4132,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -4152,9 +4192,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -4189,7 +4229,7 @@
       <title>57. Insert Interval</title>
       <link href="/2018/07/25/57-Insert-Interval/"/>
       <url>/2018/07/25/57-Insert-Interval/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).</p><p>You may assume that the intervals were initially sorted according to their start times.</p><p>Example 1:</p><p>Input: intervals = <code>[[1,3],[6,9]]</code>, newInterval = <code>[2,5]</code><br>Output: <code>[[1,5],[6,9]]</code><br>Example 2:</p><p>Input: intervals = <code>[[1,2],[3,5],[6,7],[8,10],[12,16]]</code>, newInterval = <code>[4,8]</code><br>Output: <code>[[1,2],[3,10],[12,16]]</code><br>Explanation: Because the new interval <code>[4,8]</code> overlaps with <code>[3,5]</code>,<code>[6,7]</code>,<code>[8,10]</code>.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>This is a follow up for . </p><ol><li>Create a vector for storing result.</li><li>If an end of an interval does not greater than newInterval’s start, then we know they are not intersecting. Since the input is sorted, we can put these into the result first.</li><li>If an interval’s start is smaller than newInterval’s end, then they must intersect.</li></ol><p><img style="width: 100%; height: 100%" src="57.png"><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Definition for an interval.</span></span><br><span class="line"><span class="comment">* struct Interval &#123;</span></span><br><span class="line"><span class="comment">*     int start;</span></span><br><span class="line"><span class="comment">*     int end;</span></span><br><span class="line"><span class="comment">*     Interval() : start(0), end(0) &#123;&#125;</span></span><br><span class="line"><span class="comment">*     Interval(int s, int e) : start(s), end(e) &#123;&#125;</span></span><br><span class="line"><span class="comment">* &#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; insert(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        <span class="keyword">int</span> index= <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;Interval&gt; res;</span><br><span class="line">        <span class="keyword">while</span>(index&lt; intervals.size() &amp;&amp; intervals[index].end &lt; newInterval.start)&#123;</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index&lt; intervals.size() &amp;&amp; newInterval.end&gt;= intervals[index].start)&#123;</span><br><span class="line">            newInterval.start= min(intervals[index].start, newInterval.start);</span><br><span class="line">            newInterval.end= max(intervals[index].end, newInterval.end);</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index&lt; intervals.size())</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>time complexity: O(n)</p><p>reference:<br><a href="https://goo.gl/5stsBW" target="_blank" rel="noopener">https://goo.gl/5stsBW</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Given a set of non-overlapping intervals, insert a new interval into the intervals (merge if necessary).</p><p>You may assume that the intervals were initially sorted according to their start times.</p><p>Example 1:</p><p>Input: intervals = <code>[[1,3],[6,9]]</code>, newInterval = <code>[2,5]</code><br>Output: <code>[[1,5],[6,9]]</code><br>Example 2:</p><p>Input: intervals = <code>[[1,2],[3,5],[6,7],[8,10],[12,16]]</code>, newInterval = <code>[4,8]</code><br>Output: <code>[[1,2],[3,10],[12,16]]</code><br>Explanation: Because the new interval <code>[4,8]</code> overlaps with <code>[3,5]</code>,<code>[6,7]</code>,<code>[8,10]</code>.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>This is a follow up for . </p><ol><li>Create a vector for storing result.</li><li>If an end of an interval does not greater than newInterval’s start, then we know they are not intersecting. Since the input is sorted, we can put these into the result first.</li><li>If an interval’s start is smaller than newInterval’s end, then they must intersect.</li></ol><p><img style="width: 100%; height: 100%" src="57.png"><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Definition for an interval.</span></span><br><span class="line"><span class="comment">* struct Interval &#123;</span></span><br><span class="line"><span class="comment">*     int start;</span></span><br><span class="line"><span class="comment">*     int end;</span></span><br><span class="line"><span class="comment">*     Interval() : start(0), end(0) &#123;&#125;</span></span><br><span class="line"><span class="comment">*     Interval(int s, int e) : start(s), end(e) &#123;&#125;</span></span><br><span class="line"><span class="comment">* &#125;;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; insert(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        <span class="keyword">int</span> index= <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;Interval&gt; res;</span><br><span class="line">        <span class="keyword">while</span>(index&lt; intervals.size() &amp;&amp; intervals[index].end &lt; newInterval.start)&#123;</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index&lt; intervals.size() &amp;&amp; newInterval.end&gt;= intervals[index].start)&#123;</span><br><span class="line">            newInterval.start= min(intervals[index].start, newInterval.start);</span><br><span class="line">            newInterval.end= max(intervals[index].end, newInterval.end);</span><br><span class="line">            index++;</span><br><span class="line">        &#125;</span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index&lt; intervals.size())</span><br><span class="line">            res.push_back(intervals[index++]);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>time complexity: O(n)</p><h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a>Solution 2:</h3><p>The idea is to use newInterval as a buffer, and update it when there’s an overlap.<br>When the <code>newInterval.end &lt; intervals[i].start</code>, it means the upcoming intervals are greater, and no need to keep tracing.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for an interval.</span></span><br><span class="line"><span class="comment"> * struct Interval &#123;</span></span><br><span class="line"><span class="comment"> *     int start;</span></span><br><span class="line"><span class="comment"> *     int end;</span></span><br><span class="line"><span class="comment"> *     Interval() : start(0), end(0) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;Interval&gt; insert(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals, Interval newInterval) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;Interval&gt; res;</span><br><span class="line">        <span class="keyword">auto</span> it= intervals.begin();</span><br><span class="line">        <span class="keyword">for</span>(; it!= intervals.end(); it++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(newInterval.end &lt; (*it).start)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(newInterval.start &gt; (*it).end)</span><br><span class="line">                res.push_back(*it);</span><br><span class="line">            <span class="keyword">else</span>&#123; <span class="comment">//overlapping, use newInterval as a buffer and update it</span></span><br><span class="line">                newInterval.start= min(newInterval.start, (*it).start);</span><br><span class="line">                newInterval.end= max(newInterval.end, (*it).end);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        res.push_back(newInterval);</span><br><span class="line">        <span class="keyword">for</span>(; it!= intervals.end(); it++)&#123;</span><br><span class="line">            res.push_back(*it);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/5stsBW" target="_blank" rel="noopener">https://goo.gl/5stsBW</a></p>]]></content>
       
       <categories>
           
@@ -4208,9 +4248,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -4235,8 +4275,6 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -4247,9 +4285,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4322,17 +4362,17 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -4355,17 +4395,17 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -4388,9 +4428,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -4415,9 +4455,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -4494,9 +4534,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4517,15 +4557,15 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -4829,9 +4869,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> greedy </tag>
             
@@ -4856,9 +4896,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> partition </tag>
             
@@ -4883,11 +4923,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -4908,8 +4948,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -4917,6 +4955,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4941,11 +4981,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -4968,11 +5008,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> heap </tag>
             
@@ -5022,11 +5062,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5074,11 +5114,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5099,9 +5139,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> easy </tag>
             
@@ -5124,13 +5164,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5338,17 +5378,17 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> tree </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5671,11 +5711,11 @@
       
         <tags>
             
+            <tag> string </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> string </tag>
             
             <tag> math </tag>
             
@@ -5829,11 +5869,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -5856,11 +5896,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -5907,7 +5947,7 @@
       <title>55. Jump Game</title>
       <link href="/2018/06/05/55-Jump-Game/"/>
       <url>/2018/06/05/55-Jump-Game/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>/*<br>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p><p>Each element in the array represents your maximum jump length at that position.</p><p>Determine if you are able to reach the last index.</p><p>Example 1:</p><p>Input: <code>[2,3,1,1,4]</code><br>Output: true<br>Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</p><p>Example 2:</p><p>Input: <code>[3,2,1,0,4]</code><br>Output: false<br>Explanation: You will always arrive at index 3 no matter what. Its maximum<br>             jump length is 0, which makes it impossible to reach the last index.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lastPos = nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i + nums[i] &gt;= lastPos) &#123; <span class="comment">//(current position + steps in this position) &gt; lastPos</span></span><br><span class="line">                lastPos = i;              <span class="comment">//if get to this slot, then we can get to last index</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lastPos == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h1 id="second-time"><a href="#second-time" class="headerlink" title="second time:"></a>second time:</h1><ul><li>use a pointer <code>reach</code> to denote the farthest position can reach</li><li>use another pointer <code>i</code> to denote the current position. It should be smaller than <code>array size</code> and <code>reach</code>. Because if <code>i</code> reaches the <code>reach</code>, it means the <code>reach</code> derived from previous steps can not reach to <code>i</code>, so will never reach to position <code>i</code>.</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> reach=<span class="number">0</span>; <span class="comment">//where is the farest that it can reach</span></span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>; <span class="comment">//current location</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt; nums.size() &amp;&amp; i&lt;=reach)&#123;</span><br><span class="line">            reach=max(reach, i+nums[i]);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> reach&gt;=nums.size()<span class="number">-1</span>; <span class="comment">//check whether reach is greater than array size</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>/*<br>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p><p>Each element in the array represents your maximum jump length at that position.</p><p>Determine if you are able to reach the last index.</p><p>Example 1:</p><p>Input: <code>[2,3,1,1,4]</code><br>Output: true<br>Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.</p><p>Example 2:</p><p>Input: <code>[3,2,1,0,4]</code><br>Output: false<br>Explanation: You will always arrive at index 3 no matter what. Its maximum<br>             jump length is 0, which makes it impossible to reach the last index.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lastPos = nums.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.size() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i + nums[i] &gt;= lastPos) &#123; <span class="comment">//(current position + steps in this position) &gt; lastPos</span></span><br><span class="line">                lastPos = i;              <span class="comment">//if get to this slot, then we can get to last index</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> lastPos == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h1 id="second-time"><a href="#second-time" class="headerlink" title="second time:"></a>second time:</h1><p>key point is to determine whether current position+ position value can reach to the end</p><ul><li>use a pointer <code>reach</code> to denote the farthest position can reach</li><li>use another pointer <code>i</code> to denote the current position. It should be smaller than <code>array size</code> and <code>reach</code>. Because if <code>i</code> reaches the <code>reach</code>, it means the <code>reach</code> derived from previous steps can not reach to <code>i</code>, so will never reach to position <code>i</code>.</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canJump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> reach=<span class="number">0</span>; <span class="comment">//where is the farest that it can reach</span></span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>; <span class="comment">//current location</span></span><br><span class="line">        <span class="keyword">while</span>(i&lt; nums.size() &amp;&amp; i&lt;=reach)&#123;</span><br><span class="line">            reach=max(reach, i+nums[i]);</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> reach&gt;=nums.size()<span class="number">-1</span>; <span class="comment">//check whether reach is greater than array size</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
       
       <categories>
           
@@ -5943,9 +5983,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -5997,11 +6037,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6026,11 +6066,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6138,9 +6178,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6163,11 +6203,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6188,11 +6228,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6217,11 +6257,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6246,11 +6286,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6350,11 +6390,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -6533,13 +6573,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -6580,7 +6620,7 @@
       <title>48. Rotate Image</title>
       <link href="/2018/05/25/48-Rotate-Image/"/>
       <url>/2018/05/25/48-Rotate-Image/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an n x n 2D matrix representing an image.</p><p>Rotate the image by 90 degrees (clockwise).</p><p>Note:</p><p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Given input matrix =</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ul><li>clockwise rotate:<br>first reverse up to down, then swap the symmetry <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     7 8 9     7 4 1</span><br><span class="line">4 5 6  =&gt; 4 5 6  =&gt; 8 5 2</span><br><span class="line">7 8 9     1 2 3     9 6 3</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Since we only need to do three swaps in 3*3 example, the following code is more readable<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; matrix.size(); i++)&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; i; j++)&#123;</span><br><span class="line">        swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><ul><li>anticlockwise rotate:<br>first reverse left to right, then swap the symmetry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     3 2 1     3 6 9</span><br><span class="line">4 5 6  =&gt; 6 5 4  =&gt; 2 5 8</span><br><span class="line">7 8 9     9 8 7     1 4 7</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">anti_rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> vi : matrix) reverse(vi.begin(), vi.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n^2)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/qnuhzL" target="_blank" rel="noopener">https://goo.gl/qnuhzL</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an n x n 2D matrix representing an image.</p><p>Rotate the image by 90 degrees (clockwise).</p><p>Note:</p><p>You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line"></span><br><span class="line">Given input matrix = </span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [4,5,6],</span><br><span class="line">  [7,8,9]</span><br><span class="line">],</span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [7,4,1],</span><br><span class="line">  [8,5,2],</span><br><span class="line">  [9,6,3]</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Given input matrix =</span><br><span class="line">[</span><br><span class="line">  [ 5, 1, 9,11],</span><br><span class="line">  [ 2, 4, 8,10],</span><br><span class="line">  [13, 3, 6, 7],</span><br><span class="line">  [15,14,12,16]</span><br><span class="line">], </span><br><span class="line"></span><br><span class="line">rotate the input matrix in-place such that it becomes:</span><br><span class="line">[</span><br><span class="line">  [15,13, 2, 5],</span><br><span class="line">  [14, 3, 4, 1],</span><br><span class="line">  [12, 6, 8, 9],</span><br><span class="line">  [16, 7,10,11]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ul><li>clockwise rotate:<br>first reverse up to down, then swap the symmetry <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     7 8 9     7 4 1</span><br><span class="line">4 5 6  =&gt; 4 5 6  =&gt; 8 5 2</span><br><span class="line">7 8 9     1 2 3     9 6 3</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>Since we only need to do three swaps in 3*3 example, the following code is more readable<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">    reverse(matrix.begin(), matrix.end());</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; matrix.size(); i++)&#123;</span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; i; j++)&#123;</span><br><span class="line">        swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><ul><li>anticlockwise rotate:<br>first reverse left to right, then swap the symmetry<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3     3 2 1     3 6 9</span><br><span class="line">4 5 6  =&gt; 6 5 4  =&gt; 2 5 8</span><br><span class="line">7 8 9     9 8 7     1 4 7</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">anti_rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;matrix)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> vi : matrix) reverse(vi.begin(), vi.end());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; matrix[i].size(); ++j)</span><br><span class="line">            swap(matrix[i][j], matrix[j][i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n^2)$<br>space complexity: $O(1)$</p><h3 id="Another-solution"><a href="#Another-solution" class="headerlink" title="Another solution:"></a>Another solution:</h3><p>The idea is to define the a range to do the swapping every loop.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> top= <span class="number">0</span>, left= <span class="number">0</span>, bot= matrix.size()<span class="number">-1</span>, right= matrix[<span class="number">0</span>].size()<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> n= matrix.size();</span><br><span class="line">        <span class="keyword">while</span>(n&gt; <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; n<span class="number">-1</span>; i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> tmp= matrix[top][left+i];</span><br><span class="line">                matrix[top][left+i]= matrix[bot-i][left];</span><br><span class="line">                matrix[bot-i][left]= matrix[bot][right-i];</span><br><span class="line">                matrix[bot][right-i]= matrix[top+i][right];</span><br><span class="line">                matrix[top+i][right]= tmp;</span><br><span class="line">            &#125;</span><br><span class="line">            top++; left++; right--; bot--;</span><br><span class="line">            n-=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/qnuhzL" target="_blank" rel="noopener">https://goo.gl/qnuhzL</a></p>]]></content>
       
       <categories>
           
@@ -6666,17 +6706,17 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6699,11 +6739,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -6726,15 +6766,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -6757,13 +6797,13 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6784,13 +6824,13 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> snapchat </tag>
             
@@ -6813,15 +6853,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> airbnb </tag>
             
@@ -6844,15 +6884,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -6875,13 +6915,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
-            <tag> array </tag>
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6902,13 +6942,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6918,7 +6958,7 @@
       <title>companylist</title>
       <link href="/2018/04/20/companylist/"/>
       <url>/2018/04/20/companylist/</url>
-      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>  Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite</p><p>  SAS: 11/4 received bq online<br>  Technical Enablement Academy - Associate Systems Technical Support Engineer (Austin, TX)</p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
+      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>  Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite</p><p>  SAS: 11/4 received bq online<br>  Technical Enablement Academy - Associate Systems Technical Support Engineer (Austin, TX)</p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>  Charles Schwab: 1/3 received email, 1/16 1st round hr screen</p><p>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
       
       
         <tags>
