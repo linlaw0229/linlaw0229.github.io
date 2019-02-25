@@ -3,6 +3,35 @@
   
     
     <entry>
+      <title>490. The Maze</title>
+      <link href="/2019/02/22/490-The-Maze/"/>
+      <url>/2019/02/22/490-The-Maze/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>There is a ball in a maze with empty spaces and walls. The ball can go through empty spaces by rolling up, down, left or right, but it won’t stop rolling until hitting a wall. When the ball stops, it could choose the next direction.</p><p>Given the ball’s start position, the destination and the maze, determine whether the ball could stop at the destination.</p><p>The maze is represented by a binary 2D array. 1 means the wall and 0 means the empty space. You may assume that the borders of the maze are all walls. The start and destination coordinates are represented by row and column indexes.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input 1: a maze represented by a 2D array</span><br><span class="line"></span><br><span class="line">0 0 1 0 0</span><br><span class="line">0 0 0 0 0</span><br><span class="line">0 0 0 1 0</span><br><span class="line">1 1 0 1 1</span><br><span class="line">0 0 0 0 0</span><br><span class="line"></span><br><span class="line">Input 2: start coordinate (rowStart, colStart) = (0, 4)</span><br><span class="line">Input 3: destination coordinate (rowDest, colDest) = (4, 4)</span><br><span class="line"></span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Explanation: One possible way is : left -&gt; down -&gt; left -&gt; down -&gt; right -&gt; down -&gt; right.</span><br></pre></td></tr></table></figure></p><p><img src="maze_1.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">Input 1: a maze represented by a 2D array</span><br><span class="line"></span><br><span class="line">0 0 1 0 0</span><br><span class="line">0 0 0 0 0</span><br><span class="line">0 0 0 1 0</span><br><span class="line">1 1 0 1 1</span><br><span class="line">0 0 0 0 0</span><br><span class="line"></span><br><span class="line">Input 2: start coordinate (rowStart, colStart) = (0, 4)</span><br><span class="line">Input 3: destination coordinate (rowDest, colDest) = (3, 2)</span><br><span class="line"></span><br><span class="line">Output: false</span><br><span class="line"></span><br><span class="line">Explanation: There is no way for the ball to stop at the destination.</span><br></pre></td></tr></table></figure><p><img src="maze_2.png" alt=""></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ul><li>DFS</li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; direction&#123;&#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">hasPath</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; maze, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; start, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; destination)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">set</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; visited;</span><br><span class="line">        <span class="keyword">return</span> dfs(maze, start, destination, visited);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; maze, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; start, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; destination, <span class="built_in">set</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; visited)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == destination) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(visited.find(start) != visited.end()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        visited.insert(start);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; direction.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">auto</span> res= Go2End(maze, start, direction[i]);</span><br><span class="line">            <span class="keyword">if</span>(res == destination || dfs(maze, res, destination, visited)) </span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; Go2End(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; maze, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; start, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; direction)&#123;</span><br><span class="line">        <span class="keyword">int</span> i= start[<span class="number">0</span>]+ direction[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> j= start[<span class="number">1</span>]+ direction[<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> m= maze.size();</span><br><span class="line">        <span class="keyword">int</span> n= maze[<span class="number">0</span>].size();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= m || j &gt;= n || maze[i][j] == <span class="number">1</span>) <span class="keyword">return</span> start;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; newStart&#123;i, j&#125;;</span><br><span class="line">        <span class="keyword">return</span> Go2End(maze, newStart, direction);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>857. Minimum Cost to Hire K Workers</title>
       <link href="/2019/02/20/857-Minimum-Cost-to-Hire-K-Workers/"/>
       <url>/2019/02/20/857-Minimum-Cost-to-Hire-K-Workers/</url>
@@ -179,9 +208,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -862,9 +891,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -943,9 +972,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> stack </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -1135,9 +1164,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -1214,11 +1243,11 @@
             
             <tag> google </tag>
             
+            <tag> stack </tag>
+            
             <tag> amazon </tag>
             
             <tag> design </tag>
-            
-            <tag> stack </tag>
             
             <tag> bloomberg </tag>
             
@@ -1535,9 +1564,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1564,9 +1593,9 @@
             
             <tag> tree </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> stack </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -1902,9 +1931,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> stack </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
@@ -2085,9 +2114,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2152,9 +2181,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2179,9 +2208,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2231,13 +2260,13 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
-            <tag> two pointers </tag>
+            <tag> stack </tag>
             
             <tag> amazon </tag>
             
-            <tag> stack </tag>
+            <tag> array </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -2293,9 +2322,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -2465,9 +2494,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -2537,9 +2566,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -2632,9 +2661,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2707,11 +2736,11 @@
             
             <tag> easy </tag>
             
+            <tag> amazon </tag>
+            
             <tag> array </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> amazon </tag>
             
         </tags>
       
@@ -2819,9 +2848,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -2879,9 +2908,9 @@
             
             <tag> easy </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -2993,9 +3022,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3196,9 +3225,9 @@
             
             <tag> google </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> hash table </tag>
             
@@ -3291,9 +3320,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3850,9 +3879,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3964,9 +3993,9 @@
             
             <tag> medium </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> greedy </tag>
             
@@ -3995,11 +4024,11 @@
             
             <tag> easy </tag>
             
+            <tag> stack </tag>
+            
             <tag> amazon </tag>
             
             <tag> design </tag>
-            
-            <tag> stack </tag>
             
         </tags>
       
@@ -4026,9 +4055,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4057,9 +4086,9 @@
             
             <tag> medium </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> stack </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -4429,9 +4458,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> stack </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4481,9 +4510,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -4520,9 +4549,9 @@
             
             <tag> bfs </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4603,9 +4632,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -4636,9 +4665,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -4767,9 +4796,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4800,9 +4829,9 @@
             
             <tag> medium </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> stack </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -6162,9 +6191,9 @@
             
             <tag> facebook </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> hash table </tag>
             
@@ -6947,11 +6976,11 @@
             
             <tag> medium </tag>
             
+            <tag> amazon </tag>
+            
             <tag> array </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> amazon </tag>
             
         </tags>
       
@@ -7123,11 +7152,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> stack </tag>
+            
             <tag> array </tag>
             
             <tag> hash table </tag>
-            
-            <tag> stack </tag>
             
         </tags>
       
@@ -7152,9 +7181,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7191,7 +7220,7 @@
       <title>companylist</title>
       <link href="/2018/04/20/companylist/"/>
       <url>/2018/04/20/companylist/</url>
-      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  VISA: 10/9 received OA(3 day limitation), 10/12 finished OA</p><p>  TwoSigma: 10/2 received OA, 10/16 hr screen<br>  Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview</p><p>  Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite</p><p>  SAS: 11/4 received bq online<br>  Technical Enablement Academy - Associate Systems Technical Support Engineer (Austin, TX)</p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>  Charles Schwab: 1/3 received email, 1/16 1st round hr screen, wait for March round over<br>  Goldman Sachs: 1/28 hr phone, 2/7 sent email check,<br>  Capsher: 1/23 career, 1/29 manager phone<br>  JPMorgan Chase: 1/25 received OA, 2/7 hr phone, not responded and called<br>  ARM: 2/5 received OA,<br>  Fujitsu: 2/4 campus interview,<br>  Expedia: 1/18 ask refer, 2/5 submit application<br>  Cerner: 2/4 ask refer and submit, reject<br>  Rally Health new grad, reject<br>  L3: 2/12 phone interview, 2/28 onsite<br>  Facebook/Instagram: Vlad referred on 2/20, should hear back 2/27<br>  Google: phone interview on end of March,<br>  Ultimate Software: 2/26 hr phone,<br>  Viasat: hr email 2/20, </p><p>1/17<br>asked refer<br><a href="https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn" target="_blank" rel="noopener">https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn</a><br>google intern submit</p><p>1/18<br><a href="https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin" target="_blank" rel="noopener">https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin</a></p><p>1/19<br>Affirm<br><a href="https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802" target="_blank" rel="noopener">https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802</a><br>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
+      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7 reject<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>  Charles Schwab: 1/3 received email, 1/16 1st round hr screen, wait for March round over, 2/22 sent email check<br>  Goldman Sachs: 1/28 hr phone, 2/7 sent email check, 2/22 sent email check<br>  JPMorgan Chase: 1/25 received OA, 2/7 hr phone, not responded and called<br>  ARM: 2/5 received OA,<br>  Fujitsu: 2/4 campus interview,<br>  Expedia: 1/18 ask refer, 2/5 submit application<br>  L3: 2/12 phone interview, 2/28 onsite<br>  Facebook/Instagram: Vlad referred on 2/20, should hear back 2/27<br>  Google: phone interview on end of March, onsite maybe begin of April<br>  Ultimate Software: 2/26 hr phone,<br>  Viasat: hr email 2/20, 3/1 hr phone<br>  Amazon: 2/21 received OA</p><p>Rejected:<br>Cerner: 2/4 ask refer and submit, reject<br>Rally Health new grad, reject<br>Capsher: 1/23 career, 1/29 manager phone, reject<br>VISA: 10/9 received OA(3 day limitation), 10/12 finished OA,<br>TwoSigma: 10/2 received OA, 10/16 hr screen, reject<br>Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview,reject<br>Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite, reject<br>SAS: 11/4 received bq online</p><p>1/17<br>asked refer<br><a href="https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn" target="_blank" rel="noopener">https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn</a><br>google intern submit</p><p>1/18<br><a href="https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin" target="_blank" rel="noopener">https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin</a></p><p>1/19<br>Affirm<br><a href="https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802" target="_blank" rel="noopener">https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802</a><br>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
       
       
         <tags>
