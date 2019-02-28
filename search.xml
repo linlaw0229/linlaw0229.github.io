@@ -3,6 +3,21 @@
   
     
     <entry>
+      <title>design Elevator</title>
+      <link href="/2019/02/26/design-Elevator/"/>
+      <url>/2019/02/26/design-Elevator/</url>
+      <content type="html"><![CDATA[<p>Design interview questions can be pretty vague and answers often depends on interviewers requirement.</p><p>But there are some generic steps that you can follow:</p><p>Gather requirements<br>Think about best data structure that can be used<br>How important are Latency, Consistency and Availability for your system?<br>How is concurrency handled in your system?<br>How many classes will be there and what will be their methods<br>For example,</p><p>Some simple requirements for your question would be:</p><p>For users:</p><p>call an elevator by pressing buttons in lobby.<br>Choose a floor<br>For System:</p><p>get all available elevators<br>choose any available elevator and send it on the requested floor (this can be optimized)<br>get list of all floors where elevator is supposed to make a stop<br>Classes :</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ElevatorSystem</span> &#123;</span></span><br><span class="line">  Elevator[] elevators;</span><br><span class="line">  <span class="keyword">int</span> totalFloors; <span class="comment">// total floors in the building</span></span><br><span class="line">  Queue&lt;Elevator&gt; availableElevators; <span class="comment">// Queue of all available floors</span></span><br><span class="line">  boolean[] requestedFloors; <span class="comment">// all the floors from where an elevator was requested</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Elevator <span class="title">getNearestAvailableElevator</span><span class="params">(floorNumber)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">callElevator</span><span class="params">(floorNumber, elevator)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FloorLobby</span> &#123;</span></span><br><span class="line">  Button up;</span><br><span class="line">  Button down;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Elevator</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> id;</span><br><span class="line">  <span class="keyword">int</span> currentFloor;</span><br><span class="line">  boolean goUp; <span class="comment">// is elevator suppose to go up</span></span><br><span class="line">  boolean goDown;</span><br><span class="line">  boolean[] isAStop; <span class="comment">// flags all floors on which elevator is suppose to stop</span></span><br><span class="line">  Button[] buttons;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putAsAvailable</span><span class="params">(id)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gotoFloor</span><span class="params">(<span class="built_in">floor</span>)</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">currentFloor</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Button</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> buttonId;</span><br><span class="line">  <span class="keyword">int</span> floorNumber;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://goo.gl/q1OYej" target="_blank" rel="noopener">https://goo.gl/q1OYej</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>239. Sliding Window Maximum</title>
       <link href="/2019/02/26/239-Sliding-Window-Maximum/"/>
       <url>/2019/02/26/239-Sliding-Window-Maximum/</url>
@@ -17,11 +32,11 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> facebook </tag>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> google </tag>
             
@@ -44,15 +59,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
+            <tag> dfs </tag>
+            
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
             
         </tags>
       
@@ -129,9 +144,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> two pointers </tag>
             
@@ -154,13 +169,13 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
             
             <tag> dfs </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -204,9 +219,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> array </tag>
+            
+            <tag> facebook </tag>
             
             <tag> sort </tag>
             
@@ -231,13 +246,13 @@
       
         <tags>
             
-            <tag> microsoft </tag>
+            <tag> array </tag>
             
-            <tag> google </tag>
+            <tag> microsoft </tag>
             
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> google </tag>
             
             <tag> binary search </tag>
             
@@ -283,9 +298,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> array </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -306,9 +321,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> recursion </tag>
             
@@ -346,13 +361,13 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> medium </tag>
             
             <tag> facebook </tag>
             
-            <tag> google </tag>
+            <tag> string </tag>
             
-            <tag> medium </tag>
+            <tag> google </tag>
             
             <tag> math </tag>
             
@@ -375,11 +390,11 @@
       
         <tags>
             
+            <tag> array </tag>
+            
             <tag> hard </tag>
             
             <tag> google </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -400,11 +415,11 @@
       
         <tags>
             
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> google </tag>
             
             <tag> binary search </tag>
             
@@ -427,11 +442,11 @@
       
         <tags>
             
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> google </tag>
             
             <tag> two pointers </tag>
             
@@ -454,13 +469,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> two pointers </tag>
             
@@ -483,11 +498,11 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> facebook </tag>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> google </tag>
             
@@ -533,13 +548,13 @@
       
         <tags>
             
-            <tag> string </tag>
-            
-            <tag> backtracking </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
+            <tag> string </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -581,11 +596,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -610,11 +625,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -637,11 +652,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -662,13 +677,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> linkedin </tag>
             
@@ -729,13 +744,13 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> easy </tag>
             
             <tag> facebook </tag>
             
-            <tag> google </tag>
+            <tag> string </tag>
             
-            <tag> easy </tag>
+            <tag> google </tag>
             
             <tag> citrix </tag>
             
@@ -758,9 +773,9 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
             <tag> array </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> two pointers </tag>
             
@@ -810,11 +825,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> paypal </tag>
             
@@ -837,15 +852,15 @@
       
         <tags>
             
+            <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> backtracking </tag>
             
-            <tag> facebook </tag>
-            
             <tag> google </tag>
-            
-            <tag> amazon </tag>
             
             <tag> trie </tag>
             
@@ -918,9 +933,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> hash table </tag>
             
@@ -960,11 +975,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -989,10 +1004,6 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> tree </tag>
             
             <tag> bfs </tag>
@@ -1001,7 +1012,11 @@
             
             <tag> stack </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -1095,7 +1110,7 @@
       <title>Interview review</title>
       <link href="/2018/10/23/Interview-review/"/>
       <url>/2018/10/23/Interview-review/</url>
-      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><ul><li>Definition<br>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</li></ul><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. Processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><ul><li><p>How to switch processes using interrupt<br>Store the state into <code>PCB</code>, process control block. load other process’ PCB from kernel memory, </p><ol><li>When the interrupt comes, the state of the current process is stored in a data structure call process control block(PCB)</li><li>The PCB is stored on a per-process ​stack​ in kernel memory</li><li>A ​handle​ to the PCB is added to a queue of processes that are ready to run, often called the ready queue.</li><li>So when the CPU wants to switch the process back, it simply load the handle of the PCB from the ready queue, and restore the context from the PCB</li></ol></li><li><p>Difference between process switching and thread switching<br>The main distinction between a thread switch and a process switch is that during a thread switch, the virtual <code>memory space</code> remains the same, while it does not during a process switch. Both types involve handing control over to the operating system kernel to perform the context switch. The process of switching in and out of the OS kernel along with the cost of switching out the registers is the largest fixed cost of performing a context switch.</p></li></ul><p>What is the difference between context switching and interrupt handling? <a href="https://goo.gl/RBp7LY" target="_blank" rel="noopener">https://goo.gl/RBp7LY</a><br>UCSD, I/O and Processes <a href="https://goo.gl/4Byzg8" target="_blank" rel="noopener">https://goo.gl/4Byzg8</a><br>thread context switch vs process context switch, <a href="https://goo.gl/CqgHjE" target="_blank" rel="noopener">https://goo.gl/CqgHjE</a></p><h3 id="Deadlock"><a href="#Deadlock" class="headerlink" title="Deadlock"></a>Deadlock</h3><p>Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. A multi-threaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock.</p><ul><li>The reason of deadlock:<br>Deadlock can arise if following four conditions hold simultaneously (Necessary Conditions)<br><code>Mutual Exclusion &amp;&amp; Hold and Wait &amp;&amp; No preemption &amp;&amp; Circular wait</code></li></ul><ol><li>Mutual Exclusion: One or more than one resource non-sharable (Only one process can use at a time)</li><li>Hold and Wait: A process is holding at least one resource and waiting for resources.</li><li>No Preemption: A resource cannot be taken from a process unless the process releases the resource.</li><li>Circular Wait: A set of processes are waiting for each other in circular form.</li></ol><ul><li>Deadlock prevention:</li></ul><p>Try to eliminate one of the four condition</p><ol><li><p>Eliminate Mutual Exclusion<br>It is not possible to dis-satisfy the mutual exclusion because some resources, for example, printer, is inherently non-shareable.</p></li><li><p>Eliminate Hold and wait<br>Allocate all required resources to the process before start of its execution, this way “hold and wait” condition is eliminated but it will lead to <code>low device utilization</code>.<br>Process will make new request for resources after releasing the current set of resources. This solution may lead to <code>starvation</code>.</p></li><li><p>Eliminate No Preemption<br>Preempt resources from process when resources required by other high priority process.</p></li><li><p>Eliminate Circular Wait<br>Each resource will be assigned with a numerical number. A process can request for the resources only in increasing order of numbering.</p></li></ol><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p><img src="memory.png" alt=""></p><ul><li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p><p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p></li><li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: infinitely function calls exhausted the reserved stack space<br>Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p></li><li><p>Heap<br>Can think of it as a large pool of memory that can freely use.<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p><ul><li>In C++:<br>use operator <code>new</code> and <code>delete</code> to manipulate heap memory.<br>In OS machine problem, applied headmap and bitmap to determine a head of allocated memory and used memory frame.</li></ul><p><a href="https://www.youtube.com/watch?v=_8-ht2AKyH4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_8-ht2AKyH4</a></p></li><li><p>Virtual memory</p><ul><li><p>Any error if two processes writing on the same address?<br>Nothing is wrong. Process uses virtual memory, the same address value in two different processes maps to two different physical address.</p><p>Detailed Explain:<br>virtual memory concept-&gt; addr in vm-&gt; therefore different</p><ol><li>concept of virtual memory<br>Virtual memory is a mechanism used by the operation system to “cheat” the process about the memory space a process can use. What a process can see is a large continuous memory space, so it feels happy about it. The real story is: the main memory(RAM) of a computer is very limited(For mac, it is 8GB).</li><li>The base of virtual memory is a mapping from the virtual address to the real physical address.</li><li>So if 2 processes are both running under the virtual memory mechanism, the real physical address of the OS is invisible to both of them. What they can see is the virtual memory address. Even though the see a same address, that might be mapped to different physical address underlaying.</li></ol></li></ul></li></ul><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><ul><li><p>Interface vs Abstract class<br>Interface: define required methods when an object need to collaborate with other objects.<br>Abstract class: define what needs to be inheritance in the whole inheritance system. Child class can override the method or keep the same as father class.</p></li><li><p>Virtual function and Pure Virtual function</p></li></ul><ul><li><p>virtual function</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span></span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">      <span class="keyword">int</span> width, height;</span><br><span class="line">      </span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">      Shape( <span class="keyword">int</span> a = <span class="number">0</span>, <span class="keyword">int</span> b = <span class="number">0</span>) &#123;</span><br><span class="line">        width = a;</span><br><span class="line">        height = b;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Parent class area :"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>A virtual function is a function in a base class that is declared using the keyword virtual. Defining in a base class a virtual function, with another version in a derived class, signals to the compiler that we don’t want static linkage for this function.</p></li><li><p>pure virtual function</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span></span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> width, height;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">    Shape(<span class="keyword">int</span> a = <span class="number">0</span>, <span class="keyword">int</span> b = <span class="number">0</span>) &#123;</span><br><span class="line">       width = a;</span><br><span class="line">       height = b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pure virtual function</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">area</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>The = 0 tells the compiler that the function has no body and above virtual function will be called pure virtual function.</p></li></ul><ul><li><p>mutex<br>A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.</p></li><li><p>Inheritance</p><p>Diamond problem: lowest level child have several copy after inheritance, and will have ambiguity problem. The way to solve is virtual inheritance.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> A</span><br><span class="line">/ \</span><br><span class="line">B  C</span><br><span class="line">\ /</span><br><span class="line"> D</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><span class="keyword">public</span>: <span class="keyword">int</span> _a;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A&#123;<span class="keyword">public</span>: <span class="keyword">int</span> _b;&#125;;</span><br></pre></td></tr></table></figure><p><a href="https://goo.gl/dPQVum" target="_blank" rel="noopener">https://goo.gl/dPQVum</a></p></li><li><p>Static/Dynamic binding<br>Static, compile time binding is easy. There’s no polymorphism involved. You know the type of the object when you write and compile and run the code. Sometimes a dog is just a dog.</p><p>Dynamic, runtime binding is where polymorphism comes from.</p><p>If you have a reference that’s of parent type at compile type, you can assign a child type to it at runtime. The behavior of the reference will magically change to the appropriate type at runtime. A virtual table lookup will be done to let the runtime figure out what the dynamic type is.</p></li><li><p>void pointer<br>The void pointer, also known as the generic pointer, is a special type of pointer that can be pointed at objects of any data type!<br>However, because the void pointer does not know what type of object it is pointing to, it cannot be dereferenced directly! Rather, the void pointer must first be explicitly cast to another pointer type before it is dereferenced.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nValue;</span><br><span class="line"><span class="keyword">float</span> fValue;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Something</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">float</span> f;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">Something sValue;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">void</span> *ptr;</span><br><span class="line">ptr = &amp;nValue; <span class="comment">// valid</span></span><br><span class="line">ptr = &amp;fValue; <span class="comment">// valid</span></span><br><span class="line">ptr = &amp;sValue; <span class="comment">// valid</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul><li><p>how HTTPS works</p><ol><li>browser initiate HTTPS request to webserver</li><li>webserver have public key and private key. Respond with public key.</li><li>Browser create session key.</li><li>Encrypt the session key with the public key from web server.</li><li>Webserver received the encrypted data, use private key to decrypt and get the session key.</li><li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li></ol></li><li><p>TCP, UDP, IP<br><img src="layer_terminology.JPG" alt=""></p><ul><li>What is the point of UDP when we already have IP?</li></ul></li><li><p>TCP three way handshake<br><img src="threeway.png" alt=""></p></li><li><p>OSI model<br><img src="OSI_TCPIP.jpg" alt=""></p></li><li><p>Routing protocol<br>RIP vs OSPF<br>RIP depends on hop counts to determine the best path while OSPF depends on cost (bandwidth) which helps in determining the best path.<br>Convergence in the RIP is slow in contrast it is fast in OSPF.</p><p>Open Shortest Path First is a link state and hierarchical IGP routing algorithm. It is an enhanced version of RIP, which comprises features like multipath routing, least cost routing, and load balancing. Its major metric is the cost to determine the best path.<br>OSPF offers load balancing in which it distributes overall traffic routes equally. It also allows networks and routers partitioned into subsets and areas which enhance the growth and ease of management.</p></li></ul><p>  <a href="https://techdifferences.com/difference-between-rip-and-ospf.html" target="_blank" rel="noopener">https://techdifferences.com/difference-between-rip-and-ospf.html</a></p><h3 id="Graph-Data-structure"><a href="#Graph-Data-structure" class="headerlink" title="Graph- Data structure"></a>Graph- Data structure</h3><ul><li><p>Edge list: To represent an edge, we just have an array of two vertex numbers, or an array of objects containing the vertex numbers of the vertices that the edges are incident on. If edges have weights, add either a third element to the array or more information to the object, giving the edge’s weight. Since each edge contains just two or three numbers, the total space for an edge list is $Θ(E)$.</p></li><li><p>Adjacency matrix: For a graph with $|V|$, an adjacency matrix is a $|V|×∣V∣$ matrix of 0s and 1s, where the entry in row $i$ and column $j$ is 1 if and only if the edge $(i,j)$ is in the graph. If you want to indicate an edge weight, put it in the row $i$, column $j$ entry, and reserve a special value (perhaps null) to indicate an absent edge.<br><img src="ad_matrix.png" alt=""></p></li><li>Adjacency list<br><img src="ad_list.png" alt=""></li></ul><p><a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/graph-and-its-representations/</a><br><a href="https://goo.gl/ZTSF8b" target="_blank" rel="noopener">https://goo.gl/ZTSF8b</a></p><ul><li>Union-Find</li></ul><p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Disjoint-set_data_structure</a><br><a href="https://www.geeksforgeeks.org/union-find/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/union-find/</a></p><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Thread-vs-Process"><a href="#Thread-vs-Process" class="headerlink" title="Thread vs Process"></a>Thread vs Process</h3><ul><li>Definition<br>A <code>process</code> is an instance of a computer program that is being executed. It contains the program code and its current activity. A process may be made up of multiple threads of execution that execute instructions concurrently. A process has a virtual address space, executable code, open handles to system objects, a security context, a unique process identifier, environment variables, a priority class, minimum and maximum working set sizes, and at least one thread of execution. Each process is started with a single thread, often called the primary thread, but can create additional threads from any of its threads.</li></ul><p>All <code>threads</code> of a process share its virtual address space and system resources. Typical difference is, processes run in separated memory while threads run in shared memory.</p><p>A <code>thread</code> is the entity within a process that can be scheduled for execution. All threads of a process share its virtual address space and system resources. In addition, each thread maintains exception handlers, a scheduling priority, thread local storage, a unique thread identifier, and a set of structures the system will use to save the thread context until it is scheduled. Typical <code>difference</code> is, processes run in separated memory while threads run in shared memory. Processes are typically independent, while threads exist as subsets of a process processes carry considerably more state information than threads, whereas multiple threads within a process share process state as well as memory and other resources processes have separate address spaces, whereas threads share their address space processes interact only through system-provided inter-process communication mechanisms context switching between threads in the same process is typically faster than context switching between processes.</p><ul><li><p>How to switch processes using interrupt<br>Store the state into <code>PCB</code>, process control block. load other process’ PCB from kernel memory, </p><ol><li>When the interrupt comes, the state of the current process is stored in a data structure call process control block(PCB)</li><li>The PCB is stored on a per-process ​stack​ in kernel memory</li><li>A ​handle​ to the PCB is added to a queue of processes that are ready to run, often called the ready queue.</li><li>So when the CPU wants to switch the process back, it simply load the handle of the PCB from the ready queue, and restore the context from the PCB</li></ol></li><li><p>Difference between process switching and thread switching<br>The main distinction between a thread switch and a process switch is that during a thread switch, the virtual <code>memory space</code> remains the same, while it does not during a process switch. Both types involve handing control over to the operating system kernel to perform the context switch. The process of switching in and out of the OS kernel along with the cost of switching out the registers is the largest fixed cost of performing a context switch.</p></li></ul><p>What is the difference between context switching and interrupt handling? <a href="https://goo.gl/RBp7LY" target="_blank" rel="noopener">https://goo.gl/RBp7LY</a><br>UCSD, I/O and Processes <a href="https://goo.gl/4Byzg8" target="_blank" rel="noopener">https://goo.gl/4Byzg8</a><br>thread context switch vs process context switch, <a href="https://goo.gl/CqgHjE" target="_blank" rel="noopener">https://goo.gl/CqgHjE</a></p><h3 id="Deadlock"><a href="#Deadlock" class="headerlink" title="Deadlock"></a>Deadlock</h3><p>Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. A multi-threaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock.</p><ul><li>The reason of deadlock:<br>Deadlock can arise if following four conditions hold simultaneously (Necessary Conditions)<br><code>Mutual Exclusion &amp;&amp; Hold and Wait &amp;&amp; No preemption &amp;&amp; Circular wait</code></li></ul><ol><li>Mutual Exclusion: One or more than one resource non-sharable (Only one process can use at a time)</li><li>Hold and Wait: A process is holding at least one resource and waiting for resources.</li><li>No Preemption: A resource cannot be taken from a process unless the process releases the resource.</li><li>Circular Wait: A set of processes are waiting for each other in circular form.</li></ol><ul><li>Deadlock prevention:</li></ul><p>Try to eliminate one of the four condition</p><ol><li><p>Eliminate Mutual Exclusion<br>It is not possible to dis-satisfy the mutual exclusion because some resources, for example, printer, is inherently non-shareable.</p></li><li><p>Eliminate Hold and wait<br>Allocate all required resources to the process before start of its execution, this way “hold and wait” condition is eliminated but it will lead to <code>low device utilization</code>.<br>Process will make new request for resources after releasing the current set of resources. This solution may lead to <code>starvation</code>.</p></li><li><p>Eliminate No Preemption<br>Preempt resources from process when resources required by other high priority process.</p></li><li><p>Eliminate Circular Wait<br>Each resource will be assigned with a numerical number. A process can request for the resources only in increasing order of numbering.</p></li></ol><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><p><img src="memory.png" alt=""></p><ul><li><p>Heap vs Stack<br>The capacity of stack is limited but in contrast heap has no limited size until you reach the size of virtual memory.</p><p>You can use the stack if you know exactly how much data you need to allocate before compile time and it is not too big. You can use heap if you don’t know exactly how much data you will need at runtime or if you need to allocate a lot of data.</p></li><li><p>Stack<br>Static memory allocation, variables allocated on the stack are dealt with when the program is compiled.<br>When a function calls another function which in turns calls another function etc., the execution of all those functions remains suspended until the very last function returns its value.<br>The stack is always reserved in a LIFO order, the most recently reserved block is always the next block to be freed.<br>Stack overflow: infinitely function calls exhausted the reserved stack space<br>Because limited capacity of stack plus infinite function calls with ultimately run out of all the memory spaces in stack.</p></li><li><p>Heap<br>Can think of it as a large pool of memory that can freely use.<br>Dynamic memory allocation, variables allocated on the heap have their memory allocated at run time</p><ul><li>In C++:<br>use operator <code>new</code> and <code>delete</code> to manipulate heap memory.<br>In OS machine problem, applied headmap and bitmap to determine a head of allocated memory and used memory frame.</li></ul><p><a href="https://www.youtube.com/watch?v=_8-ht2AKyH4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_8-ht2AKyH4</a></p></li><li><p>Virtual memory</p><ul><li><p>Any error if two processes writing on the same address?<br>Nothing is wrong. Process uses virtual memory, the same address value in two different processes maps to two different physical address.</p><p>Detailed Explain:<br>virtual memory concept-&gt; addr in vm-&gt; therefore different</p><ol><li>concept of virtual memory<br>Virtual memory is a mechanism used by the operation system to “cheat” the process about the memory space a process can use. What a process can see is a large continuous memory space, so it feels happy about it. The real story is: the main memory(RAM) of a computer is very limited(For mac, it is 8GB).</li><li>The base of virtual memory is a mapping from the virtual address to the real physical address.</li><li>So if 2 processes are both running under the virtual memory mechanism, the real physical address of the OS is invisible to both of them. What they can see is the virtual memory address. Even though the see a same address, that might be mapped to different physical address underlaying.</li></ol></li></ul></li></ul><h3 id="Throughput-amp-Latency"><a href="#Throughput-amp-Latency" class="headerlink" title="Throughput &amp; Latency"></a>Throughput &amp; Latency</h3><p><code>Latency</code> is the amount of time to finish an operation. Latency is the delay from input into a system to desired outcome.<br><code>Throughput</code> is the amount of work we finished in a unit time. Throughput is a measure of how many units of information a system can process in a given amount of time. </p><h3 id="Hash-table"><a href="#Hash-table" class="headerlink" title="Hash table"></a>Hash table</h3><p>time complexity: $O(1)$ average, $O(n)$ in worst case.<br><code>Collision</code>: When two data stored in the same slot, caused the table can only keep one of them.<br>Solution:<br>Chaining: use linked list to link every element in the same slot.<br>Open addressing: use probing method to find empty slot in the table.</p><ul><li>Linear probing</li><li>Quadratic probing</li><li>Double hashing</li></ul><h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><ul><li>min heap: always have the smallest element at top. <ul><li>insert new element: add it to the last child, then compare with it’s parent and decide to swap or not.</li><li>remove smallest element from top: take the last element, from top-bottom and left to right, to the root. Then swap it with the smaller element between its children.</li></ul></li></ul><p>Heap sort: sorting technique to find min/max element. </p><h3 id="C-Object-oriented-programming"><a href="#C-Object-oriented-programming" class="headerlink" title="C++, Object oriented programming"></a>C++, Object oriented programming</h3><ul><li>Object vs Class</li></ul><p>A <code>class</code> is a template for objects. A class defines object properties including a valid range of values, and a default value. A class also describes object behavior.<br>An <code>object</code> is a member or an “instance” of a class. An object has a state in which all of its properties have values that you either explicitly define or that are defined by default settings.<br><a href="https://www.geeksforgeeks.org/inheritance-in-c/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/inheritance-in-c/</a></p><ul><li><p>Interface vs Abstract class<br>Interface: define required methods when an object need to collaborate with other objects.<br>Abstract class: define what needs to be inheritance in the whole inheritance system. Child class can override the method or keep the same as father class.</p></li><li><p>Virtual function and Pure Virtual function</p></li></ul><ul><li><p>virtual function</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span></span><br><span class="line">  <span class="keyword">protected</span>:</span><br><span class="line">      <span class="keyword">int</span> width, height;</span><br><span class="line">      </span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">      Shape( <span class="keyword">int</span> a = <span class="number">0</span>, <span class="keyword">int</span> b = <span class="number">0</span>) &#123;</span><br><span class="line">        width = a;</span><br><span class="line">        height = b;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">area</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Parent class area :"</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>A virtual function is a function in a base class that is declared using the keyword virtual. Defining in a base class a virtual function, with another version in a derived class, signals to the compiler that we don’t want static linkage for this function.</p></li><li><p>pure virtual function</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> &#123;</span></span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">    <span class="keyword">int</span> width, height;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">    Shape(<span class="keyword">int</span> a = <span class="number">0</span>, <span class="keyword">int</span> b = <span class="number">0</span>) &#123;</span><br><span class="line">       width = a;</span><br><span class="line">       height = b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pure virtual function</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">area</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>The = 0 tells the compiler that the function has no body and above virtual function will be called pure virtual function.</p></li></ul><ul><li><p>mutex<br>A mutex is a lockable object that is designed to signal when critical sections of code need exclusive access, preventing other threads with the same protection from executing concurrently and access the same memory locations.</p></li><li><p>Inheritance</p><ul><li>Base class: The class whose properties are inherited by sub class is called base class</li><li><p>Derived class: The class that inherits properties from another class</p></li><li><p>Diamond problem: lowest level child have several copy after inheritance, and will have ambiguity problem. The way to solve is virtual inheritance.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> A</span><br><span class="line">/ \</span><br><span class="line">B  C</span><br><span class="line">\ /</span><br><span class="line"> D</span><br></pre></td></tr></table></figure></li></ul><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Solution:</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>&#123;</span><span class="keyword">public</span>: <span class="keyword">int</span> _a;&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>:</span> <span class="keyword">virtual</span> <span class="keyword">public</span> A&#123;<span class="keyword">public</span>: <span class="keyword">int</span> _b;&#125;;</span><br></pre></td></tr></table></figure><ul><li>Multi-level inheritance<br><img src="multiple-inheritance.png" alt=""></li></ul><p><a href="https://goo.gl/dPQVum" target="_blank" rel="noopener">https://goo.gl/dPQVum</a><br><a href="https://www.geeksforgeeks.org/inheritance-in-c/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/inheritance-in-c/</a></p></li><li><p>Static/Dynamic binding<br>Static, compile time binding is easy. There’s no polymorphism involved. You know the type of the object when you write and compile and run the code. Sometimes a dog is just a dog.</p><p>Dynamic, runtime binding is where polymorphism comes from.</p><p>If you have a reference that’s of parent type at compile type, you can assign a child type to it at runtime. The behavior of the reference will magically change to the appropriate type at runtime. A virtual table lookup will be done to let the runtime figure out what the dynamic type is.</p></li><li><p>void pointer<br>The void pointer, also known as the generic pointer, is a special type of pointer that can be pointed at objects of any data type!<br>However, because the void pointer does not know what type of object it is pointing to, it cannot be dereferenced directly! Rather, the void pointer must first be explicitly cast to another pointer type before it is dereferenced.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> nValue;</span><br><span class="line"><span class="keyword">float</span> fValue;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Something</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">float</span> f;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">Something sValue;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">void</span> *ptr;</span><br><span class="line">ptr = &amp;nValue; <span class="comment">// valid</span></span><br><span class="line">ptr = &amp;fValue; <span class="comment">// valid</span></span><br><span class="line">ptr = &amp;sValue; <span class="comment">// valid</span></span><br></pre></td></tr></table></figure></li></ul><h3 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h3><ul><li><p>how HTTPS works</p><ol><li>browser initiate HTTPS request to webserver</li><li>webserver have public key and private key. Respond with public key.</li><li>Browser create session key.</li><li>Encrypt the session key with the public key from web server.</li><li>Webserver received the encrypted data, use private key to decrypt and get the session key.</li><li>Use session key to establish SSL connection.<br><a href="https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/" target="_blank" rel="noopener">https://tiptopsecurity.com/how-does-https-work-rsa-encryption-explained/</a></li></ol></li><li><p>how packet transmit from one host to another<br><a href="https://www.quora.com/How-does-a-packet-get-from-one-network-to-another" target="_blank" rel="noopener">https://www.quora.com/How-does-a-packet-get-from-one-network-to-another</a></p><ul><li>Local network: A send to B<ol><li>A enter the IP(10.10.10.1) address of B. But it’s not enough, since we need MAC(Media Access Control) to uniquely identify device.</li><li>To find a remote workstation’s MAC address, the Address Resolution Protocol (ARP) is used. </li><li>A send out ARP packets asking who is 10.10.10.1, and only B would response with ARP reply</li><li>A send the packet with IP and MAC address from B</li></ol></li><li></li></ul></li><li><p>TCP, UDP, IP<br><img src="layer_terminology.JPG" alt=""></p><ul><li>What is the point of UDP when we already have IP?</li></ul></li><li><p>TCP three way handshake<br><img src="threeway.png" alt=""></p></li><li><p>OSI model<br><img src="OSI_TCPIP.jpg" alt=""></p></li><li><p>Routing protocol<br>RIP vs OSPF<br>RIP, Routing Internet Protocol, depends on hop counts to determine the best path while OSPF depends on cost (bandwidth) which helps in determining the best path.<br>Convergence in the RIP is slow in contrast it is fast in OSPF.</p><p>Open Shortest Path First is a link state and hierarchical IGP routing algorithm. It is an enhanced version of RIP, which comprises features like multipath routing, least cost routing, and load balancing. Its major metric is the cost to determine the best path.<br>OSPF offers load balancing in which it distributes overall traffic routes equally. It also allows networks and routers partitioned into subsets and areas which enhance the growth and ease of management.</p><p><a href="https://techdifferences.com/difference-between-rip-and-ospf.html" target="_blank" rel="noopener">https://techdifferences.com/difference-between-rip-and-ospf.html</a></p></li><li><p>QoS<br>QoS is defined as the control and management of a network’s data transmission capabilities by giving priority to certain types of time-sensitive and mission-critical data protocols.<br><a href="https://www.comparitech.com/net-admin/what-is-qos/" target="_blank" rel="noopener">https://www.comparitech.com/net-admin/what-is-qos/</a></p></li></ul><h3 id="Graph-Data-structure"><a href="#Graph-Data-structure" class="headerlink" title="Graph- Data structure"></a>Graph- Data structure</h3><ul><li><p>Edge list: To represent an edge, we just have an array of two vertex numbers, or an array of objects containing the vertex numbers of the vertices that the edges are incident on. If edges have weights, add either a third element to the array or more information to the object, giving the edge’s weight. Since each edge contains just two or three numbers, the total space for an edge list is $Θ(E)$.</p></li><li><p>Adjacency matrix: For a graph with $|V|$, an adjacency matrix is a $|V|×∣V∣$ matrix of 0s and 1s, where the entry in row $i$ and column $j$ is 1 if and only if the edge $(i,j)$ is in the graph. If you want to indicate an edge weight, put it in the row $i$, column $j$ entry, and reserve a special value (perhaps null) to indicate an absent edge.<br><img src="ad_matrix.png" alt=""></p></li><li>Adjacency list<br><img src="ad_list.png" alt=""></li></ul><p><a href="https://www.geeksforgeeks.org/graph-and-its-representations/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/graph-and-its-representations/</a><br><a href="https://goo.gl/ZTSF8b" target="_blank" rel="noopener">https://goo.gl/ZTSF8b</a></p><ul><li>Union-Find</li></ul><p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Disjoint-set_data_structure</a><br><a href="https://www.geeksforgeeks.org/union-find/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/union-find/</a></p><p>reference:<br><a href="http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html" target="_blank" rel="noopener">http://alrightchiu.github.io/SecondRound/hash-tableintrojian-jie.html</a><br><a href="https://www.geeksforgeeks.org/heap-sort/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/heap-sort/</a><br><a href="https://goo.gl/1Vf39q" target="_blank" rel="noopener">https://goo.gl/1Vf39q</a><br><a href="https://goo.gl/9G424N" target="_blank" rel="noopener">https://goo.gl/9G424N</a></p>]]></content>
       
       <categories>
           
@@ -1158,11 +1173,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> lyft </tag>
             
@@ -1185,15 +1200,15 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
-            <tag> facebook </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> linkedin </tag>
             
@@ -1241,9 +1256,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> design </tag>
             
@@ -1268,11 +1283,11 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> google </tag>
             
             <tag> design </tag>
             
@@ -1297,11 +1312,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> heap </tag>
             
@@ -1326,9 +1341,9 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
             <tag> medium </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> amazon </tag>
             
@@ -1355,15 +1370,15 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> apple </tag>
-            
-            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -1388,17 +1403,17 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -1421,9 +1436,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -1477,11 +1492,11 @@
       
         <tags>
             
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -1504,13 +1519,13 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -1556,11 +1571,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
             
         </tags>
       
@@ -1581,19 +1596,19 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
+            <tag> dfs </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -1643,11 +1658,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -1670,13 +1685,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
+            <tag> medium </tag>
             
             <tag> facebook </tag>
             
-            <tag> google </tag>
+            <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
+            <tag> google </tag>
             
         </tags>
       
@@ -1697,21 +1712,21 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> easy </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> linked list </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> bloomberg </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -1732,11 +1747,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -1784,11 +1799,11 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> easy </tag>
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
+            <tag> string </tag>
             
         </tags>
       
@@ -1809,13 +1824,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
             
             <tag> dfs </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -1836,11 +1851,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -1865,15 +1880,15 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> google </tag>
-            
-            <tag> amazon </tag>
             
             <tag> linked list </tag>
             
@@ -1900,11 +1915,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -1927,11 +1942,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> dfs </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -1952,13 +1967,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -2033,11 +2048,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -2060,11 +2075,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> array </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -2085,9 +2100,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -2110,11 +2125,11 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> easy </tag>
             
             <tag> amazon </tag>
+            
+            <tag> string </tag>
             
         </tags>
       
@@ -2135,15 +2150,15 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> array </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> hard </tag>
+            
+            <tag> google </tag>
             
             <tag> binary search </tag>
             
@@ -2200,17 +2215,17 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> tree </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -2231,13 +2246,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -2283,15 +2298,15 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> facebook </tag>
+            <tag> array </tag>
             
             <tag> stack </tag>
             
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
             
             <tag> two pointers </tag>
             
@@ -2314,11 +2329,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -2343,15 +2358,15 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
+            
+            <tag> google </tag>
             
             <tag> union find </tag>
             
@@ -2376,11 +2391,11 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> medium </tag>
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
+            <tag> string </tag>
             
             <tag> yelp </tag>
             
@@ -2403,13 +2418,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
             
             <tag> dfs </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -2430,9 +2445,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> bloomberg </tag>
             
@@ -2455,15 +2470,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> easy </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> linked list </tag>
             
@@ -2486,13 +2501,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> easy </tag>
             
             <tag> microsoft </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> sort </tag>
             
@@ -2515,21 +2530,21 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> amazon </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> array </tag>
-            
             <tag> uber </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -2550,13 +2565,13 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
-            <tag> google </tag>
+            <tag> hard </tag>
             
-            <tag> amazon </tag>
+            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -2583,23 +2598,23 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
             
-            <tag> medium </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> array </tag>
+            <tag> linkedin </tag>
             
             <tag> binary search </tag>
-            
-            <tag> linkedin </tag>
             
         </tags>
       
@@ -2620,15 +2635,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> easy </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> design </tag>
             
@@ -2653,13 +2668,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> design </tag>
             
@@ -2682,15 +2697,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
+            <tag> dfs </tag>
+            
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
             
             <tag> graph </tag>
             
@@ -2713,11 +2728,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> design </tag>
             
@@ -2757,15 +2772,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
             
             <tag> two pointers </tag>
             
@@ -2788,11 +2803,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -2815,9 +2830,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -2840,11 +2855,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
         </tags>
       
@@ -2865,19 +2880,19 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
+            <tag> dfs </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -2900,9 +2915,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> string </tag>
             
             <tag> google </tag>
             
@@ -2925,17 +2940,17 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
+            
+            <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
-            
-            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -2958,13 +2973,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> dfs </tag>
             
             <tag> easy </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
             
         </tags>
       
@@ -2985,9 +3000,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -3012,11 +3027,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> linked list </tag>
             
@@ -3041,17 +3056,17 @@
       
         <tags>
             
-            <tag> hard </tag>
+            <tag> tree </tag>
             
-            <tag> facebook </tag>
+            <tag> dfs </tag>
             
             <tag> microsoft </tag>
             
-            <tag> tree </tag>
-            
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
             
         </tags>
       
@@ -3072,13 +3087,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> medium </tag>
             
             <tag> array </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -3101,15 +3116,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -3130,11 +3145,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -3159,9 +3174,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> sort </tag>
             
@@ -3186,11 +3201,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> linked list </tag>
             
@@ -3213,11 +3228,11 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> easy </tag>
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
+            <tag> string </tag>
             
             <tag> two pointers </tag>
             
@@ -3242,17 +3257,17 @@
       
         <tags>
             
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> google </tag>
-            
-            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -3279,17 +3294,17 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> facebook </tag>
+            <tag> tree </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> tree </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
+            
+            <tag> google </tag>
             
             <tag> design </tag>
             
@@ -3314,9 +3329,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -3337,19 +3352,19 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -3370,11 +3385,11 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> easy </tag>
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
+            <tag> string </tag>
             
             <tag> math </tag>
             
@@ -3397,15 +3412,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
+            <tag> array </tag>
             
             <tag> easy </tag>
             
-            <tag> array </tag>
+            <tag> microsoft </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> two pointers </tag>
             
@@ -3428,9 +3443,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -3453,11 +3468,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> array </tag>
+            
+            <tag> facebook </tag>
             
             <tag> uber </tag>
             
@@ -3484,15 +3499,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> sort </tag>
             
@@ -3515,19 +3530,19 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> google </tag>
-            
-            <tag> medium </tag>
-            
-            <tag> amazon </tag>
             
         </tags>
       
@@ -3548,11 +3563,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -3577,6 +3592,10 @@
       
         <tags>
             
+            <tag> microsoft </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
@@ -3584,10 +3603,6 @@
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
             
             <tag> google </tag>
             
@@ -3612,11 +3627,11 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> easy </tag>
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
+            <tag> string </tag>
             
         </tags>
       
@@ -3637,11 +3652,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -3664,13 +3679,13 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> dfs </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
             
         </tags>
       
@@ -3691,15 +3706,15 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> string </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> microsoft </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
+            
+            <tag> string </tag>
             
             <tag> math </tag>
             
@@ -3722,17 +3737,17 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -3753,13 +3768,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> medium </tag>
             
             <tag> array </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> linkedin </tag>
             
@@ -3782,11 +3797,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> linkedin </tag>
             
@@ -3809,17 +3824,17 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
             
-            <tag> facebook </tag>
-            
             <tag> google </tag>
-            
-            <tag> medium </tag>
-            
-            <tag> amazon </tag>
             
             <tag> pure storage </tag>
             
@@ -3842,13 +3857,13 @@
       
         <tags>
             
-            <tag> string </tag>
-            
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
+            
+            <tag> string </tag>
             
             <tag> uber </tag>
             
@@ -3898,17 +3913,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
+            <tag> dfs </tag>
+            
             <tag> amazon </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -3933,13 +3948,13 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
             
             <tag> greedy </tag>
             
@@ -3962,9 +3977,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -3991,11 +4006,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -4045,15 +4060,15 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> apple </tag>
-            
             <tag> easy </tag>
             
             <tag> stack </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
+            
+            <tag> apple </tag>
             
             <tag> design </tag>
             
@@ -4076,15 +4091,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> stack </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -4105,15 +4120,15 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> facebook </tag>
             
             <tag> linkedin </tag>
             
@@ -4136,11 +4151,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> uber </tag>
             
@@ -4165,15 +4180,15 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> backtracking </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -4194,13 +4209,13 @@
       
         <tags>
             
-            <tag> backtracking </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
+            <tag> backtracking </tag>
             
-            <tag> medium </tag>
+            <tag> google </tag>
             
             <tag> epic system </tag>
             
@@ -4259,11 +4274,11 @@
       
         <tags>
             
-            <tag> backtracking </tag>
+            <tag> microsoft </tag>
             
             <tag> facebook </tag>
             
-            <tag> microsoft </tag>
+            <tag> backtracking </tag>
             
             <tag> yelp </tag>
             
@@ -4288,9 +4303,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> easy </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> bit manipulation </tag>
             
@@ -4313,15 +4328,15 @@
       
         <tags>
             
-            <tag> string </tag>
-            
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> string </tag>
             
         </tags>
       
@@ -4342,11 +4357,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -4373,11 +4388,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
             
             <tag> linkedin </tag>
             
@@ -4421,13 +4436,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -4481,13 +4496,13 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> google </tag>
             
         </tags>
       
@@ -4529,17 +4544,17 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
-            <tag> facebook </tag>
+            <tag> array </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> hard </tag>
+            
+            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -4564,21 +4579,21 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
+            <tag> array </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> google </tag>
-            
-            <tag> bfs </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -4651,17 +4666,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> sort </tag>
             
@@ -4684,17 +4699,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
             
+            <tag> array </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
             
             <tag> lyft </tag>
             
@@ -4717,11 +4732,11 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
             
             <tag> array </tag>
+            
+            <tag> hard </tag>
             
             <tag> dp </tag>
             
@@ -4744,11 +4759,11 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
             
             <tag> array </tag>
+            
+            <tag> hard </tag>
             
             <tag> greedy </tag>
             
@@ -4823,9 +4838,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4846,17 +4861,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> linkedin </tag>
             
@@ -4883,9 +4898,9 @@
             
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5118,7 +5133,7 @@
       <title>note-Tree</title>
       <link href="/2018/07/08/note-Tree-Graph/"/>
       <url>/2018/07/08/note-Tree-Graph/</url>
-      <content type="html"><![CDATA[<h1 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h1><ul><li>Complete binary tree:<br>Definition of a complete binary tree from Wikipedia:<br>In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2^h nodes inclusive at the last level h.</li></ul><p><img src="Binary_search_tree_example.gif" alt=""></p><ul><li><p>Specific ordering property:<br>all left descendants &lt;= n &lt; all right descendants. Must be true for all node n.<br>Make sure to check whether if there’s any <code>duplicate</code> value. One definition is <code>no duplication</code>, the other is duplication will be on <code>right</code> or <code>either</code> side.</p></li><li><p>Complete Binary Tree:<br>Every level is filled except for perhaps last level. To the extent that the last level is filled, it is filled left to right.<br><img src="completetree.png" alt=""></p></li><li><p>Full Binary Tree<br>A full binary tree is every node has either zero or two children. That is, no nodes have only one children.</p></li><li><p>Perfect Binary Tree<br>Both full and complete. All leaf nodes are on same level, and this level have maximum nodes. Have exactly <code>2^h -1</code> nodes, h is number of levels(height).</p></li><li><p>Trie(Prefix Trees)<br>Each path down the tree would represent a word. Normally, have a <code>* node</code>(sometimes called <code>null node</code>)</p></li></ul><h1 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h1><ul><li>Adjacent list</li></ul><ul><li>Union-Find</li></ul><p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Disjoint-set_data_structure</a><br><a href="https://www.geeksforgeeks.org/union-find/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/union-find/</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h1><ul><li>Complete binary tree:<br>Definition of a complete binary tree from Wikipedia:<br>In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2^h nodes inclusive at the last level h.</li></ul><p><img src="Binary_search_tree_example.gif" alt=""></p><ul><li><p>Specific ordering property:<br>all left descendants &lt;= n &lt; all right descendants. Must be true for all node n.<br>Make sure to check whether if there’s any <code>duplicate</code> value. One definition is <code>no duplication</code>, the other is duplication will be on <code>right</code> or <code>either</code> side.</p></li><li><p>Complete Binary Tree:<br>Every level is filled except for perhaps last level. To the extent that the last level is filled, it is filled left to right.<br><img src="completetree.png" alt=""></p></li><li><p>Full Binary Tree<br>A full binary tree is every node has either zero or two children. That is, no nodes have only one children.</p></li><li><p>Perfect Binary Tree<br>Both full and complete. All leaf nodes are on same level, and this level have maximum nodes. Have exactly <code>2^h -1</code> nodes, h is number of levels(height).</p></li><li><p>Trie(Prefix Trees)<br>Each path down the tree would represent a word. Normally, have a <code>* node</code>(sometimes called <code>null node</code>)</p></li></ul><h1 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h1><ul><li>Adjacent list</li></ul><ul><li>Union-Find</li></ul><p><a href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Disjoint-set_data_structure</a><br><a href="https://www.geeksforgeeks.org/union-find/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/union-find/</a></p><p>4- 2<br>1- 5 - 2</p><pre><code>- 3</code></pre>]]></content>
       
       <categories>
           
@@ -5158,9 +5173,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -5185,9 +5200,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> partition </tag>
             
@@ -5212,11 +5227,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5237,17 +5252,17 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> microsoft </tag>
             
-            <tag> google </tag>
-            
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> google </tag>
             
             <tag> binary search </tag>
             
@@ -5270,11 +5285,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -5297,11 +5312,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> heap </tag>
             
@@ -5351,11 +5366,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5403,11 +5418,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5428,11 +5443,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5453,13 +5468,13 @@
       
         <tags>
             
-            <tag> string </tag>
-            
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> string </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -5482,9 +5497,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5619,9 +5634,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5644,9 +5659,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5667,19 +5682,19 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> apple </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> apple </tag>
             
         </tags>
       
@@ -6000,11 +6015,11 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> string </tag>
             
             <tag> math </tag>
             
@@ -6158,11 +6173,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -6185,11 +6200,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -6214,11 +6229,11 @@
       
         <tags>
             
-            <tag> string </tag>
+            <tag> amazon </tag>
             
             <tag> facebook </tag>
             
-            <tag> amazon </tag>
+            <tag> string </tag>
             
             <tag> two pointers </tag>
             
@@ -6272,11 +6287,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
             
             <tag> array </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -6326,8 +6341,6 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
@@ -6335,6 +6348,8 @@
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -6355,8 +6370,6 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
@@ -6364,6 +6377,8 @@
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -6467,11 +6482,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> array </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6492,11 +6507,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6517,8 +6532,6 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
@@ -6526,6 +6539,8 @@
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -6546,8 +6561,6 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
@@ -6555,6 +6568,8 @@
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -6575,8 +6590,6 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
@@ -6584,6 +6597,8 @@
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -6679,13 +6694,13 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
             
             <tag> array </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -6862,19 +6877,19 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> google </tag>
-            
             <tag> medium </tag>
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
+            <tag> microsoft </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -6995,17 +7010,17 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
             
+            <tag> array </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> amazon </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
             
             <tag> two pointers </tag>
             
@@ -7028,11 +7043,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -7055,15 +7070,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -7086,13 +7101,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -7113,13 +7128,13 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
             
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> snapchat </tag>
             
@@ -7142,15 +7157,15 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> apple </tag>
-            
             <tag> leetcode </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
+            
+            <tag> apple </tag>
             
             <tag> airbnb </tag>
             
@@ -7173,15 +7188,15 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> array </tag>
             
             <tag> stack </tag>
             
-            <tag> array </tag>
+            <tag> facebook </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> hash table </tag>
             
@@ -7204,13 +7219,13 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> array </tag>
             
             <tag> stack </tag>
             
-            <tag> array </tag>
+            <tag> hard </tag>
             
         </tags>
       
@@ -7231,13 +7246,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
@@ -7247,7 +7262,7 @@
       <title>companylist</title>
       <link href="/2018/04/20/companylist/"/>
       <url>/2018/04/20/companylist/</url>
-      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7 reject<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>  Charles Schwab: 1/3 received email, 1/16 1st round hr screen, wait for March round over, 2/22 sent email check, 3/11 should hear back<br>  Goldman Sachs: 1/28 hr phone, 2/7 sent email check, 2/22 sent email check<br>  JPMorgan Chase: 1/25 received OA, 2/7 hr phone, not responded and called<br>  ARM: 2/5 received OA,<br>  Fujitsu: 2/4 campus interview,<br>  Expedia: 1/18 ask refer, 2/5 submit application<br>  L3: 2/12 phone interview, 2/28 onsite<br>  Facebook/Instagram: Vlad referred on 2/20, should hear back 2/27<br>  Google: phone interview on end of March, onsite maybe begin of April<br>  Ultimate Software: 2/26 hr phone,<br>  Viasat: hr email 2/20, 3/1 hr phone<br>  Amazon: 2/21 received OA</p><p>Rejected:<br>Cerner: 2/4 ask refer and submit, reject<br>Rally Health new grad, reject<br>Capsher: 1/23 career, 1/29 manager phone, reject<br>VISA: 10/9 received OA(3 day limitation), 10/12 finished OA,<br>TwoSigma: 10/2 received OA, 10/16 hr screen, reject<br>Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview,reject<br>Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite, reject<br>SAS: 11/4 received bq online</p><p>1/17<br>asked refer<br><a href="https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn" target="_blank" rel="noopener">https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn</a><br>google intern submit</p><p>1/18<br><a href="https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin" target="_blank" rel="noopener">https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin</a></p><p>1/19<br>Affirm<br><a href="https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802" target="_blank" rel="noopener">https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802</a><br>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
+      <content type="html"><![CDATA[<p>——已推——</p><p>  Walmart Sam’s Club Technology 8/14, 8/29 tech interview<br>  <a href="https://goo.gl/BWxxLS" target="_blank" rel="noopener">https://goo.gl/BWxxLS</a></p><p>  FB, 8/15, 8/17 recruiter, 8/27 phone interview, 8/28 notify onsite, 9/24 onsite<br>  <a href="https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook" target="_blank" rel="noopener">https://www.facebook.com/careers/life/preparing-for-your-software-engineering-interview-at-facebook</a><br>  <a href="http://www.1point3acres.com/bbs/thread-435755-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-435755-1-1.html</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LCQMWUA5/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1H00000LBiNYUA1/</a><br>  <a href="https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/" target="_blank" rel="noopener">https://www.facebook.com/careers/jobs/a0I1200000JA4R2EAL/</a></p><p>  Amazon, 8/16, 8/17 confirm letter, 8/24 application information completed and submitted, 9/3 OA-9/16, 9/10 part II submitted. 12/7 reject<br>  kevin lai<br>  <a href="https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697789/2019-software-development-engineer-united-states</a><br>  <a href="https://www.amazon.jobs/zh/jobs/678630/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/678630/software-development-engineer</a><br>  <a href="https://www.amazon.jobs/zh/jobs/697755/software-development-engineer" target="_blank" rel="noopener">https://www.amazon.jobs/zh/jobs/697755/software-development-engineer</a><br>  <a href="https://www.amazonuniversity.jobs/dashboard" target="_blank" rel="noopener">https://www.amazonuniversity.jobs/dashboard</a></p><p>  airbnb, 8/19, 8/21 reply will refer later, 8/27 refer<br>  <a href="https://goo.gl/koXpJ8" target="_blank" rel="noopener">https://goo.gl/koXpJ8</a></p><p>  VMWare propel program, 8/19, 9/1 refer<br>  <a href="https://goo.gl/Xguhhv" target="_blank" rel="noopener">https://goo.gl/Xguhhv</a></p><p>  Dropbox, 8/21<br>  <a href="https://goo.gl/h4dK78" target="_blank" rel="noopener">https://goo.gl/h4dK78</a><br>  <a href="https://www.dropbox.com/jobs/listing/1234094" target="_blank" rel="noopener">https://www.dropbox.com/jobs/listing/1234094</a><br>  9/1<br>  <a href="https://goo.gl/uHtGES" target="_blank" rel="noopener">https://goo.gl/uHtGES</a></p><p>  Microsoft, 8/24<br>  <a href="https://goo.gl/HTHD7h" target="_blank" rel="noopener">https://goo.gl/HTHD7h</a></p><p>  Twitter, 8/24, 9/12 OA received<br>  <a href="https://careers.twitter.com/en/university.html" target="_blank" rel="noopener">https://careers.twitter.com/en/university.html</a></p><p>  Bloomberg, 8/25, 8/28 reply and submitted application<br>  <a href="https://goo.gl/9XyYFh" target="_blank" rel="noopener">https://goo.gl/9XyYFh</a></p><p>  Linkedin, 8/27, OA received<br>  <a href="http://www.1point3acres.com/bbs/thread-439285-1-1.html" target="_blank" rel="noopener">http://www.1point3acres.com/bbs/thread-439285-1-1.html</a><br>  9/1<br>  <a href="https://goo.gl/bb75hg" target="_blank" rel="noopener">https://goo.gl/bb75hg</a></p><p>  Google, 8/28, 9/2 apply<br>  Chiawei</p><p>  Lockheed Martin, 9/4 career fair, 9/5 into pool should hear back in next week or 10 days. Check on 9/12</p><p>  Apple<br>  <a href="https://goo.gl/1NSyKy" target="_blank" rel="noopener">https://goo.gl/1NSyKy</a></p><p>  Box: wait for 2019 new grad position<br>  <a href="https://www.box.com/careers/open-positions" target="_blank" rel="noopener">https://www.box.com/careers/open-positions</a></p><p>  IBM: recruiter contacted, hr call 10/31<br>  IBM 188447BR : Linux Networking Engineer EP</p><p>  Charles Schwab: 1/3 received email, 1/16 1st round hr screen, wait for March round over, 2/22 sent email check, 3/11 should hear back<br>  Goldman Sachs: 1/28 hr phone, 2/7 sent email check, 2/22 sent email check<br>  JPMorgan Chase: 1/25 received OA, 2/7 hr phone, not responded and called<br>  ARM: 2/5 received OA,<br>  Fujitsu: 2/4 campus interview,<br>  Expedia: 1/18 ask refer, 2/5 submit application<br>  L3: 2/12 phone interview, 2/28 onsite<br>  Facebook/Instagram: Vlad referred on 2/20, should hear back 2/27<br>  Google: phone interview on end of March, onsite maybe begin of April<br>  Ultimate Software: 2/26 hr phone,<br>  Viasat: hr email 2/20, 3/1 hr phone<br>  Amazon: 2/21 received OA, 2/25 finished OA</p><p>Rejected:<br>Cerner: 2/4 ask refer and submit, reject<br>Rally Health new grad, reject<br>Capsher: 1/23 career, 1/29 manager phone, reject<br>VISA: 10/9 received OA(3 day limitation), 10/12 finished OA,<br>TwoSigma: 10/2 received OA, 10/16 hr screen, reject<br>Mathworks: 10/10 submit application, 10/11 hm contact, 10/17 1st phone interview,reject<br>Citrix: 10/21 recruiter contacted from linkedin, 10/30 received schedule karat interview, 11/6 first phone interview, 11/30 onsite, reject<br>SAS: 11/4 received bq online</p><p>1/17<br>asked refer<br><a href="https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn" target="_blank" rel="noopener">https://boards.greenhouse.io/thumbtack/jobs/38623?t=grtm7q&amp;s=LinkedIn&amp;source=LinkedIn</a><br>google intern submit</p><p>1/18<br><a href="https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin" target="_blank" rel="noopener">https://usaajobs.com/search/jobdetails/servicenow-developer---entry-level/3d887ad7-343e-4844-a9fe-f6f939ea257d?s_cid=linkedin</a></p><p>1/19<br>Affirm<br><a href="https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802" target="_blank" rel="noopener">https://www.1point3acres.com/bbs/forum.php?mod=viewthread&amp;tid=472841#pid5505802</a><br>——未推——<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">| Tier | company   | where found                                            | email                             | job search | freeze   | remark |</span><br><span class="line">|------|-----------|--------------------------------------------------------|-----------------------------------|------------|----------|--------|</span><br><span class="line">| 1    | Google    | https://goo.gl/Wp6XDs                                  | emily.ggrefer@gmail.com           |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/ihocNf                                  | lgrefer78@gmail.com               |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Facebook  | https://goo.gl/MkCvdg                                  | fancyusc@gmail.com                |            | 6/21 end |        |</span><br><span class="line">|      |           | https://goo.gl/N9CjJA                                  | facebooksde@gmail.com             |            |          |        |</span><br><span class="line">|      |           | http://www.1point3acres.com/bbs/thread-429788-1-1.html | fbreferral.anyposition@gmail.com  |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Linkedin  | https://goo.gl/5ovfPo                                  |                                   |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/jsafs7                                  | lkndreferral@gmail.com            |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Microsoft | https://goo.gl/q6AzJm                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Amazon    | https://goo.gl/8jBf3T,                                 | infinity.730@outlook.com          |            |          |        |</span><br><span class="line">|      |           | https://goo.gl/Kga1fu                                  | referalamazon65@gmail.com         |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Apple     |                                                        |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | VMWare    | https://goo.gl/jD8siQ                                  |                                   |            |          |        |</span><br><span class="line">|      |           |                                                        |                                   |            |          |        |</span><br><span class="line">|      | Dropbox   | https://goo.gl/vw1cQW                                  | diuhezi@gmail.com                 |            |          | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company  | where found            | email                       | job search | freeze | remark |</span><br><span class="line">|------|----------|------------------------|-----------------------------|------------|--------|--------|</span><br><span class="line">| 2    | Paypal   | https://goo.gl/3X5odc  | paypal.refer.2018@gmail.com |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Adobe    | https://goo.gl/yAVixp  |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Airbnb   | https://goo.gl/z8k4st  | referralairbnb@gmail.com    |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Uber     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Lyft     |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Docker   |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Whatsapp |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Netflix  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Twitter  |                        |                             |            |        |        |</span><br><span class="line">|      |          |                        |                             |            |        |        |</span><br><span class="line">|      | Snapchat |                        |                             |            |        | -      |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">| Tier | company                       | where found                                            | email                       | job search                     | freeze | remark |</span><br><span class="line">|------|-------------------------------|--------------------------------------------------------|-----------------------------|--------------------------------|--------|--------|</span><br><span class="line">| 3    | Chase                         | https://goo.gl/ZEdmuV                                  | jpmc.referral815@gmail.com. | https://jobs.jpmorganchase.com |        |        |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Upgrade Inc. series A funding | https://goo.gl/sGnrqF                                  | yrefer18@gmail.com          | https://jobs.lever.co/upgrade  |        | fitech |</span><br><span class="line">|      |                               |                                                        |                             |                                |        |        |</span><br><span class="line">|      | Morganstanley                 | http://www.1point3acres.com/bbs/thread-429994-1-1.html | morganrefer@gmail.com       |                                |        | -      |</span><br></pre></td></tr></table></figure></p><p>Lyft<br>Google</p><p>Apple<br>eBay<br>SAP<br>Oracle<br>Linkedin<br>cisco<br>snapchat</p><p>salesforce<br>2 sigma</p><p>zenefits<br>zulily<br>trip advisor<br>Nutanix<br>Zillow<br>yahoo(oath)<br>cloudra<br>Yelp<br>eBay<br>citadel<br>Rubrik<br>QUACOMM<br>squre<br>VMware</p><p>houzz<br>wepay<br>Akamia<br>Zillow<br>coursera<br>pocket gems</p><p>Quora<br>Pinterest<br>Wish<br>twillo</p><p>Arista<br>spotify<br>Stripe<br>Robinhood<br>Netflix<br>Slack<br>tasla<br>samsung<br>hulu<br>indeed<br>Priceline<br>OpenTable<br>looking glass<br>AppDyanmics(好像沒有ＮＥＷ＿ＧＲＡＤ)<br>box<br>citrix</p><p>go daddy<br>Nvidia<br>Palantir<br>SAP<br>3Ｍ<br>groupon<br>ＩＸＬ<br>intuit<br>Expedia<br>  <a href="https://goo.gl/u3h63v" target="_blank" rel="noopener">https://goo.gl/u3h63v</a>, <a href="mailto:expediarefer@gmail.com" target="_blank" rel="noopener">expediarefer@gmail.com</a></p><p>Chase<br>  <a href="https://goo.gl/fiYPPx" target="_blank" rel="noopener">https://goo.gl/fiYPPx</a> <a href="mailto:jpmc.referral815@gmail.com" target="_blank" rel="noopener">jpmc.referral815@gmail.com</a></p>]]></content>
       
       
         <tags>
@@ -7368,8 +7383,8 @@
     
     <entry>
       <title>Space complexity between recursion and iterative</title>
-      <link href="/2018/03/28/Space%20complexity/"/>
-      <url>/2018/03/28/Space%20complexity/</url>
+      <link href="/2018/03/27/Space%20complexity/"/>
+      <url>/2018/03/27/Space%20complexity/</url>
       <content type="html"><![CDATA[<p>Basically, a recursive algorithm will add overhead since you store recursive calls in the execution stack.</p><p>But if the recursive function is  <strong>the last line of the call (tail recursion)</strong> then there is no additional penalty.</p><p>That is of course both algorithms are the same.</p><p><strong><em>Space complexity in Merge-sort</em></strong></p><p>Reference:<br><a href="https://www.codeproject.com/Articles/21194/Iterative-vs-Recursive-Approaches" target="_blank" rel="noopener">https://www.codeproject.com/Articles/21194/Iterative-vs-Recursive-Approaches</a><br><a href="https://stackoverflow.com/questions/10821059/space-complexity-of-recursive-algorithm" target="_blank" rel="noopener">https://stackoverflow.com/questions/10821059/space-complexity-of-recursive-algorithm</a><br><a href="https://en.wikipedia.org/wiki/Tail_call" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Tail_call</a><br><a href="https://goo.gl/JY6o7o" target="_blank" rel="noopener">https://goo.gl/JY6o7o</a></p>]]></content>
       
       <categories>
@@ -7391,8 +7406,8 @@
     
     <entry>
       <title>How to setup a webpage</title>
-      <link href="/2018/03/25/how%20to%20setup%20webpage/"/>
-      <url>/2018/03/25/how%20to%20setup%20webpage/</url>
+      <link href="/2018/03/24/how%20to%20setup%20webpage/"/>
+      <url>/2018/03/24/how%20to%20setup%20webpage/</url>
       <content type="html"><![CDATA[<p>It’s not that familiar for me, who basically use c++ and python, to setup a website. So I checked some options, and decided to use Hexo.<br>Setting up website through Hexo is pretty simple, which I believe can be done in half an hour. Let’s begin.</p><p>My Environment:<br>Mac Sierra: 10.12.6<br>NodeJS: v8.10.0<br>Git: git version 2.10.1 (Apple Git-78)</p><h2 id="Download-package"><a href="#Download-package" class="headerlink" title="Download package"></a>Download package</h2><p>First of all, the Hexo is based on two packages, NodeJS and Git. For those who don’t have/don’t know if you have these two packages, you can use the following commands on your terminal to check.</p><p>I follow the original steps of these installations. </p><h3 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure><p>if you don’t have NodeJS installed on you machine, you can go download it through this site.<br><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p><h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git version</span><br></pre></td></tr></table></figure><p>if you don’t have Git installed on you machine, you can go download it through this site.<br><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p><h3 id="Hexo-Installation"><a href="#Hexo-Installation" class="headerlink" title="Hexo Installation"></a>Hexo Installation</h3><p>To install hexo, we need to use node project manager to download it. I had permission error, so I use sudo to fix it. </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure><h2 id="Create-webpage"><a href="#Create-webpage" class="headerlink" title="Create webpage"></a>Create webpage</h2><h3 id="Create-new-project"><a href="#Create-new-project" class="headerlink" title="Create new project"></a>Create new project</h3><p>After successfully install hexo, you should be able to create your own project. Here, I use “hexo_tmp” as the project name</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init hexo_tmp</span><br></pre></td></tr></table></figure><h3 id="Create-new-web-page"><a href="#Create-new-web-page" class="headerlink" title="Create new web page"></a>Create new web page</h3><p>Check the source_posts folder, add a markdown file, and you’re good to go.</p><h2 id="Publish-the-webpage-on-github"><a href="#Publish-the-webpage-on-github" class="headerlink" title="Publish the webpage on github"></a>Publish the webpage on github</h2><p>Each github account can publish a webpage use github pages. The following steps would help you setup the webpage on github. </p><ol><li>Create github repository</li><li>Change configuration in hexo</li><li>Public the data to github</li></ol><h3 id="Create-github-repository"><a href="#Create-github-repository" class="headerlink" title="Create github repository"></a>Create github repository</h3><p>Login to you github and create a new repository like this. Notice that each account only have one free github page, and the name is restricted to “username.github.io”<br>The following picture is screenshot after I created the blog, so you should be okay to create a repository like this.</p><p><img src="github1.png" alt=""></p><h3 id="Change-configuration-in-hexo"><a href="#Change-configuration-in-hexo" class="headerlink" title="Change configuration in hexo"></a>Change configuration in hexo</h3><p>The most frequently used file in hexo should be “hexofolder/_config.yml”<br>You should be able to find these two parts of code in your _config.yml. Change the “username” to your account name.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">url: https://username.github.io</span><br><span class="line">#root:</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure><h3 id="Public-the-data-to-github"><a href="#Public-the-data-to-github" class="headerlink" title="Public the data to github"></a>Public the data to github</h3><p>Finish above steps, you are on step to publish you website. Type the following command and you can see your website on <a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></p>]]></content>
       
       <categories>
