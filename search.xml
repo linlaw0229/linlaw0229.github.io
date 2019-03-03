@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>890. Find and Replace Pattern</title>
+      <link href="/2019/03/03/890-Find-and-Replace-Pattern/"/>
+      <url>/2019/03/03/890-Find-and-Replace-Pattern/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You have a list of words and a pattern, and you want to know which words in words matches the pattern.</p><p>A word matches the pattern if there exists a permutation of letters p so that after replacing every letter x in the pattern with p(x), we get the desired word.</p><p>(Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.)</p><p>Return a list of the words in words that match the given pattern. </p><p>You may return the answer in any order.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;abc&quot;,&quot;deq&quot;,&quot;mee&quot;,&quot;aqq&quot;,&quot;dkd&quot;,&quot;ccc&quot;], pattern = &quot;abb&quot;</span><br><span class="line">Output: [&quot;mee&quot;,&quot;aqq&quot;]</span><br><span class="line">Explanation: &quot;mee&quot; matches the pattern because there is a permutation &#123;a -&gt; m, b -&gt; e, ...&#125;. </span><br><span class="line">&quot;ccc&quot; does not match the pattern because &#123;a -&gt; c, b -&gt; c, ...&#125; is not a permutation,</span><br><span class="line">since a and b map to the same letter.</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>1 &lt;= words.length &lt;= 50<br>1 &lt;= pattern.length = words[i].length &lt;= 20</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>build a function that can normalize the string into a same form.<br>if a word appears the first time, then we mark it as the size of string in the map.<br>Since all same pattern would have new letter in the same position, after normalize, they’ll become same word.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; findAndReplacePattern(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words, <span class="built_in">string</span> p) &#123;</span><br><span class="line">        <span class="comment">//normalize words into same patter</span></span><br><span class="line">        <span class="comment">//ex: ppood -&gt; aabbc, qqwwf -&gt; aabbc</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> w: words)&#123;</span><br><span class="line">            <span class="keyword">if</span>(normalize(w) == normalize(p)) res.push_back(w);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">normalize</span><span class="params">(<span class="built_in">string</span> w)</span></span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: w) <span class="keyword">if</span>(!<span class="built_in">map</span>.count(c)) <span class="built_in">map</span>[c]= <span class="built_in">map</span>.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; w.length(); i++) </span><br><span class="line">            w[i]= <span class="string">'a'</span>+ <span class="built_in">map</span>[w[i]];</span><br><span class="line">        <span class="keyword">return</span> w;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n*m)$<br>space complexity: $O(1)$<br>reference:<br><a href="https://goo.gl/M1DEku" target="_blank" rel="noopener">https://goo.gl/M1DEku</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>489. Robot Room Cleaner</title>
       <link href="/2019/03/02/489-Robot-Room-Cleaner/"/>
       <url>/2019/03/02/489-Robot-Room-Cleaner/</url>
