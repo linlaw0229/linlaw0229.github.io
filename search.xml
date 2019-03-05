@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>853. Car Fleet</title>
+      <link href="/2019/03/04/853-Car-Fleet/"/>
+      <url>/2019/03/04/853-Car-Fleet/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p><code>N</code> cars are going to the same destination along a one lane road.  The destination is target miles away.</p><p>Each car <code>i</code> has a constant speed <code>speed[i]</code> (in miles per hour), and initial position <code>position[i]</code> miles towards the target along the road.</p><p>A car can never pass another car ahead of it, but it can catch up to it, and drive bumper to bumper at the same speed.</p><p>The distance between these two cars is ignored - they are assumed to have the same position.</p><p>A car fleet is some non-empty set of cars driving at the same position and same speed.  Note that a single car is also a car fleet.</p><p>If a car catches up to a car fleet right at the destination point, it will still be considered as one car fleet.</p><p>How many car fleets will arrive at the destination?</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">The cars starting at 10 and 8 become a fleet, meeting each other at 12.</span><br><span class="line">The car starting at 0 doesn&apos;t catch up to any other car, so it is a fleet by itself.</span><br><span class="line">The cars starting at 5 and 3 become a fleet, meeting each other at 6.</span><br><span class="line">Note that no other cars meet these fleets before the destination, so the answer is 3.</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>0 &lt;= N &lt;= 10 ^ 4<br>0 &lt; target &lt;= 10 ^ 6<br>0 &lt; speed[i] &lt;= 10 ^ 6<br>0 &lt;= position[i] &lt; target<br>All initial positions are different.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The mean idea is to determine what time for each car would get to the <code>target</code>. Also, need to sort the car in a descending order. The reason is, car close to <code>target</code> at original <code>position</code> would block other following cars and make a fleet.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">carFleet</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; position, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; speed)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">double</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; position.size(); i++)</span><br><span class="line">            <span class="built_in">map</span>[-position[i]] = (<span class="keyword">double</span>)(target-position[i])/speed[i];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> fleet= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> time= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> m: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(m.second&gt; time)</span><br><span class="line">                fleet++, time= m.second;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fleet;</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">carFleet</span><span class="params">(<span class="keyword">int</span> target, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; position, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; speed)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; cars;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; position.size(); i++)</span><br><span class="line">            cars.push_back(&#123;position[i], speed[i]&#125;);</span><br><span class="line">        </span><br><span class="line">        sort(cars.begin(), cars.end());</span><br><span class="line">        <span class="built_in">stack</span>&lt;<span class="keyword">double</span>&gt; stk;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= cars.size()<span class="number">-1</span>; i&gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">            <span class="keyword">double</span> tmp= (<span class="keyword">double</span>)(target-cars[i].first)/cars[i].second;</span><br><span class="line">            <span class="keyword">if</span>(stk.empty() || tmp &gt; stk.top())</span><br><span class="line">                stk.push(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stk.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>855. Exam Room</title>
       <link href="/2019/03/04/855-Exam-Room/"/>
       <url>/2019/03/04/855-Exam-Room/</url>
@@ -5227,9 +5252,9 @@
             
             <tag> binary search tree </tag>
             
-            <tag> complete binary tree </tag>
-            
             <tag> binary tree </tag>
+            
+            <tag> complete binary tree </tag>
             
         </tags>
       
@@ -6503,8 +6528,6 @@
       
         <tags>
             
-            <tag> binary tree </tag>
-            
             <tag> Tree </tag>
             
             <tag> tree traversal </tag>
@@ -6514,6 +6537,8 @@
             <tag> inorder </tag>
             
             <tag> postorder </tag>
+            
+            <tag> binary tree </tag>
             
         </tags>
       
