@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>939. Minimum Area Rectangle</title>
+      <link href="/2019/03/06/939-Minimum-Area-Rectangle/"/>
+      <url>/2019/03/06/939-Minimum-Area-Rectangle/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a set of points in the xy-plane, determine the minimum area of a rectangle formed from these points, with sides parallel to the x and y axes.</p><p>If there isn’t any rectangle, return 0.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[1,3],[3,1],[3,3],[2,2]]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[1,3],[3,1],[3,3],[4,1],[4,3]]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>1 &lt;= points.length &lt;= 500<br>0 &lt;= points[i][0] &lt;= 40000<br>0 &lt;= points[i][1] &lt;= 40000<br>All points are distinct.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minAreaRect</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> minarea= INT_MAX;</span><br><span class="line">        <span class="built_in">set</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; pointSet;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> point: points)</span><br><span class="line">            pointSet.insert(make_pair(point[<span class="number">0</span>], point[<span class="number">1</span>]));</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; points.size()<span class="number">-1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= i+<span class="number">1</span>; j&lt; points.size(); j++)&#123;</span><br><span class="line">                <span class="comment">//points[i]</span></span><br><span class="line">                <span class="comment">//points[j]</span></span><br><span class="line">                <span class="keyword">int</span> x1= points[i][<span class="number">0</span>], y1= points[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">int</span> x2= points[j][<span class="number">0</span>], y2= points[j][<span class="number">1</span>];</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span>(x1!=x2 &amp;&amp; y1!=y2 &amp;&amp; x1!=y2 &amp;&amp; x2!=y1)</span><br><span class="line">                    <span class="keyword">if</span>(pointSet.count(&#123;x1, y2&#125;) &amp;&amp; pointSet.count(&#123;x2, y1&#125;))&#123;</span><br><span class="line">                        minarea= min(minarea, <span class="built_in">abs</span>((x2-x1)*(y2-y1)));</span><br><span class="line">                    &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> minarea == INT_MAX? <span class="number">0</span>: minarea;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(n^2)$<br>space complexity: $O(n)$<br>reference:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> hash table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>833. Find And Replace in String</title>
       <link href="/2019/03/06/833-Find-And-Replace-in-String/"/>
       <url>/2019/03/06/833-Find-And-Replace-in-String/</url>
@@ -2669,9 +2694,9 @@
             
             <tag> uber </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -2739,9 +2764,9 @@
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -7014,9 +7039,9 @@
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
