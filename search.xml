@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>833. Find And Replace in String</title>
+      <link href="/2019/03/06/833-Find-And-Replace-in-String/"/>
+      <url>/2019/03/06/833-Find-And-Replace-in-String/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>To some string S, we will perform some replacement operations that replace groups of letters with new ones (not necessarily the same size).</p><p>Each replacement operation has 3 parameters: a starting index i, a source word x and a target word y.  The rule is that if x starts at position i in the original string S, then we will replace that occurrence of x with y.  If not, we do nothing.</p><p>For example, if we have S = “abcd” and we have some replacement operation i = 2, x = “cd”, y = “ffff”, then because “cd” starts at position 2 in the original string S, we will replace it with “ffff”.</p><p>Using another example on S = “abcd”, if we have both the replacement operation i = 0, x = “ab”, y = “eee”, as well as another replacement operation i = 2, x = “ec”, y = “ffff”, this second operation does nothing because in the original string S[2] = ‘c’, which doesn’t match x[0] = ‘e’.</p><p>All these operations occur simultaneously.  It’s guaranteed that there won’t be any overlap in replacement: for example, S = “abc”, indexes = [0, 1], sources = [“ab”,”bc”] is not a valid test case.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abcd&quot;, indexes = [0,2], sources = [&quot;a&quot;,&quot;cd&quot;], targets = [&quot;eee&quot;,&quot;ffff&quot;]</span><br><span class="line">Output: &quot;eeebffff&quot;</span><br><span class="line">Explanation: &quot;a&quot; starts at index 0 in S, so it&apos;s replaced by &quot;eee&quot;.</span><br><span class="line">&quot;cd&quot; starts at index 2 in S, so it&apos;s replaced by &quot;ffff&quot;.</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abcd&quot;, indexes = [0,2], sources = [&quot;ab&quot;,&quot;ec&quot;], targets = [&quot;eee&quot;,&quot;ffff&quot;]</span><br><span class="line">Output: &quot;eeecd&quot;</span><br><span class="line">Explanation: &quot;ab&quot; starts at index 0 in S, so it&apos;s replaced by &quot;eee&quot;. </span><br><span class="line">&quot;ec&quot; doesn&apos;t starts at index 2 in the original S, so we do nothing.</span><br></pre></td></tr></table></figure></p><p>Notes:</p><p>0 &lt;= indexes.length = sources.length = targets.length &lt;= 100<br>0 &lt; indexes[i] &lt; S.length &lt;= 1000<br>All characters in given inputs are lowercase letters.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">findReplaceString</span><span class="params">(<span class="built_in">string</span> S, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; indexes, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; sources, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; targets)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; replace;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; indexes.size(); i++)&#123;</span><br><span class="line">            replace.push_back(make_pair(indexes[i], i));</span><br><span class="line">        &#125;</span><br><span class="line">        sort(replace.rbegin(), replace.rend());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: replace)&#123;</span><br><span class="line">            <span class="keyword">int</span> i= n.first;</span><br><span class="line">            <span class="built_in">string</span> s= sources[n.second], t= targets[n.second];</span><br><span class="line">            <span class="keyword">if</span>(S.substr(i, s.length()) == s)</span><br><span class="line">                S= S.substr(<span class="number">0</span>, i)+ t + S.substr(i+s.length());</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> S;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(SN)$<br>space complexity: $O(N)$<br>reference:<br><a href="https://goo.gl/uKL6KV" target="_blank" rel="noopener">https://goo.gl/uKL6KV</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>853. Car Fleet</title>
       <link href="/2019/03/04/853-Car-Fleet/"/>
       <url>/2019/03/04/853-Car-Fleet/</url>
@@ -2644,9 +2669,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -2714,9 +2739,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -6989,9 +7014,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
