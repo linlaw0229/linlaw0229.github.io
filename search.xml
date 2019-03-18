@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>pair bike and pedestrian</title>
+      <link href="/2019/03/14/pair-bike-and-pedestrian/"/>
+      <url>/2019/03/14/pair-bike-and-pedestrian/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>In 2D space, <code>m</code> people, <code>n</code> bikes, with the following conditions</p><ol><li><code>m&lt; n</code></li><li>does not exist two people that have same distance, <code>abs(x1-x2)+abs(y1-y2)</code>, between a bike.</li><li>everyone would find the bike that is the most closest to himself. If a bike is occupied, others can not use it.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OPOBOOP</span><br><span class="line">OOOOOOO</span><br><span class="line">OOOOOOO</span><br><span class="line">OOOOOOO</span><br><span class="line">BOOBOOB</span><br></pre></td></tr></table></figure></li></ol><h3 id="Solution-guidline"><a href="#Solution-guidline" class="headerlink" title="Solution guidline:"></a>Solution guidline:</h3><ol><li>需要跟面试官讨论清楚他需要的最佳匹配是什么</li><li><p>如果是要求全局人车距离最短</p><ol><li>二分图的最佳匹配问题，使用匈牙利算法，参考题目<a href="https://blog.csdn.net/u011721440/article/details/38169201" target="_blank" rel="noopener">https://blog.csdn.net/u011721440/article/details/38169201</a></li><li>发现这里不能使用max flow， 因为这个bipartite is a weighted graph. 参考 <a href="https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm/" target="_blank" rel="noopener">https://www.topcoder.com/community/competitive-programming/tutorials/assignment-problem-and-hungarian-algorithm/</a></li></ol></li><li><p>如果是要求最佳匹配只是给每个人匹配到车，可以用PQ+Map</p></li></ol><h3 id="PQ"><a href="#PQ" class="headerlink" title="PQ"></a>PQ</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unordered_set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BikeMatching</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    BikeMatching(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; graph);</span><br><span class="line">    <span class="comment">//void init();</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">matching</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; people;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; bikes;</span><br><span class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">    priority_queue&lt;pair&lt;<span class="keyword">int</span>, pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&gt; pq;</span><br><span class="line">    <span class="built_in">unordered_set</span>&lt;<span class="keyword">int</span>&gt; visited_man, visited_bike;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">BikeMatching::BikeMatching(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt;&amp; graph)&#123;</span><br><span class="line">    <span class="keyword">if</span>(graph.empty())</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; graph.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; graph[<span class="number">0</span>].size(); j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(graph[i][j] == <span class="string">'O'</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(graph[i][j] == <span class="string">'P'</span>)</span><br><span class="line">                people.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;i, j&#125;);</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(graph[i][j] == <span class="string">'B'</span>)</span><br><span class="line">                bikes.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&#123;i, j&#125;);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"incorrect input\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.size(); i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; bikes.size(); j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> dis = <span class="built_in">abs</span>(people[i][<span class="number">0</span>]- bikes[j][<span class="number">0</span>]) + <span class="built_in">abs</span>(people[i][<span class="number">1</span>] - bikes[j][<span class="number">1</span>]);</span><br><span class="line">            pq.push(make_pair(-dis, make_pair(i, j)));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> BikeMatching::matching()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span>(visited_man.size() != people.size())&#123;</span><br><span class="line">        <span class="keyword">auto</span> tmp = pq.top(); pq.pop();</span><br><span class="line">        <span class="keyword">if</span>(visited_man.count(tmp.second.first) || visited_bike.count(tmp.second.second))</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line"></span><br><span class="line">        visited_man.insert(tmp.second.first);</span><br><span class="line">        visited_bike.insert(tmp.second.second);</span><br><span class="line">        res.push_back(tmp.second);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> r: res)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"people at (%d, %d), pairs with (%d, %d)\n"</span>, people[r.first][<span class="number">0</span>], people[r.first][<span class="number">1</span>], bikes[r.second][<span class="number">0</span>], bikes[r.second][<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt;&gt; graph&#123;</span><br><span class="line">        &#123;<span class="string">'O'</span>, <span class="string">'P'</span>, <span class="string">'O'</span>, <span class="string">'B'</span>, <span class="string">'P'</span>, <span class="string">'O'</span>, <span class="string">'P'</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>&#125;,</span><br><span class="line">        &#123;<span class="string">'B'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'B'</span>, <span class="string">'O'</span>, <span class="string">'O'</span>, <span class="string">'B'</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function">BikeMatching <span class="title">ins</span><span class="params">(graph)</span></span>;</span><br><span class="line">    ins.matching();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br><a href="http://www.cnblogs.com/jackge/archive/2013/05/03/3057028.html" target="_blank" rel="noopener">http://www.cnblogs.com/jackge/archive/2013/05/03/3057028.html</a><br><a href="https://www.careercup.com/question?id=5687196447670272" target="_blank" rel="noopener">https://www.careercup.com/question?id=5687196447670272</a></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>log start</title>
       <link href="/2019/03/13/log-start/"/>
       <url>/2019/03/13/log-start/</url>
@@ -352,9 +373,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -462,9 +483,9 @@
             
             <tag> google </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -708,9 +729,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -735,9 +756,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -764,9 +785,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -945,9 +966,9 @@
             
             <tag> facebook </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
+            
+            <tag> tree </tag>
             
         </tags>
       
@@ -1299,13 +1320,13 @@
             
             <tag> microsoft </tag>
             
-            <tag> tree </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
-            <tag> medium </tag>
-            
             <tag> stack </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -1433,9 +1454,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -1495,11 +1516,11 @@
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
             
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> linkedin </tag>
             
@@ -1605,9 +1626,9 @@
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> heap </tag>
             
@@ -1785,9 +1806,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -1814,9 +1835,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -1864,9 +1885,9 @@
             
             <tag> facebook </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -1893,9 +1914,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -1924,9 +1945,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> stack </tag>
+            
+            <tag> tree </tag>
             
             <tag> linkedin </tag>
             
@@ -2009,9 +2030,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> linked list </tag>
             
@@ -2117,9 +2138,9 @@
             
             <tag> facebook </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -2418,9 +2439,9 @@
             
             <tag> string </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -2711,9 +2732,9 @@
             
             <tag> facebook </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -2767,9 +2788,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> linked list </tag>
             
@@ -2796,9 +2817,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> sort </tag>
             
@@ -2833,9 +2854,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -2903,9 +2924,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -2932,9 +2953,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -2990,9 +3011,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3067,11 +3088,11 @@
             
             <tag> microsoft </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
             
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -3177,9 +3198,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3239,9 +3260,9 @@
             
             <tag> apple </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -3268,9 +3289,9 @@
             
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -3320,9 +3341,9 @@
             
             <tag> facebook </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
+            
+            <tag> tree </tag>
             
             <tag> linked list </tag>
             
@@ -3413,9 +3434,9 @@
             
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -3574,7 +3595,7 @@
       <title>297. Serialize and Deserialize Binary Tree</title>
       <link href="/2018/08/21/297-Serialize-and-Deserialize-Binary-Tree/"/>
       <url>/2018/08/21/297-Serialize-and-Deserialize-Binary-Tree/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.</p><p>Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</p><p>Example: </p><p>You may serialize the following tree:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  1</span><br><span class="line"> / \</span><br><span class="line">2   3</span><br><span class="line">   / \</span><br><span class="line">  4   5</span><br></pre></td></tr></table></figure></p><p>as “[1,2,3,null,null,4,5]”<br>Clarification: The above format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.</p><p>Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea is to use preorder traversal to generate the string and create the tree.</p><ol><li><p>serialize<br>Use stringstream to build the string.<br>Traverse the Tree with preorder traversal<br>Insert empty node as ‘#’, separate the nodes between ‘ ‘.</p></li><li><p>deserialize<br>Since we use preorder to store the tree, use preorder to deserialize it.<br>idea is to use a queue to store all the nodes in data. The istringstream is already a queue and can help to separate string</p></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//searialize</span></span><br><span class="line">    <span class="comment">//Use stringstream to build the string. Traverse the Tree with preorder traversal. insert empty node as '#', separate the nodes between ' '</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//deserialize</span></span><br><span class="line">    <span class="comment">//idea is to use a queue to store all the nodes in data. The istringstream is already a queue and can help to separate string</span></span><br><span class="line">    <span class="comment">//still use preorder traversal</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">serialize</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">ostringstream</span> out;</span><br><span class="line">        serialize(root, out);</span><br><span class="line">        <span class="keyword">return</span> out.str();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">deserialize</span><span class="params">(<span class="built_in">string</span> data)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">istringstream</span> <span class="title">in</span><span class="params">(data)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> deserialize(in);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">serialize</span><span class="params">(TreeNode* root, <span class="built_in">ostringstream</span>&amp; out)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root) &#123;</span><br><span class="line">            out &lt;&lt; root-&gt;val &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            serialize(root-&gt;left, out);</span><br><span class="line">            serialize(root-&gt;right, out);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            out &lt;&lt; <span class="string">"# "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">deserialize</span><span class="params">(<span class="built_in">istringstream</span>&amp; in)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> val;</span><br><span class="line">        in &gt;&gt; val;</span><br><span class="line">        <span class="keyword">if</span> (val == <span class="string">"#"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(stoi(val));</span><br><span class="line">        root-&gt;left = deserialize(in);</span><br><span class="line">        root-&gt;right = deserialize(in);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Codec object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Codec codec;</span></span><br><span class="line"><span class="comment">// codec.deserialize(codec.serialize(root));</span></span><br></pre></td></tr></table></figure><p>time complexity: O(n)</p><p>reference:<br><a href="https://goo.gl/xoE4oD" target="_blank" rel="noopener">https://goo.gl/xoE4oD</a><br><a href="https://goo.gl/Gn3Uc2" target="_blank" rel="noopener">https://goo.gl/Gn3Uc2</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.</p><p>Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</p><p>Example: </p><p>You may serialize the following tree:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  1</span><br><span class="line"> / \</span><br><span class="line">2   3</span><br><span class="line">   / \</span><br><span class="line">  4   5</span><br></pre></td></tr></table></figure></p><p>as “[1,2,3,null,null,4,5]”<br>Clarification: The above format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.</p><p>Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea is to use preorder traversal to generate the string and create the tree.</p><ol><li><p>serialize<br>Use stringstream to build the string.<br>Traverse the Tree with preorder traversal<br>Insert empty node as ‘#’, separate the nodes between ‘ ‘.</p></li><li><p>deserialize<br>Since we use preorder to store the tree, use preorder to deserialize it.<br>idea is to use a queue to store all the nodes in data. The istringstream is already a queue and can help to separate string</p></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//searialize</span></span><br><span class="line">    <span class="comment">//Use stringstream to build the string. Traverse the Tree with preorder traversal. insert empty node as '#', separate the nodes between ' '</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//deserialize</span></span><br><span class="line">    <span class="comment">//idea is to use a queue to store all the nodes in data. The istringstream is already a queue and can help to separate string</span></span><br><span class="line">    <span class="comment">//still use preorder traversal</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">serialize</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">ostringstream</span> out;</span><br><span class="line">        serialize(root, out);</span><br><span class="line">        <span class="keyword">return</span> out.str();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">deserialize</span><span class="params">(<span class="built_in">string</span> data)</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">istringstream</span> <span class="title">in</span><span class="params">(data)</span></span>;</span><br><span class="line">        <span class="keyword">return</span> deserialize(in);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">serialize</span><span class="params">(TreeNode* root, <span class="built_in">ostringstream</span>&amp; out)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root) &#123;</span><br><span class="line">            out &lt;&lt; root-&gt;val &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            serialize(root-&gt;left, out);</span><br><span class="line">            serialize(root-&gt;right, out);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            out &lt;&lt; <span class="string">"# "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">deserialize</span><span class="params">(<span class="built_in">istringstream</span>&amp; in)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> val;</span><br><span class="line">        in &gt;&gt; val;</span><br><span class="line">        <span class="keyword">if</span> (val == <span class="string">"#"</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        TreeNode* root = <span class="keyword">new</span> TreeNode(stoi(val));</span><br><span class="line">        root-&gt;left = deserialize(in);</span><br><span class="line">        root-&gt;right = deserialize(in);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Codec object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Codec codec;</span></span><br><span class="line"><span class="comment">// codec.deserialize(codec.serialize(root));</span></span><br></pre></td></tr></table></figure><p>time complexity: O(n)</p><p>reference:<br><a href="https://goo.gl/xoE4oD" target="_blank" rel="noopener">https://goo.gl/xoE4oD</a><br><a href="https://goo.gl/Gn3Uc2" target="_blank" rel="noopener">https://goo.gl/Gn3Uc2</a></p><h3 id="Solution-2-BFS"><a href="#Solution-2-BFS" class="headerlink" title="Solution 2 BFS:"></a>Solution 2 BFS:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Codec</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Encodes a tree to a single string.</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">serialize</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="string">"#"</span>;</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        res+= to_string(root-&gt;val)+ <span class="string">" "</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            TreeNode* tmp= q.front(); q.pop();</span><br><span class="line">            <span class="keyword">if</span>(!tmp) res+= <span class="string">"# "</span>;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;left == <span class="literal">NULL</span>)</span><br><span class="line">                    res+= <span class="string">"# "</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    q.push(tmp-&gt;left);</span><br><span class="line">                    res+= to_string(tmp-&gt;left-&gt;val)+ <span class="string">" "</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(tmp-&gt;right == <span class="literal">NULL</span>)</span><br><span class="line">                    res+= <span class="string">"# "</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    q.push(tmp-&gt;right);</span><br><span class="line">                    res+= to_string(tmp-&gt;right-&gt;val)+ <span class="string">" "</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt; res&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decodes your encoded data to tree.</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">deserialize</span><span class="params">(<span class="built_in">string</span> data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(data[<span class="number">0</span>] == <span class="string">'#'</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tokens= helper(data, <span class="string">' '</span>);</span><br><span class="line">        <span class="keyword">int</span> i= <span class="number">0</span>;</span><br><span class="line">        TreeNode *root= <span class="keyword">new</span> TreeNode(stoi(tokens[i++]));</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        q.push(root);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            <span class="built_in">queue</span>&lt;TreeNode*&gt; newQ;</span><br><span class="line">            <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">                TreeNode *tmp= q.front(); q.pop();</span><br><span class="line">                <span class="comment">//printf("queue front= %d\n", tmp-&gt;val);</span></span><br><span class="line">                <span class="keyword">if</span>(tokens[i] == <span class="string">"#"</span>)</span><br><span class="line">                    tmp-&gt;left= <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    tmp-&gt;left= <span class="keyword">new</span> TreeNode(stoi(tokens[i]));</span><br><span class="line">                    newQ.push(tmp-&gt;left);</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(tokens[i] == <span class="string">"#"</span>)</span><br><span class="line">                    tmp-&gt;right= <span class="literal">NULL</span>;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    tmp-&gt;right= <span class="keyword">new</span> TreeNode(stoi(tokens[i]));</span><br><span class="line">                    newQ.push(tmp-&gt;right);</span><br><span class="line">                &#125;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            q= newQ;</span><br><span class="line">            <span class="comment">//printf("q size= %d\n", q.size());</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; helper(<span class="built_in">string</span> &amp;data, <span class="keyword">char</span> delimiter)&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; tokens;</span><br><span class="line">        <span class="built_in">string</span> token;</span><br><span class="line">        <span class="function"><span class="built_in">istringstream</span> <span class="title">iss</span><span class="params">(data)</span></span>;</span><br><span class="line">        <span class="keyword">while</span>(getline(iss, token, delimiter))&#123;</span><br><span class="line">            tokens.push_back(token);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//for(auto s: tokens)</span></span><br><span class="line">        <span class="comment">//    cout&lt;&lt;s&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">return</span> tokens;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Your Codec object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment">// Codec codec;</span></span><br><span class="line"><span class="comment">// codec.deserialize(codec.serialize(root));</span></span><br></pre></td></tr></table></figure>]]></content>
       
       <categories>
           
@@ -3651,11 +3672,11 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
             
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -3709,9 +3730,9 @@
             
             <tag> google </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -3945,9 +3966,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -4208,9 +4229,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -4355,11 +4376,11 @@
             
             <tag> apple </tag>
             
-            <tag> easy </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -4415,11 +4436,11 @@
             
             <tag> microsoft </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> tree </tag>
             
             <tag> linkedin </tag>
             
@@ -4994,11 +5015,11 @@
             
             <tag> microsoft </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5100,11 +5121,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> bfs </tag>
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
             
@@ -5158,11 +5179,11 @@
             
             <tag> google </tag>
             
-            <tag> tree </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> tree </tag>
             
             <tag> linkedin </tag>
             
@@ -5185,13 +5206,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
             
-            <tag> easy </tag>
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5212,9 +5233,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> easy </tag>
             
@@ -5237,9 +5258,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> easy </tag>
             
@@ -5262,13 +5283,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5289,9 +5310,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> easy </tag>
             
@@ -5335,9 +5356,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -5358,9 +5379,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
             
@@ -5383,9 +5404,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
             
@@ -5408,11 +5429,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
             <tag> binary search </tag>
             
@@ -5435,9 +5456,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> binary search tree </tag>
             
@@ -5520,9 +5541,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -5578,9 +5599,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> math </tag>
             
@@ -5605,9 +5626,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> heap </tag>
             
@@ -5632,9 +5653,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> binary indexed tree </tag>
             
@@ -5659,9 +5680,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -5682,11 +5703,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
             
@@ -5711,9 +5732,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -5763,9 +5784,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -5788,9 +5809,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5811,11 +5832,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5840,11 +5861,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5869,9 +5890,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> math </tag>
             
@@ -5894,9 +5915,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5925,9 +5946,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5950,9 +5971,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> easy </tag>
-            
             <tag> array </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5979,13 +6000,13 @@
             
             <tag> apple </tag>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6006,11 +6027,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6031,11 +6052,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6056,11 +6077,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
             
@@ -6085,13 +6106,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> tree </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
-            <tag> medium </tag>
+            <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6112,9 +6133,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> sort </tag>
             
@@ -6137,9 +6158,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> greddy </tag>
             
@@ -6162,11 +6183,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6187,9 +6208,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> dfs </tag>
             
@@ -6212,11 +6233,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
             
             <tag> stack </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6308,9 +6329,9 @@
             
             <tag> string </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> math </tag>
             
@@ -6360,9 +6381,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -6410,9 +6431,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -6437,9 +6458,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -6634,9 +6655,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6663,9 +6684,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6690,9 +6711,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6748,9 +6769,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6800,9 +6821,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -6825,9 +6846,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6854,9 +6875,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6883,9 +6904,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6910,9 +6931,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6960,9 +6981,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6987,9 +7008,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7012,9 +7033,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7041,9 +7062,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7066,9 +7087,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7091,9 +7112,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7116,9 +7137,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7141,9 +7162,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7178,9 +7199,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -7226,9 +7247,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7251,9 +7272,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> linked list </tag>
             
@@ -7276,9 +7297,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> linked list </tag>
             
@@ -7305,11 +7326,11 @@
             
             <tag> microsoft </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
             
             <tag> amazon </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7336,9 +7357,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> math </tag>
             
@@ -7367,9 +7388,9 @@
             
             <tag> google </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> math </tag>
             
@@ -7394,11 +7415,11 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
         </tags>
       
@@ -7421,11 +7442,11 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> leetcode </tag>
             
             <tag> snapchat </tag>
             
@@ -7454,9 +7475,9 @@
             
             <tag> apple </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> airbnb </tag>
             
@@ -7483,9 +7504,9 @@
             
             <tag> facebook </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> stack </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7512,9 +7533,9 @@
             
             <tag> hard </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> stack </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
