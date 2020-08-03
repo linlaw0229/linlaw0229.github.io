@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>705. Design HashSet</title>
+      <link href="/2020/08/02/705-Design-HashSet/"/>
+      <url>/2020/08/02/705-Design-HashSet/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design a HashSet without using any built-in hash table libraries.</p><p>To be specific, your design should include these functions:</p><p><code>add(value)</code>: Insert a value into the HashSet.<br><code>contains(value)</code> : Return whether the value exists in the HashSet or not.<br><code>remove(value)</code>: Remove a value in the HashSet. If the value does not exist in the HashSet, do nothing.</p><p>Example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">MyHashSet hashSet = new MyHashSet();</span><br><span class="line">hashSet.add(1);         </span><br><span class="line">hashSet.add(2);         </span><br><span class="line">hashSet.contains(1);    // returns true</span><br><span class="line">hashSet.contains(3);    // returns false (not found)</span><br><span class="line">hashSet.add(2);          </span><br><span class="line">hashSet.contains(2);    // returns true</span><br><span class="line">hashSet.remove(2);          </span><br><span class="line">hashSet.contains(2);    // returns false (already removed)</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>All values will be in the range of <code>[0, 1000000]</code>.<br>The number of operations will be in the range of <code>[1, 10000]</code>.<br>Please do not use the built-in HashSet library.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>I divide this problem into two part:</p><ul><li>hash function</li><li>handle conflict</li></ul><p>I use an intuitive way to implement hash function, find a prime number to be the seed and mod the value to get the key where to store it.<br>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hash seed = 13, this means we have 13 buckets.</span><br><span class="line">val = 40</span><br><span class="line">40 % 13 = 1</span><br><span class="line">so we&apos;ll store 40 in bucket[1]</span><br></pre></td></tr></table></figure></p><p>Then I use linked list to store the nodes in the same buckets. </p><p>Improvement:<br>We should use a bigger prime number, something like <a href="https://www.tutorialspoint.com/c-program-for-find-the-largest-prime-factor-of-a-number" target="_blank" rel="noopener">this</a>. By using a large prime number, the conflict would be lower down. This would make time complexity close to $O(logn)$ by reducing the probability to search node in linked list. </p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span>:</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, val, next)</span>:</span></span><br><span class="line">        self.val = val</span><br><span class="line">        self.next = next</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHashSet</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.size = <span class="number">13</span> <span class="comment"># prime number </span></span><br><span class="line">        self.h = [Node(<span class="keyword">None</span>, <span class="keyword">None</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(self.size)]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, key: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        p = self.h[key % self.size]</span><br><span class="line">        node = p.next</span><br><span class="line">        <span class="keyword">while</span> node:</span><br><span class="line">            <span class="keyword">if</span> node.val == key:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            p = node</span><br><span class="line">            node = node.next</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            p.next = Node(key, <span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, key: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        p = self.h[key % self.size]</span><br><span class="line">        node = p.next</span><br><span class="line">        <span class="keyword">while</span> node:</span><br><span class="line">            <span class="keyword">if</span> node.val == key:</span><br><span class="line">                p.next = node.next</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            p = node</span><br><span class="line">            node = node.next</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">contains</span><span class="params">(self, key: int)</span> -&gt; bool:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns true if this set contains the specified element</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        node = self.h[key % self.size]</span><br><span class="line">        <span class="keyword">while</span> node:</span><br><span class="line">            <span class="keyword">if</span> node.val == key:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            node = node.next</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$, if use a large prime number, could close to $O(logn)$<br>space complexity: $O(n)$<br>reference:<br>related problem:</p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+          <category> hash table </category>
+          
+          <category> design </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>520. Detect Capital</title>
       <link href="/2020/08/01/520-Detect-Capital/"/>
       <url>/2020/08/01/520-Detect-Capital/</url>
@@ -643,9 +668,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -1592,9 +1617,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> stack </tag>
             
@@ -1724,9 +1749,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -2184,9 +2209,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3281,9 +3306,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3468,9 +3493,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -4236,9 +4261,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -4499,9 +4524,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -6104,9 +6129,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> array </tag>
             
@@ -6324,9 +6349,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -6349,9 +6374,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -6380,9 +6405,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
