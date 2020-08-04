@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/08/22/125-Valid-Palindrome/</loc>
+    
+    <lastmod>2020-08-04T03:05:03.566Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2020/08/02/705-Design-HashSet/</loc>
     
     <lastmod>2020-08-03T05:07:48.524Z</lastmod>
@@ -1251,13 +1258,6 @@
     <loc>http://linlaw0229.github.io/2018/08/22/791-Custom-Sort-String/</loc>
     
     <lastmod>2018-08-22T23:37:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/08/22/125-Valid-Palindrome/</loc>
-    
-    <lastmod>2018-08-22T21:12:21.000Z</lastmod>
     
   </url>
   
