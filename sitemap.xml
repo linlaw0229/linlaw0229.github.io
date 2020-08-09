@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/07/09/437-Path-Sum-III/</loc>
+    
+    <lastmod>2020-08-09T00:17:38.321Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2020/08/07/987-Vertical-Order-Traversal-of-a-Binary-Tree/</loc>
     
     <lastmod>2020-08-08T04:46:52.233Z</lastmod>
@@ -1818,13 +1825,6 @@
     <loc>http://linlaw0229.github.io/2018/05/14/413-Arithmetic-Slices/</loc>
     
     <lastmod>2018-07-29T18:04:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/07/09/437-Path-Sum-III/</loc>
-    
-    <lastmod>2018-07-29T18:03:17.000Z</lastmod>
     
   </url>
   
