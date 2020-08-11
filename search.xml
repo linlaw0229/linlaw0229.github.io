@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>171. Excel Sheet Column Number</title>
+      <link href="/2020/08/10/171-Excel-Sheet-Column-Number/"/>
+      <url>/2020/08/10/171-Excel-Sheet-Column-Number/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a column title as appear in an Excel sheet, return its corresponding column number.</p><p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 1</span><br><span class="line">B -&gt; 2</span><br><span class="line">C -&gt; 3</span><br><span class="line">...</span><br><span class="line">Z -&gt; 26</span><br><span class="line">AA -&gt; 27</span><br><span class="line">AB -&gt; 28 </span><br><span class="line">...</span><br></pre></td></tr></table></figure></p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;A&quot;</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;AB&quot;</span><br><span class="line">Output: 28</span><br></pre></td></tr></table></figure></p><p>Example 3:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ZY&quot;</span><br><span class="line">Output: 701</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Constraints:</span><br><span class="line"></span><br><span class="line">`1 &lt;= s.length &lt;= 7`</span><br><span class="line">`s` consists only of uppercase English letters.</span><br><span class="line">`s` is between &quot;A&quot; and &quot;FXSHRXW&quot;.### Solution:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Solution:</span><br><span class="line">```python</span><br><span class="line">class Solution:</span><br><span class="line">    def titleToNumber(self, s: str) -&gt; int:</span><br><span class="line">        s = s[::-1]</span><br><span class="line">        res = 0</span><br><span class="line">        for exp, char in enumerate(s):</span><br><span class="line">            res += 26**exp * (ord(char)-ord(&apos;A&apos;)+1)</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy medium hard </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>994. Rotting Oranges</title>
       <link href="/2020/08/09/994-Rotting-Oranges/"/>
       <url>/2020/08/09/994-Rotting-Oranges/</url>
@@ -1615,9 +1636,9 @@
             
             <tag> array </tag>
             
-            <tag> hash table </tag>
-            
             <tag> design </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -2402,9 +2423,9 @@
             
             <tag> linked list </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> bloomberg </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -3220,9 +3241,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -3290,9 +3311,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -5149,9 +5170,9 @@
             
             <tag> uber </tag>
             
-            <tag> hash table </tag>
-            
             <tag> design </tag>
+            
+            <tag> hash table </tag>
             
             <tag> linkedin </tag>
             
@@ -7565,9 +7586,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
