@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>1286. Iterator for Combination</title>
+      <link href="/2020/08/13/1286-Iterator-for-Combination/"/>
+      <url>/2020/08/13/1286-Iterator-for-Combination/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design an Iterator class, which has:</p><p>A constructor that takes a string <code>characters</code> of sorted distinct lowercase English letters and a number <code>combinationLength</code> as arguments.<br>A function <code>next()</code> that returns the next combination of length <code>combinationLength</code> in lexicographical order.<br>A function <code>hasNext()</code> that returns True if and only if there exists a next combination.</p><p>Example:</p><p>CombinationIterator iterator = new CombinationIterator(“abc”, 2); // creates the iterator.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iterator.next(); // returns &quot;ab&quot;</span><br><span class="line">iterator.hasNext(); // returns true</span><br><span class="line">iterator.next(); // returns &quot;ac&quot;</span><br><span class="line">iterator.hasNext(); // returns true</span><br><span class="line">iterator.next(); // returns &quot;bc&quot;</span><br><span class="line">iterator.hasNext(); // returns false</span><br></pre></td></tr></table></figure></p><p>Constraints:</p><p><code>1 &lt;= combinationLength &lt;= characters.length &lt;= 15</code><br>There will be at most $10^4$ function calls per test.<br>It’s guaranteed that all calls of the function <code>next</code> are valid.</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CombinationIterator</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, characters: str, combinationLength: int)</span>:</span></span><br><span class="line">        self.characters = characters</span><br><span class="line">        self.n = len(characters)</span><br><span class="line">        self.combinations = gen_combinations(self.n, combinationLength)</span><br><span class="line">        self.ind = len(self.combinations) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        s = <span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.n):</span><br><span class="line">            <span class="keyword">if</span> self.combinations[self.ind][i] != <span class="string">"0"</span>:</span><br><span class="line">                s += self.characters[i]</span><br><span class="line">        self.ind -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> s</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span> -&gt; bool:</span></span><br><span class="line">        <span class="keyword">return</span> self.ind &gt; <span class="number">-1</span> </span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gen_combinations</span><span class="params">(l, n)</span>:</span></span><br><span class="line">    end = int(<span class="string">"1"</span> * l, <span class="number">2</span>)</span><br><span class="line">    ans = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(end + <span class="number">1</span>):</span><br><span class="line">        b = bin(i)[<span class="number">2</span>:]</span><br><span class="line">        <span class="keyword">if</span> b.count(<span class="string">'1'</span>) == n:</span><br><span class="line">            ans.append(b.zfill(l))</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your CombinationIterator object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = CombinationIterator(characters, combinationLength)</span></span><br><span class="line"><span class="comment"># param_1 = obj.next()</span></span><br><span class="line"><span class="comment"># param_2 = obj.hasNext()</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> backtracking </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> design </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>274. H-Index</title>
       <link href="/2020/08/11/274-H-Index/"/>
       <url>/2020/08/11/274-H-Index/</url>
@@ -714,9 +739,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -785,9 +810,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -970,9 +995,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -1653,13 +1678,13 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
-            <tag> hash table </tag>
+            <tag> amazon </tag>
             
             <tag> design </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -1926,9 +1951,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -2326,9 +2351,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -2876,9 +2901,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -2943,9 +2968,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -2970,9 +2995,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3022,11 +3047,11 @@
             
             <tag> facebook </tag>
             
+            <tag> array </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -3084,9 +3109,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> union find </tag>
             
@@ -3256,9 +3281,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -3328,9 +3353,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -3423,9 +3448,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -3498,9 +3523,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -3610,9 +3635,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -3784,9 +3809,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4082,9 +4107,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4196,9 +4221,9 @@
             
             <tag> uber </tag>
             
-            <tag> greedy </tag>
-            
             <tag> queue </tag>
+            
+            <tag> greedy </tag>
             
         </tags>
       
@@ -4641,9 +4666,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -4817,9 +4842,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -5191,9 +5216,9 @@
             
             <tag> uber </tag>
             
-            <tag> hash table </tag>
-            
             <tag> design </tag>
+            
+            <tag> hash table </tag>
             
             <tag> linkedin </tag>
             
@@ -5272,9 +5297,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -5311,9 +5336,9 @@
             
             <tag> bfs </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -5394,9 +5419,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> sort </tag>
             
@@ -5427,9 +5452,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> lyft </tag>
             
@@ -5558,9 +5583,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -7738,9 +7763,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -7914,9 +7939,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
             <tag> hash table </tag>
             
@@ -7943,9 +7968,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
