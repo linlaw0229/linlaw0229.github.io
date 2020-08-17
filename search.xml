@@ -96,7 +96,7 @@
       <title>171. Excel Sheet Column Number</title>
       <link href="/2020/08/10/171-Excel-Sheet-Column-Number/"/>
       <url>/2020/08/10/171-Excel-Sheet-Column-Number/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a column title as appear in an Excel sheet, return its corresponding column number.</p><p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 1</span><br><span class="line">B -&gt; 2</span><br><span class="line">C -&gt; 3</span><br><span class="line">...</span><br><span class="line">Z -&gt; 26</span><br><span class="line">AA -&gt; 27</span><br><span class="line">AB -&gt; 28 </span><br><span class="line">...</span><br></pre></td></tr></table></figure></p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;A&quot;</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;AB&quot;</span><br><span class="line">Output: 28</span><br></pre></td></tr></table></figure></p><p>Example 3:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ZY&quot;</span><br><span class="line">Output: 701</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Constraints:</span><br><span class="line"></span><br><span class="line">`1 &lt;= s.length &lt;= 7`</span><br><span class="line">`s` consists only of uppercase English letters.</span><br><span class="line">`s` is between &quot;A&quot; and &quot;FXSHRXW&quot;.### Solution:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Solution:</span><br><span class="line">```python</span><br><span class="line">class Solution:</span><br><span class="line">    def titleToNumber(self, s: str) -&gt; int:</span><br><span class="line">        s = s[::-1]</span><br><span class="line">        res = 0</span><br><span class="line">        for exp, char in enumerate(s):</span><br><span class="line">            res += 26**exp * (ord(char)-ord(&apos;A&apos;)+1)</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a column title as appear in an Excel sheet, return its corresponding column number.</p><p>For example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A -&gt; 1</span><br><span class="line">B -&gt; 2</span><br><span class="line">C -&gt; 3</span><br><span class="line">...</span><br><span class="line">Z -&gt; 26</span><br><span class="line">AA -&gt; 27</span><br><span class="line">AB -&gt; 28 </span><br><span class="line">...</span><br></pre></td></tr></table></figure></p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;A&quot;</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;AB&quot;</span><br><span class="line">Output: 28</span><br></pre></td></tr></table></figure></p><p>Example 3:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ZY&quot;</span><br><span class="line">Output: 701</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Constraints:</span><br><span class="line"></span><br><span class="line">`1 &lt;= s.length &lt;= 7`</span><br><span class="line">`s` consists only of uppercase English letters.</span><br><span class="line">`s` is between &quot;A&quot; and &quot;FXSHRXW&quot;.### Solution:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Solution:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">class Solution:</span><br><span class="line">    def titleToNumber(self, s: str) -&gt; int:</span><br><span class="line">        s = s[::-1]</span><br><span class="line">        res = 0</span><br><span class="line">        for exp, char in enumerate(s):</span><br><span class="line">            res += 26**exp * (ord(char)-ord(&apos;A&apos;)+1)</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
       
       <categories>
           
@@ -448,11 +448,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -958,9 +958,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -1110,9 +1110,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> recursion </tag>
             
@@ -1204,9 +1204,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1231,9 +1231,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1258,11 +1258,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1414,11 +1414,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -1441,9 +1441,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -1533,13 +1533,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> citrix </tag>
             
@@ -1793,11 +1793,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> bfs </tag>
             
@@ -1989,11 +1989,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2045,9 +2045,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -2101,9 +2101,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2281,9 +2281,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2308,11 +2308,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2360,9 +2360,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2447,11 +2447,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -2501,13 +2501,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2588,11 +2588,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -2613,9 +2613,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -2914,9 +2914,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3004,13 +3004,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -3207,9 +3207,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3234,9 +3234,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> bloomberg </tag>
             
@@ -3259,13 +3259,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3290,11 +3290,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3424,13 +3424,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3561,11 +3561,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3592,11 +3592,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -3729,8 +3729,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -3738,6 +3736,8 @@
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3762,11 +3762,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -3816,9 +3816,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3845,13 +3845,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -3905,13 +3905,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3934,11 +3934,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -4017,11 +4017,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -4083,8 +4083,6 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -4092,6 +4090,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -4141,8 +4141,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -4150,6 +4148,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4174,11 +4174,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -4201,13 +4201,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -4416,11 +4416,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -4849,11 +4849,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> easy </tag>
             
             <tag> stack </tag>
             
@@ -4909,11 +4909,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -5092,9 +5092,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> easy </tag>
             
             <tag> bit manipulation </tag>
             
@@ -5146,11 +5146,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -5258,9 +5258,9 @@
             
             <tag> medium </tag>
             
-            <tag> design </tag>
-            
             <tag> uber </tag>
+            
+            <tag> design </tag>
             
             <tag> hash table </tag>
             
@@ -5488,11 +5488,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -5510,7 +5510,7 @@
       <title>123. Best Time to Buy and Sell Stock III</title>
       <link href="/2018/07/23/123-Best-Time-to-Buy-and-Sell-Stock-III/"/>
       <url>/2018/07/23/123-Best-Time-to-Buy-and-Sell-Stock-III/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p><p>Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p><p>Example 1:</p><p>Input: <code>[3,3,5,0,0,3,1,4]</code><br>Output: 6<br>Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.<br>             Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.<br>Example 2:</p><p>Input: <code>[1,2,3,4,5]</code><br>Output: 4<br>Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.<br>             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are<br>             engaging multiple transactions at the same time. You must sell before buying again.<br>Example 3:</p><p>Input: <code>[7,6,4,3,1]</code><br>Output: 0<br>Explanation: In this case, no transaction is done, i.e. max profit = 0.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>this is a relatively easier way to understand this question. </p><ol><li><p>create a 2d array, row is total number of transaction, column is total number of days.<br><img style="width: 100%; height: 100%" src="IMG_5332.jpg"></p></li><li><p>the dp formula is<br><code>T[i][j]= max(T[i][j-1], price[j]-price[m]+ T[i-1][m])</code><br>it means, the maximum profit can get on transaction <code>i</code> in day <code>j</code> should be one of the following one.</p><ol><li><code>T[i][j-1]</code>, the same as previous day, means make no transaction at all.</li><li><code>price[j]-price[m]+ T[i-1][m]</code>, sale the stock bought on day <code>m</code> with the price on day <code>j</code>, and add the previous transaction profit together.</li></ol></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//transaction: k, days: n</span></span><br><span class="line">    <span class="comment">//O(k*n^2)</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> transactions= <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(transactions+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(prices.size(), <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r= <span class="number">1</span>; r&lt; dp.size(); r++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c= <span class="number">1</span>; c&lt; dp[<span class="number">0</span>].size(); c++)&#123;</span><br><span class="line">                <span class="keyword">int</span> maxval= <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> m= <span class="number">0</span>; m&lt; c; m++)&#123;</span><br><span class="line">                    maxval= max(maxval, prices[c]-prices[m]+ dp[r<span class="number">-1</span>][m]);</span><br><span class="line">                &#125;</span><br><span class="line">                dp[r][c]= max(dp[r][c<span class="number">-1</span>], maxval);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[transactions][prices.size()<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>However, the above solution would need many time to calculate. We can use a variable <code>maxdiff</code> to check whether if it’s a good time to sell the stock.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//transaction: k, days: n</span></span><br><span class="line">    <span class="comment">//O(k*n)</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> transactions= <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(transactions+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(prices.size(), <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r= <span class="number">1</span>; r&lt; dp.size(); r++)&#123;</span><br><span class="line">            <span class="keyword">int</span> maxdiff= -prices[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c= <span class="number">1</span>; c&lt; dp[<span class="number">0</span>].size(); c++)&#123;</span><br><span class="line">                dp[r][c]= max(dp[r][c<span class="number">-1</span>], prices[c]+maxdiff);</span><br><span class="line">                maxdiff= max(maxdiff, dp[r<span class="number">-1</span>][c]-prices[c]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[transactions][prices.size()<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://www.youtube.com/watch?v=oDhu5uGq_ic&amp;feature=youtu.be" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oDhu5uGq_ic&amp;feature=youtu.be</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Say you have an array for which the ith element is the price of a given stock on day i.</p><p>Design an algorithm to find the maximum profit. You may complete at most two transactions.</p><p>Note: You may not engage in multiple transactions at the same time (i.e., you must sell the stock before you buy again).</p><p>Example 1:</p><p>Input: <code>[3,3,5,0,0,3,1,4]</code><br>Output: 6<br>Explanation: Buy on day 4 (price = 0) and sell on day 6 (price = 3), profit = 3-0 = 3.<br>             Then buy on day 7 (price = 1) and sell on day 8 (price = 4), profit = 4-1 = 3.<br>Example 2:</p><p>Input: <code>[1,2,3,4,5]</code><br>Output: 4<br>Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.<br>             Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are<br>             engaging multiple transactions at the same time. You must sell before buying again.<br>Example 3:</p><p>Input: <code>[7,6,4,3,1]</code><br>Output: 0<br>Explanation: In this case, no transaction is done, i.e. max profit = 0.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h1><p>this is a relatively easier way to understand this question. </p><ol><li><p>create a 2d array, row is total number of transaction, column is total number of days.<br><img style="width: 100%; height: 100%" src="IMG_5332.jpg"></p></li><li><p>the dp formula is<br><code>T[i][j]= max(T[i][j-1], price[j]-price[m]+ T[i-1][m])</code><br>it means, the maximum profit can get on transaction <code>i</code> in day <code>j</code> should be one of the following one.</p><ol><li><code>T[i][j-1]</code>, the same as previous day, means make no transaction at all.</li><li><code>price[j]-price[m]+ T[i-1][m]</code>, sale the stock bought on day <code>m</code> with the price on day <code>j</code>, and add the previous transaction profit together.</li></ol></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//transaction: k, days: n</span></span><br><span class="line">    <span class="comment">//O(k*n^2)</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> transactions= <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(transactions+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(prices.size(), <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r= <span class="number">1</span>; r&lt; dp.size(); r++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c= <span class="number">1</span>; c&lt; dp[<span class="number">0</span>].size(); c++)&#123;</span><br><span class="line">                <span class="keyword">int</span> maxval= <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> m= <span class="number">0</span>; m&lt; c; m++)&#123;</span><br><span class="line">                    maxval= max(maxval, prices[c]-prices[m]+ dp[r<span class="number">-1</span>][m]);</span><br><span class="line">                &#125;</span><br><span class="line">                dp[r][c]= max(dp[r][c<span class="number">-1</span>], maxval);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[transactions][prices.size()<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>However, the above solution would need many time to calculate. We can use a variable <code>maxdiff</code> to check whether if it’s a good time to sell the stock.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//transaction: k, days: n</span></span><br><span class="line">    <span class="comment">//O(k*n)</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.empty()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> transactions= <span class="number">2</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; dp(transactions+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(prices.size(), <span class="number">0</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> r= <span class="number">1</span>; r&lt; dp.size(); r++)&#123;</span><br><span class="line">            <span class="keyword">int</span> maxdiff= -prices[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> c= <span class="number">1</span>; c&lt; dp[<span class="number">0</span>].size(); c++)&#123;</span><br><span class="line">                dp[r][c]= max(dp[r][c<span class="number">-1</span>], prices[c]+maxdiff);</span><br><span class="line">                maxdiff= max(maxdiff, dp[r<span class="number">-1</span>][c]-prices[c]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[transactions][prices.size()<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices: List[int])</span> -&gt; int:</span></span><br><span class="line">        sell1, sell2 = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        hold1, hold2 = float(<span class="string">"-inf"</span>), float(<span class="string">"-inf"</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> prices:</span><br><span class="line">            sell2 = max(sell2, hold2 + i) <span class="comment"># The maximum if we've just sold 2nd stock so far.</span></span><br><span class="line">            hold2 = max(hold2, sell1 - i) <span class="comment"># The maximum if we've just buy  2nd stock so far.</span></span><br><span class="line">            sell1 = max(sell1, hold1 + i) <span class="comment"># The maximum if we've just sold 1st stock so far.</span></span><br><span class="line">            hold1 = max(hold1, -i)        <span class="comment"># The maximum if we've just buy  1st stock so far.</span></span><br><span class="line">        <span class="keyword">return</span> sell2</span><br></pre></td></tr></table></figure><p>reference:<br><a href="https://www.youtube.com/watch?v=oDhu5uGq_ic&amp;feature=youtu.be" target="_blank" rel="noopener">https://www.youtube.com/watch?v=oDhu5uGq_ic&amp;feature=youtu.be</a></p>]]></content>
       
       <categories>
           
@@ -5521,9 +5521,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5548,9 +5548,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -5650,13 +5650,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -5962,9 +5962,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> greedy </tag>
             
@@ -5989,9 +5989,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> partition </tag>
             
@@ -6016,9 +6016,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6074,9 +6074,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6101,9 +6101,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6155,9 +6155,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6207,9 +6207,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6232,11 +6232,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6257,11 +6257,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6471,15 +6471,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6804,9 +6804,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6962,11 +6962,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -6989,11 +6989,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -7130,9 +7130,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7159,9 +7159,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7271,9 +7271,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7296,9 +7296,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7321,9 +7321,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7350,9 +7350,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7379,9 +7379,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7483,9 +7483,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7799,11 +7799,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7832,9 +7832,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7859,13 +7859,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7890,11 +7890,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7917,11 +7917,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7946,13 +7946,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7977,11 +7977,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -8008,9 +8008,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -8035,13 +8035,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
