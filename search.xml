@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>1103. Distribute Candies to People</title>
+      <link href="/2020/08/17/1103-Distribute-Candies-to-People/"/>
+      <url>/2020/08/17/1103-Distribute-Candies-to-People/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>We distribute some number of candies, to a row of n = num_people people in the following way:</p><p>We then give 1 candy to the first person, 2 candies to the second person, and so on until we give n candies to the last person.</p><p>Then, we go back to the start of the row, giving n + 1 candies to the first person, n + 2 candies to the second person, and so on until we give 2 * n candies to the last person.</p><p>This process repeats (with us giving one more candy each time, and moving to the start of the row after we reach the end) until we run out of candies.  The last person will receive all of our remaining candies (not necessarily one more than the previous gift).</p><p>Return an array (of length num_people and sum candies) that represents the final distribution of candies.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: candies = 7, num_people = 4</span><br><span class="line">Output: [1,2,3,1]</span><br><span class="line">Explanation:</span><br><span class="line">On the first turn, ans[0] += 1, and the array is [1,0,0,0].</span><br><span class="line">On the second turn, ans[1] += 2, and the array is [1,2,0,0].</span><br><span class="line">On the third turn, ans[2] += 3, and the array is [1,2,3,0].</span><br><span class="line">On the fourth turn, ans[3] += 1 (because there is only one candy left), and the final array is [1,2,3,1].</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: candies = 10, num_people = 3</span><br><span class="line">Output: [5,2,3]</span><br><span class="line">Explanation: </span><br><span class="line">On the first turn, ans[0] += 1, and the array is [1,0,0].</span><br><span class="line">On the second turn, ans[1] += 2, and the array is [1,2,0].</span><br><span class="line">On the third turn, ans[2] += 3, and the array is [1,2,3].</span><br><span class="line">On the fourth turn, ans[0] += 4, and the final array is [5,2,3].</span><br></pre></td></tr></table></figure></p><p>Constraints:</p><p><code>1 &lt;= candies &lt;= 10^9</code><br><code>1 &lt;= num_people &lt;= 1000</code></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ol><li>Use <code>i % num_people</code> to determine the current index of the people, where i is the i-th giving of candy;</li><li>Increase each amount by 1 till run out of candies.</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">distributeCandies</span><span class="params">(self, candies: int, n: int)</span> -&gt; List[int]:</span></span><br><span class="line">        res = [<span class="number">0</span>]* n</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> candies &gt; <span class="number">0</span>:</span><br><span class="line">            res[i % n] += min(i+<span class="number">1</span>, candies)</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            candies -= i</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>435. Non-overlapping Intervals</title>
       <link href="/2020/08/15/435-Non-overlapping-Intervals/"/>
       <url>/2020/08/15/435-Non-overlapping-Intervals/</url>
