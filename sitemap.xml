@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/07/10/226-Invert-Binary-Tree/</loc>
+    
+    <lastmod>2021-03-31T04:34:48.923Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://linlaw0229.github.io/2018/07/10/110-Balanced-Binary-Tree/</loc>
+    
+    <lastmod>2021-03-31T04:07:59.312Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://linlaw0229.github.io/2018/06/13/98-Validate-Binary-Search-Tree/</loc>
+    
+    <lastmod>2021-03-29T02:58:21.217Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/05/31/79-Word-Search/</loc>
     
     <lastmod>2021-03-26T05:15:50.852Z</lastmod>
@@ -47,13 +68,6 @@
     <loc>http://linlaw0229.github.io/2018/07/25/57-Insert-Interval/</loc>
     
     <lastmod>2021-03-23T04:05:12.797Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/07/10/226-Invert-Binary-Tree/</loc>
-    
-    <lastmod>2021-03-22T02:42:39.210Z</lastmod>
     
   </url>
   
@@ -1360,13 +1374,6 @@
   </url>
   
   <url>
-    <loc>http://linlaw0229.github.io/2018/06/13/98-Validate-Binary-Search-Tree/</loc>
-    
-    <lastmod>2018-08-23T21:58:54.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://linlaw0229.github.io/2018/08/23/88-Merge-Sorted-Array/</loc>
     
     <lastmod>2018-08-23T16:56:14.000Z</lastmod>
@@ -1720,13 +1727,6 @@
     <loc>http://linlaw0229.github.io/2018/07/10/108-Convert-Sorted-Array-to-Binary-Search-Tree/</loc>
     
     <lastmod>2018-07-29T18:10:48.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/07/10/110-Balanced-Binary-Tree/</loc>
-    
-    <lastmod>2018-07-29T18:10:37.000Z</lastmod>
     
   </url>
   
