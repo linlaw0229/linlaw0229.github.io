@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2021/04/01/234-Palindrome-Linked-List/</loc>
+    
+    <lastmod>2021-04-02T05:14:59.814Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://linlaw0229.github.io/2018/08/22/257-Binary-Tree-Paths/</loc>
+    
+    <lastmod>2021-04-02T03:30:41.400Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2021/03/31/235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</loc>
     
     <lastmod>2021-04-01T04:52:10.040Z</lastmod>
@@ -1426,13 +1440,6 @@
     <loc>http://linlaw0229.github.io/2018/08/22/791-Custom-Sort-String/</loc>
     
     <lastmod>2018-08-22T23:37:55.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/08/22/257-Binary-Tree-Paths/</loc>
-    
-    <lastmod>2018-08-22T20:56:39.000Z</lastmod>
     
   </url>
   
