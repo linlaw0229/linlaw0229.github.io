@@ -3,10 +3,31 @@
   
     
     <entry>
+      <title>61. Rotate List</title>
+      <link href="/2021/04/02/61-Rotate-List/"/>
+      <url>/2021/04/02/61-Rotate-List/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given the head of a linked list, rotate the list to the right by k places.</p><p>Example 1:</p><p><img src="1.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2,3,4,5], k = 2</span><br><span class="line">Output: [4,5,1,2,3]</span><br></pre></td></tr></table></figure><p>Example 2:</p><p><img src="2.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [0,1,2], k = 4</span><br><span class="line">Output: [2,0,1]</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Identify that <code>k</code> might be greater than list size. We need to <code>%</code> to get how many rotation we should do.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"># class ListNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, next=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.next = next</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rotateRight</span><span class="params">(self, head: ListNode, k: int)</span> -&gt; ListNode:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> k == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line">        size = <span class="number">0</span></span><br><span class="line">        dummy = ListNode(<span class="number">-1</span>)</span><br><span class="line">        dummy.next, p = head, dummy</span><br><span class="line">        <span class="keyword">while</span> p.next:</span><br><span class="line">            p, size = p.next, size+<span class="number">1</span></span><br><span class="line">        k %= size</span><br><span class="line">        step, mid = size - k, dummy</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(step):</span><br><span class="line">            mid = mid.next</span><br><span class="line">        p.next = dummy.next</span><br><span class="line">        dummy.next = mid.next</span><br><span class="line">        mid.next = <span class="keyword">None</span></span><br><span class="line">        <span class="keyword">return</span> dummy.next</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy medium hard </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>234. Palindrome Linked List</title>
       <link href="/2021/04/01/234-Palindrome-Linked-List/"/>
       <url>/2021/04/01/234-Palindrome-Linked-List/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given the head of a singly linked list, return true if it is a palindrome.</p><p>Example 1:<br><img src="1.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2,2,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><img src="2.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, head)</span>:</span></span><br><span class="line">    <span class="comment"># rev records the first half, need to set the same structure as fast, slow, hence later we have rev.next</span></span><br><span class="line">    rev = <span class="keyword">None</span></span><br><span class="line">    <span class="comment"># initially slow and fast are the same, starting from head</span></span><br><span class="line">    slow = fast = head</span><br><span class="line">    <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">        <span class="comment"># fast traverses faster and moves to the end of the list if the length is odd</span></span><br><span class="line">        fast = fast.next.next</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># take it as a tuple being assigned (rev, rev.next, slow) = (slow, rev, slow.next), hence the re-assignment of slow would not affect rev (rev = slow)</span></span><br><span class="line">        rev, rev.next, slow = slow, rev, slow.next</span><br><span class="line">    <span class="keyword">if</span> fast:</span><br><span class="line">       <span class="comment"># fast is at the end, move slow one step further for comparison(cross middle one)</span></span><br><span class="line">        slow = slow.next</span><br><span class="line">    <span class="comment"># compare the reversed first half with the second half</span></span><br><span class="line">    <span class="keyword">while</span> rev <span class="keyword">and</span> rev.val == slow.val:</span><br><span class="line">        slow = slow.next</span><br><span class="line">        rev = rev.next</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># if equivalent then rev become None, return True; otherwise return False </span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">not</span> rev</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given the head of a singly linked list, return true if it is a palindrome.</p><p>Example 1:</p><p><img src="1.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2,2,1]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure><p>Example 2:</p><p><img src="2.png" alt=""></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isPalindrome</span><span class="params">(self, head)</span>:</span></span><br><span class="line">    <span class="comment"># rev records the first half, need to set the same structure as fast, slow, hence later we have rev.next</span></span><br><span class="line">    rev = <span class="keyword">None</span></span><br><span class="line">    <span class="comment"># initially slow and fast are the same, starting from head</span></span><br><span class="line">    slow = fast = head</span><br><span class="line">    <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">        <span class="comment"># fast traverses faster and moves to the end of the list if the length is odd</span></span><br><span class="line">        fast = fast.next.next</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># take it as a tuple being assigned (rev, rev.next, slow) = (slow, rev, slow.next), hence the re-assignment of slow would not affect rev (rev = slow)</span></span><br><span class="line">        rev, rev.next, slow = slow, rev, slow.next</span><br><span class="line">    <span class="keyword">if</span> fast:</span><br><span class="line">       <span class="comment"># fast is at the end, move slow one step further for comparison(cross middle one)</span></span><br><span class="line">        slow = slow.next</span><br><span class="line">    <span class="comment"># compare the reversed first half with the second half</span></span><br><span class="line">    <span class="keyword">while</span> rev <span class="keyword">and</span> rev.val == slow.val:</span><br><span class="line">        slow = slow.next</span><br><span class="line">        rev = rev.next</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># if equivalent then rev become None, return True; otherwise return False </span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">not</span> rev</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
       
       <categories>
           
@@ -919,9 +940,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -986,13 +1007,13 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> bfs </tag>
             
-            <tag> dfs </tag>
+            <tag> amazon </tag>
             
         </tags>
       
@@ -1098,9 +1119,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1121,9 +1142,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1175,9 +1196,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -1856,11 +1877,11 @@
       
         <tags>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> design </tag>
             
@@ -1935,9 +1956,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> stack </tag>
             
@@ -2067,11 +2088,11 @@
       
         <tags>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> union find </tag>
             
@@ -2131,9 +2152,9 @@
             
             <tag> facebook </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -2527,13 +2548,13 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> bfs </tag>
             
-            <tag> dfs </tag>
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -2753,9 +2774,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2869,9 +2890,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3002,9 +3023,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3081,9 +3102,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -3148,9 +3169,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3173,11 +3194,11 @@
             
             <tag> dynamic programming </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -3227,11 +3248,11 @@
             
             <tag> facebook </tag>
             
+            <tag> array </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -3289,9 +3310,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> union find </tag>
             
@@ -3347,9 +3368,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3459,11 +3480,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -3531,11 +3552,11 @@
             
             <tag> apple </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -3624,13 +3645,13 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> bfs </tag>
             
-            <tag> dfs </tag>
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -3703,9 +3724,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -3811,13 +3832,13 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> bfs </tag>
             
-            <tag> dfs </tag>
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -3989,9 +4010,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4016,9 +4037,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -4287,9 +4308,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4395,9 +4416,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -4579,9 +4600,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -4608,9 +4629,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -4697,9 +4718,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> linkedin </tag>
             
@@ -4811,9 +4832,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -4842,13 +4863,13 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
+            <tag> bfs </tag>
             
-            <tag> dfs </tag>
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -5020,11 +5041,11 @@
             
             <tag> google </tag>
             
+            <tag> dfs </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
-            
-            <tag> dfs </tag>
             
         </tags>
       
@@ -5394,9 +5415,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> design </tag>
+            
+            <tag> uber </tag>
             
             <tag> hash table </tag>
             
@@ -5475,11 +5496,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -5514,11 +5535,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
         </tags>
       
@@ -5597,11 +5618,11 @@
             
             <tag> google </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -5630,11 +5651,11 @@
             
             <tag> microsoft </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -5738,9 +5759,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -5763,9 +5784,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6320,9 +6341,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6447,13 +6468,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -6478,11 +6499,11 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6530,9 +6551,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -6667,9 +6688,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -6692,11 +6713,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
+            <tag> dfs </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> union find </tag>
             
@@ -6723,9 +6744,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -7214,9 +7235,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -7270,11 +7291,11 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7299,11 +7320,11 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7384,9 +7405,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7461,11 +7482,11 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7490,11 +7511,11 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7519,11 +7540,11 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
             
             <tag> dfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7546,9 +7567,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7596,9 +7617,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7623,9 +7644,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7648,9 +7669,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -7677,9 +7698,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7702,9 +7723,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7727,9 +7748,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7752,9 +7773,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7777,9 +7798,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> two pointers </tag>
             
@@ -7808,9 +7829,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
             <tag> linkedin </tag>
             
@@ -7862,9 +7883,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> array </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7941,11 +7962,11 @@
             
             <tag> microsoft </tag>
             
+            <tag> array </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -8119,9 +8140,9 @@
             
             <tag> facebook </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
             <tag> hash table </tag>
             
@@ -8148,9 +8169,9 @@
             
             <tag> hard </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
