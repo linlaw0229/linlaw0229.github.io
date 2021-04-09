@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2021/04/08/94-Binary-Tree-Inorder-Traversal/</loc>
+    
+    <lastmod>2021-04-09T04:56:14.106Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/</loc>
+    
+    <lastmod>2021-04-09T03:53:05.880Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2021/04/06/142-Linked-List-Cycle-II/</loc>
     
     <lastmod>2021-04-07T05:13:27.406Z</lastmod>
@@ -1055,13 +1069,6 @@
     <loc>http://linlaw0229.github.io/2018/08/18/10-Regular-Expression-Matching/</loc>
     
     <lastmod>2018-09-23T16:15:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/</loc>
-    
-    <lastmod>2018-09-23T03:23:16.000Z</lastmod>
     
   </url>
   

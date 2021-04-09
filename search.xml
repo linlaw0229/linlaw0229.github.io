@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>94. Binary Tree Inorder Traversal</title>
+      <link href="/2021/04/08/94-Binary-Tree-Inorder-Traversal/"/>
+      <url>/2021/04/08/94-Binary-Tree-Inorder-Traversal/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given the root of a binary tree, return the inorder traversal of its nodes’ values.<br>Example 1:</p><p><img src="1.jpeg" alt=""><br>Input: root = [1,null,2,3]<br>Output: [1,3,2]</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root: TreeNode)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stk = collections.deque()</span><br><span class="line">        res = []</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            <span class="keyword">while</span> root:</span><br><span class="line">                stk.append(root)</span><br><span class="line">                root = root.left</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> stk:</span><br><span class="line">                <span class="keyword">return</span> res</span><br><span class="line">            top = stk.pop()</span><br><span class="line">            res.append(top.val)</span><br><span class="line">            root = top.right</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        if not root:</span></span><br><span class="line"><span class="string">            return []</span></span><br><span class="line"><span class="string">        </span></span><br><span class="line"><span class="string">        def traverse(root, res):</span></span><br><span class="line"><span class="string">            if not root:</span></span><br><span class="line"><span class="string">                return None</span></span><br><span class="line"><span class="string">            traverse(root.left, res)</span></span><br><span class="line"><span class="string">            res.append(root.val)</span></span><br><span class="line"><span class="string">            traverse(root.right, res)</span></span><br><span class="line"><span class="string">        res = []</span></span><br><span class="line"><span class="string">        traverse(root, res)</span></span><br><span class="line"><span class="string">        return res</span></span><br><span class="line"><span class="string">        '''</span></span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$<br>space complexity: $O(n)$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tree </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>142. Linked List Cycle II</title>
       <link href="/2021/04/06/142-Linked-List-Cycle-II/"/>
       <url>/2021/04/06/142-Linked-List-Cycle-II/</url>
@@ -691,11 +716,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -1093,9 +1118,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -1201,9 +1226,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> tree </tag>
+            
+            <tag> google </tag>
             
             <tag> medium </tag>
             
@@ -1353,9 +1378,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> recursion </tag>
             
@@ -1447,9 +1472,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> easy </tag>
+            
+            <tag> google </tag>
             
             <tag> array </tag>
             
@@ -1474,9 +1499,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> easy </tag>
+            
+            <tag> google </tag>
             
             <tag> array </tag>
             
@@ -1501,11 +1526,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1657,11 +1682,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -1684,9 +1709,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -1776,13 +1801,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> citrix </tag>
             
@@ -2036,15 +2061,15 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> tree </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -2174,9 +2199,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -2232,11 +2257,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2288,9 +2313,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> design </tag>
             
@@ -2344,9 +2369,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -2524,9 +2549,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> easy </tag>
+            
+            <tag> google </tag>
             
             <tag> array </tag>
             
@@ -2551,11 +2576,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2603,9 +2628,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -2634,9 +2659,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -2690,11 +2715,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -2744,13 +2769,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2831,11 +2856,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -2856,9 +2881,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -3157,9 +3182,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> easy </tag>
+            
+            <tag> string </tag>
             
             <tag> amazon </tag>
             
@@ -3247,13 +3272,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -3450,9 +3475,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -3477,9 +3502,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> bloomberg </tag>
             
@@ -3502,13 +3527,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3533,11 +3558,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3574,9 +3599,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -3644,9 +3669,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -3667,13 +3692,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3731,9 +3756,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3804,11 +3829,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3835,11 +3860,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -3918,9 +3943,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -3972,6 +3997,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -3979,8 +4006,6 @@
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4005,11 +4030,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -4059,9 +4084,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -4088,13 +4113,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -4148,13 +4173,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> amazon </tag>
             
@@ -4177,11 +4202,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -4260,11 +4285,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -4326,6 +4351,8 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -4333,8 +4360,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -4384,6 +4409,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -4391,8 +4418,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4417,11 +4442,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -4444,13 +4469,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -4659,11 +4684,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -4686,9 +4711,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -4949,9 +4974,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -5092,11 +5117,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> stack </tag>
             
@@ -5152,11 +5177,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -5335,9 +5360,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> easy </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> bit manipulation </tag>
             
@@ -5389,11 +5414,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -5731,11 +5756,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -5764,9 +5789,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -5791,9 +5816,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -5893,13 +5918,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6205,9 +6230,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -6232,9 +6257,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> partition </tag>
             
@@ -6259,9 +6284,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -6317,9 +6342,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -6344,9 +6369,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -6398,9 +6423,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -6450,9 +6475,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -6475,11 +6500,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6500,11 +6525,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6554,9 +6579,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> array </tag>
             
@@ -6714,15 +6739,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6774,9 +6799,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -6799,9 +6824,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -6830,9 +6855,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -7047,9 +7072,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> medium </tag>
             
@@ -7205,11 +7230,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -7232,11 +7257,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -7373,9 +7398,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -7402,9 +7427,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -7420,7 +7445,7 @@
       <title>105. Construct Binary Tree from Preorder and Inorder Traversal</title>
       <link href="/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/"/>
       <url>/2018/06/05/105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal/</url>
-      <content type="html"><![CDATA[<p>Problem description:</p><p>Given preorder and inorder traversal of a tree, construct the binary tree.</p><p>Note:<br>You may assume that duplicates do not exist in the tree.</p><p>For example, given<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">preorder = [3,9,20,15,7]</span><br><span class="line">inorder = [9,3,15,20,7]</span><br><span class="line">Return the following binary tree:</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure></p><p>Solution:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     _______7______</span><br><span class="line">    /              \</span><br><span class="line"> __10__          ___2</span><br><span class="line">/      \        /</span><br><span class="line">4       3      _8</span><br><span class="line">         \    /</span><br><span class="line">          1  11</span><br></pre></td></tr></table></figure></p><p>The preorder and inorder traversals for the binary tree above is:</p><p>preorder = <code>{7,10,4,3,1,2,8,11}</code><br>inorder = <code>{4,10,3,1,7,11,8,2}</code></p><p>First of all, we can see that preorder’s 1st element <code>7</code> is Root. The element <code>7</code> is the 4th element in inorder sequence. Since there is no duplicate in the sequence, there is no ambiguity.<br>The characteristic of inorder sequence is that it will follow this visit order <code>left-&gt;root-&gt;right</code>; therefore, we can see that the left elements before <code>7</code> is in <code>left subtree</code>. Other elements to the right must be in the <code>right subtree</code>.</p><p>Preorder traversal follows the sequence of <code>root-&gt;left-&gt;right</code>. Therefore, the left and right subtree’s postorder traversal must be {10, 4, 3, 1} and {2, 8, 11} respectively. Since the left and right subtree are binary trees in their own right, we can solve recursively!</p><p>Then how do we search the root value’s index in the inorder sequence?<br>If we use linear search, assume that the constructed binary tree is always balanced, then we can guarantee the run time complexity to be O(N log N), where N is the number of nodes. However, this is not necessarily the case and the constructed binary tree can be skewed to the left/right, which has the worst complexity of O(N^2).</p><p>A more efficient way is to eliminate the search by using an efficient look-up mechanism such as <code>hash table</code>. By hashing an element’s value to its corresponding index in the inorder sequence, we can do look-ups in constant time. Now, we need only O(N) time to construct the tree, which theoretically is the most efficient way.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; inorder.size(); i++) <span class="built_in">map</span>[inorder[i]] = i;</span><br><span class="line">        <span class="keyword">return</span> buildTree(preorder, <span class="number">0</span>, preorder.size()<span class="number">-1</span>, inorder, <span class="number">0</span>, inorder.size()<span class="number">-1</span>, <span class="built_in">map</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="keyword">int</span> m1, <span class="keyword">int</span> n1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="keyword">int</span> m2, <span class="keyword">int</span> n2, <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; <span class="built_in">map</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m1 &gt; n1) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> curindex = <span class="built_in">map</span>[preorder[m1]];</span><br><span class="line">        <span class="keyword">int</span> new_right_m1 = m1 + curindex - m2 + <span class="number">1</span>;</span><br><span class="line">        TreeNode *root = <span class="keyword">new</span> TreeNode(preorder[m1]);</span><br><span class="line">        root-&gt;left = buildTree(preorder, m1+<span class="number">1</span>, new_right_m1<span class="number">-1</span>, inorder, m2, curindex<span class="number">-1</span>, <span class="built_in">map</span>);</span><br><span class="line">        root-&gt;right = buildTree(preorder, new_right_m1, n1, inorder, curindex+<span class="number">1</span>, n2, <span class="built_in">map</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given preorder and inorder traversal of a tree, construct the binary tree.</p><p>Note:<br>You may assume that duplicates do not exist in the tree.</p><p>For example, given<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">preorder = [3,9,20,15,7]</span><br><span class="line">inorder = [9,3,15,20,7]</span><br><span class="line">Return the following binary tree:</span><br><span class="line"></span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p><img src="1.png" alt=""></p><ol><li>First item in <code>preorder</code> is the current root. The value would divide the <code>inorder</code> list to <code>left subtree</code> and <code>right subtree</code></li><li>Python have <code>list.index(value)</code> to find index in O(n). Or could use <code>dictionary</code>.</li><li>Be careful on the index.</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, preorder: List[int], inorder: List[int])</span> -&gt; TreeNode:</span></span><br><span class="line">        <span class="keyword">if</span> inorder:</span><br><span class="line">            index = inorder.index(preorder.pop(<span class="number">0</span>)) <span class="comment"># first element in list is next node</span></span><br><span class="line">            root = TreeNode(inorder[index])</span><br><span class="line">            root.left = self.buildTree(preorder, inorder[:index])</span><br><span class="line">            root.right = self.buildTree(preorder, inorder[index+<span class="number">1</span>:]) </span><br><span class="line">            <span class="comment"># starting from next node since inorder[index] is processed</span></span><br><span class="line">            <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure><hr><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">     _______7______</span><br><span class="line">    /              \</span><br><span class="line"> __10__          ___2</span><br><span class="line">/      \        /</span><br><span class="line">4       3      _8</span><br><span class="line">         \    /</span><br><span class="line">          1  11</span><br></pre></td></tr></table></figure><p>The preorder and inorder traversals for the binary tree above is:</p><p>preorder = <code>{7,10,4,3,1,2,8,11}</code><br>inorder = <code>{4,10,3,1,7,11,8,2}</code></p><p>First of all, we can see that preorder’s 1st element <code>7</code> is Root. The element <code>7</code> is the 4th element in inorder sequence. Since there is no duplicate in the sequence, there is no ambiguity.<br>The characteristic of inorder sequence is that it will follow this visit order <code>left-&gt;root-&gt;right</code>; therefore, we can see that the left elements before <code>7</code> is in <code>left subtree</code>. Other elements to the right must be in the <code>right subtree</code>.</p><p>Preorder traversal follows the sequence of <code>root-&gt;left-&gt;right</code>. Therefore, the left and right subtree’s preorder traversal must be {10, 4, 3, 1} and {2, 8, 11} respectively. Since the left and right subtree are binary trees in their own right, we can solve recursively!</p><p>Then how do we search the root value’s index in the inorder sequence?<br>If we use linear search, assume that the constructed binary tree is always balanced, then we can guarantee the run time complexity to be O(N log N), where N is the number of nodes. However, this is not necessarily the case and the constructed binary tree can be skewed to the left/right, which has the worst complexity of O(N^2).</p><p>A more efficient way is to eliminate the search by using an efficient look-up mechanism such as <code>hash table</code>. By hashing an element’s value to its corresponding index in the inorder sequence, we can do look-ups in constant time. Now, we need only O(N) time to construct the tree, which theoretically is the most efficient way.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; inorder.size(); i++) <span class="built_in">map</span>[inorder[i]] = i;</span><br><span class="line">        <span class="keyword">return</span> buildTree(preorder, <span class="number">0</span>, preorder.size()<span class="number">-1</span>, inorder, <span class="number">0</span>, inorder.size()<span class="number">-1</span>, <span class="built_in">map</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder, <span class="keyword">int</span> m1, <span class="keyword">int</span> n1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; inorder, <span class="keyword">int</span> m2, <span class="keyword">int</span> n2, <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; <span class="built_in">map</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m1 &gt; n1) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> curindex = <span class="built_in">map</span>[preorder[m1]];</span><br><span class="line">        <span class="keyword">int</span> new_right_m1 = m1 + curindex - m2 + <span class="number">1</span>;</span><br><span class="line">        TreeNode *root = <span class="keyword">new</span> TreeNode(preorder[m1]);</span><br><span class="line">        root-&gt;left = buildTree(preorder, m1+<span class="number">1</span>, new_right_m1<span class="number">-1</span>, inorder, m2, curindex<span class="number">-1</span>, <span class="built_in">map</span>);</span><br><span class="line">        root-&gt;right = buildTree(preorder, new_right_m1, n1, inorder, curindex+<span class="number">1</span>, n2, <span class="built_in">map</span>);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       <categories>
           
@@ -7514,9 +7539,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
             
@@ -7539,9 +7564,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7564,9 +7589,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -7593,9 +7618,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -7622,9 +7647,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -7726,9 +7751,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
             
@@ -7919,9 +7944,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -8042,11 +8067,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8075,9 +8100,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -8102,13 +8127,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8133,11 +8158,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -8160,11 +8185,11 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -8189,13 +8214,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8220,11 +8245,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -8251,9 +8276,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> stack </tag>
             
@@ -8278,13 +8303,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
