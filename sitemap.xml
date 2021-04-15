@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/06/01/39-Combination-Sum/</loc>
+    
+    <lastmod>2021-04-15T05:08:08.779Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://linlaw0229.github.io/2018/12/27/22-Generate-Parentheses/</loc>
+    
+    <lastmod>2021-04-15T04:53:38.207Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/05/13/96-Unique-Binary-Search-Trees/</loc>
     
     <lastmod>2021-04-14T03:57:12.571Z</lastmod>
@@ -765,13 +779,6 @@
   </url>
   
   <url>
-    <loc>http://linlaw0229.github.io/2018/06/01/39-Combination-Sum/</loc>
-    
-    <lastmod>2019-01-01T20:42:43.506Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://linlaw0229.github.io/2018/06/01/31-Next-Permutation/</loc>
     
     <lastmod>2018-12-30T19:37:33.364Z</lastmod>
@@ -803,13 +810,6 @@
     <loc>http://linlaw0229.github.io/2018/12/29/note-Priority-Queue/</loc>
     
     <lastmod>2018-12-29T21:00:13.057Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/12/27/22-Generate-Parentheses/</loc>
-    
-    <lastmod>2018-12-28T03:16:15.481Z</lastmod>
     
   </url>
   
