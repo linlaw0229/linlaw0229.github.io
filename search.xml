@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>973. K Closest Points to Origin</title>
+      <link href="/2021/04/27/973-K-Closest-Points-to-Origin/"/>
+      <url>/2021/04/27/973-K-Closest-Points-to-Origin/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an array of <code>points</code> where <code>points[i] = [xi, yi]</code> represents a point on the <strong>X-Y</strong> plane and an integer <code>k</code>, return the <code>k</code> closest points to the origin <code>(0, 0)</code>.</p><p>The distance between two points on the <strong>X-Y</strong> plane is the Euclidean distance (i.e., $√(x1 - x2)^2 + (y1 - y2)^2$).</p><p>You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).</p><p>Example 1:<br><img src="1.jpeg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: points = [[1,3],[-2,2]], k = 1</span><br><span class="line">Output: [[-2,2]]</span><br><span class="line">Explanation:</span><br><span class="line">The distance between (1, 3) and the origin is sqrt(10).</span><br><span class="line">The distance between (-2, 2) and the origin is sqrt(8).</span><br><span class="line">Since sqrt(8) &lt; sqrt(10), (-2, 2) is closer to the origin.</span><br><span class="line">We only want the closest k = 1 points from the origin, so the answer is just [[-2,2]].</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: points = [[3,3],[5,-1],[-2,4]], k = 2</span><br><span class="line">Output: [[3,3],[-2,4]]</span><br><span class="line">Explanation: The answer [[-2,4],[3,3]] would also be accepted.</span><br></pre></td></tr></table></figure></p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Use a heap to solve it.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kClosest</span><span class="params">(self, points: List[List[int]], k: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        hq = []</span><br><span class="line">        <span class="keyword">for</span> point <span class="keyword">in</span> points:</span><br><span class="line">            dis = point[<span class="number">0</span>] **<span class="number">2</span> + point[<span class="number">1</span>]**<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> len(hq) &lt; k:</span><br><span class="line">                <span class="comment"># Since python is min-heap, pop() would return the smallest element</span></span><br><span class="line">                <span class="comment"># if pointA distance to origin is 10, pointB distance to origin is 8</span></span><br><span class="line">                <span class="comment"># -10 would be pop out </span></span><br><span class="line">                heapq.heappush(hq, (-dis, point))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                heapq.heappushpop(hq, (-dis, point))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> [point <span class="keyword">for</span> (dist, point) <span class="keyword">in</span> hq]</span><br></pre></td></tr></table></figure></p><p>time complexity: $O(nlogk)$, only k element in heap, push n times<br>space complexity: $O(n)$, heap size<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> sort </tag>
+            
+            <tag> heap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>note-System design</title>
       <link href="/2021/04/26/note-System-design/"/>
       <url>/2021/04/26/note-System-design/</url>
@@ -143,9 +168,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
         </tags>
       
@@ -503,9 +528,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> design </tag>
             
@@ -1031,11 +1056,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1056,11 +1081,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1096,9 +1121,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -1121,11 +1146,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1146,9 +1171,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> stack </tag>
             
@@ -1171,9 +1196,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> map </tag>
             
@@ -1196,11 +1221,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1290,11 +1315,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -1375,9 +1400,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> two pointers </tag>
             
@@ -1402,9 +1427,9 @@
             
             <tag> tree </tag>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> dfs </tag>
             
@@ -1592,13 +1617,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -1779,13 +1804,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -1827,11 +1852,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -1885,9 +1910,9 @@
             
             <tag> tree </tag>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -1908,11 +1933,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2056,11 +2081,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> paypal </tag>
             
@@ -2206,9 +2231,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -2239,13 +2264,13 @@
             
             <tag> tree </tag>
             
-            <tag> facebook </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> stack </tag>
             
@@ -2406,11 +2431,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> lyft </tag>
             
@@ -2574,9 +2599,9 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
             <tag> medium </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> amazon </tag>
             
@@ -2669,9 +2694,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> hash table </tag>
             
@@ -2783,9 +2808,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> medium </tag>
+            
+            <tag> string </tag>
             
             <tag> stack </tag>
             
@@ -2833,15 +2858,15 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2922,13 +2947,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -3063,9 +3088,9 @@
             
             <tag> tree </tag>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -3152,11 +3177,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -3179,9 +3204,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -3204,11 +3229,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3285,11 +3310,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -3312,9 +3337,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -3337,9 +3362,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -3483,9 +3508,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> amazon </tag>
             
@@ -3628,11 +3653,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> medium </tag>
             
             <tag> yelp </tag>
             
@@ -3657,9 +3682,9 @@
             
             <tag> tree </tag>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -3767,11 +3792,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3835,6 +3860,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -3842,8 +3869,6 @@
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3905,11 +3930,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3934,11 +3959,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -3965,9 +3990,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -4067,9 +4092,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -4092,11 +4117,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -4117,15 +4142,15 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4237,9 +4262,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -4266,9 +4291,9 @@
             
             <tag> tree </tag>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> linked list </tag>
             
@@ -4324,11 +4349,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -4411,9 +4436,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> sort </tag>
             
@@ -4438,11 +4463,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -4566,9 +4591,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -4680,9 +4705,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -4705,9 +4730,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -4736,13 +4761,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4767,6 +4792,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -4776,8 +4803,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4889,11 +4914,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -4916,11 +4941,11 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
-            
-            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -4974,6 +4999,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -4983,8 +5010,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -5005,11 +5030,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -5034,9 +5059,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> amazon </tag>
             
@@ -5061,6 +5086,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -5068,8 +5095,6 @@
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5094,13 +5119,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -5150,13 +5175,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> amazon </tag>
             
@@ -5185,11 +5210,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -5214,9 +5239,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -5243,11 +5268,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -5328,11 +5353,11 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -5359,11 +5384,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -5388,9 +5413,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> amazon </tag>
             
@@ -5417,13 +5442,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> backtracking </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5446,13 +5471,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> epic system </tag>
             
@@ -5565,13 +5590,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5625,9 +5650,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -5673,13 +5698,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -5733,9 +5758,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> medium </tag>
+            
+            <tag> google </tag>
             
             <tag> stack </tag>
             
@@ -5781,13 +5806,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5816,6 +5841,8 @@
       
         <tags>
             
+            <tag> bfs </tag>
+            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -5825,8 +5852,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -5903,13 +5928,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5938,11 +5963,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6100,13 +6125,13 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -6466,9 +6491,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6489,6 +6514,8 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -6496,8 +6523,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6524,9 +6549,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -6551,9 +6576,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> heap </tag>
             
@@ -6605,9 +6630,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6657,9 +6682,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6707,11 +6732,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -6923,13 +6948,13 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -7254,9 +7279,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> string </tag>
-            
             <tag> medium </tag>
+            
+            <tag> string </tag>
             
             <tag> math </tag>
             
@@ -7522,9 +7547,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> medium </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -7578,9 +7603,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -7605,9 +7630,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -7742,9 +7767,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -7767,9 +7792,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -7796,9 +7821,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -7823,9 +7848,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -7927,9 +7952,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> backtracking </tag>
-            
             <tag> medium </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> array </tag>
             
@@ -8108,13 +8133,13 @@
       
         <tags>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -8243,11 +8268,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -8276,9 +8301,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> math </tag>
             
@@ -8303,13 +8328,13 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -8334,9 +8359,9 @@
             
             <tag> tree </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -8359,9 +8384,9 @@
             
             <tag> tree </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> snapchat </tag>
             
@@ -8386,13 +8411,13 @@
             
             <tag> leetcode </tag>
             
+            <tag> medium </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> medium </tag>
             
             <tag> airbnb </tag>
             
