@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>863. All Nodes Distance K in Binary Tree</title>
+      <link href="/2021/05/04/863-All-Nodes-Distance-K-in-Binary-Tree/"/>
+      <url>/2021/05/04/863-All-Nodes-Distance-K-in-Binary-Tree/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>We are given a binary tree (with root node <code>root</code>), a <code>target</code> node, and an integer value <code>K</code>.</p><p>Return a list of the values of all nodes that have a distance <code>K</code> from the <code>target</code> node.  The answer can be returned in any order.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input:root = [3,5,1,6,2,0,8,null,null,7,4], target = 5, K = 2</span><br><span class="line"></span><br><span class="line">Output:[7,4,1]</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">The nodes that are a distance 2 from the target node (with value 5)</span><br><span class="line">have values 7, 4, and 1.</span><br><span class="line"></span><br><span class="line">Note that the inputs &quot;root&quot; and &quot;target&quot; are actually TreeNodes.</span><br><span class="line">The descriptions of the inputs above are just serializations of these objects.</span><br></pre></td></tr></table></figure><p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/28/sketch0.png" alt="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/06/28/sketch0.png"></p><p><strong>Note:</strong></p><ol><li>The given tree is non-empty.</li><li>Each node in the tree has unique values <code>0 &lt;= node.val &lt;= 500</code>.</li><li>The <code>target</code> node is a node in the tree.</li><li><code>0 &lt;= K &lt;= 1000</code>.</li></ol><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>We don’t know the relation from <code>target</code> to node on top of it or on the other side of tree. So we construct a new graph from tree. </p><ol><li>DFS, Build graph that each node knows its parent and child</li><li>BFS, find level by level</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">distanceK</span><span class="params">(self, root: TreeNode, target: TreeNode, K: int)</span> -&gt; List[int]:</span></span><br><span class="line">        <span class="comment"># build graph from tree</span></span><br><span class="line">        graph = defaultdict(list)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">buildGraph</span><span class="params">(parent, child)</span>:</span>     </span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> child:</span><br><span class="line">                <span class="keyword">return</span> </span><br><span class="line">            <span class="keyword">if</span> parent: graph[child].append(parent)</span><br><span class="line">            <span class="keyword">if</span> child.left: </span><br><span class="line">                graph[child].append(child.left)</span><br><span class="line">                buildGraph(child, child.left)</span><br><span class="line">            <span class="keyword">if</span> child.right: </span><br><span class="line">                graph[child].append(child.right)</span><br><span class="line">                buildGraph(child, child.right)</span><br><span class="line">        </span><br><span class="line">        buildGraph(<span class="keyword">None</span>, root)</span><br><span class="line">        </span><br><span class="line">        res, queue, visited = [], deque(), set()</span><br><span class="line">        queue.append((target, <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            <span class="comment"># BFS, find distant K nodes</span></span><br><span class="line">            node, dis = queue.popleft()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># base case, if this node visited, skip</span></span><br><span class="line">            <span class="keyword">if</span> node <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            visited.add(node)</span><br><span class="line">            <span class="keyword">if</span> dis == K:</span><br><span class="line">                res.append(node.val)   </span><br><span class="line">            <span class="keyword">elif</span> dis &lt; K: <span class="comment"># keep finding distance longer nodes</span></span><br><span class="line">                <span class="keyword">for</span> neighbor <span class="keyword">in</span> graph[node]:</span><br><span class="line">                    queue.append((neighbor, dis+<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tree </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1448. Count Good Nodes in Binary Tree</title>
       <link href="/2021/05/03/1448-Count-Good-Nodes-in-Binary-Tree/"/>
       <url>/2021/05/03/1448-Count-Good-Nodes-in-Binary-Tree/</url>
@@ -131,7 +158,7 @@
       <title>note-System design</title>
       <link href="/2021/04/26/note-System-design/"/>
       <url>/2021/04/26/note-System-design/</url>
-      <content type="html"><![CDATA[<p>CAP:</p><ul><li><code>Consistency</code>: Assuming you have a storage system which has more than one machine, consistency implies that the data is same across the cluster, so you can read or write to/from any node and get the same data.<ul><li>Eventual consistency : Exactly what the name suggests. In a cluster, if multiple machines store the same data, an eventual consistent model implies that all machines will have the same data eventually. Its possible that at a given instance, those machines have different versions of the same data ( temporarily inconsistent ) but they will eventually reach a state where they have the same data.</li></ul></li><li><code>Availability</code>: In the context of a database cluster, Availability refers to the ability to always respond to queries ( read or write ) irrespective of nodes going down.</li><li><code>Partition Tolerance</code>: In the context of a database cluster, cluster continues to function even if there is a “partition” (communications break) between two nodes (both nodes are up, but can’t communicate).</li></ul><p><a href="http://ksat.me/a-plain-english-introduction-to-cap-theorem" target="_blank" rel="noopener">http://ksat.me/a-plain-english-introduction-to-cap-theorem</a></p><p>Scaling:</p><ul><li><code>Vertical scaling</code>:<br>Improving the capabilities of a node/server. Gives greater capacity to the node but does not decrease the overall load on existing members of the cluster. That is, the ability for the improved node to handle existing load is increased, but the load itself is unchanged. Reasons to scale vertically include increasing IOPS, increasing CPU/RAM capacity, and increasing disk capacity.</li><li><code>Horizontal Scaling</code><br>Increasing the number of nodes in the cluster. reduces the responsibilities of each member node by spreading the keyspace wider and providing additional endpoints for client connections. That is, the capacity of each individual node does not change, but its load is decreased. Reasons to scale horizontally include increasing I/O concurrency, reducing the load on existing nodes, and increasing disk capacity.</li></ul><p><code>Sharding</code>: With most huge systems, data does not fit on a single machine. In such cases, sharding refers to splitting the very large database into smaller, faster and more manageable parts called data shards.</p><p>Questions:<br>Since we will be storing a massive amount of data, how should we partition our data to distribute it to multiple databases? Should we try to store all the data of a user on the same database? What issue could it cause?<br>How will we handle hot users who tweet a lot or follow lots of people?<br>Since users’ timeline will contain the most recent (and relevant) tweets, should we try to store our data so that it is optimized for scanning the latest tweets?<br>How much and at which layer should we introduce cache to speed things up?<br>What components need better load balancing?<br>Is there any single point of failure in our system? What are we doing to mitigate it?<br>Do we have enough replicas of the data so that we can still serve our users if we lose a few servers?<br>Similarly, do we have enough copies of different services running such that a few failures will not cause a total system shutdown?<br>How are we monitoring the performance of our service? Do we get alerts whenever critical components fail or their performance degrades?</p><p>Estimation on Capacity:<br>Our system will be read-heavy. There will be lots of redirection requests compared to new URL shortenings. Let’s assume a 100:1 ratio between read and write.</p><p><strong>Traffic estimates</strong>: Assuming, we will have 500M new URL shortenings per month, with 100:1 read/write ratio, we can expect 50B redirections during the same period:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100 * 500M =&gt; 50B</span><br></pre></td></tr></table></figure><p>What would be Queries Per Second (QPS) for our system? New URLs shortenings per second:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">500 million / (30 days * 24 hours * 3600 seconds) = ~200 URLs/s</span><br></pre></td></tr></table></figure></p><p>Considering 100:1 read/write ratio, URLs redirections per second will be:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100 * 200 URLs/s = 20K/s</span><br></pre></td></tr></table></figure><p><strong>Storage estimates</strong>: Let’s assume we store every URL shortening request (and associated shortened link) for 5 years. Since we expect to have 500M new URLs every month, the total number of objects we expect to store will be 30 billion:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">500 million * 5 years * 12 months = 30 billion</span><br></pre></td></tr></table></figure></p><p>Let’s assume that each stored object will be approximately 500 bytes (just a ballpark estimate–we will dig into it later). We will need 15TB of total storage:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 billion * 500 bytes = 15 TB</span><br></pre></td></tr></table></figure></p><p><strong>Bandwidth estimates</strong>: For write requests, since we expect 200 new URLs every second, total incoming data for our service will be 100KB per second:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">200 * 500 bytes = 100 KB/s</span><br></pre></td></tr></table></figure></p><p>For read requests, since every second we expect ~20K URLs redirections, total outgoing data for our service would be 10MB per second:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20K * 500 bytes = ~10 MB/s</span><br></pre></td></tr></table></figure></p><p><strong>Memory estimates</strong>: If we want to cache some of the hot URLs that are frequently accessed, how much memory will we need to store them? If we follow the 80-20 rule, meaning 20% of URLs generate 80% of traffic, we would like to cache these 20% hot URLs.</p><p>Since we have 20K requests per second, we will be getting 1.7 billion requests per day:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20K * 3600 seconds * 24 hours = ~1.7 billion</span><br></pre></td></tr></table></figure></p><p>To cache 20% of these requests, we will need 170GB of memory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.2 * 1.7 billion * 500 bytes = ~170GB</span><br></pre></td></tr></table></figure></p><p>One thing to note here is that since there will be many duplicate requests (of the same URL), our actual memory usage will be less than 170GB.</p>]]></content>
+      <content type="html"><![CDATA[<p>CAP:</p><ul><li><code>Consistency</code>: Assuming you have a storage system which has more than one machine, consistency implies that the data is same across the cluster, so you can read or write to/from any node and get the same data.<ul><li>Eventual consistency : Exactly what the name suggests. In a cluster, if multiple machines store the same data, an eventual consistent model implies that all machines will have the same data eventually. Its possible that at a given instance, those machines have different versions of the same data ( temporarily inconsistent ) but they will eventually reach a state where they have the same data.</li></ul></li><li><code>Availability</code>: In the context of a database cluster, Availability refers to the ability to always respond to queries ( read or write ) irrespective of nodes going down.</li><li><code>Partition Tolerance</code>: In the context of a database cluster, cluster continues to function even if there is a “partition” (communications break) between two nodes (both nodes are up, but can’t communicate).</li></ul><p><a href="http://ksat.me/a-plain-english-introduction-to-cap-theorem" target="_blank" rel="noopener">http://ksat.me/a-plain-english-introduction-to-cap-theorem</a></p><p>Scaling:</p><ul><li><code>Vertical scaling</code>:<br>Improving the capabilities of a node/server. Gives greater capacity to the node but does not decrease the overall load on existing members of the cluster. That is, the ability for the improved node to handle existing load is increased, but the load itself is unchanged. Reasons to scale vertically include increasing IOPS, increasing CPU/RAM capacity, and increasing disk capacity.</li><li><code>Horizontal Scaling</code><br>Increasing the number of nodes in the cluster. reduces the responsibilities of each member node by spreading the keyspace wider and providing additional endpoints for client connections. That is, the capacity of each individual node does not change, but its load is decreased. Reasons to scale horizontally include increasing I/O concurrency, reducing the load on existing nodes, and increasing disk capacity.</li></ul><p><code>Sharding</code>: With most huge systems, data does not fit on a single machine. In such cases, sharding refers to splitting the very large database into smaller, faster and more manageable parts called data shards.</p><p>Questions:<br>Since we will be storing a massive amount of data, how should we partition our data to distribute it to multiple databases? Should we try to store all the data of a user on the same database? What issue could it cause?<br>How will we handle hot users who tweet a lot or follow lots of people?<br>Since users’ timeline will contain the most recent (and relevant) tweets, should we try to store our data so that it is optimized for scanning the latest tweets?<br>How much and at which layer should we introduce cache to speed things up?<br>What components need better load balancing?<br>Is there any single point of failure in our system? What are we doing to mitigate it?<br>Do we have enough replicas of the data so that we can still serve our users if we lose a few servers?<br>Similarly, do we have enough copies of different services running such that a few failures will not cause a total system shutdown?<br>How are we monitoring the performance of our service? Do we get alerts whenever critical components fail or their performance degrades?</p><p>Estimation on Capacity:<br>Our system will be read-heavy. There will be lots of redirection requests compared to new URL shortenings. Let’s assume a 100:1 ratio between read and write.</p><p><strong>Traffic estimates</strong>: Assuming, we will have 500M new URL shortenings per month, with 100:1 read/write ratio, we can expect 50B redirections during the same period:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100 * 500M =&gt; 50B</span><br></pre></td></tr></table></figure><p>What would be Queries Per Second (QPS) for our system? New URLs shortenings per second:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">500 million / (30 days * 24 hours * 3600 seconds) = ~200 URLs/s</span><br></pre></td></tr></table></figure></p><p>Considering 100:1 read/write ratio, URLs redirections per second will be:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">100 * 200 URLs/s = 20K/s</span><br></pre></td></tr></table></figure><p><strong>Storage estimates</strong>: Let’s assume we store every URL shortening request (and associated shortened link) for 5 years. Since we expect to have 500M new URLs every month, the total number of objects we expect to store will be 30 billion:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">500 million * 5 years * 12 months = 30 billion</span><br></pre></td></tr></table></figure></p><p>Let’s assume that each stored object will be approximately 500 bytes (just a ballpark estimate–we will dig into it later). We will need 15TB of total storage:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">30 billion * 500 bytes = 15 TB</span><br></pre></td></tr></table></figure></p><p><strong>Bandwidth estimates</strong>: For write requests, since we expect 200 new URLs every second, total incoming data for our service will be 100KB per second:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">200 * 500 bytes = 100 KB/s</span><br></pre></td></tr></table></figure></p><p>For read requests, since every second we expect ~20K URLs redirections, total outgoing data for our service would be 10MB per second:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20K * 500 bytes = ~10 MB/s</span><br></pre></td></tr></table></figure></p><p><strong>Memory estimates</strong>: If we want to cache some of the hot URLs that are frequently accessed, how much memory will we need to store them? If we follow the 80-20 rule, meaning 20% of URLs generate 80% of traffic, we would like to cache these 20% hot URLs.</p><p>Since we have 20K requests per second, we will be getting 1.7 billion requests per day:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">20K * 3600 seconds * 24 hours = ~1.7 billion</span><br></pre></td></tr></table></figure></p><p>To cache 20% of these requests, we will need 170GB of memory.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.2 * 1.7 billion * 500 bytes = ~170GB</span><br></pre></td></tr></table></figure></p><p>One thing to note here is that since there will be many duplicate requests (of the same URL), our actual memory usage will be less than 170GB.</p><h2 id="Redis-vs-Memchached"><a href="#Redis-vs-Memchached" class="headerlink" title="Redis vs Memchached"></a>Redis vs Memchached</h2><p>Memchached: </p><ul><li>preferable when caching relatively small and static data</li><li>Easy to scale, it’s multi-threaded. While Redis is single-threaded, could horizontally via clustering, but clustering relatively hard to setup.</li></ul><p>Redis<br><a href="https://www.linkedin.com/pulse/memcached-vs-redis-which-one-pick-ranjeet-vimal/" target="_blank" rel="noopener">https://www.linkedin.com/pulse/memcached-vs-redis-which-one-pick-ranjeet-vimal/</a></p>]]></content>
       
       <categories>
           
@@ -994,11 +1021,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -1504,9 +1531,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -1656,9 +1683,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> recursion </tag>
             
@@ -1750,9 +1777,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1777,9 +1804,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1804,11 +1831,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -1960,11 +1987,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -1987,9 +2014,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -2079,13 +2106,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> citrix </tag>
             
@@ -2341,11 +2368,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> bfs </tag>
             
@@ -2537,11 +2564,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2593,9 +2620,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -2649,9 +2676,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -2829,9 +2856,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2856,11 +2883,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2912,9 +2939,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2999,11 +3026,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -3053,13 +3080,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3140,11 +3167,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -3165,9 +3192,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3466,9 +3493,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3564,13 +3591,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -3767,9 +3794,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3794,9 +3821,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> bloomberg </tag>
             
@@ -3819,13 +3846,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3850,11 +3877,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3984,13 +4011,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4121,11 +4148,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4152,11 +4179,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -4289,8 +4316,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -4298,6 +4323,8 @@
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4322,11 +4349,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -4376,9 +4403,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -4405,13 +4432,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -4465,13 +4492,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4494,11 +4521,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -4577,11 +4604,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -4643,8 +4670,6 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -4652,6 +4677,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -4701,8 +4728,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -4710,6 +4735,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4734,11 +4761,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -4761,13 +4788,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -4976,11 +5003,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5409,11 +5436,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> easy </tag>
             
             <tag> stack </tag>
             
@@ -5469,11 +5496,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -5652,9 +5679,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> easy </tag>
             
             <tag> bit manipulation </tag>
             
@@ -5706,11 +5733,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -6048,11 +6075,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6081,9 +6108,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6108,9 +6135,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6208,13 +6235,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6520,9 +6547,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> greedy </tag>
             
@@ -6547,9 +6574,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> partition </tag>
             
@@ -6574,9 +6601,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6632,9 +6659,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6659,9 +6686,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6713,9 +6740,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6765,9 +6792,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6790,11 +6817,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> leetcode </tag>
             
             <tag> easy </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -6815,11 +6842,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -6873,9 +6900,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6902,9 +6929,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7029,15 +7056,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -7362,9 +7389,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7518,11 +7545,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -7545,11 +7572,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> two pointers </tag>
             
@@ -7686,15 +7713,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7719,9 +7746,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7746,9 +7773,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7825,9 +7852,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7850,9 +7877,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7875,15 +7902,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7904,15 +7931,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7937,9 +7964,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8035,9 +8062,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8351,11 +8378,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8384,9 +8411,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8411,13 +8438,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8442,9 +8469,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -8467,9 +8494,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -8494,13 +8521,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8525,11 +8552,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -8556,9 +8583,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -8583,13 +8610,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
