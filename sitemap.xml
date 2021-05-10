@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/07/23/238-Product-of-Array-Except-Self/</loc>
+    
+    <lastmod>2021-05-10T00:03:20.132Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/08/26/42-Trapping-Rain-Water/</loc>
     
     <lastmod>2021-05-08T19:28:50.425Z</lastmod>
@@ -1783,13 +1790,6 @@
     <loc>http://linlaw0229.github.io/2018/08/15/152-Maximum-Product-Subarray/</loc>
     
     <lastmod>2018-08-15T19:56:07.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/07/23/238-Product-of-Array-Except-Self/</loc>
-    
-    <lastmod>2018-08-15T19:13:18.000Z</lastmod>
     
   </url>
   
