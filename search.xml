@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>1428. Leftmost Column with at Least a One</title>
+      <link href="/2021/05/13/1428-Leftmost-Column-with-at-Least-a-One/"/>
+      <url>/2021/05/13/1428-Leftmost-Column-with-at-Least-a-One/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p><em>(This problem is an <strong>interactive problem</strong>.)</em></p><p>A <strong>row-sorted binary matrix</strong> means that all elements are <code>0</code> or <code>1</code> and each row of the matrix is sorted in non-decreasing order.</p><p>Given a <strong>row-sorted binary matrix</strong> <code>binaryMatrix</code>, return <em>the index (0-indexed) of the <strong>leftmost column</strong> with a 1 in it</em>. If such an index does not exist, return <code>-1</code>.</p><p><strong>You can’t access the Binary Matrix directly.</strong> You may only access the matrix using a <code>BinaryMatrix</code> interface:</p><ul><li><code>BinaryMatrix.get(row, col)</code> returns the element of the matrix at index <code>(row, col)</code> (0-indexed).</li><li><code>BinaryMatrix.dimensions()</code> returns the dimensions of the matrix as a list of 2 elements <code>[rows, cols]</code>, which means the matrix is <code>rows x cols</code>.</li></ul><p>Submissions making more than <code>1000</code> calls to <code>BinaryMatrix.get</code> will be judged <em>Wrong Answer</em>. Also, any solutions that attempt to circumvent the judge will result in disqualification.</p><p>For custom testing purposes, the input will be the entire binary matrix <code>mat</code>. You will not have access to the binary matrix directly.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-5.jpg" alt="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-5.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: mat = [[0,0],[1,1]]</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-4.jpg" alt="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-4.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: mat = [[0,0],[0,1]]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure><p><strong>Example 3:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-3.jpg" alt="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-3.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: mat = [[0,0],[0,0]]</span><br><span class="line">Output: -1</span><br></pre></td></tr></table></figure><p><strong>Example 4:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-6.jpg" alt="https://assets.leetcode.com/uploads/2019/10/25/untitled-diagram-6.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: mat = [[0,0,0,1],[0,0,1,1],[0,1,1,1]]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>rows == mat.length</code></li><li><code>cols == mat[i].length</code></li><li><code>1 &lt;= rows, cols &lt;= 100</code></li><li><code>mat[i][j]</code> is either <code>0</code> or <code>1</code>.</li><li><code>mat[i]</code> is sorted in non-decreasing order.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Linear search</p><p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/782eb2ba-5324-4c42-83bc-8b90b5b1cf39/Untitled.png" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/782eb2ba-5324-4c42-83bc-8b90b5b1cf39/Untitled.png"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment"># This is BinaryMatrix's API interface.</span></span><br><span class="line"><span class="comment"># You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment">#class BinaryMatrix(object):</span></span><br><span class="line"><span class="comment">#    def get(self, row: int, col: int) -&gt; int:</span></span><br><span class="line"><span class="comment">#    def dimensions(self) -&gt; list[]:</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leftMostColumnWithOne</span><span class="params">(self, binaryMatrix: <span class="string">'BinaryMatrix'</span>)</span> -&gt; int:</span></span><br><span class="line">        grid = binaryMatrix.dimensions()</span><br><span class="line">        m, n = grid[<span class="number">0</span>], grid[<span class="number">1</span>]</span><br><span class="line">        res = <span class="number">-1</span></span><br><span class="line">        </span><br><span class="line">        r, c = <span class="number">0</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> r &lt; m <span class="keyword">and</span> c &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> binaryMatrix.get(r,c) == <span class="number">1</span>:</span><br><span class="line">                res = c</span><br><span class="line">                c -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                r += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O(M+N)$<br>space complexity: $O(1)$</p><h3 id="Solution-Binary-search"><a href="#Solution-Binary-search" class="headerlink" title="Solution: Binary search"></a>Solution: Binary search</h3><p>Binary search:</p><p><img src="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6317458e-79c3-47ae-9137-2bc40826fcb7/IMG_9488.heic" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6317458e-79c3-47ae-9137-2bc40826fcb7/IMG_9488.heic"></p><p>Use binary search to find the mid column </p><p>Find if there’s 1 in the column by walking through rows.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">leftMostColumnWithOne</span><span class="params">(self, binaryMatrix: <span class="string">'BinaryMatrix'</span>)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># binary search</span></span><br><span class="line">        <span class="comment"># locate a row using binary search</span></span><br><span class="line">        <span class="comment"># check if there's 1 in the column </span></span><br><span class="line">        grid = binaryMatrix.dimensions()</span><br><span class="line">        m, n = grid[<span class="number">0</span>], grid[<span class="number">1</span>]</span><br><span class="line">        res = <span class="number">-1</span></span><br><span class="line">        left, right = <span class="number">0</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">            mid_col = left + (right-left)//<span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.existOneInColumn(binaryMatrix, m, mid_col):</span><br><span class="line">                res = mid_col</span><br><span class="line">                right = mid_col<span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                left = mid_col+<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">existOneInColumn</span><span class="params">(self, binaryMatrix, m, c)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> range(<span class="number">0</span>, m):</span><br><span class="line">            <span class="keyword">if</span> binaryMatrix.get(r, c):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure><p>time complexity: $O(MlogN)$<br>space complexity: $O(1)$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1396. Design Underground System</title>
       <link href="/2021/05/11/1396-Design-Underground-System/"/>
       <url>/2021/05/11/1396-Design-Underground-System/</url>
@@ -399,9 +424,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -759,9 +784,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -1083,9 +1108,9 @@
             
             <tag> dfs </tag>
             
-            <tag> union find </tag>
-            
             <tag> graph </tag>
+            
+            <tag> union find </tag>
             
         </tags>
       
@@ -1154,9 +1179,9 @@
             
             <tag> dfs </tag>
             
-            <tag> union find </tag>
-            
             <tag> graph </tag>
+            
+            <tag> union find </tag>
             
         </tags>
       
@@ -1287,11 +1312,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1312,11 +1337,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1352,9 +1377,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -1377,11 +1402,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1402,9 +1427,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -1427,9 +1452,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> map </tag>
             
@@ -1452,11 +1477,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1546,11 +1571,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -1631,9 +1656,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> two pointers </tag>
             
@@ -1658,9 +1683,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1848,13 +1873,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -2035,13 +2060,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2083,11 +2108,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -2141,9 +2166,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2164,11 +2189,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2312,11 +2337,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> paypal </tag>
             
@@ -2462,9 +2487,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2495,13 +2520,13 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -2662,11 +2687,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> lyft </tag>
             
@@ -2830,9 +2855,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2925,9 +2950,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -3039,9 +3064,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3089,15 +3114,15 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3178,13 +3203,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3319,9 +3344,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -3408,11 +3433,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -3435,9 +3460,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -3460,11 +3485,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3541,11 +3566,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -3568,9 +3593,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -3593,9 +3618,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -3747,9 +3772,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3869,9 +3894,9 @@
             
             <tag> array </tag>
             
-            <tag> union find </tag>
-            
             <tag> uber </tag>
+            
+            <tag> union find </tag>
             
         </tags>
       
@@ -3892,11 +3917,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> yelp </tag>
             
@@ -3921,9 +3946,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4031,11 +4056,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4043,9 +4068,9 @@
             
             <tag> uber </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -4099,8 +4124,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -4109,13 +4132,15 @@
             
             <tag> apple </tag>
             
+            <tag> medium </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -4169,11 +4194,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4198,11 +4223,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -4229,9 +4254,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4331,9 +4356,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -4356,11 +4381,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4381,15 +4406,15 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4501,9 +4526,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -4530,9 +4555,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -4588,11 +4613,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -4675,9 +4700,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -4702,11 +4727,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -4830,9 +4855,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4944,9 +4969,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -4969,9 +4994,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -5000,13 +5025,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5031,8 +5056,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -5042,6 +5065,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5153,11 +5178,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -5180,11 +5205,11 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -5238,8 +5263,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -5249,6 +5272,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5269,11 +5294,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -5298,9 +5323,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5325,8 +5350,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
@@ -5334,6 +5357,8 @@
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5358,13 +5383,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -5414,13 +5439,13 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5449,11 +5474,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -5478,9 +5503,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -5507,11 +5532,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -5592,11 +5617,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -5623,11 +5648,11 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -5652,15 +5677,15 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
-            <tag> uber </tag>
-            
             <tag> pure storage </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
@@ -5681,13 +5706,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5710,13 +5735,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> epic system </tag>
             
@@ -5829,13 +5854,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5889,9 +5914,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5937,17 +5962,17 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
             
-            <tag> uber </tag>
+            <tag> medium </tag>
             
             <tag> hash table </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
@@ -5970,11 +5995,11 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> design </tag>
             
             <tag> hash table </tag>
+            
+            <tag> uber </tag>
             
             <tag> linkedin </tag>
             
@@ -5997,9 +6022,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -6045,13 +6070,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6080,8 +6105,6 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
@@ -6091,6 +6114,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -6167,13 +6192,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6200,11 +6225,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6360,13 +6385,13 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -6724,9 +6749,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6747,8 +6772,6 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -6756,6 +6779,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6782,9 +6807,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -6809,9 +6834,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> heap </tag>
             
@@ -6861,9 +6886,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6911,9 +6936,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6936,9 +6961,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6961,11 +6986,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7177,13 +7202,13 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -7506,9 +7531,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -7772,9 +7797,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -7828,9 +7853,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -7855,9 +7880,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -7992,9 +8017,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -8017,9 +8042,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -8046,9 +8071,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -8073,9 +8098,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -8089,7 +8114,7 @@
       <title>289. Game of Life</title>
       <link href="/2018/06/01/289-Game-of-Life/"/>
       <url>/2018/06/01/289-Game-of-Life/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>According to the Wikipedia’s article: “The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.”</p><p>Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p><ul><li>Any live cell with fewer than two live neighbors dies, as if caused by under-population.</li><li>Any live cell with two or three live neighbors lives on to the next generation.</li><li>Any live cell with more than three live neighbors dies, as if by over-population..</li><li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.<br>Write a function to compute the next state (after one update) of the board given its current state.</li></ul><p>Follow up:<br>Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.<br>In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>To solve it in place, we use 2 bits to store 2 states:</p><p>[2nd bit, 1st bit] = [next state, current state]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00  dead (next) &lt;- dead (current)</span><br><span class="line">01  dead (next) &lt;- live (current)  </span><br><span class="line">10  live (next) &lt;- dead (current)  </span><br><span class="line">11  live (next) &lt;- live (current)</span><br></pre></td></tr></table></figure></p><ul><li>In the beginning, every cell is either 00 or 01.</li><li>Notice that 1st state is independent of 2nd state.</li><li>Imagine all cells are instantly changing from the 1st to the 2nd state, at the same time.</li><li>Let’s count # of neighbors from 1st state and set 2nd state bit.</li><li>Since every 2nd state is by default dead, no need to consider transition 01 -&gt; 00.</li><li>In the end, delete every cell’s 1st state by doing &gt;&gt; 1.</li></ul><p>For each cell’s 1st bit, check the 8 pixels around itself, and set the cell’s 2nd bit.</p><p>Transition 01 -&gt; 11: when board == 1 and lives &gt;= 2 &amp;&amp; lives &lt;= 3.<br>Transition 00 -&gt; 10: when board == 0 and lives == 3.<br>To get the current state, simply do</p><p>board[i][j] &amp; 1<br>To get the next state, simply do</p><p>board[i][j] &gt;&gt; 1</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">gameOfLife</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(board.empty() || board.size() == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> m = board.size(), n= board[<span class="number">0</span>].size();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j&lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> lives = liveNeighbor(board, m,n,i,j);</span><br><span class="line">                <span class="comment">// In the beginning, every 2nd bit is 0;</span></span><br><span class="line">                <span class="comment">// So we only need to care about when will the 2nd bit become 1.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="number">1</span> &amp;&amp; lives &gt;= <span class="number">2</span> &amp;&amp; lives &lt;= <span class="number">3</span>)&#123;</span><br><span class="line">                    board[i][j] = <span class="number">3</span>; <span class="comment">// Make the 2nd bit 1: 01 ---&gt; 11</span></span><br><span class="line">                &#125; </span><br><span class="line">                <span class="keyword">if</span>(board[i][j] ==<span class="number">0</span> &amp;&amp; lives == <span class="number">3</span>)&#123;</span><br><span class="line">                    board[i][j]= <span class="number">2</span>; <span class="comment">// Make the 2nd bit 1: 00 ---&gt; 10</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; m; ++i)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j =<span class="number">0</span>; j&lt; n; ++j)</span><br><span class="line">                board[i][j] &gt;&gt;=<span class="number">1</span>; <span class="comment">// Get the 2nd state.</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">liveNeighbor</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; board, <span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lives= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x= max(i<span class="number">-1</span>, <span class="number">0</span>); x&lt;= min(i+<span class="number">1</span>, m<span class="number">-1</span>); x++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y= max(j<span class="number">-1</span>, <span class="number">0</span>); y &lt;= min(j+<span class="number">1</span>, n<span class="number">-1</span>); y++)&#123;</span><br><span class="line">                lives+= board[x][y] &amp;<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        lives -= board[i][j] &amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> lives;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>According to the Wikipedia’s article: “The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.”</p><p>Given a board with m by n cells, each cell has an initial state live (1) or dead (0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):</p><ul><li>Any live cell with fewer than two live neighbors dies, as if caused by under-population.</li><li>Any live cell with two or three live neighbors lives on to the next generation.</li><li>Any live cell with more than three live neighbors dies, as if by over-population..</li><li>Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.<br>Write a function to compute the next state (after one update) of the board given its current state.</li></ul><p>Follow up:<br>Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot update some cells first and then use their updated values to update other cells.<br>In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>To solve it in place, we use 2 bits to store 2 states:</p><p>[2nd bit, 1st bit] = [next state, current state]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">00  dead (next) &lt;- dead (current)</span><br><span class="line">01  dead (next) &lt;- live (current)  </span><br><span class="line">10  live (next) &lt;- dead (current)  </span><br><span class="line">11  live (next) &lt;- live (current)</span><br></pre></td></tr></table></figure></p><ul><li>In the beginning, every cell is either 00 or 01.</li><li>Notice that 1st state is independent of 2nd state.</li><li>Imagine all cells are instantly changing from the 1st to the 2nd state, at the same time.</li><li>Let’s count # of neighbors from 1st state and set 2nd state bit.</li><li>Since every 2nd state is by default dead, no need to consider transition 01 -&gt; 00.</li><li>In the end, delete every cell’s 1st state by doing &gt;&gt; 1.</li></ul><p>For each cell’s 1st bit, check the 8 pixels around itself, and set the cell’s 2nd bit.</p><p>Transition <code>01 -&gt; 11</code>: when <code>board[i][j] == 1</code> and <code>lives &gt;= 2 &amp;&amp; lives &lt;= 3</code>.<br>Transition <code>00 -&gt; 10</code>: when <code>board[i][j] == 0</code> and <code>lives == 3</code>.<br>To get the current state, do <code>board[i][j] &amp; 1</code><br>To get the next state, do <code>board[i][j] &gt;&gt; 1</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">gameOfLife</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(board.empty() || board.size() == <span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> m = board.size(), n= board[<span class="number">0</span>].size();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i&lt; m; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j&lt; n; j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> lives = liveNeighbor(board, m,n,i,j);</span><br><span class="line">                <span class="comment">// In the beginning, every 2nd bit is 0;</span></span><br><span class="line">                <span class="comment">// So we only need to care about when will the 2nd bit become 1.</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(board[i][j] == <span class="number">1</span> &amp;&amp; lives &gt;= <span class="number">2</span> &amp;&amp; lives &lt;= <span class="number">3</span>)&#123;</span><br><span class="line">                    board[i][j] = <span class="number">3</span>; <span class="comment">// Make the 2nd bit 1: 01 ---&gt; 11</span></span><br><span class="line">                &#125; </span><br><span class="line">                <span class="keyword">if</span>(board[i][j] ==<span class="number">0</span> &amp;&amp; lives == <span class="number">3</span>)&#123;</span><br><span class="line">                    board[i][j]= <span class="number">2</span>; <span class="comment">// Make the 2nd bit 1: 00 ---&gt; 10</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; m; ++i)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j =<span class="number">0</span>; j&lt; n; ++j)</span><br><span class="line">                board[i][j] &gt;&gt;=<span class="number">1</span>; <span class="comment">// Get the 2nd state.</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">liveNeighbor</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; board, <span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> lives= <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> x= max(i<span class="number">-1</span>, <span class="number">0</span>); x&lt;= min(i+<span class="number">1</span>, m<span class="number">-1</span>); x++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> y= max(j<span class="number">-1</span>, <span class="number">0</span>); y &lt;= min(j+<span class="number">1</span>, n<span class="number">-1</span>); y++)&#123;</span><br><span class="line">                lives+= board[x][y] &amp;<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        lives -= board[i][j] &amp;<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> lives;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="Solution-Python-extra-space"><a href="#Solution-Python-extra-space" class="headerlink" title="Solution Python extra space:"></a>Solution Python extra space:</h2><p>Use an additional grid to store the neighbor status. Update <code>board[i][j]</code> once we got all neighbor status in this round.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gameOfLife</span><span class="params">(self, board: List[List[int]])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify board in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># status change between dead and live</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">neighbors_of_cell</span><span class="params">(x: int, y: int)</span> -&gt; int:</span></span><br><span class="line">            left = board[x - <span class="number">1</span>][y] <span class="keyword">if</span> x <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            right = board[x + <span class="number">1</span>][y] <span class="keyword">if</span> x + <span class="number">1</span> &lt; m <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            up = board[x][y - <span class="number">1</span>] <span class="keyword">if</span> y <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            down = board[x][y + <span class="number">1</span>] <span class="keyword">if</span> y + <span class="number">1</span> &lt; n <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            left_up = board[x - <span class="number">1</span>][y - <span class="number">1</span>] <span class="keyword">if</span> x <span class="keyword">and</span> y <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            left_down = board[x - <span class="number">1</span>][y + <span class="number">1</span>] <span class="keyword">if</span> x <span class="keyword">and</span> y + <span class="number">1</span> &lt; n <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            right_up = board[x + <span class="number">1</span>][y - <span class="number">1</span>] <span class="keyword">if</span> x + <span class="number">1</span> &lt; m <span class="keyword">and</span> y <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            right_down = board[x + <span class="number">1</span>][y + <span class="number">1</span>] <span class="keyword">if</span> x + <span class="number">1</span> &lt; m <span class="keyword">and</span> y + <span class="number">1</span> &lt; n <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">return</span> left + right + up + down + left_up + left_down + right_up + right_down</span><br><span class="line"></span><br><span class="line">        m = len(board)</span><br><span class="line">        n = len(board[<span class="number">0</span>])</span><br><span class="line">        neighbors = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)]  <span class="comment"># represents live neighbors of each cell</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> range(n):</span><br><span class="line">                neighbors[r][c] = neighbors_of_cell(r, c)</span><br><span class="line">        <span class="keyword">for</span> r <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> board[r][c]:  <span class="comment"># live cell</span></span><br><span class="line">                    <span class="keyword">if</span> neighbors[r][c] &gt; <span class="number">3</span>:  <span class="comment"># over-population</span></span><br><span class="line">                        board[r][c] = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">elif</span> neighbors[r][c] &lt; <span class="number">2</span>:  <span class="comment"># under-population</span></span><br><span class="line">                        board[r][c] = <span class="number">0</span></span><br><span class="line">                <span class="keyword">else</span>:  <span class="comment"># dead cell</span></span><br><span class="line">                    <span class="keyword">if</span> neighbors[r][c] == <span class="number">3</span>:  <span class="comment"># reproduction</span></span><br><span class="line">                        board[r][c] = <span class="number">1</span></span><br></pre></td></tr></table></figure><h2 id="Solution-Python-without-extra-space"><a href="#Solution-Python-without-extra-space" class="headerlink" title="Solution Python without extra space:"></a>Solution Python without extra space:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gameOfLife</span><span class="params">(self, board: List[List[int]])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        m,n = len(board), len(board[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="number">0</span> <span class="keyword">or</span> board[i][j] == <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">if</span> self.nnb(board,i,j) == <span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">2</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> self.nnb(board,i,j) &lt; <span class="number">2</span> <span class="keyword">or</span> self.nnb(board,i,j) &gt;<span class="number">3</span>:</span><br><span class="line">                        board[i][j] = <span class="number">3</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="number">2</span>: board[i][j] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> board[i][j] == <span class="number">3</span>: board[i][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nnb</span><span class="params">(self, board, i, j)</span>:</span></span><br><span class="line">        m,n = len(board), len(board[<span class="number">0</span>])</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:   count += board[i<span class="number">-1</span>][j<span class="number">-1</span>]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span>:                count += board[i<span class="number">-1</span>][j]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> i<span class="number">-1</span> &gt;= <span class="number">0</span> <span class="keyword">and</span> j+<span class="number">1</span> &lt; n:    count += board[i<span class="number">-1</span>][j+<span class="number">1</span>]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:                count += board[i][j<span class="number">-1</span>]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> j+<span class="number">1</span> &lt; n:                 count += board[i][j+<span class="number">1</span>]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; m <span class="keyword">and</span> j<span class="number">-1</span> &gt;= <span class="number">0</span>:    count += board[i+<span class="number">1</span>][j<span class="number">-1</span>]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; m:                 count += board[i+<span class="number">1</span>][j]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> i+<span class="number">1</span> &lt; m <span class="keyword">and</span> j+<span class="number">1</span> &lt; n:     count += board[i+<span class="number">1</span>][j+<span class="number">1</span>]%<span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>]]></content>
       
       <categories>
           
@@ -8099,8 +8124,6 @@
       
       
         <tags>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8175,9 +8198,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -8356,19 +8379,19 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -8489,11 +8512,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -8522,9 +8545,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -8549,13 +8572,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -8580,9 +8603,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -8605,9 +8628,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> snapchat </tag>
             
@@ -8632,13 +8655,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
+            
+            <tag> medium </tag>
             
             <tag> airbnb </tag>
             
