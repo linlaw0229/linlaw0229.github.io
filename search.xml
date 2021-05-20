@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>528. Random Pick with Weight</title>
+      <link href="/2021/05/19/528-Random-Pick-with-Weight/"/>
+      <url>/2021/05/19/528-Random-Pick-with-Weight/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an array of positive integers <code>w</code> where <code>w[i]</code> describes the weight of <code>ith</code> index (0-indexed).</p><p>We need to call the function <code>pickIndex()</code> which <strong>randomly</strong> returns an integer in the range <code>[0, w.length - 1]</code>. <code>pickIndex()</code> should return the integer proportional to its weight in the <code>w</code> array. For example, for <code>w = [1, 3]</code>, the probability of picking the index <code>0</code> is <code>1 / (1 + 3) = 0.25</code> (i.e 25%) while the probability of picking the index <code>1</code> is <code>3 / (1 + 3) = 0.75</code> (i.e 75%).</p><p>More formally, the probability of picking index <code>i</code> is <code>w[i] / sum(w)</code>.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;Solution&quot;,&quot;pickIndex&quot;]</span><br><span class="line">[[[1]],[]]</span><br><span class="line">Output</span><br><span class="line">[null,0]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">Solution solution = new Solution([1]);</span><br><span class="line">solution.pickIndex(); // return 0. Since there is only one single element on the array the only option is to return the first element.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;Solution&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;,&quot;pickIndex&quot;]</span><br><span class="line">[[[1,3]],[],[],[],[],[]]</span><br><span class="line">Output</span><br><span class="line">[null,1,1,1,1,0]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">Solution solution = new Solution([1, 3]);</span><br><span class="line">solution.pickIndex(); // return 1. It&apos;s returning the second element (index = 1) that has probability of 3/4.</span><br><span class="line">solution.pickIndex(); // return 1</span><br><span class="line">solution.pickIndex(); // return 1</span><br><span class="line">solution.pickIndex(); // return 1</span><br><span class="line">solution.pickIndex(); // return 0. It&apos;s returning the first element (index = 0) that has probability of 1/4.</span><br><span class="line"></span><br><span class="line">Since this is a randomization problem, multiple answers are allowed so the following outputs can be considered correct :</span><br><span class="line">[null,1,1,1,1,0]</span><br><span class="line">[null,1,1,1,1,1]</span><br><span class="line">[null,1,1,1,0,0]</span><br><span class="line">[null,1,1,1,0,1]</span><br><span class="line">[null,1,0,1,0,0]</span><br><span class="line">......</span><br><span class="line">and so on.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= w.length &lt;= 10000</code></li><li><code>1 &lt;= w[i] &lt;= 10^5</code></li><li><code>pickIndex</code> will be called at most <code>10000</code> times.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The idea is to create a <code>prefix_sum</code> array and have a <code>sum</code> for the total weight. </p><p>Then multiply the <code>sum</code> with <code>random</code> when picking a number. Do a binary search to find which index has the number that is smaller but closest to the <code>random*sum</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, weight: List[int])</span>:</span></span><br><span class="line">        self.prefix_sum = []</span><br><span class="line">        prefix = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> weight:</span><br><span class="line">            prefix += w</span><br><span class="line">            self.prefix_sum.append(prefix)</span><br><span class="line">        self.total_sum = prefix</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pickIndex</span><span class="params">(self)</span> -&gt; int:</span></span><br><span class="line">        rand = self.total_sum* random.random()</span><br><span class="line">        i = bisect_left(self.prefix_sum, rand)</span><br><span class="line">        <span class="keyword">return</span> i</span><br></pre></td></tr></table></figure><p>time complexity: $O(n)$ in <code>init</code>, $O(logn)$ when pickIndex<br>space complexity: $O(n)$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> binary search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1570. Dot Product of Two Sparse Vectors</title>
       <link href="/2021/05/17/1570-Dot-Product-of-Two-Sparse-Vectors/"/>
       <url>/2021/05/17/1570-Dot-Product-of-Two-Sparse-Vectors/</url>
@@ -6047,9 +6070,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> design </tag>
+            
+            <tag> uber </tag>
             
             <tag> hash table </tag>
             
@@ -7094,9 +7117,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7123,9 +7146,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7909,9 +7932,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7936,9 +7959,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7963,9 +7986,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8098,9 +8121,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8127,9 +8150,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8154,9 +8177,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
