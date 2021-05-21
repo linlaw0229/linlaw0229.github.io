@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/08/21/76-Minimum-Window-Substring/</loc>
+    
+    <lastmod>2021-05-21T04:09:12.141Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2021/05/19/398-Random-Pick-Index/</loc>
     
     <lastmod>2021-05-20T06:17:10.012Z</lastmod>
@@ -1097,13 +1104,6 @@
     <loc>http://linlaw0229.github.io/2018/10/25/Leetcode-category/</loc>
     
     <lastmod>2019-01-21T20:59:36.555Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/08/21/76-Minimum-Window-Substring/</loc>
-    
-    <lastmod>2019-01-21T20:58:40.259Z</lastmod>
     
   </url>
   
