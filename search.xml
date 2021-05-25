@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>1804. Implement Trie II (Prefix Tree)</title>
+      <link href="/2021/05/24/1804-Implement-Trie-II-Prefix-Tree/"/>
+      <url>/2021/05/24/1804-Implement-Trie-II-Prefix-Tree/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>A <strong><a href="https://en.wikipedia.org/wiki/Trie" target="_blank" rel="noopener">trie</a></strong> (pronounced as “try”) or <strong>prefix tree</strong> is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.</p><p>Implement the Trie class:</p><ul><li><code>Trie()</code> Initializes the trie object.</li><li><code>void insert(String word)</code> Inserts the string <code>word</code> into the trie.</li><li><code>int countWordsEqualTo(String word)</code> Returns the number of instances of the string <code>word</code> in the trie.</li><li><code>int countWordsStartingWith(String prefix)</code> Returns the number of strings in the trie that have the string <code>prefix</code> as a prefix.</li><li><code>void erase(String word)</code> Erases the string <code>word</code> from the trie.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.child = defaultdict(TrieNode)</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line">        self.tail = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Trie</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.root = TrieNode()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, word: str)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        p = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">            p = p.child[c]</span><br><span class="line">            p.count += <span class="number">1</span></span><br><span class="line">        p.tail += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countWordsEqualTo</span><span class="params">(self, word: str)</span> -&gt; int:</span></span><br><span class="line">        p = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> p.child:</span><br><span class="line">                p = p.child[c]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> p.tail</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countWordsStartingWith</span><span class="params">(self, prefix: str)</span> -&gt; int:</span></span><br><span class="line">        p = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> prefix:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> p.child:</span><br><span class="line">                p = p.child[c]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> p.count</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">erase</span><span class="params">(self, word: str)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        p = self.root</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> p.child:</span><br><span class="line">                p = p.child[c]</span><br><span class="line">                p.count -= <span class="number">1</span></span><br><span class="line">        p.tail -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Your Trie object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = Trie()</span></span><br><span class="line"><span class="comment"># obj.insert(word)</span></span><br><span class="line"><span class="comment"># param_2 = obj.countWordsEqualTo(word)</span></span><br><span class="line"><span class="comment"># param_3 = obj.countWordsStartingWith(prefix)</span></span><br><span class="line"><span class="comment"># obj.erase(word)</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> design </tag>
+            
+            <tag> trie </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1871. Jump Game VII</title>
       <link href="/2021/05/23/1871-Jump-Game-VII/"/>
       <url>/2021/05/23/1871-Jump-Game-VII/</url>
@@ -17,9 +42,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> greedy </tag>
             
@@ -213,9 +238,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -240,9 +265,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -292,9 +317,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -1231,9 +1256,9 @@
             
             <tag> dfs </tag>
             
-            <tag> graph </tag>
-            
             <tag> union find </tag>
+            
+            <tag> graph </tag>
             
         </tags>
       
@@ -1302,9 +1327,9 @@
             
             <tag> dfs </tag>
             
-            <tag> graph </tag>
-            
             <tag> union find </tag>
+            
+            <tag> graph </tag>
             
         </tags>
       
@@ -1696,9 +1721,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -2647,9 +2672,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> stack </tag>
             
@@ -2779,9 +2804,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -3243,9 +3268,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -4017,9 +4042,9 @@
             
             <tag> array </tag>
             
-            <tag> uber </tag>
-            
             <tag> union find </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
@@ -4348,9 +4373,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -4543,9 +4568,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -5131,9 +5156,9 @@
             
             <tag> array </tag>
             
-            <tag> greedy </tag>
-            
             <tag> uber </tag>
+            
+            <tag> greedy </tag>
             
             <tag> queue </tag>
             
@@ -5311,9 +5336,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -5574,9 +5599,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -5638,9 +5663,9 @@
             
             <tag> medium </tag>
             
-            <tag> greedy </tag>
-            
             <tag> uber </tag>
+            
+            <tag> greedy </tag>
             
             <tag> heap </tag>
             
@@ -5814,9 +5839,9 @@
             
             <tag> amazon </tag>
             
-            <tag> pure storage </tag>
-            
             <tag> uber </tag>
+            
+            <tag> pure storage </tag>
             
         </tags>
       
@@ -6101,9 +6126,9 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> uber </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -6126,11 +6151,11 @@
             
             <tag> medium </tag>
             
+            <tag> uber </tag>
+            
             <tag> design </tag>
             
             <tag> hash table </tag>
-            
-            <tag> uber </tag>
             
             <tag> linkedin </tag>
             
@@ -7169,13 +7194,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7202,9 +7227,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7389,9 +7414,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -7414,9 +7439,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -7445,9 +7470,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -7988,9 +8013,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8015,9 +8040,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8042,9 +8067,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8177,9 +8202,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8206,9 +8231,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8233,9 +8258,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
