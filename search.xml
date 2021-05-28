@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>1312. Minimum Insertion Steps to Make a String Palindrome</title>
+      <link href="/2021/05/27/1312-Minimum-Insertion-Steps-to-Make-a-String-Palindrome/"/>
+      <url>/2021/05/27/1312-Minimum-Insertion-Steps-to-Make-a-String-Palindrome/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string <code>s</code>. In one step you can insert any character at any index of the string.</p><p>Return <em>the minimum number of steps</em> to make <code>s</code> palindrome.</p><p>A <strong>Palindrome String</strong> is one that reads the same backward as well as forward.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;zzazz&quot;</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The string &quot;zzazz&quot; is already palindrome we don&apos;t need any insertions.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;mbadm&quot;</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: String can be &quot;mbdadbm&quot; or &quot;mdbabdm&quot;.</span><br></pre></td></tr></table></figure><p><strong>Example 3:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;leetcode&quot;</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: Inserting 5 characters the string becomes &quot;leetcodocteel&quot;.</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Let’s imagine matching the characters of the string like a palindrome, from the begining and the end with 2 pointers <code>i</code> and <code>j</code>.We may encounter 2 scenarios:</p><ol><li>The character at <code>i</code> matches character at <code>j</code>.</li><li>The characters don’t match each other</li></ol><p>In case of 1 we just increase the pointer <code>i</code> and decrease the pointer <code>j</code>, <code>i++</code> and <code>j--</code> respectively.</p><p>In the second case we have 2 options:</p><ol><li>Insert one character at <code>j</code> to match the character at <code>i</code>.</li></ol><p>Or</p><ol><li>Insert one character at <code>i</code> to match the character at <code>j</code>.</li></ol><p>Since we are not actually adding the characters in the string but just calculating the cost,In case 1 we increase the pointer <code>i</code> by <code>1</code> and <code>j</code> stays as it is, as we still need a character to match at <code>j</code>and in case 2 we decrease the pointer <code>j</code> by <code>1</code> and <code>i</code> stays as it is, as we still need a character to match at <code>i</code>.both the cases adds cost <code>1</code> since we are inserting a letter.</p><p>We can then use these two different pairs of new <code>i</code> and <code>j</code> values (<code>i+1, j</code> and <code>i, j-1</code>) to again repeat the process and use the <strong>minimum</strong> result of these as our result for current pair of <code>i, j</code>.We can see that this is recursive and thus we can use recursion with caching to store the repeated values.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minInsertions</span><span class="params">(self, s: str)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># find longest common sequence for s and reversed(s)</span></span><br><span class="line">        n = len(s)</span><br><span class="line">        dp = [[<span class="number">0</span>]*(n+<span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i][j] + <span class="number">1</span> <span class="keyword">if</span> s[i] == s[~j] <span class="keyword">else</span> max(dp[i+<span class="number">1</span>][j], dp[i][j+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> n - dp[n][n]</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>310. Minimum Height Trees</title>
       <link href="/2021/05/26/310-Minimum-Height-Trees/"/>
       <url>/2021/05/26/310-Minimum-Height-Trees/</url>
@@ -17,9 +40,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> graph </tag>
             
@@ -92,9 +115,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> greedy </tag>
             
@@ -288,9 +311,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -315,9 +338,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -367,9 +390,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -1771,9 +1794,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -2693,9 +2716,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -2722,9 +2745,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> stack </tag>
             
@@ -2854,9 +2877,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -3318,9 +3341,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -4266,9 +4289,9 @@
             
             <tag> uber </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -4336,9 +4359,9 @@
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -4423,9 +4446,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -4618,9 +4641,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -5386,9 +5409,9 @@
             
             <tag> facebook </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> hash table </tag>
             
@@ -5649,9 +5672,9 @@
             
             <tag> google </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> amazon </tag>
             
@@ -7244,13 +7267,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
             
-            <tag> array </tag>
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7277,9 +7300,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7464,9 +7487,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -7489,9 +7512,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
             <tag> dfs </tag>
             
@@ -7520,9 +7543,9 @@
             
             <tag> tree </tag>
             
-            <tag> bfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -8063,9 +8086,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8090,9 +8113,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8117,9 +8140,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8252,9 +8275,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8281,9 +8304,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8308,9 +8331,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8595,9 +8618,9 @@
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
