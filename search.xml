@@ -40,9 +40,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -115,9 +115,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -311,9 +311,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -338,9 +338,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -390,9 +390,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1794,9 +1794,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2745,9 +2745,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -2877,9 +2877,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -3341,9 +3341,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4446,9 +4446,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4641,9 +4641,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5409,9 +5409,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -5672,9 +5672,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6211,7 +6211,7 @@
       <title>244. Shortest Word Distance II</title>
       <link href="/2018/07/25/244-Shortest-Word-Distance-II/"/>
       <url>/2018/07/25/244-Shortest-Word-Distance-II/</url>
-      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Design a class which receives a list of words in the constructor, and implements a method that takes two words word1 and word2 and return the shortest distance between these two words in the list. Your method will be called repeatedly many times with different parameters. </p><p>Example:<br>Assume that words = <code>[&quot;practice&quot;, &quot;makes&quot;, &quot;perfect&quot;, &quot;coding&quot;, &quot;makes&quot;]</code>.</p><p>Input: word1 = “coding”, word2 = “practice”<br>Output: 3<br>Input: word1 = “makes”, word2 = “coding”<br>Output: 1<br>Note:<br>You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><p>The problem is relatively simple, but this is a design question, so you have to collect as much information as you need from the interviewer. For example, does the input contains any duplicate elements? if it does, we need to use a <code>vector&lt;int&gt;</code> to store the index of same word.</p><h1 id="basic-solution"><a href="#basic-solution" class="headerlink" title="basic solution:"></a>basic solution:</h1><p>in the search part, the time complexity is <code>O(MN)</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); ++i) &#123;</span><br><span class="line">        m[words[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = INT_MAX;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m[word1].size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m[word2].size(); ++j) &#123;</span><br><span class="line">            res = min(res, <span class="built_in">abs</span>(m[word1][i] - m[word2][j]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: O(MN)</p><h1 id="improved-solution"><a href="#improved-solution" class="headerlink" title="improved solution:"></a>improved solution:</h1><p>We can improve the above solution by using two pointers to find the smallest result.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordDistance</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">map</span>;</span><br><span class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; words) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; words.size(); i++)&#123;</span><br><span class="line">            <span class="built_in">map</span>[words[i]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> vec1= <span class="built_in">map</span>[word1];</span><br><span class="line">        <span class="keyword">auto</span> vec2= <span class="built_in">map</span>[word2];</span><br><span class="line">        <span class="keyword">int</span> res= INT_MAX;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>, j= <span class="number">0</span>; i&lt; vec1.size()&amp;&amp; j&lt; vec2.size();)&#123;</span><br><span class="line">            <span class="keyword">int</span> idx1= vec1[i];</span><br><span class="line">            <span class="keyword">int</span> idx2= vec2[j];</span><br><span class="line">            <span class="keyword">if</span>(idx1&lt; idx2)&#123;</span><br><span class="line">                res= min(res, idx2-idx1);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                res= min(res, idx1-idx2);</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>time complexity: O(m+n)</p><h1 id="more-concise-solution"><a href="#more-concise-solution" class="headerlink" title="more concise solution:"></a>more concise solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordDistance</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); ++i) &#123;</span><br><span class="line">            m[words[i]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, res = INT_MAX;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; m[word1].size() &amp;&amp; j &lt; m[word2].size()) &#123;</span><br><span class="line">            res = min(res, <span class="built_in">abs</span>(m[word1][i] - m[word2][j]));</span><br><span class="line">            m[word1][i] &lt; m[word2][j] ? ++i : ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: O(m+n)<br>reference:<br><a href="https://goo.gl/BkmZXc" target="_blank" rel="noopener">https://goo.gl/BkmZXc</a><br><a href="http://www.cnblogs.com/grandyang/p/5187640.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/5187640.html</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h1><p>Design a class which receives a list of words in the constructor, and implements a method that takes two words word1 and word2 and return the shortest distance between these two words in the list. Your method will be called repeatedly many times with different parameters. </p><p>Example:<br>Assume that words = <code>[&quot;practice&quot;, &quot;makes&quot;, &quot;perfect&quot;, &quot;coding&quot;, &quot;makes&quot;]</code>.</p><p>Input: word1 = “coding”, word2 = “practice”<br>Output: 3<br>Input: word1 = “makes”, word2 = “coding”<br>Output: 1<br>Note:<br>You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.</p><h1 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h1><ol><li>Use a defaultdict to quickly find word</li><li>Since a word might appear multiple times, need to search where’s the shortest distance<ol><li>walk through every index of word1 and word2, takes <code>O(m*n)</code> </li><li>use merge sort, take <code>O(m+n)</code></li></ol></li></ol><p><code>O(m*n)</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordDistance</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, wordsDict: List[str])</span>:</span></span><br><span class="line">        self.dic = defaultdict(list)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(wordsDict)):</span><br><span class="line">            self.dic[wordsDict[i]].append(i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortest</span><span class="params">(self, word1: str, word2: str)</span> -&gt; int:</span></span><br><span class="line">        dis1, dis2 = self.dic[word1], self.dic[word2]</span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">for</span> v1 <span class="keyword">in</span> dis1:</span><br><span class="line">            <span class="keyword">for</span> v2 <span class="keyword">in</span> dis2:</span><br><span class="line">                res = min(res, abs(v1-v2))</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your WordDistance object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = WordDistance(wordsDict)</span></span><br><span class="line"><span class="comment"># param_1 = obj.shortest(word1,word2)</span></span><br></pre></td></tr></table></figure><p><code>O(m+n)</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordDistance</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, wordsDict: List[str])</span>:</span></span><br><span class="line">        self.dic = defaultdict(list)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(wordsDict)):</span><br><span class="line">            self.dic[wordsDict[i]].append(i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortest</span><span class="params">(self, word1: str, word2: str)</span> -&gt; int:</span></span><br><span class="line">        dis1, dis2 = self.dic[word1], self.dic[word2]</span><br><span class="line">        i = j = <span class="number">0</span></span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">while</span> i &lt; len(dis1) <span class="keyword">and</span> j &lt; len(dis2):</span><br><span class="line">            res = min(res, abs(dis1[i] - dis2[j]))</span><br><span class="line">            <span class="keyword">if</span> dis1[i] &lt; dis2[j]:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>The problem is relatively simple, but this is a design question, so you have to collect as much information as you need from the interviewer. For example, does the input contains any duplicate elements? if it does, we need to use a <code>vector&lt;int&gt;</code> to store the index of same word.</p><h1 id="basic-solution"><a href="#basic-solution" class="headerlink" title="basic solution:"></a>basic solution:</h1><p>in the search part, the time complexity is <code>O(MN)</code></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); ++i) &#123;</span><br><span class="line">        m[words[i]].push_back(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = INT_MAX;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m[word1].size(); ++i) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m[word2].size(); ++j) &#123;</span><br><span class="line">            res = min(res, <span class="built_in">abs</span>(m[word1][i] - m[word2][j]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>time complexity: O(MN)</p><h1 id="improved-solution"><a href="#improved-solution" class="headerlink" title="improved solution:"></a>improved solution:</h1><p>We can improve the above solution by using two pointers to find the smallest result.<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordDistance</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="built_in">map</span>;</span><br><span class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; words) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; words.size(); i++)&#123;</span><br><span class="line">            <span class="built_in">map</span>[words[i]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> vec1= <span class="built_in">map</span>[word1];</span><br><span class="line">        <span class="keyword">auto</span> vec2= <span class="built_in">map</span>[word2];</span><br><span class="line">        <span class="keyword">int</span> res= INT_MAX;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>, j= <span class="number">0</span>; i&lt; vec1.size()&amp;&amp; j&lt; vec2.size();)&#123;</span><br><span class="line">            <span class="keyword">int</span> idx1= vec1[i];</span><br><span class="line">            <span class="keyword">int</span> idx2= vec2[j];</span><br><span class="line">            <span class="keyword">if</span>(idx1&lt; idx2)&#123;</span><br><span class="line">                res= min(res, idx2-idx1);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                res= min(res, idx1-idx2);</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p><p>time complexity: O(m+n)</p><h1 id="more-concise-solution"><a href="#more-concise-solution" class="headerlink" title="more concise solution:"></a>more concise solution:</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WordDistance</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); ++i) &#123;</span><br><span class="line">            m[words[i]].push_back(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>, res = INT_MAX;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; m[word1].size() &amp;&amp; j &lt; m[word2].size()) &#123;</span><br><span class="line">            res = min(res, <span class="built_in">abs</span>(m[word1][i] - m[word2][j]));</span><br><span class="line">            m[word1][i] &lt; m[word2][j] ? ++i : ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: O(m+n)<br>reference:<br><a href="https://goo.gl/BkmZXc" target="_blank" rel="noopener">https://goo.gl/BkmZXc</a><br><a href="http://www.cnblogs.com/grandyang/p/5187640.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/5187640.html</a></p>]]></content>
       
       <categories>
           
@@ -7217,8 +7217,6 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> leetcode </tag>
-            
             <tag> medium </tag>
             
         </tags>
@@ -7267,9 +7265,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -7485,9 +7483,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7510,9 +7508,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -7541,9 +7539,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
