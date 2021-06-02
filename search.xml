@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>218. The Skyline Problem</title>
+      <link href="/2021/06/01/218-The-Skyline-Problem/"/>
+      <url>/2021/06/01/218-The-Skyline-Problem/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>A city’s <strong>skyline</strong> is the outer contour of the silhouette formed by all the buildings in that city when viewed from a distance. Given the locations and heights of all the buildings, return <em>the <strong>skyline</strong> formed by these buildings collectively</em>.</p><p>The geometric information of each building is given in the array <code>buildings</code> where <code>buildings[i] = [lefti, righti, heighti]</code>:</p><ul><li><code>lefti</code> is the x coordinate of the left edge of the <code>ith</code> building.</li><li><code>righti</code> is the x coordinate of the right edge of the <code>ith</code> building.</li><li><code>heighti</code> is the height of the <code>ith</code> building.</li></ul><p>You may assume all buildings are perfect rectangles grounded on an absolutely flat surface at height <code>0</code>.</p><p>The <strong>skyline</strong> should be represented as a list of “key points” <strong>sorted by their x-coordinate</strong> in the form <code>[[x1,y1],[x2,y2],...]</code>. Each key point is the left endpoint of some horizontal segment in the skyline except the last point in the list, which always has a y-coordinate <code>0</code> and is used to mark the skyline’s termination where the rightmost building ends. Any ground between the leftmost and rightmost buildings should be part of the skyline’s contour.</p><p><strong>Note:</strong> There must be no consecutive horizontal lines of equal height in the output skyline. For instance, <code>[...,[2 3],[4 5],[7 5],[11 5],[12 7],...]</code> is not acceptable; the three lines of height 5 should be merged into one in the final output as such: <code>[...,[2 3],[4 5],[12 7],...]</code></p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/12/01/merged.jpg" alt="https://assets.leetcode.com/uploads/2020/12/01/merged.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: buildings = [[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]</span><br><span class="line">Output: [[2,10],[3,15],[7,12],[12,0],[15,10],[20,8],[24,0]]</span><br><span class="line">Explanation:</span><br><span class="line">Figure A shows the buildings of the input.</span><br><span class="line">Figure B shows the skyline formed by those buildings. The red points in figure B represent the key points in the output list.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: buildings = [[0,2,3],[2,5,3]]</span><br><span class="line">Output: [[0,3],[5,0]]</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= buildings.length &lt;= 104</code></li><li><code>0 &lt;= lefti &lt; righti &lt;= 231 - 1</code></li><li><code>1 &lt;= heighti &lt;= 231 - 1</code></li><li><code>buildings</code> is sorted by <code>lefti</code> in non-decreasing order.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p><code>for each critical point c    c.y gets the height of the tallest rectangle over c</code></p><p>This is no longer obviously <code>O(n^2)</code>. If we can somehow calculate the height of the tallest rectangle over c in faster than <code>O(n)</code> time, we have beaten our <code>O(n^2)</code> algorithm. Fortunately, we know about a data structure which can keep track of an active set of integer-keyed objects and return the highest one in <code>O(log⁡n)</code> time: a (max) heap.</p><p>Our final solution, then, in <code>O(nlog⁡n)</code> time, is as follows. First, sort the critical points. Then scan across the critical points from left to right. When we encounter the left edge of a rectangle, we add that rectangle to the heap with its height as the key. When we encounter the right edge of a rectangle, we remove that rectangle from the heap. (This requires keeping external pointers into the heap.) Finally, any time we encounter a critical point, after updating the heap we set the height of that critical point to the value peeked from the top of the heap.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSkyline</span><span class="params">(self, buildings: List[List[int]])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        events = []</span><br><span class="line">        <span class="keyword">for</span> L, R, H <span class="keyword">in</span> buildings:</span><br><span class="line">            events.append((L, -H, R)) </span><br><span class="line">            <span class="comment"># start event, using min heap so append -H</span></span><br><span class="line">            <span class="comment"># need that -H in the list, not just for the heap. Because, when you sort events, you want to make sure for given x an event with max H is processed first. ex: height 14 vs 15, after negative, -15 event would come before -14 event</span></span><br><span class="line">            events.append((R, <span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">        events.sort()</span><br><span class="line">        </span><br><span class="line">        res = [(<span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line">        heap = [(<span class="number">0</span>, float(<span class="string">'inf'</span>))]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> pos, negH, R <span class="keyword">in</span> events:</span><br><span class="line">            <span class="comment"># processing events</span></span><br><span class="line">            <span class="comment"># 1. cleanout old events by pop out those right ends before new event</span></span><br><span class="line">            <span class="comment"># 2. push the new events to the queue</span></span><br><span class="line">            <span class="comment"># 3. check if new largest height affect result skyline</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># pop out building which is end</span></span><br><span class="line">            <span class="keyword">while</span> heap[<span class="number">0</span>][<span class="number">1</span>] &lt;= pos:</span><br><span class="line">                heapq.heappop(heap)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># if it is a start of building, push it into heap as current building</span></span><br><span class="line">            <span class="keyword">if</span> negH != <span class="number">0</span>:</span><br><span class="line">                heapq.heappush(heap, (negH, R))</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># if change in height with previous key point, append to result</span></span><br><span class="line">            <span class="keyword">if</span> res[<span class="number">-1</span>][<span class="number">1</span>] != -heap[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                res.append([pos, -heap[<span class="number">0</span>][<span class="number">0</span>]])</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">1</span>:]</span><br></pre></td></tr></table></figure><p>time complexity: $O(nlogn)$<br>space complexity: $O(n)$<br>reference:<br><a href="https://briangordon.github.io/2014/08/the-skyline-problem.html" target="_blank" rel="noopener">https://briangordon.github.io/2014/08/the-skyline-problem.html</a><br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> heap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1248. Count Number of Nice Subarrays</title>
       <link href="/2021/05/31/1248-Count-Number-of-Nice-Subarrays/"/>
       <url>/2021/05/31/1248-Count-Number-of-Nice-Subarrays/</url>
@@ -65,9 +88,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -140,9 +163,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -336,9 +359,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -363,9 +386,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -415,9 +438,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1819,9 +1842,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -2770,9 +2793,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -2902,9 +2925,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -3366,9 +3389,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4471,9 +4494,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4666,9 +4689,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5434,9 +5457,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -5697,9 +5720,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -7290,9 +7313,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -7508,9 +7531,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7533,9 +7556,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -7564,9 +7587,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
