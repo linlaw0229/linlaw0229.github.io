@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/08/21/297-Serialize-and-Deserialize-Binary-Tree/</loc>
+    
+    <lastmod>2021-06-06T23:36:34.341Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/11/20/14-Longest-Common-Prefix/</loc>
     
     <lastmod>2021-06-05T18:42:24.909Z</lastmod>
@@ -1041,13 +1048,6 @@
     <loc>http://linlaw0229.github.io/2019/03/18/find-max-sibling-layer/</loc>
     
     <lastmod>2019-03-18T21:34:04.666Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/08/21/297-Serialize-and-Deserialize-Binary-Tree/</loc>
-    
-    <lastmod>2019-03-18T18:26:20.449Z</lastmod>
     
   </url>
   
