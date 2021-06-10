@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>68. Text Justification</title>
+      <link href="/2021/06/09/68-Text-Justification/"/>
+      <url>/2021/06/09/68-Text-Justification/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an array of words and a width <em>maxWidth</em>, format the text such that each line has exactly <em>maxWidth</em> characters and is fully (left and right) justified.</p><p>You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces <code>&#39; &#39;</code> when necessary so that each line has exactly <em>maxWidth</em> characters.</p><p>Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line do not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right.</p><p>For the last line of text, it should be left justified and no <strong>extra</strong> space is inserted between words.</p><p><strong>Note:</strong></p><ul><li>A word is defined as a character sequence consisting of non-space characters only.</li><li>Each word’s length is guaranteed to be greater than 0 and not exceed <em>maxWidth</em>.</li><li>The input array <code>words</code> contains at least one word.</li></ul><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;This&quot;, &quot;is&quot;, &quot;an&quot;, &quot;example&quot;, &quot;of&quot;, &quot;text&quot;, &quot;justification.&quot;], maxWidth = 16</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">   &quot;This    is    an&quot;,</span><br><span class="line">   &quot;example  of text&quot;,</span><br><span class="line">   &quot;justification.  &quot;</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;What&quot;,&quot;must&quot;,&quot;be&quot;,&quot;acknowledgment&quot;,&quot;shall&quot;,&quot;be&quot;], maxWidth = 16</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  &quot;What   must   be&quot;,</span><br><span class="line">  &quot;acknowledgment  &quot;,</span><br><span class="line">  &quot;shall be        &quot;</span><br><span class="line">]</span><br><span class="line">Explanation: Note that the last line is &quot;shall be    &quot; instead of &quot;shall     be&quot;, because the last line must be left-justified instead of fully-justified.</span><br><span class="line">Note that the second line is also left-justified becase it contains only one word.</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p><code>(len(word) + chars + len(cur))</code> includes the space that need to add between words.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fullJustify</span><span class="params">(self, words: List[str], maxWidth: int)</span> -&gt; List[str]:</span></span><br><span class="line">        ans, cur = [], []</span><br><span class="line">        chars = <span class="number">0</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            <span class="comment"># if cur is empty or the total chars + total needed spaces + next word fit</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> cur <span class="keyword">or</span> (len(word) + chars + len(cur)) &lt;= maxWidth:</span><br><span class="line">                cur.append(word)</span><br><span class="line">                chars += len(word)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># place spaces, append the line to the ans, and move on</span></span><br><span class="line">                line = self.placeSpacesBetween(cur, maxWidth - chars)</span><br><span class="line">                ans.append(line)</span><br><span class="line">                cur.clear()</span><br><span class="line">                cur.append(word)</span><br><span class="line">                chars = len(word)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># left justify any remaining text, which is easy</span></span><br><span class="line">        <span class="keyword">if</span> cur:</span><br><span class="line">            extra_spaces = maxWidth - chars - len(cur) + <span class="number">1</span></span><br><span class="line">            ans.append(<span class="string">' '</span>.join(cur) + <span class="string">' '</span> * extra_spaces)</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">placeSpacesBetween</span><span class="params">(self, words, spaces)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(words) == <span class="number">1</span>: <span class="keyword">return</span> words[<span class="number">0</span>] + <span class="string">' '</span> * spaces</span><br><span class="line">        </span><br><span class="line">        space_groups = len(words)<span class="number">-1</span></span><br><span class="line">        spaces_between_words = spaces // space_groups</span><br><span class="line">        extra_spaces = spaces % space_groups</span><br><span class="line">        </span><br><span class="line">        cur = []</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            cur.append(word)</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># place the min of remaining spaces or spaces between words plus an extra if available</span></span><br><span class="line">            cur_extra = min(<span class="number">1</span>, extra_spaces)</span><br><span class="line">            spaces_to_place = min(spaces_between_words + cur_extra, spaces)</span><br><span class="line"></span><br><span class="line">            cur.append(<span class="string">' '</span> * spaces_to_place)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> extra_spaces: extra_spaces -= <span class="number">1</span></span><br><span class="line">            spaces -= spaces_to_place</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(cur)</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fullJustify</span><span class="params">(self, words: List[str], maxWidth: int)</span> -&gt; List[str]:</span></span><br><span class="line">            </span><br><span class="line">        result, current_list, num_of_letters = [],[], <span class="number">0</span></span><br><span class="line">        <span class="comment"># result -&gt; stores final result output</span></span><br><span class="line">        <span class="comment"># current_list -&gt; stores list of words which are traversed but not yet added to result</span></span><br><span class="line">        <span class="comment"># num_of_letters -&gt; stores number of chars corresponding to words in current_list</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># total no. of chars in current_list + total no. of chars in current word</span></span><br><span class="line">            <span class="comment"># + total no. of words ~= min. number of spaces between words</span></span><br><span class="line">            <span class="keyword">if</span> num_of_letters + len(word) + len(current_list) &gt; maxWidth:</span><br><span class="line">                <span class="comment"># size will be used for module "magic" for round robin</span></span><br><span class="line">                <span class="comment"># we use max. 1 because atleast one word would be there and to avoid modulo by 0</span></span><br><span class="line">                size = max(<span class="number">1</span>, len(current_list)<span class="number">-1</span>)</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(maxWidth-num_of_letters):</span><br><span class="line">                    <span class="comment"># add space to each word in round robin fashion</span></span><br><span class="line">                    index = i%size</span><br><span class="line">                    current_list[index] += <span class="string">' '</span> </span><br><span class="line">                </span><br><span class="line">                <span class="comment"># add current line of words to the output</span></span><br><span class="line">                result.append(<span class="string">""</span>.join(current_list))</span><br><span class="line">                current_list, num_of_letters = [], <span class="number">0</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment"># add current word to the list and add length to char count</span></span><br><span class="line">            current_list.append(word)</span><br><span class="line">            num_of_letters += len(word)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># form last line by join with space and left justify to maxWidth using ljust (python method)</span></span><br><span class="line">        <span class="comment"># that means pad additional spaces to the right to make string length equal to maxWidth</span></span><br><span class="line">        result.append(<span class="string">" "</span>.join(current_list).ljust(maxWidth))</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> string </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>611. Valid Triangle Number</title>
       <link href="/2021/06/08/611-Valid-Triangle-Number/"/>
       <url>/2021/06/08/611-Valid-Triangle-Number/</url>
@@ -6885,8 +6908,6 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
@@ -7432,9 +7453,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7461,9 +7482,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8245,9 +8266,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8272,9 +8293,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8299,9 +8320,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8434,9 +8455,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8463,9 +8484,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8490,9 +8511,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
