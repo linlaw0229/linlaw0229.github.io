@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>1263. Minimum Moves to Move a Box to Their Target Location</title>
+      <link href="/2021/06/11/1263-Minimum-Moves-to-Move-a-Box-to-Their-Target-Location/"/>
+      <url>/2021/06/11/1263-Minimum-Moves-to-Move-a-Box-to-Their-Target-Location/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Storekeeper is a game in which the player pushes boxes around in a warehouse trying to get them to target locations.</p><p>The game is represented by a <code>grid</code> of size <code>m x n</code>, where each element is a wall, floor, or a box.</p><p>Your task is move the box <code>&#39;B&#39;</code> to the target position <code>&#39;T&#39;</code> under the following rules:</p><ul><li>Player is represented by character <code>&#39;S&#39;</code> and can move up, down, left, right in the <code>grid</code> if it is a floor (empy cell).</li><li>Floor is represented by character <code>&#39;.&#39;</code> that means free cell to walk.</li><li>Wall is represented by character <code>&#39;#&#39;</code> that means obstacle (impossible to walk there).</li><li>There is only one box <code>&#39;B&#39;</code> and one target cell <code>&#39;T&#39;</code> in the <code>grid</code>.</li><li>The box can be moved to an adjacent free cell by standing next to the box and then moving in the direction of the box. This is a <strong>push</strong>.</li><li>The player cannot walk through the box.</li></ul><p>Return the minimum number of <strong>pushes</strong> to move the box to the target. If there is no way to reach the target, return <code>-1</code>.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/11/06/sample_1_1620.png" alt="https://assets.leetcode.com/uploads/2019/11/06/sample_1_1620.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;],</span><br><span class="line">               [&quot;#&quot;,&quot;T&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;],</span><br><span class="line">               [&quot;#&quot;,&quot;.&quot;,&quot;.&quot;,&quot;B&quot;,&quot;.&quot;,&quot;#&quot;],</span><br><span class="line">               [&quot;#&quot;,&quot;.&quot;,&quot;#&quot;,&quot;#&quot;,&quot;.&quot;,&quot;#&quot;],</span><br><span class="line">               [&quot;#&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;S&quot;,&quot;#&quot;],</span><br><span class="line">               [&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;,&quot;#&quot;]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:We return only the number of times the box is pushed.</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Two BFS: one to find if person could move to new position to push box; the other one to find box could move to target position</p><ol><li>Lets think that we have no person and we have to find the minimum path between box and the target. Easy right? Simple BFS.</li><li>If you know how to solve the first part, what I actually do is modified first part with few constraints.<ul><li>I just check whether the box can be shifted to the new position(up, down, left, right)</li><li>For it to be shifted to the new position the person has to be in a corresponding position right?</li><li>So we check if the person can travel from his old position to his corresponding new position(using another BFS).</li><li>If the person can travel to his new position than the box can be shifted, otherwise the box cannot be shifted.</li></ul></li><li>We keep repeating step 2 until we reach the target or it is not possible to move the box anymore.</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minPushBox</span><span class="params">(self, grid: List[List[str]])</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># find person, target, box</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'S'</span>:</span><br><span class="line">                    person = (i,j)</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'T'</span>:</span><br><span class="line">                    target = (i,j)</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'B'</span>:</span><br><span class="line">                    box = (i,j)</span><br><span class="line">        <span class="comment"># </span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">valid</span><span class="params">(i, j)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span> &lt;= i &lt; len(grid) <span class="keyword">and</span> <span class="number">0</span> &lt;= j &lt; len(grid[<span class="number">0</span>]) <span class="keyword">and</span> grid[i][j] != <span class="string">'#'</span></span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">check</span><span class="params">(cur, dest, box)</span>:</span></span><br><span class="line">            q = deque([cur])</span><br><span class="line">            v = set()</span><br><span class="line">            <span class="keyword">while</span> q:</span><br><span class="line">                pos = q.popleft()</span><br><span class="line">                <span class="keyword">if</span> pos == dest:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">                newPos = [(pos[<span class="number">0</span>]+<span class="number">1</span>, pos[<span class="number">1</span>]), (pos[<span class="number">0</span>]<span class="number">-1</span>, pos[<span class="number">1</span>]), (pos[<span class="number">0</span>], pos[<span class="number">1</span>]+<span class="number">1</span>), (pos[<span class="number">0</span>], pos[<span class="number">1</span>]<span class="number">-1</span>)]</span><br><span class="line">                <span class="keyword">for</span> x, y <span class="keyword">in</span> newPos:</span><br><span class="line">                    <span class="keyword">if</span> valid(x, y) <span class="keyword">and</span> (x,y) <span class="keyword">not</span> <span class="keyword">in</span> v <span class="keyword">and</span> (x,y) != box:</span><br><span class="line">                        v.add((x,y))</span><br><span class="line">                        q.append((x,y))</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># since we need to know the distance to walk, tuple contains dis</span></span><br><span class="line">        q = deque([(<span class="number">0</span>, box, person)])</span><br><span class="line">        visited = &#123;box+person&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            dis, box, person = q.popleft()</span><br><span class="line">            <span class="keyword">if</span> box == target:</span><br><span class="line">                <span class="keyword">return</span> dis</span><br><span class="line">            </span><br><span class="line">            b_coord = [(box[<span class="number">0</span>]+<span class="number">1</span>, box[<span class="number">1</span>]),(box[<span class="number">0</span>]<span class="number">-1</span>, box[<span class="number">1</span>]),(box[<span class="number">0</span>], box[<span class="number">1</span>]+<span class="number">1</span>),(box[<span class="number">0</span>], box[<span class="number">1</span>]<span class="number">-1</span>)]</span><br><span class="line">            p_coord = [(box[<span class="number">0</span>]<span class="number">-1</span>, box[<span class="number">1</span>]),(box[<span class="number">0</span>]+<span class="number">1</span>, box[<span class="number">1</span>]),(box[<span class="number">0</span>], box[<span class="number">1</span>]<span class="number">-1</span>),(box[<span class="number">0</span>], box[<span class="number">1</span>]+<span class="number">1</span>)]</span><br><span class="line">            <span class="keyword">for</span> newBox, newPerson <span class="keyword">in</span> zip(b_coord, p_coord):</span><br><span class="line">                <span class="keyword">if</span> valid(*newBox) <span class="keyword">and</span> newBox+box <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                    <span class="keyword">if</span> valid(*newPerson) <span class="keyword">and</span> check(person, newPerson, box):</span><br><span class="line">                        visited.add(newBox+box)</span><br><span class="line">                        q.append((dis+<span class="number">1</span>, newBox, box))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> BFS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>360. Sort Transformed Array</title>
       <link href="/2021/06/09/360-Sort-Transformed-Array/"/>
       <url>/2021/06/09/360-Sort-Transformed-Array/</url>
@@ -132,9 +155,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -157,9 +180,9 @@
             
             <tag> easy </tag>
             
-            <tag> design </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> design </tag>
             
         </tags>
       
@@ -574,9 +597,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> greedy </tag>
             
@@ -788,7 +811,7 @@
       <title>note-Python</title>
       <link href="/2021/04/24/note-Python/"/>
       <url>/2021/04/24/note-Python/</url>
-      <content type="html"><![CDATA[<ul><li><p>extend vs append<br>We see that extend is semantically clearer, and that it can run much faster than append, when you intend to append each element in an iterable to a list.</p><p>If you only have a single element (not in an iterable) to add to the list, use append.</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: append([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">2.867846965789795</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: extend([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">0.8060121536254883</span></span><br></pre></td></tr></table></figure><p><a href="https://stackoverflow.com/a/28119966/5133816" target="_blank" rel="noopener">https://stackoverflow.com/a/28119966/5133816</a></p>]]></content>
+      <content type="html"><![CDATA[<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ol><li><p>Create list</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [0, 1, 2]</span><br><span class="line">a.append(3) # a = [0, 1, 2, 3]</span><br><span class="line">a += [4] # a = [0, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure></li><li><p>List index</p></li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> num,freq <span class="keyword">in</span> collections.Counter(nums).items():</span><br><span class="line">  print(<span class="string">"num "</span>, num, <span class="string">", freq "</span>, freq)</span><br><span class="line">  buckets[-freq].append(num)</span><br></pre></td></tr></table></figure><ol start="3"><li>Sort<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intervals.sort(key=lambda x: x[0])</span><br></pre></td></tr></table></figure></li></ol><ul><li><p>extend vs append<br>We see that extend is semantically clearer, and that it can run much faster than append, when you intend to append each element in an iterable to a list.</p><p>If you only have a single element (not in an iterable) to add to the list, use append.</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: append([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">2.867846965789795</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: extend([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">0.8060121536254883</span></span><br></pre></td></tr></table></figure><p><a href="https://stackoverflow.com/a/28119966/5133816" target="_blank" rel="noopener">https://stackoverflow.com/a/28119966/5133816</a></p>]]></content>
       
       <categories>
           
@@ -2361,9 +2384,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2388,9 +2411,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2417,9 +2440,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -2881,9 +2904,9 @@
             
             <tag> array </tag>
             
-            <tag> design </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> design </tag>
             
         </tags>
       
@@ -2927,9 +2950,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -3150,11 +3173,11 @@
             
             <tag> facebook </tag>
             
+            <tag> easy </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> easy </tag>
             
             <tag> linkedin </tag>
             
@@ -3260,9 +3283,9 @@
             
             <tag> facebook </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> heap </tag>
             
@@ -3440,9 +3463,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -3469,9 +3492,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -3523,9 +3546,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -3668,9 +3691,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linked list </tag>
             
@@ -4077,9 +4100,9 @@
             
             <tag> string </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4434,9 +4457,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linked list </tag>
             
@@ -4463,9 +4486,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> sort </tag>
             
@@ -4599,9 +4622,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -4742,11 +4765,11 @@
             
             <tag> microsoft </tag>
             
+            <tag> easy </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -4914,9 +4937,9 @@
             
             <tag> apple </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
             <tag> two pointers </tag>
             
@@ -4943,9 +4966,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -5088,9 +5111,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -5326,11 +5349,11 @@
             
             <tag> google </tag>
             
+            <tag> easy </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -5384,9 +5407,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6030,11 +6053,11 @@
             
             <tag> apple </tag>
             
+            <tag> easy </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -6437,9 +6460,9 @@
             
             <tag> uber </tag>
             
-            <tag> design </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> design </tag>
             
             <tag> linkedin </tag>
             
@@ -6860,9 +6883,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6935,9 +6958,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> easy </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -7449,9 +7472,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7478,9 +7501,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7507,9 +7530,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7586,9 +7609,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7611,9 +7634,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8291,9 +8314,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8318,9 +8341,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8345,9 +8368,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8480,9 +8503,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8509,9 +8532,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8536,9 +8559,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
