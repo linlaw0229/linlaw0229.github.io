@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>827. Making A Large Island</title>
+      <link href="/2021/06/13/827-Making-A-Large-Island/"/>
+      <url>/2021/06/13/827-Making-A-Large-Island/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an <code>n x n</code> binary matrix <code>grid</code>. You are allowed to change <strong>at most one</strong> <code>0</code> to be <code>1</code>.</p><p>Return <em>the size of the largest <strong>island</strong> in</em> <code>grid</code> <em>after applying this operation</em>.</p><p>An <strong>island</strong> is a 4-directionally connected group of <code>1</code>s.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[1,0],[0,1]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Change one 0 to 1 and connect two 1s, then we get an island with area = 3.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[1,1],[1,0]]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:Change the 0 to 1 and make the island bigger, only one island with area = 4.</span><br></pre></td></tr></table></figure><p><strong>Example 3:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[1,1],[1,1]]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: Can&apos;t change any 0 to 1, only one island with area = 4.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>n == grid.length</code></li><li><code>n == grid[i].length</code></li><li><code>1 &lt;= n &lt;= 500</code></li><li><code>grid[i][j]</code> is either <code>0</code> or <code>1</code>.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>For each <code>1</code> in the grid, we paint all connected <code>1</code> with the next available color (2, 3, and so on). We also remember the size of the island we just painted with that color.</p><p>Then, we analyze all <code>0</code> in the grid, and sum sizes of connected islands (based on the island color). Note that the same island can connect to <code>0</code> more than once. The example below demonstrates this idea (the answer is highlighted):</p><p><img src="https://s3-lc-upload.s3.amazonaws.com/users/votrubac/image_1525310120.png" alt="https://s3-lc-upload.s3.amazonaws.com/users/votrubac/image_1525310120.png"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestIsland</span><span class="params">(self, grid: List[List[int]])</span> -&gt; int:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">valid</span><span class="params">(i, j)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> i &lt; <span class="number">0</span> <span class="keyword">or</span> i &gt;= len(grid) <span class="keyword">or</span> j &lt; <span class="number">0</span> <span class="keyword">or</span> j &gt;= len(grid[<span class="number">0</span>]) <span class="keyword">else</span> grid[i][j]</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">paint</span><span class="params">(i, j, color)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> valid(i, j) != <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            grid[i][j] = color</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + paint(i+<span class="number">1</span>, j, color) + paint(i<span class="number">-1</span>, j, color) + paint(i, j+<span class="number">1</span>, color) + paint(i, j<span class="number">-1</span>, color)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># paint all island to different color</span></span><br><span class="line">        island = [<span class="number">0</span>, <span class="number">0</span>] <span class="comment"># color labeling starts from 2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                    island.append(paint(i, j, len(island)))</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> grid[i][j]:</span><br><span class="line">                    visited = set()</span><br><span class="line">                    visited.add(valid(i+<span class="number">1</span>, j))</span><br><span class="line">                    visited.add(valid(i<span class="number">-1</span>, j))</span><br><span class="line">                    visited.add(valid(i, j+<span class="number">1</span>))</span><br><span class="line">                    visited.add(valid(i, j<span class="number">-1</span>))</span><br><span class="line">                    res = max(res, <span class="number">1</span> + sum(island[color] <span class="keyword">for</span> color <span class="keyword">in</span> visited))</span><br><span class="line">        <span class="keyword">return</span> len(grid)*len(grid[<span class="number">0</span>]) <span class="keyword">if</span> <span class="keyword">not</span> res <span class="keyword">else</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1762. Buildings With an Ocean View</title>
       <link href="/2021/06/13/1762-Buildings-With-an-Ocean-View/"/>
       <url>/2021/06/13/1762-Buildings-With-an-Ocean-View/</url>
@@ -111,9 +136,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -322,9 +347,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -443,9 +468,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -497,9 +522,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -568,11 +593,11 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -595,11 +620,11 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -647,11 +672,11 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -674,9 +699,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -697,9 +722,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> stack </tag>
             
@@ -1649,11 +1674,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -2051,11 +2076,11 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -2159,13 +2184,13 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> google </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2186,9 +2211,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2311,9 +2336,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> recursion </tag>
             
@@ -2405,9 +2430,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> easy </tag>
+            
+            <tag> google </tag>
             
             <tag> array </tag>
             
@@ -2432,9 +2457,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> easy </tag>
+            
+            <tag> google </tag>
             
             <tag> array </tag>
             
@@ -2459,11 +2484,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2615,11 +2640,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -2642,9 +2667,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -2734,13 +2759,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> citrix </tag>
             
@@ -2921,9 +2946,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -2973,9 +2998,9 @@
             
             <tag> hash table </tag>
             
-            <tag> heap </tag>
-            
             <tag> trie </tag>
+            
+            <tag> heap </tag>
             
         </tags>
       
@@ -2996,11 +3021,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> bfs </tag>
             
@@ -3134,11 +3159,11 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -3192,11 +3217,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3248,9 +3273,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> design </tag>
             
@@ -3304,9 +3329,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> amazon </tag>
             
@@ -3484,9 +3509,9 @@
       
         <tags>
             
-            <tag> google </tag>
-            
             <tag> easy </tag>
+            
+            <tag> google </tag>
             
             <tag> array </tag>
             
@@ -3511,11 +3536,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3567,9 +3592,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -3598,11 +3623,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -3654,11 +3679,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -3708,13 +3733,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3795,11 +3820,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -3820,13 +3845,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3940,9 +3965,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4073,9 +4098,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4121,9 +4146,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> easy </tag>
+            
+            <tag> string </tag>
             
             <tag> amazon </tag>
             
@@ -4219,13 +4244,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -4252,9 +4277,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -4422,13 +4447,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> facebook </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4449,9 +4474,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> bloomberg </tag>
             
@@ -4474,13 +4499,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4505,11 +4530,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4538,17 +4563,17 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -4610,15 +4635,15 @@
             
             <tag> apple </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -4639,13 +4664,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4703,11 +4728,11 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -4784,11 +4809,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -4815,11 +4840,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -4898,11 +4923,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -4952,6 +4977,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -4959,8 +4986,6 @@
             <tag> google </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4985,11 +5010,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -5039,9 +5064,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> tree </tag>
+            
+            <tag> facebook </tag>
             
             <tag> medium </tag>
             
@@ -5068,13 +5093,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -5103,9 +5128,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -5128,13 +5153,13 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
-            <tag> google </tag>
-            
             <tag> tree </tag>
             
             <tag> easy </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
             
             <tag> amazon </tag>
             
@@ -5157,11 +5182,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -5306,6 +5331,8 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -5313,8 +5340,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -5364,6 +5389,8 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -5371,8 +5398,6 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -5397,11 +5422,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -5424,13 +5449,13 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -5482,9 +5507,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> greedy </tag>
             
@@ -5639,11 +5664,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> easy </tag>
             
         </tags>
       
@@ -5695,9 +5720,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -5784,9 +5809,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -5898,9 +5923,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -5929,11 +5954,11 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> amazon </tag>
             
@@ -6072,11 +6097,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> easy </tag>
             
             <tag> stack </tag>
             
@@ -6107,9 +6132,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> stack </tag>
             
@@ -6132,11 +6157,11 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6315,9 +6340,9 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> easy </tag>
+            
+            <tag> backtracking </tag>
             
             <tag> bit manipulation </tag>
             
@@ -6369,11 +6394,11 @@
       
         <tags>
             
+            <tag> easy </tag>
+            
             <tag> facebook </tag>
             
             <tag> google </tag>
-            
-            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -6562,9 +6587,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -6601,9 +6626,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -6684,9 +6709,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -6715,9 +6740,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -6742,9 +6767,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -6769,9 +6794,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -6821,9 +6846,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6869,13 +6894,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -7179,9 +7204,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> greedy </tag>
             
@@ -7231,9 +7256,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7289,9 +7314,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7316,9 +7341,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7397,9 +7422,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7443,9 +7468,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -7520,13 +7545,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7551,11 +7576,11 @@
             
             <tag> tree </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -7603,9 +7628,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -7680,13 +7705,13 @@
       
         <tags>
             
+            <tag> tree </tag>
+            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
-            
-            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -7763,11 +7788,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> medium </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -8009,9 +8034,9 @@
       
         <tags>
             
-            <tag> string </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> string </tag>
             
             <tag> medium </tag>
             
@@ -8165,11 +8190,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -8279,9 +8304,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -8331,15 +8356,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -8362,11 +8387,11 @@
             
             <tag> backtracking </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -8447,9 +8472,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8470,9 +8495,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> array </tag>
             
@@ -8495,9 +8520,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -8520,15 +8545,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -8549,15 +8574,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> backtracking </tag>
             
-            <tag> leetcode </tag>
+            <tag> medium </tag>
             
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -8580,11 +8605,11 @@
             
             <tag> backtracking </tag>
             
+            <tag> medium </tag>
+            
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> medium </tag>
             
         </tags>
       
@@ -8605,9 +8630,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8653,9 +8678,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8676,13 +8701,13 @@
       
         <tags>
             
-            <tag> backtracking </tag>
-            
             <tag> leetcode </tag>
             
-            <tag> array </tag>
+            <tag> backtracking </tag>
             
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8705,9 +8730,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -8734,9 +8759,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8759,9 +8784,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8784,9 +8809,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8809,9 +8834,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8834,9 +8859,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -8865,13 +8890,13 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
             
-            <tag> linkedin </tag>
+            <tag> array </tag>
             
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -8919,9 +8944,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8996,9 +9021,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> amazon </tag>
             
@@ -9023,9 +9048,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -9050,13 +9075,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9081,9 +9106,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -9106,9 +9131,9 @@
       
         <tags>
             
-            <tag> dynamic programming </tag>
-            
             <tag> tree </tag>
+            
+            <tag> dynamic programming </tag>
             
             <tag> medium </tag>
             
@@ -9133,13 +9158,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9164,11 +9189,11 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
-            
-            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -9195,9 +9220,9 @@
       
         <tags>
             
-            <tag> hard </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> hard </tag>
             
             <tag> array </tag>
             
@@ -9222,13 +9247,13 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
-            
-            <tag> leetcode </tag>
             
         </tags>
       
