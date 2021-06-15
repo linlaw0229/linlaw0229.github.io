@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>1650. Lowest Common Ancestor of a Binary Tree III</title>
+      <link href="/2021/06/14/1650-Lowest-Common-Ancestor-of-a-Binary-Tree-III/"/>
+      <url>/2021/06/14/1650-Lowest-Common-Ancestor-of-a-Binary-Tree-III/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given two nodes of a binary tree <code>p</code> and <code>q</code>, return <em>their lowest common ancestor (LCA)</em>.</p><p>Each node will have a reference to its parent node. The definition for <code>Node</code> is below:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Node &#123;</span><br><span class="line">    public int val;</span><br><span class="line">    public Node left;</span><br><span class="line">    public Node right;</span><br><span class="line">    public Node parent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>According to the <strong><a href="https://en.wikipedia.org/wiki/Lowest_common_ancestor" target="_blank" rel="noopener">definition of LCA on Wikipedia</a></strong>: “The lowest common ancestor of two nodes p and q in a tree T is the lowest node that has both p and q as descendants (where we allow <strong>a node to be a descendant of itself</strong>).”</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2018/12/14/binarytree.png" alt="https://assets.leetcode.com/uploads/2018/12/14/binarytree.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The LCA of nodes 5 and 1 is 3.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><p><img src="https://assets.leetcode.com/uploads/2018/12/14/binarytree.png" alt="https://assets.leetcode.com/uploads/2018/12/14/binarytree.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: The LCA of nodes 5 and 4 is 5 since a node can be a descendant of itself according to the LCA definition.</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>We have link to parent in this question.<br>Add nodes to a set starting from <code>p</code> to root. Then start to traverse from <code>q</code> to root, if a node already existed in the set, then it’s the LCA.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># Definition for a Node.</span></span><br><span class="line"><span class="string">class Node:</span></span><br><span class="line"><span class="string">    def __init__(self, val):</span></span><br><span class="line"><span class="string">        self.val = val</span></span><br><span class="line"><span class="string">        self.left = None</span></span><br><span class="line"><span class="string">        self.right = None</span></span><br><span class="line"><span class="string">        self.parent = None</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, p: <span class="string">'Node'</span>, q: <span class="string">'Node'</span>)</span> -&gt; 'Node':</span></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="keyword">while</span> p:</span><br><span class="line">            visited.add(p)</span><br><span class="line">            p = p.parent</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            <span class="keyword">if</span> q <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">return</span> q</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                q = q.parent</span><br></pre></td></tr></table></figure><p>This is another solution like detect rings in linked list</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, p: <span class="string">'Node'</span>, q: <span class="string">'Node'</span>)</span> -&gt; 'Node':</span></span><br><span class="line">        p1, p2 = p, q</span><br><span class="line">        <span class="keyword">while</span> p1 != p2:</span><br><span class="line">            p1 = p1.parent <span class="keyword">if</span> p1.parent <span class="keyword">else</span> p</span><br><span class="line">            p2 = p2.parent <span class="keyword">if</span> p2.parent <span class="keyword">else</span> q</span><br><span class="line">        <span class="keyword">return</span> p1</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>827. Making A Large Island</title>
       <link href="/2021/06/13/827-Making-A-Large-Island/"/>
       <url>/2021/06/13/827-Making-A-Large-Island/</url>
@@ -724,9 +745,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -859,7 +880,7 @@
       <title>note-Python</title>
       <link href="/2021/04/24/note-Python/"/>
       <url>/2021/04/24/note-Python/</url>
-      <content type="html"><![CDATA[<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ol><li><p>Create list</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [0, 1, 2]</span><br><span class="line">a.append(3) # a = [0, 1, 2, 3]</span><br><span class="line">a += [4] # a = [0, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure></li><li><p>List index</p></li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> num,freq <span class="keyword">in</span> collections.Counter(nums).items():</span><br><span class="line">  print(<span class="string">"num "</span>, num, <span class="string">", freq "</span>, freq)</span><br><span class="line">  buckets[-freq].append(num)</span><br></pre></td></tr></table></figure><ol start="3"><li>Sort<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intervals.sort(key=lambda x: x[0])</span><br></pre></td></tr></table></figure></li></ol><ul><li><p>extend vs append<br>We see that extend is semantically clearer, and that it can run much faster than append, when you intend to append each element in an iterable to a list.</p><p>If you only have a single element (not in an iterable) to add to the list, use append.</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: append([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">2.867846965789795</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: extend([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">0.8060121536254883</span></span><br></pre></td></tr></table></figure><p><a href="https://stackoverflow.com/a/28119966/5133816" target="_blank" rel="noopener">https://stackoverflow.com/a/28119966/5133816</a></p>]]></content>
+      <content type="html"><![CDATA[<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><ol><li><p>Create list</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [0, 1, 2]</span><br><span class="line">a.append(3) # a = [0, 1, 2, 3]</span><br><span class="line">a += [4] # a = [0, 1, 2, 3, 4]</span><br></pre></td></tr></table></figure></li><li><p>List index</p></li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> num,freq <span class="keyword">in</span> collections.Counter(nums).items():</span><br><span class="line">  print(<span class="string">"num "</span>, num, <span class="string">", freq "</span>, freq)</span><br><span class="line">  buckets[-freq].append(num)</span><br></pre></td></tr></table></figure><ol start="3"><li>Sort<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">intervals.sort(key=lambda x: x[0])</span><br></pre></td></tr></table></figure></li></ol><ul><li><p>Random</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">random.random()</span><br></pre></td></tr></table></figure></li><li><p>extend vs append<br>We see that extend is semantically clearer, and that it can run much faster than append, when you intend to append each element in an iterable to a list.</p><p>If you only have a single element (not in an iterable) to add to the list, use append.</p></li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> timeit</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: append([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">2.867846965789795</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>min(timeit.repeat(<span class="keyword">lambda</span>: extend([], <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>)))</span><br><span class="line"><span class="number">0.8060121536254883</span></span><br></pre></td></tr></table></figure><p><a href="https://stackoverflow.com/a/28119966/5133816" target="_blank" rel="noopener">https://stackoverflow.com/a/28119966/5133816</a></p>]]></content>
       
       <categories>
           
@@ -2009,9 +2030,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2080,9 +2101,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2265,9 +2286,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2948,9 +2969,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> design </tag>
             
@@ -2998,9 +3019,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -3223,9 +3244,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -3627,9 +3648,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -4177,9 +4198,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -4252,9 +4273,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4279,9 +4300,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4331,11 +4352,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4393,9 +4414,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -4565,15 +4586,15 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -4637,13 +4658,13 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
             
-            <tag> binary search </tag>
+            <tag> array </tag>
             
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -4732,9 +4753,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -4815,9 +4836,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4927,9 +4948,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -5101,9 +5122,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -5399,9 +5420,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5958,9 +5979,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -6134,9 +6155,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6589,9 +6610,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -6628,9 +6649,9 @@
             
             <tag> bfs </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6711,9 +6732,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -6742,9 +6763,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -6871,9 +6892,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7549,9 +7570,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7578,9 +7599,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8362,9 +8383,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8389,9 +8410,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8416,9 +8437,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8551,9 +8572,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8580,9 +8601,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8607,9 +8628,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8894,9 +8915,9 @@
             
             <tag> array </tag>
             
-            <tag> binary search </tag>
-            
             <tag> linkedin </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
@@ -9023,9 +9044,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -9195,9 +9216,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -9224,9 +9245,9 @@
             
             <tag> hard </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
