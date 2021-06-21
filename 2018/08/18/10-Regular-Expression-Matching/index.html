@@ -16,7 +16,7 @@
 <li><p>If p[j] == ‘*’:<br>there are two sub conditions:</p>
 <ol>
 <li>if p[j-1] != s[i] : dp[i][j] = dp[i][j-2]  //in this case, $a*$ only counts as empty</li>
-<li>if p[i-1] == s[i] or p[i-1] == ‘.’:<br>dp[i][j] = dp[i-1][j]    //in this case, $a*$ counts as multiple a<br>or dp[i][j] = dp[i][j-1] // in this case, $a*$ counts as single a<br>or dp[i][j] = dp[i][j-2] // in this case, $a*$ counts as empty</li>
+<li>if p[j-1] == s[i] or p[j-1] == ‘.’:<br>dp[i][j] = dp[i-1][j]    //in this case, $a*$ counts as multiple a<br>or dp[i][j] = dp[i][j-1] // in this case, $a*$ counts as single a<br>or dp[i][j] = dp[i][j-2] // in this case, $a*$ counts as empty</li>
 </ol>
 </li>
 </ol>
