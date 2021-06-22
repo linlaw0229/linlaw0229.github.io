@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/</loc>
+    
+    <lastmod>2021-06-22T06:07:15.488Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/08/25/34-Find-First-and-Last-Position-of-Element-in-Sorted-Array/</loc>
     
     <lastmod>2021-06-21T03:45:39.078Z</lastmod>
@@ -2287,13 +2294,6 @@
     <loc>http://linlaw0229.github.io/2018/06/29/264-Ugly-Number-II/</loc>
     
     <lastmod>2018-07-29T18:05:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/05/31/287-Find-the-Duplicate-Number/</loc>
-    
-    <lastmod>2018-07-29T18:05:24.000Z</lastmod>
     
   </url>
   
