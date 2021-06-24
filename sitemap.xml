@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/08/23/348-Design-Tic-Tac-Toe/</loc>
+    
+    <lastmod>2021-06-24T05:16:20.610Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/08/18/10-Regular-Expression-Matching/</loc>
     
     <lastmod>2021-06-24T04:22:50.456Z</lastmod>
@@ -1972,13 +1979,6 @@
     <loc>http://linlaw0229.github.io/2018/08/23/346-Moving-Average-from-Data-Stream/</loc>
     
     <lastmod>2018-08-24T03:57:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/08/23/348-Design-Tic-Tac-Toe/</loc>
-    
-    <lastmod>2018-08-24T02:23:00.000Z</lastmod>
     
   </url>
   
