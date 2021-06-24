@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>392. Is Subsequence</title>
+      <link href="/2021/06/22/392-Is-Subsequence/"/>
+      <url>/2021/06/22/392-Is-Subsequence/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy medium hard </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>792. Number of Matching Subsequences</title>
       <link href="/2021/06/22/792-Number-of-Matching-Subsequences/"/>
       <url>/2021/06/22/792-Number-of-Matching-Subsequences/</url>
@@ -789,9 +810,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1739,11 +1760,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -2074,9 +2095,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2145,9 +2166,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2249,9 +2270,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -2330,9 +2351,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2401,9 +2422,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> recursion </tag>
             
@@ -2495,9 +2516,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2522,9 +2543,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2549,11 +2570,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2705,11 +2726,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -2732,9 +2753,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -2824,13 +2845,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> citrix </tag>
             
@@ -3013,9 +3034,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> design </tag>
             
@@ -3086,11 +3107,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> bfs </tag>
             
@@ -3282,15 +3303,15 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -3338,9 +3359,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -3394,11 +3415,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> heap </tag>
             
@@ -3574,9 +3595,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3601,11 +3622,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3657,9 +3678,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3692,9 +3713,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -3744,11 +3765,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -3798,8 +3819,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -3808,11 +3827,13 @@
             
             <tag> amazon </tag>
             
+            <tag> easy </tag>
+            
             <tag> linked list </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> bloomberg </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -3885,11 +3906,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -3910,9 +3931,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -4211,11 +4232,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -4242,9 +4263,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -4309,17 +4330,17 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
+            <tag> tree </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4344,9 +4365,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -4396,11 +4417,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4458,9 +4479,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -4512,9 +4533,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -4539,9 +4560,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> bloomberg </tag>
             
@@ -4564,8 +4585,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -4573,6 +4592,8 @@
             <tag> google </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> linked list </tag>
             
@@ -4595,13 +4616,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> sort </tag>
             
@@ -4630,15 +4651,15 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -4702,13 +4723,13 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
             
-            <tag> linkedin </tag>
+            <tag> array </tag>
             
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -4729,8 +4750,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
@@ -4738,6 +4757,8 @@
             <tag> google </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -4797,9 +4818,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -4874,15 +4895,15 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4905,11 +4926,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -4992,9 +5013,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -5042,8 +5063,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -5053,6 +5072,8 @@
             <tag> apple </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> two pointers </tag>
             
@@ -5075,11 +5096,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -5129,9 +5150,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -5158,17 +5179,17 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> dfs </tag>
+            <tag> tree </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -5218,15 +5239,15 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
             
+            <tag> tree </tag>
+            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -5247,11 +5268,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -5396,8 +5417,6 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -5405,6 +5424,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -5454,8 +5475,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -5464,9 +5483,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5487,11 +5508,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -5514,13 +5535,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -5683,7 +5704,7 @@
       <title>10. Regular Expression Matching</title>
       <link href="/2018/08/18/10-Regular-Expression-Matching/"/>
       <url>/2018/08/18/10-Regular-Expression-Matching/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an input string (s) and a pattern (p), implement regular expression matching with support for ‘.’ and ‘*’.</p><p>‘.’ Matches any single character.<br>‘*’ Matches zero or more of the preceding element.<br>The matching should cover the entire input string (not partial).</p><p>Note:</p><p>s could be empty and contains only lowercase letters a-z.<br>p could be empty and contains only lowercase letters a-z, and characters like . or *.<br>Example 1:</p><p>Input:<br>s = <code>&quot;aa&quot;</code><br>p = <code>&quot;a&quot;</code><br>Output: false<br>Explanation: “a” does not match the entire string <code>&quot;aa&quot;</code>.<br>Example 2:</p><p>Input:<br>s = <code>&quot;aa&quot;</code><br>p = <code>&quot;a*&quot;</code><br>Output: true<br>Explanation: ‘*’ means zero or more of the preceding element, <code>&#39;a&#39;</code>. Therefore, by repeating <code>&#39;a&#39;</code> once, it becomes <code>&quot;aa&quot;</code>.<br>Example 3:</p><p>Input:<br>s = <code>&quot;ab&quot;</code><br>p = <code>&quot;.*&quot;</code><br>Output: true<br>Explanation: “.<em>“ means “zero or more (</em>) of any character (.)”.<br>Example 4:</p><p>Input:<br>s = <code>&quot;aab&quot;</code><br>p = <code>&quot;c*a*b&quot;</code><br>Output: true<br>Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore it matches <code>&quot;aab&quot;</code>.<br>Example 5:</p><p>Input:<br>s = <code>&quot;mississippi&quot;</code><br>p = <code>&quot;mis*is*p*.&quot;</code><br>Output: false</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>create dp array. dp[i][j] to be true if s[0..i) matches p[0..j)</p><ol><li><p>If p[j] == s[i] :  dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is equal to the character on position i in string s.</p></li><li><p>If p[j] == ‘.’ : dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is a ‘.’, it can match any character, so dp[i][j] follow dp[i-1][j-1].</p></li><li><p>If p[j] == ‘*’:<br>there are two sub conditions:</p><ol><li>if p[j-1] != s[i] : dp[i][j] = dp[i][j-2]  //in this case, $a*$ only counts as empty</li><li>if p[j-1] == s[i] or p[j-1] == ‘.’:<br>dp[i][j] = dp[i-1][j]    //in this case, $a*$ counts as multiple a<br>or dp[i][j] = dp[i][j-1] // in this case, $a*$ counts as single a<br>or dp[i][j] = dp[i][j-2] // in this case, $a*$ counts as empty</li></ol></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        create dp array. dp[i][j] to be true if s[0..i) matches p[0..j)</span></span><br><span class="line"><span class="comment">        1. edge case</span></span><br><span class="line"><span class="comment">        2. dp array init</span></span><br><span class="line"><span class="comment">        3. </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">//edge case, both NULL</span></span><br><span class="line">        <span class="keyword">if</span>(s.empty() &amp;&amp; p.empty()) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">int</span> r= s.length(), c= p.length();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(r+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(c+<span class="number">1</span>, <span class="literal">false</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>]= <span class="literal">true</span>; <span class="comment">//both empty is true</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; c; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p[j] == <span class="string">'*'</span> &amp;&amp; dp[<span class="number">0</span>][j<span class="number">-1</span>]) <span class="comment">//previous is the same, current is '*'</span></span><br><span class="line">                dp[<span class="number">0</span>][j+<span class="number">1</span>]= <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; r; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; c; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i]== p[j]) dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= dp[i][j];</span><br><span class="line">                <span class="keyword">if</span>(p[j]== <span class="string">'.'</span>) dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= dp[i][j]; <span class="comment">//ex: abc, ab.</span></span><br><span class="line">                <span class="keyword">if</span>(p[j]== <span class="string">'*'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(p[j<span class="number">-1</span>] != <span class="string">'.'</span> &amp;&amp; p[j<span class="number">-1</span>] != s[i]) <span class="comment">//can not use special character to represent any word</span></span><br><span class="line">                        dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= dp[i+<span class="number">1</span>][j<span class="number">-1</span>]; <span class="comment">//the same as </span></span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= (dp[i+<span class="number">1</span>][j] || dp[i][j+<span class="number">1</span>] || dp[i+<span class="number">1</span>][j<span class="number">-1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[r][c];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(mn)$<br>space complexity: $O(mn)$<br>reference:<br><a href="https://goo.gl/1yJRGK" target="_blank" rel="noopener">https://goo.gl/1yJRGK</a><br><a href="https://goo.gl/sFR26t" target="_blank" rel="noopener">https://goo.gl/sFR26t</a></p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an input string (s) and a pattern (p), implement regular expression matching with support for ‘.’ and ‘*’.</p><p>‘.’ Matches any single character.<br>‘*’ Matches zero or more of the preceding element.<br>The matching should cover the entire input string (not partial).</p><p>Note:</p><p>s could be empty and contains only lowercase letters a-z.<br>p could be empty and contains only lowercase letters a-z, and characters like . or *.<br>Example 1:</p><p>Input:<br>s = <code>&quot;aa&quot;</code><br>p = <code>&quot;a&quot;</code><br>Output: false<br>Explanation: “a” does not match the entire string <code>&quot;aa&quot;</code>.<br>Example 2:</p><p>Input:<br>s = <code>&quot;aa&quot;</code><br>p = <code>&quot;a*&quot;</code><br>Output: true<br>Explanation: ‘*’ means zero or more of the preceding element, <code>&#39;a&#39;</code>. Therefore, by repeating <code>&#39;a&#39;</code> once, it becomes <code>&quot;aa&quot;</code>.<br>Example 3:</p><p>Input:<br>s = <code>&quot;ab&quot;</code><br>p = <code>&quot;.*&quot;</code><br>Output: true<br>Explanation: “.<em>“ means “zero or more (</em>) of any character (.)”.<br>Example 4:</p><p>Input:<br>s = <code>&quot;aab&quot;</code><br>p = <code>&quot;c*a*b&quot;</code><br>Output: true<br>Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore it matches <code>&quot;aab&quot;</code>.<br>Example 5:</p><p>Input:<br>s = <code>&quot;mississippi&quot;</code><br>p = <code>&quot;mis*is*p*.&quot;</code><br>Output: false</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>create dp array. dp[i][j] to be true if s[0..i) matches p[0..j)</p><ol><li><p>If p[j] == s[i] :  dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is equal to the character on position i in string s.</p></li><li><p>If p[j] == ‘.’ : dp[i][j] = dp[i-1][j-1];<br>If the character on position j in string p is a ‘.’, it can match any character, so dp[i][j] follow dp[i-1][j-1].</p></li><li><p>If p[j] == ‘*’:<br>there are two sub conditions:</p><ol><li>if p[j-1] != s[i] : dp[i][j] = dp[i][j-2]  //in this case, $a*$ only counts as empty</li><li>if p[j-1] == s[i] or p[j-1] == ‘.’:<br>dp[i][j] = dp[i-1][j]    //in this case, $a*$ counts as multiple a<br>or dp[i][j] = dp[i][j-1] // in this case, $a*$ counts as single a<br>or dp[i][j] = dp[i][j-2] // in this case, $a*$ counts as empty</li></ol></li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMatch</span><span class="params">(self, s: str, p: str)</span> -&gt; bool:</span></span><br><span class="line">        m, n = len(s), len(p)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s <span class="keyword">and</span> <span class="keyword">not</span> p:</span><br><span class="line">             <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        dp = [[<span class="keyword">False</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(n+<span class="number">1</span>)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(m+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="keyword">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> p[j] == <span class="string">'*'</span> <span class="keyword">and</span> dp[<span class="number">0</span>][j<span class="number">-1</span>]:</span><br><span class="line">                dp[<span class="number">0</span>][j+<span class="number">1</span>] = <span class="keyword">True</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> s[i] == p[j]:</span><br><span class="line">                    dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i][j]</span><br><span class="line">                <span class="keyword">if</span> p[j] == <span class="string">'.'</span>: <span class="comment"># this character doesn't matter, check if it's true until now</span></span><br><span class="line">                    dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i][j] </span><br><span class="line">                <span class="keyword">if</span> p[j] == <span class="string">'*'</span>:</span><br><span class="line">                    <span class="comment"># two cases: </span></span><br><span class="line">                    <span class="comment"># 1. character before * not the same</span></span><br><span class="line">                    <span class="comment"># bc* vs b, in this case, c* could count as empty, so we check dp[i][j-1]</span></span><br><span class="line">                    <span class="comment"># 2. character before * is the same or '.'</span></span><br><span class="line">                    <span class="keyword">if</span> p[j<span class="number">-1</span>] != <span class="string">'.'</span> <span class="keyword">and</span> s[i] != p[j<span class="number">-1</span>]:</span><br><span class="line">                        dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i+<span class="number">1</span>][j<span class="number">-1</span>]</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i+<span class="number">1</span>][j] <span class="keyword">or</span> dp[i][j+<span class="number">1</span>] <span class="keyword">or</span> dp[i+<span class="number">1</span>][j<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[m][n]</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMatch</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> p)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        create dp array. dp[i][j] to be true if s[0..i) matches p[0..j)</span></span><br><span class="line"><span class="comment">        1. edge case</span></span><br><span class="line"><span class="comment">        2. dp array init</span></span><br><span class="line"><span class="comment">        3. </span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="comment">//edge case, both NULL</span></span><br><span class="line">        <span class="keyword">if</span>(s.empty() &amp;&amp; p.empty()) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">int</span> r= s.length(), c= p.length();</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&gt; dp(r+<span class="number">1</span>, <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;(c+<span class="number">1</span>, <span class="literal">false</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>]= <span class="literal">true</span>; <span class="comment">//both empty is true</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; c; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p[j] == <span class="string">'*'</span> &amp;&amp; dp[<span class="number">0</span>][j<span class="number">-1</span>]) <span class="comment">//previous is the same, current is '*'</span></span><br><span class="line">                dp[<span class="number">0</span>][j+<span class="number">1</span>]= <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i= <span class="number">0</span>; i&lt; r; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j= <span class="number">0</span>; j&lt; c; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(s[i]== p[j]) dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= dp[i][j];</span><br><span class="line">                <span class="keyword">if</span>(p[j]== <span class="string">'.'</span>) dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= dp[i][j]; <span class="comment">//ex: abc, ab.</span></span><br><span class="line">                <span class="keyword">if</span>(p[j]== <span class="string">'*'</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(p[j<span class="number">-1</span>] != <span class="string">'.'</span> &amp;&amp; p[j<span class="number">-1</span>] != s[i]) <span class="comment">//can not use special character to represent any word</span></span><br><span class="line">                        dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= dp[i+<span class="number">1</span>][j<span class="number">-1</span>]; <span class="comment">//the same as </span></span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                        dp[i+<span class="number">1</span>][j+<span class="number">1</span>]= (dp[i+<span class="number">1</span>][j] || dp[i][j+<span class="number">1</span>] || dp[i+<span class="number">1</span>][j<span class="number">-1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[r][c];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>time complexity: $O(mn)$<br>space complexity: $O(mn)$<br>reference:<br><a href="https://goo.gl/1yJRGK" target="_blank" rel="noopener">https://goo.gl/1yJRGK</a><br><a href="https://goo.gl/sFR26t" target="_blank" rel="noopener">https://goo.gl/sFR26t</a></p>]]></content>
       
       <categories>
           
@@ -5729,11 +5750,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -6023,9 +6044,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -6162,8 +6183,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
@@ -6171,6 +6190,8 @@
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -6199,9 +6220,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6222,11 +6243,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6405,9 +6426,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> easy </tag>
             
             <tag> bit manipulation </tag>
             
@@ -6459,11 +6480,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -6654,9 +6675,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -6693,9 +6714,9 @@
             
             <tag> bfs </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6776,9 +6797,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -6807,9 +6828,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -6832,9 +6853,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6859,9 +6880,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -6936,9 +6957,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6959,13 +6980,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -7071,9 +7092,9 @@
             
             <tag> tree </tag>
             
-            <tag> easy </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -7269,9 +7290,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> greedy </tag>
             
@@ -7321,9 +7342,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7379,9 +7400,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7406,9 +7427,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7533,9 +7554,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7768,13 +7789,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -8095,9 +8116,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8251,11 +8272,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -8417,9 +8438,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8556,9 +8577,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -8581,9 +8602,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8606,9 +8627,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8635,9 +8656,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8762,9 +8783,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8953,9 +8974,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -9082,9 +9103,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -9107,9 +9128,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9134,13 +9155,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9165,9 +9186,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -9190,9 +9211,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -9217,13 +9238,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9248,15 +9269,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -9279,13 +9300,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
-            <tag> array </tag>
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9306,13 +9327,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
