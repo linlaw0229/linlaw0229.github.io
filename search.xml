@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>432. All O(1) Data Structure</title>
+      <link href="/2021/07/09/432-All-O-1-Data-Structure/"/>
+      <url>/2021/07/09/432-All-O-1-Data-Structure/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design a data structure to store the strings’ count with the ability to return the strings with minimum and maximum counts.</p><p>Implement the <code>AllOne</code> class:</p><ul><li><code>AllOne()</code> Initializes the object of the data structure.</li><li><code>inc(String key)</code> Increments the count of the string <code>key</code> by <code>1</code>. If <code>key</code> does not exist in the data structure, insert it with count <code>1</code>.</li><li><code>dec(String key)</code> Decrements the count of the string <code>key</code> by <code>1</code>. If the count of <code>key</code> is <code>0</code> after the decrement, remove it from the data structure. It is guaranteed that <code>key</code> exists in the data structure before the decrement.</li><li><code>getMaxKey()</code> Returns one of the keys with the maximal count. If no element exists, return an empty string <code>&quot;&quot;</code>.</li><li><code>getMinKey()</code> Returns one of the keys with the minimum count. If no element exists, return an empty string <code>&quot;&quot;</code>.</li></ul><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;AllOne&quot;, &quot;inc&quot;, &quot;inc&quot;, &quot;getMaxKey&quot;, &quot;getMinKey&quot;, &quot;inc&quot;, &quot;getMaxKey&quot;, &quot;getMinKey&quot;]</span><br><span class="line">[[], [&quot;hello&quot;], [&quot;hello&quot;], [], [], [&quot;leet&quot;], [], []]</span><br><span class="line">Output</span><br><span class="line">[null, null, null, &quot;hello&quot;, &quot;hello&quot;, null, &quot;hello&quot;, &quot;leet&quot;]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">AllOne allOne = new AllOne();</span><br><span class="line">allOne.inc(&quot;hello&quot;);</span><br><span class="line">allOne.inc(&quot;hello&quot;);</span><br><span class="line">allOne.getMaxKey(); // return &quot;hello&quot;</span><br><span class="line">allOne.getMinKey(); // return &quot;hello&quot;</span><br><span class="line">allOne.inc(&quot;leet&quot;);</span><br><span class="line">allOne.getMaxKey(); // return &quot;hello&quot;</span><br><span class="line">allOne.getMinKey(); // return &quot;leet&quot;</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= key.length &lt;= 10</code></li><li><code>key</code> consists of lowercase English letters.</li><li>It is guaranteed that for each call to <code>dec</code>, <code>key</code> is existing in the data structure.</li><li>At most <code>5 * 104</code> calls will be made to <code>inc</code>, <code>dec</code>, <code>getMaxKey</code>, and <code>getMinKey</code>.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Idea is to create a doubly linked list, the list is sorted by frequency. </p><p>The node of linked list have keys that has same frequency.</p><p>Also use sentinel node <code>head</code> and <code>tail</code> to <code>O(1)</code> get the Max and min key.</p><p>Whenever <code>inc</code> or <code>dec</code> a key, need to check if a block exist with the new frequency. If not, create new block for it.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Block</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, val = <span class="number">0</span>)</span>:</span></span><br><span class="line">        self.val = val</span><br><span class="line">        self.keys = set()</span><br><span class="line">        self.prev = <span class="keyword">None</span></span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.prev.next = self.next</span><br><span class="line">        self.next.prev = self.prev</span><br><span class="line">        self.prev, self.next = <span class="keyword">None</span>, <span class="keyword">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_after</span><span class="params">(self, new_block)</span>:</span></span><br><span class="line">        old_next = self.next</span><br><span class="line">        new_block.prev = self</span><br><span class="line">        new_block.next = old_next</span><br><span class="line">        old_next.prev = new_block</span><br><span class="line">        self.next = new_block</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllOne</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.head, self.tail = Block(), Block()</span><br><span class="line">        self.head.next = self.tail</span><br><span class="line">        self.tail.prev = self.head</span><br><span class="line">        self.mapping = &#123;&#125; <span class="comment"># key to block mapping</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inc</span><span class="params">(self, key: str)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.mapping:</span><br><span class="line">            block = self.mapping[key]</span><br><span class="line">            block.keys.remove(key)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            block = self.head</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># find new block to insert key to set</span></span><br><span class="line">        <span class="keyword">if</span> block.val +<span class="number">1</span> != block.next.val:</span><br><span class="line">            new_block = Block(block.val+<span class="number">1</span>)</span><br><span class="line">            block.insert_after(new_block)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            new_block = block.next</span><br><span class="line">        </span><br><span class="line">        new_block.keys.add(key)</span><br><span class="line">        self.mapping[key] = new_block</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># original block might out of keys. </span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> block.keys <span class="keyword">and</span> block.val != <span class="number">0</span>:</span><br><span class="line">            block.remove()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dec</span><span class="params">(self, key: str)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> key <span class="keyword">in</span> self.mapping:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        </span><br><span class="line">        block = self.mapping[key]</span><br><span class="line">        <span class="keyword">del</span> self.mapping[key]</span><br><span class="line">        block.keys.remove(key)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> block.val != <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">if</span> block.val <span class="number">-1</span> != block.prev.val:</span><br><span class="line">                new_block = Block(block.val<span class="number">-1</span>)</span><br><span class="line">                block.prev.insert_after(new_block)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                new_block = block.prev</span><br><span class="line">            new_block.keys.add(key)</span><br><span class="line">            self.mapping[key] = new_block</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> block.keys:</span><br><span class="line">            block.remove()</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMaxKey</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> self.tail.prev.val == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">        key = self.tail.prev.keys.pop()</span><br><span class="line">        self.tail.prev.keys.add(key)</span><br><span class="line">        <span class="keyword">return</span> key</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMinKey</span><span class="params">(self)</span> -&gt; str:</span></span><br><span class="line">        <span class="keyword">if</span> self.head.next.val == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">        key = self.head.next.keys.pop()</span><br><span class="line">        self.head.next.keys.add(key)</span><br><span class="line">        <span class="keyword">return</span> key</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your AllOne object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = AllOne()</span></span><br><span class="line"><span class="comment"># obj.inc(key)</span></span><br><span class="line"><span class="comment"># obj.dec(key)</span></span><br><span class="line"><span class="comment"># param_3 = obj.getMaxKey()</span></span><br><span class="line"><span class="comment"># param_4 = obj.getMinKey()</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> design </tag>
+            
+            <tag> doubly linked list </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>36. Valid Sudoku</title>
       <link href="/2021/07/08/36-Valid-Sudoku/"/>
       <url>/2021/07/08/36-Valid-Sudoku/</url>
@@ -144,9 +169,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> hard </tag>
+            
+            <tag> array </tag>
             
             <tag> dp </tag>
             
@@ -420,11 +445,11 @@
       
         <tags>
             
+            <tag> hard </tag>
+            
             <tag> bfs </tag>
             
             <tag> dfs </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
@@ -562,9 +587,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -898,11 +923,11 @@
       
         <tags>
             
+            <tag> string </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
-            
-            <tag> string </tag>
             
         </tags>
       
@@ -923,9 +948,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -1330,9 +1355,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1690,9 +1715,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -2010,9 +2035,9 @@
       
         <tags>
             
-            <tag> dfs </tag>
-            
             <tag> google </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -2079,11 +2104,11 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -2218,11 +2243,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2243,11 +2268,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2283,9 +2308,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -2308,11 +2333,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2333,11 +2358,11 @@
       
         <tags>
             
+            <tag> google </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -2358,9 +2383,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> map </tag>
             
@@ -2383,11 +2408,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -2408,13 +2433,13 @@
       
         <tags>
             
-            <tag> amazon </tag>
-            
-            <tag> dfs </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2450,11 +2475,11 @@
       
         <tags>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
             
@@ -2477,13 +2502,13 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -2562,11 +2587,11 @@
       
         <tags>
             
+            <tag> google </tag>
+            
             <tag> medium </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -2589,11 +2614,11 @@
             
             <tag> tree </tag>
             
+            <tag> google </tag>
+            
             <tag> medium </tag>
             
             <tag> dfs </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -2666,11 +2691,11 @@
             
             <tag> microsoft </tag>
             
+            <tag> google </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> google </tag>
             
             <tag> binary search </tag>
             
@@ -2716,9 +2741,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2779,13 +2804,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
-            <tag> string </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -2808,11 +2833,11 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2835,9 +2860,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> google </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -2862,11 +2887,11 @@
             
             <tag> easy </tag>
             
+            <tag> google </tag>
+            
             <tag> array </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -2891,11 +2916,11 @@
             
             <tag> facebook </tag>
             
+            <tag> google </tag>
+            
             <tag> array </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -2916,11 +2941,11 @@
       
         <tags>
             
-            <tag> microsoft </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
             
@@ -2966,13 +2991,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3014,11 +3039,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -3072,9 +3097,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -3095,13 +3120,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
+            <tag> medium </tag>
             
-            <tag> dynamic programming </tag>
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -3164,9 +3189,9 @@
             
             <tag> easy </tag>
             
-            <tag> facebook </tag>
-            
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -3243,11 +3268,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> paypal </tag>
             
@@ -3270,15 +3295,15 @@
       
         <tags>
             
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> backtracking </tag>
             
+            <tag> facebook </tag>
+            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> trie </tag>
             
@@ -3324,9 +3349,9 @@
             
             <tag> easy </tag>
             
-            <tag> citrix </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> citrix </tag>
             
             <tag> indeed </tag>
             
@@ -3393,17 +3418,17 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> hash table </tag>
             
-            <tag> heap </tag>
-            
             <tag> trie </tag>
+            
+            <tag> heap </tag>
             
         </tags>
       
@@ -3426,17 +3451,17 @@
             
             <tag> tree </tag>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> stack </tag>
             
-            <tag> microsoft </tag>
-            
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
         </tags>
       
@@ -3593,11 +3618,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> lyft </tag>
             
@@ -3622,13 +3647,13 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
+            <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
+            <tag> amazon </tag>
             
-            <tag> dynamic programming </tag>
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -3703,11 +3728,11 @@
       
         <tags>
             
+            <tag> google </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> google </tag>
             
             <tag> design </tag>
             
@@ -3734,9 +3759,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> amazon </tag>
             
             <tag> heap </tag>
             
@@ -3761,9 +3786,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -3790,15 +3815,15 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -3823,17 +3848,17 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -3856,9 +3881,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -3914,9 +3939,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> google </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -3943,9 +3968,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> google </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -3970,11 +3995,11 @@
       
         <tags>
             
+            <tag> string </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
-            
-            <tag> string </tag>
             
         </tags>
       
@@ -4020,19 +4045,19 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> microsoft </tag>
-            
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> dfs </tag>
-            
-            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -4109,13 +4134,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4138,13 +4163,13 @@
             
             <tag> easy </tag>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
             <tag> facebook </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linked list </tag>
             
@@ -4171,11 +4196,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -4225,9 +4250,9 @@
             
             <tag> easy </tag>
             
-            <tag> facebook </tag>
-            
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -4250,9 +4275,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4275,11 +4300,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -4304,15 +4329,15 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linked list </tag>
             
@@ -4339,11 +4364,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -4366,9 +4391,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4391,13 +4416,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> stack </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
             
             <tag> uber </tag>
             
@@ -4472,11 +4497,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> design </tag>
             
@@ -4499,9 +4524,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -4524,9 +4549,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -4551,9 +4576,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> string </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -4574,15 +4599,15 @@
       
         <tags>
             
+            <tag> hard </tag>
+            
             <tag> microsoft </tag>
+            
+            <tag> google </tag>
             
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> hard </tag>
-            
-            <tag> google </tag>
             
             <tag> binary search </tag>
             
@@ -4649,15 +4674,15 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
-            <tag> hard </tag>
-            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4678,13 +4703,13 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> dynamic programming </tag>
             
         </tags>
       
@@ -4730,17 +4755,17 @@
       
         <tags>
             
+            <tag> hard </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> stack </tag>
             
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> array </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
@@ -4761,11 +4786,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -4790,15 +4815,15 @@
       
         <tags>
             
-            <tag> amazon </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
-            <tag> hard </tag>
-            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -4823,11 +4848,11 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
-            <tag> string </tag>
+            <tag> medium </tag>
             
             <tag> yelp </tag>
             
@@ -4852,9 +4877,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4904,13 +4929,13 @@
             
             <tag> easy </tag>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
             <tag> facebook </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linked list </tag>
             
@@ -4935,11 +4960,11 @@
             
             <tag> easy </tag>
             
+            <tag> facebook </tag>
+            
             <tag> microsoft </tag>
             
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> sort </tag>
             
@@ -4962,15 +4987,15 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> array </tag>
-            
-            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -4997,13 +5022,13 @@
       
         <tags>
             
-            <tag> amazon </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> hard </tag>
-            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -5030,19 +5055,19 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
             <tag> facebook </tag>
             
-            <tag> array </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -5069,13 +5094,13 @@
             
             <tag> easy </tag>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
             <tag> facebook </tag>
             
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -5100,13 +5125,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
+            <tag> medium </tag>
             
-            <tag> facebook </tag>
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -5129,13 +5154,13 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -5160,11 +5185,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> design </tag>
             
@@ -5214,11 +5239,11 @@
             
             <tag> easy </tag>
             
+            <tag> facebook </tag>
+            
             <tag> microsoft </tag>
             
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> array </tag>
             
@@ -5270,9 +5295,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -5295,11 +5320,11 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
         </tags>
       
@@ -5320,19 +5345,19 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> google </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
-            <tag> microsoft </tag>
-            
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> dfs </tag>
-            
-            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -5355,9 +5380,9 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -5382,17 +5407,17 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
-            
-            <tag> two pointers </tag>
-            
-            <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -5440,9 +5465,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -5469,9 +5494,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -5498,15 +5523,15 @@
             
             <tag> tree </tag>
             
+            <tag> hard </tag>
+            
+            <tag> facebook </tag>
+            
             <tag> microsoft </tag>
             
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> dfs </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
@@ -5527,13 +5552,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -5560,11 +5585,11 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -5614,9 +5639,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -5641,11 +5666,11 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -5668,13 +5693,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
-            <tag> two pointers </tag>
+            <tag> medium </tag>
             
-            <tag> string </tag>
+            <tag> two pointers </tag>
             
             <tag> sliding window </tag>
             
@@ -5697,19 +5722,19 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> two pointers </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> hash table </tag>
             
@@ -5736,15 +5761,15 @@
             
             <tag> tree </tag>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> hard </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -5769,9 +5794,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -5794,17 +5819,17 @@
             
             <tag> easy </tag>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
+            <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
-            <tag> dynamic programming </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5827,9 +5852,9 @@
             
             <tag> easy </tag>
             
-            <tag> facebook </tag>
-            
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
             <tag> math </tag>
             
@@ -5854,15 +5879,15 @@
             
             <tag> easy </tag>
             
+            <tag> facebook </tag>
+            
             <tag> microsoft </tag>
             
-            <tag> facebook </tag>
+            <tag> google </tag>
             
             <tag> array </tag>
             
             <tag> two pointers </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -5883,9 +5908,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -5908,9 +5933,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -5939,15 +5964,15 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
             <tag> sort </tag>
             
@@ -5970,19 +5995,19 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6003,11 +6028,11 @@
       
         <tags>
             
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
             <tag> google </tag>
             
@@ -6032,10 +6057,6 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
@@ -6043,6 +6064,10 @@
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
             
             <tag> google </tag>
             
@@ -6069,9 +6094,9 @@
             
             <tag> easy </tag>
             
-            <tag> facebook </tag>
-            
             <tag> string </tag>
+            
+            <tag> facebook </tag>
             
         </tags>
       
@@ -6092,11 +6117,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
-            
-            <tag> facebook </tag>
             
             <tag> hash table </tag>
             
@@ -6119,13 +6144,13 @@
       
         <tags>
             
-            <tag> bfs </tag>
+            <tag> hard </tag>
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
+            <tag> bfs </tag>
             
-            <tag> hard </tag>
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6146,15 +6171,15 @@
       
         <tags>
             
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
+            <tag> amazon </tag>
             
             <tag> math </tag>
             
@@ -6177,17 +6202,17 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -6208,13 +6233,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> dynamic programming </tag>
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
-            <tag> dynamic programming </tag>
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -6237,11 +6262,11 @@
       
         <tags>
             
+            <tag> dynamic programming </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> dynamic programming </tag>
             
             <tag> linkedin </tag>
             
@@ -6264,17 +6289,17 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
             
+            <tag> facebook </tag>
+            
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
             <tag> pure storage </tag>
             
@@ -6297,13 +6322,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
-            <tag> string </tag>
+            <tag> microsoft </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -6353,17 +6378,17 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
             <tag> bfs </tag>
             
             <tag> medium </tag>
             
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> dfs </tag>
-            
-            <tag> google </tag>
             
             <tag> graph </tag>
             
@@ -6388,13 +6413,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> stack </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
             
             <tag> greedy </tag>
             
@@ -6417,9 +6442,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -6446,11 +6471,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -6502,13 +6527,13 @@
             
             <tag> easy </tag>
             
-            <tag> stack </tag>
-            
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
-            
             <tag> apple </tag>
+            
+            <tag> stack </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -6531,15 +6556,15 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
+            <tag> google </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
             
-            <tag> facebook </tag>
-            
             <tag> dfs </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -6562,13 +6587,13 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
-            <tag> stack </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> facebook </tag>
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
             
             <tag> linkedin </tag>
             
@@ -6591,11 +6616,11 @@
       
         <tags>
             
+            <tag> backtracking </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> backtracking </tag>
             
             <tag> uber </tag>
             
@@ -6620,15 +6645,15 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> amazon </tag>
+            <tag> backtracking </tag>
             
             <tag> facebook </tag>
             
-            <tag> backtracking </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6649,13 +6674,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> backtracking </tag>
             
             <tag> microsoft </tag>
             
-            <tag> backtracking </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> epic system </tag>
             
@@ -6714,11 +6739,11 @@
       
         <tags>
             
-            <tag> microsoft </tag>
+            <tag> backtracking </tag>
             
             <tag> facebook </tag>
             
-            <tag> backtracking </tag>
+            <tag> microsoft </tag>
             
             <tag> yelp </tag>
             
@@ -6768,15 +6793,15 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
-            <tag> string </tag>
+            <tag> microsoft </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6805,9 +6830,9 @@
             
             <tag> hash table </tag>
             
-            <tag> two pointer </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> two pointer </tag>
             
         </tags>
       
@@ -6828,11 +6853,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> medium </tag>
             
             <tag> amazon </tag>
-            
-            <tag> facebook </tag>
             
             <tag> linkedin </tag>
             
@@ -6876,13 +6901,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> medium </tag>
             
             <tag> uber </tag>
             
@@ -6936,13 +6961,13 @@
       
         <tags>
             
+            <tag> google </tag>
+            
             <tag> medium </tag>
             
             <tag> stack </tag>
             
             <tag> amazon </tag>
-            
-            <tag> google </tag>
             
         </tags>
       
@@ -6984,17 +7009,17 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> array </tag>
-            
-            <tag> google </tag>
             
             <tag> uber </tag>
             
@@ -7019,21 +7044,21 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
-            <tag> array </tag>
-            
             <tag> string </tag>
             
             <tag> backtracking </tag>
             
+            <tag> facebook </tag>
+            
+            <tag> microsoft </tag>
+            
             <tag> google </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7106,17 +7131,17 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
+            <tag> google </tag>
+            
+            <tag> medium </tag>
+            
             <tag> amazon </tag>
             
-            <tag> facebook </tag>
-            
             <tag> array </tag>
-            
-            <tag> google </tag>
             
             <tag> sort </tag>
             
@@ -7139,13 +7164,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
+            <tag> medium </tag>
             
-            <tag> facebook </tag>
+            <tag> amazon </tag>
             
             <tag> array </tag>
             
@@ -7172,9 +7197,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> hard </tag>
+            
+            <tag> array </tag>
             
             <tag> dp </tag>
             
@@ -7199,9 +7224,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> hard </tag>
+            
+            <tag> array </tag>
             
             <tag> greedy </tag>
             
@@ -7299,15 +7324,15 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
-            <tag> stack </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> facebook </tag>
-            
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
             
             <tag> linkedin </tag>
             
@@ -7661,9 +7686,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7684,17 +7709,17 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
-            <tag> microsoft </tag>
-            
-            <tag> amazon </tag>
+            <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> dynamic programming </tag>
+            <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
             <tag> binary search </tag>
             
@@ -7719,9 +7744,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -7746,9 +7771,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> heap </tag>
             
@@ -7798,9 +7823,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7848,9 +7873,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7873,9 +7898,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7896,11 +7921,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -7952,9 +7977,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7981,9 +8006,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8108,15 +8133,15 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
-            
-            <tag> facebook </tag>
-            
             <tag> apple </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -8162,9 +8187,9 @@
       
         <tags>
             
-            <tag> bfs </tag>
-            
             <tag> hard </tag>
+            
+            <tag> bfs </tag>
             
         </tags>
       
@@ -8435,9 +8460,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> string </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -8539,9 +8564,9 @@
             
             <tag> medium </tag>
             
-            <tag> linked list </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> linked list </tag>
             
         </tags>
       
@@ -8616,11 +8641,11 @@
       
         <tags>
             
-            <tag> two pointers </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> hash table </tag>
             
@@ -8643,13 +8668,13 @@
       
         <tags>
             
-            <tag> amazon </tag>
+            <tag> string </tag>
             
             <tag> facebook </tag>
             
-            <tag> two pointers </tag>
+            <tag> amazon </tag>
             
-            <tag> string </tag>
+            <tag> two pointers </tag>
             
             <tag> hash table </tag>
             
@@ -8701,9 +8726,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -8757,13 +8782,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
+            <tag> backtracking </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
-            <tag> backtracking </tag>
+            <tag> array </tag>
             
         </tags>
       
@@ -8784,13 +8809,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> backtracking </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
-            <tag> backtracking </tag>
+            <tag> array </tag>
             
         </tags>
       
@@ -8815,9 +8840,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8896,9 +8921,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8921,9 +8946,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -8946,13 +8971,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
+            <tag> backtracking </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
-            <tag> backtracking </tag>
+            <tag> array </tag>
             
         </tags>
       
@@ -8975,13 +9000,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
+            <tag> backtracking </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
-            <tag> backtracking </tag>
+            <tag> array </tag>
             
         </tags>
       
@@ -9002,13 +9027,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> backtracking </tag>
             
-            <tag> array </tag>
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
-            <tag> backtracking </tag>
+            <tag> array </tag>
             
         </tags>
       
@@ -9102,11 +9127,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> backtracking </tag>
+            
             <tag> medium </tag>
             
             <tag> array </tag>
-            
-            <tag> backtracking </tag>
             
         </tags>
       
@@ -9281,15 +9306,15 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> facebook </tag>
+            <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
-            
-            <tag> google </tag>
             
             <tag> linkedin </tag>
             
@@ -9414,13 +9439,13 @@
       
         <tags>
             
-            <tag> medium </tag>
+            <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
-            <tag> amazon </tag>
+            <tag> medium </tag>
             
-            <tag> facebook </tag>
+            <tag> amazon </tag>
             
             <tag> array </tag>
             
@@ -9447,9 +9472,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -9474,13 +9499,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -9505,9 +9530,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -9530,9 +9555,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> medium </tag>
             
             <tag> snapchat </tag>
             
@@ -9557,13 +9582,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
+            <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> dynamic programming </tag>
-            
             <tag> apple </tag>
+            
+            <tag> medium </tag>
             
             <tag> airbnb </tag>
             
@@ -9588,13 +9613,13 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
+            <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
+            <tag> stack </tag>
             
-            <tag> dynamic programming </tag>
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -9619,11 +9644,11 @@
             
             <tag> leetcode </tag>
             
+            <tag> hard </tag>
+            
             <tag> stack </tag>
             
             <tag> array </tag>
-            
-            <tag> hard </tag>
             
         </tags>
       
