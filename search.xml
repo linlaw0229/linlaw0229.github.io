@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>465. Optimal Account Balancing</title>
+      <link href="/2021/07/10/465-Optimal-Account-Balancing/"/>
+      <url>/2021/07/10/465-Optimal-Account-Balancing/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an array of transactions <code>transactions</code> where <code>transactions[i] = [fromi, toi, amounti]</code> indicates that the person with <code>ID = fromi</code> gave <code>amounti $</code> to the person with <code>ID = toi</code>.</p><p>Return <em>the minimum number of transactions required to settle the debt</em>.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: transactions = [[0,1,10],[2,0,5]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">Person #0 gave person #1 $10.</span><br><span class="line">Person #2 gave person #0 $5.</span><br><span class="line">Two transactions are needed. One way to settle the debt is person #1 pays person #0 and #2 $5 each.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: transactions = [[0,1,10],[1,0,1],[1,2,5],[2,0,5]]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation:</span><br><span class="line">Person #0 gave person #1 $10.</span><br><span class="line">Person #1 gave person #0 $1.</span><br><span class="line">Person #1 gave person #2 $5.</span><br><span class="line">Person #2 gave person #0 $5.</span><br><span class="line">Therefore, person #0 only need to give person #1 $4, and all debt is settled.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= transactions.length &lt;= 8</code></li><li><code>transactions[i].length == 3</code></li><li><code>0 &lt;= fromi, toi &lt;= 20</code></li><li><code>fromi != toi</code></li><li><code>1 &lt;= amounti &lt;= 100</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>First, compute net profit for every person.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">For transactions:</span><br><span class="line">[0, 1, 10]</span><br><span class="line">[2, 0, 5]</span><br><span class="line">[2, 3, 3]</span><br><span class="line">[1, 4, 5]</span><br><span class="line"></span><br><span class="line">Person,  balance</span><br><span class="line">0,        -10+5 = -5</span><br><span class="line">1,         10-5 = 5</span><br><span class="line">2,        -5-3  = -8</span><br><span class="line">3,         3</span><br><span class="line">4,         5</span><br></pre></td></tr></table></figure><p>Then pass the balance values to do DFS</p><ul><li>first try to find if there’s any <code>-balance[0]</code> that could finish in one transaction</li><li>if can not, then add <code>balance[0]</code> into another <code>balance[i]</code>. Since we want to find the minimum number of transaction, we could use a variable to record the res.</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">-5</span>, <span class="number">5</span>, <span class="number">-8</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line">--------</span><br><span class="line">find idx:<span class="number">1</span> have -balance <span class="number">5</span>, remaining: [<span class="number">0</span>, <span class="number">-8</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line">------</span><br><span class="line">balance[<span class="number">0</span>] = <span class="number">0</span>, remaining: [<span class="number">-8</span>, <span class="number">3</span>, <span class="number">5</span>]</span><br><span class="line">can<span class="string">'t find same -balance, settle the balance to others</span></span><br><span class="line"><span class="string">add to idx:1:-5 , remaining: [0, 5]</span></span><br><span class="line"><span class="string">find idx:1 have -balance 5, remaining: [0]</span></span><br><span class="line"><span class="string">------</span></span><br><span class="line"><span class="string">balance[0] = 0, remaining: []</span></span><br><span class="line"><span class="string">add to idx:2:-3 , remaining: [3, 0]</span></span><br><span class="line"><span class="string">find idx:1 have -balance -3, remaining: [0]</span></span><br><span class="line"><span class="string">------</span></span><br><span class="line"><span class="string">balance[0] = 0, remaining: []</span></span><br><span class="line"><span class="string">------</span></span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minTransfers</span><span class="params">(self, transactions: List[List[int]])</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># build transaction with counter</span></span><br><span class="line">        counter = Counter()</span><br><span class="line">        <span class="keyword">for</span> f,t,m <span class="keyword">in</span> transactions:</span><br><span class="line">            counter[f] -= m</span><br><span class="line">            counter[t] += m</span><br><span class="line">        balances = list(counter.values())</span><br><span class="line">        <span class="comment"># dfs to find minimum pair</span></span><br><span class="line">        <span class="comment"># takes balance array as input to do dfs</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(balance)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> balance:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> balance[<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">return</span> dfs(balance[<span class="number">1</span>:])</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># balance[0] has balance need to settle, check if someone happen to have -balance </span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(balance)):</span><br><span class="line">                <span class="keyword">if</span> balance[i] == -balance[<span class="number">0</span>]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">1</span>+ dfs(balance[<span class="number">1</span>:i]+ [<span class="number">0</span>]+ balance[i+<span class="number">1</span>:])</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># can't find same -balance</span></span><br><span class="line">            <span class="comment"># settle balance[0] to separate balance, use dfs to find smaller one</span></span><br><span class="line">            <span class="comment"># notice we only want to find in different sign</span></span><br><span class="line">            res = float(<span class="string">'inf'</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(balance)):</span><br><span class="line">                <span class="keyword">if</span> balance[i]*balance[<span class="number">0</span>] &lt; <span class="number">0</span>: <span class="comment"># different sign</span></span><br><span class="line">                    res = min(res, dfs(balance[<span class="number">1</span>:i]+ [balance[i]+balance[<span class="number">0</span>]]+ balance[i+<span class="number">1</span>:]))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>+ res</span><br><span class="line">        <span class="keyword">return</span> dfs(balances)</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> backtracking </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>432. All O(1) Data Structure</title>
       <link href="/2021/07/09/432-All-O-1-Data-Structure/"/>
       <url>/2021/07/09/432-All-O-1-Data-Structure/</url>
@@ -2102,11 +2127,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> dfs </tag>
             
@@ -2612,9 +2637,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -2764,9 +2789,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> recursion </tag>
             
@@ -2858,9 +2883,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2885,9 +2910,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -2912,11 +2937,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3068,11 +3093,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> adobe </tag>
             
@@ -3095,9 +3120,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -3187,13 +3212,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> citrix </tag>
             
@@ -3426,9 +3451,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -3449,11 +3474,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> bfs </tag>
             
@@ -3645,11 +3670,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3701,9 +3726,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> design </tag>
             
@@ -3757,9 +3782,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -3937,9 +3962,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -3964,11 +3989,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -4020,9 +4045,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -4107,11 +4132,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> binary search </tag>
             
@@ -4161,13 +4186,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4248,11 +4273,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -4273,9 +4298,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -4574,9 +4599,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4672,13 +4697,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -4875,9 +4900,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -4902,9 +4927,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> bloomberg </tag>
             
@@ -4927,13 +4952,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -4958,11 +4983,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -5092,13 +5117,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -5237,11 +5262,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -5268,11 +5293,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> binary search </tag>
             
@@ -5405,8 +5430,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
@@ -5414,6 +5437,8 @@
             <tag> google </tag>
             
             <tag> apple </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -5438,11 +5463,11 @@
       
         <tags>
             
+            <tag> facebook </tag>
+            
             <tag> tree </tag>
             
             <tag> easy </tag>
-            
-            <tag> facebook </tag>
             
             <tag> dfs </tag>
             
@@ -5492,9 +5517,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -5521,13 +5546,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -5581,13 +5606,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -5610,11 +5635,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -5759,8 +5784,6 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> hard </tag>
             
             <tag> facebook </tag>
@@ -5768,6 +5791,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> amazon </tag>
             
@@ -5817,8 +5842,6 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
@@ -5826,6 +5849,8 @@
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> amazon </tag>
             
@@ -5850,11 +5875,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
             <tag> math </tag>
             
@@ -5877,13 +5902,13 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> array </tag>
             
@@ -6092,11 +6117,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> string </tag>
             
             <tag> facebook </tag>
+            
+            <tag> easy </tag>
             
         </tags>
       
@@ -6525,11 +6550,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> easy </tag>
             
             <tag> stack </tag>
             
@@ -6585,11 +6610,11 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -6768,9 +6793,9 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> easy </tag>
             
             <tag> bit manipulation </tag>
             
@@ -6822,11 +6847,11 @@
       
         <tags>
             
-            <tag> easy </tag>
-            
             <tag> facebook </tag>
             
             <tag> google </tag>
+            
+            <tag> easy </tag>
             
             <tag> hash table </tag>
             
@@ -6934,9 +6959,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> design </tag>
+            
+            <tag> uber </tag>
             
             <tag> hash table </tag>
             
@@ -7195,9 +7220,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7222,9 +7247,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -7322,13 +7347,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> google </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -7632,9 +7657,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> greedy </tag>
             
@@ -7684,9 +7709,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7742,9 +7767,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7769,9 +7794,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7896,9 +7921,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -7977,9 +8002,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8006,9 +8031,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8131,13 +8156,13 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> facebook </tag>
             
             <tag> microsoft </tag>
             
             <tag> apple </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -8458,9 +8483,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8614,11 +8639,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> hash table </tag>
             
@@ -8780,15 +8805,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8813,9 +8838,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8840,9 +8865,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8919,9 +8944,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> array </tag>
             
@@ -8944,9 +8969,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -8969,15 +8994,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8998,15 +9023,15 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -9031,9 +9056,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -9125,9 +9150,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> backtracking </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9470,9 +9495,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9497,13 +9522,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> backtracking </tag>
             
             <tag> google </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9528,9 +9553,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -9553,9 +9578,9 @@
       
         <tags>
             
-            <tag> tree </tag>
-            
             <tag> dynamic programming </tag>
+            
+            <tag> tree </tag>
             
             <tag> medium </tag>
             
@@ -9580,13 +9605,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
             
             <tag> apple </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> medium </tag>
             
@@ -9611,11 +9636,11 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> dynamic programming </tag>
             
             <tag> facebook </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -9642,9 +9667,9 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
+            
+            <tag> leetcode </tag>
             
             <tag> stack </tag>
             
@@ -9669,13 +9694,13 @@
       
         <tags>
             
-            <tag> leetcode </tag>
-            
             <tag> hard </tag>
             
             <tag> string </tag>
             
             <tag> dynamic programming </tag>
+            
+            <tag> leetcode </tag>
             
         </tags>
       
