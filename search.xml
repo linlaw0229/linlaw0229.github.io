@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>12. Integer to Roman</title>
+      <link href="/2021/07/20/12-Integer-to-Roman/"/>
+      <url>/2021/07/20/12-Integer-to-Roman/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Roman numerals are represented by seven different symbols: <code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> and <code>M</code>.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SymbolValue</span><br><span class="line">I             1</span><br><span class="line">V             5</span><br><span class="line">X             10</span><br><span class="line">L             50</span><br><span class="line">C             100</span><br><span class="line">D             500</span><br><span class="line">M             1000</span><br></pre></td></tr></table></figure><p>For example, <code>2</code> is written as <code>II</code> in Roman numeral, just two one’s added together. <code>12</code> is written as <code>XII</code>, which is simply <code>X + II</code>. The number <code>27</code> is written as <code>XXVII</code>, which is <code>XX + V + II</code>.</p><p>Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not <code>IIII</code>. Instead, the number four is written as <code>IV</code>. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as <code>IX</code>. There are six instances where subtraction is used:</p><ul><li><code>I</code> can be placed before <code>V</code> (5) and <code>X</code> (10) to make 4 and 9.</li><li><code>X</code> can be placed before <code>L</code> (50) and <code>C</code> (100) to make 40 and 90.</li><li><code>C</code> can be placed before <code>D</code> (500) and <code>M</code> (1000) to make 400 and 900.</li></ul><p>Given an integer, convert it to a roman numeral.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 3</span><br><span class="line">Output: &quot;III&quot;</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 4</span><br><span class="line">Output: &quot;IV&quot;</span><br></pre></td></tr></table></figure><p><strong>Example 3:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 9</span><br><span class="line">Output: &quot;IX&quot;</span><br></pre></td></tr></table></figure><p><strong>Example 4:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 58</span><br><span class="line">Output: &quot;LVIII&quot;</span><br><span class="line">Explanation: L = 50, V = 5, III = 3.</span><br></pre></td></tr></table></figure><p><strong>Example 5:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: num = 1994</span><br><span class="line">Output: &quot;MCMXCIV&quot;</span><br><span class="line">Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= num &lt;= 3999</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intToRoman</span><span class="params">(self, num: int)</span> -&gt; str:</span></span><br><span class="line">        d = &#123;<span class="number">1000</span>: <span class="string">'M'</span>, <span class="number">900</span>: <span class="string">'CM'</span>, <span class="number">500</span>: <span class="string">'D'</span>, <span class="number">400</span>: <span class="string">'CD'</span>, <span class="number">100</span>: <span class="string">'C'</span>, <span class="number">90</span>: <span class="string">'XC'</span>, <span class="number">50</span>: <span class="string">'L'</span>, <span class="number">40</span>: <span class="string">'XL'</span>, <span class="number">10</span>: <span class="string">'X'</span>, <span class="number">9</span>: <span class="string">'IX'</span>, <span class="number">5</span>: <span class="string">'V'</span>, <span class="number">4</span>: <span class="string">'IV'</span>, <span class="number">1</span>: <span class="string">'I'</span>&#125; </span><br><span class="line">        </span><br><span class="line">        res = <span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> d:</span><br><span class="line">            res += (num//i) * d[i]</span><br><span class="line">            num %= i</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intToRoman</span><span class="params">(self, num: int)</span> -&gt; str:</span></span><br><span class="line">        <span class="comment"># v represent "value"</span></span><br><span class="line">        v = [<span class="number">1000</span>, <span class="number">100</span>, <span class="number">10</span>, <span class="number">1</span>]</span><br><span class="line">        <span class="comment"># s represent "symbol"</span></span><br><span class="line">        s = [<span class="string">"M"</span>, <span class="string">"C"</span>, <span class="string">"X"</span>, <span class="string">"I"</span>]</span><br><span class="line">        <span class="comment"># h represent "half"</span></span><br><span class="line">        h = [<span class="string">""</span>,  <span class="string">"D"</span>, <span class="string">"L"</span>, <span class="string">"V"</span> ]</span><br><span class="line">        res = <span class="string">""</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(v)):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> num:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            times = num // v[i]</span><br><span class="line">            num %= v[i]</span><br><span class="line">            <span class="keyword">if</span> times &lt; <span class="number">4</span>:</span><br><span class="line">                res += s[i] * times</span><br><span class="line">            <span class="keyword">elif</span> times == <span class="number">4</span>:</span><br><span class="line">                res += s[i] + h[i]                     </span><br><span class="line">            <span class="keyword">elif</span> times &lt; <span class="number">9</span>:</span><br><span class="line">                res += h[i] + s[i] * (times - <span class="number">5</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += s[i] + s[i - <span class="number">1</span>]                    </span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> string </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> hash table </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>156. Binary Tree Upside Down</title>
       <link href="/2021/07/19/156-Binary-Tree-Upside-Down/"/>
       <url>/2021/07/19/156-Binary-Tree-Upside-Down/</url>
@@ -155,9 +180,9 @@
             
             <tag> hard </tag>
             
-            <tag> design </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> design </tag>
             
             <tag> doubly linked list </tag>
             
@@ -917,9 +942,9 @@
             
             <tag> easy </tag>
             
-            <tag> design </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> design </tag>
             
         </tags>
       
@@ -3641,9 +3666,9 @@
             
             <tag> array </tag>
             
-            <tag> design </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> design </tag>
             
         </tags>
       
@@ -3687,9 +3712,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -5270,9 +5295,9 @@
             
             <tag> uber </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -5340,9 +5365,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
@@ -7180,9 +7205,9 @@
             
             <tag> medium </tag>
             
-            <tag> uber </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> uber </tag>
             
         </tags>
       
@@ -7205,11 +7230,11 @@
             
             <tag> medium </tag>
             
-            <tag> design </tag>
+            <tag> hash table </tag>
             
             <tag> uber </tag>
             
-            <tag> hash table </tag>
+            <tag> design </tag>
             
             <tag> linkedin </tag>
             
@@ -8248,9 +8273,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8277,9 +8302,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9057,9 +9082,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9084,9 +9109,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9111,9 +9136,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9246,9 +9271,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9275,9 +9300,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9302,9 +9327,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9587,9 +9612,9 @@
             
             <tag> array </tag>
             
-            <tag> linkedin </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> linkedin </tag>
             
         </tags>
       
