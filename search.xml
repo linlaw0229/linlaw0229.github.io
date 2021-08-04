@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>498. Diagonal Traverse</title>
+      <link href="/2021/08/04/498-Diagonal-Traverse/"/>
+      <url>/2021/08/04/498-Diagonal-Traverse/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an <code>m x n</code> matrix <code>mat</code>, return <em>an array of all the elements of the array in a diagonal order</em>.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/04/10/diag1-grid.jpg" alt="https://assets.leetcode.com/uploads/2021/04/10/diag1-grid.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: mat = [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: [1,2,4,7,5,3,6,8,9]</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: mat = [[1,2],[3,4]]</span><br><span class="line">Output: [1,2,3,4]</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>m == mat.length</code></li><li><code>n == mat[i].length</code></li><li><code>1 &lt;= m, n &lt;= 104</code></li><li><code>1 &lt;= m * n &lt;= 104</code></li><li><code>105 &lt;= mat[i][j] &lt;= 105</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>The key here is to realize that the <code>sum of indices on all diagonals are equal</code>.For example, in</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3]</span><br><span class="line">[4,5,6]</span><br><span class="line">[7,8,9]</span><br></pre></td></tr></table></figure><p>2, 4 are on the same diagonal, and they share the index sum of 1. (2 is matrix[0][1] and 4 is in matrix[1][0]). 3,5,7 are on the same diagonal, and they share the sum of 2. (3 is matrix[0][2], 5 is matrix[1][1], and 7 is matrix [2][0]).</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findDiagonalOrder</span><span class="params">(self, mat: List[List[int]])</span> -&gt; List[int]:</span></span><br><span class="line">        level = defaultdict(list)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(mat)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(mat[<span class="number">0</span>])):</span><br><span class="line">                level[i+j].append(mat[i][j])</span><br><span class="line">        </span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i, entry <span class="keyword">in</span> enumerate(level.values()):</span><br><span class="line">            <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">                res.extend(entry[::<span class="number">-1</span>])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res.extend(entry)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O(m<em>n)$<br>space complexity: $O(m</em>n)$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1235. Maximum Profit in Job Scheduling</title>
       <link href="/2021/08/01/1235-Maximum-Profit-in-Job-Scheduling/"/>
       <url>/2021/08/01/1235-Maximum-Profit-in-Job-Scheduling/</url>
@@ -21,9 +44,9 @@
             
             <tag> sorting </tag>
             
-            <tag> binary search </tag>
-            
             <tag> dp </tag>
+            
+            <tag> binary search </tag>
             
         </tags>
       
