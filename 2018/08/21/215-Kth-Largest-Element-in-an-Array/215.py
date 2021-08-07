@@ -14,7 +14,7 @@ def partition(nums, left, r):
     return r
 
 
-nums = [-4,-2,-3,-4]
+nums = [-1,-2,-3,-4]
 k = 1
 l, r = 0, len(nums)-1
 while True:
