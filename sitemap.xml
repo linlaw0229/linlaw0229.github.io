@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/09/18/272-Closest-Binary-Search-Tree-Value-II/</loc>
+    
+    <lastmod>2021-08-19T06:43:20.538Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2021/08/18/1636-Sort-Array-by-Increasing-Frequency/</loc>
     
     <lastmod>2021-08-19T04:42:03.631Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://linlaw0229.github.io/2018/07/26/37-Sudoku-Solver/</loc>
     
     <lastmod>2021-08-02T05:31:52.621Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/09/18/272-Closest-Binary-Search-Tree-Value-II/</loc>
-    
-    <lastmod>2021-08-01T07:00:07.544Z</lastmod>
     
   </url>
   
