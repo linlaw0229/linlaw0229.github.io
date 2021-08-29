@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/09/21/71-Simplify-Path/</loc>
+    
+    <lastmod>2021-08-29T04:36:03.715Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/08/21/297-Serialize-and-Deserialize-Binary-Tree/</loc>
     
     <lastmod>2021-08-26T05:15:09.316Z</lastmod>
@@ -1118,13 +1125,6 @@
     <loc>http://linlaw0229.github.io/2018/10/29/103-Binary-Tree-Zigzag-Level-Order-Traversal/</loc>
     
     <lastmod>2021-04-21T05:27:39.658Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/09/21/71-Simplify-Path/</loc>
-    
-    <lastmod>2021-04-21T04:18:15.293Z</lastmod>
     
   </url>
   
