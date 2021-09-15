@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>503. Next Greater Element II</title>
+      <link href="/2021/09/14/503-Next-Greater-Element-II/"/>
+      <url>/2021/09/14/503-Next-Greater-Element-II/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a circular integer array <code>nums</code> (i.e., the next element of <code>nums[nums.length - 1]</code> is <code>nums[0]</code>), return <em>the <strong>next greater number</strong> for every element in</em> <code>nums</code>.</p><p>The <strong>next greater number</strong> of a number <code>x</code> is the first greater number to its traversing-order next in the array, which means you could search circularly to find its next greater number. If it doesn’t exist, return <code>-1</code> for this number.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,1]</span><br><span class="line">Output: [2,-1,2]</span><br><span class="line">Explanation: The first 1&apos;s next greater number is 2;</span><br><span class="line">The number 2 can&apos;t find next greater number.</span><br><span class="line">The second 1&apos;s next greater number needs to search circularly, which is also 2.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3,4,3]</span><br><span class="line">Output: [2,3,4,-1,4]</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= nums.length &lt;= 104</code></li><li><code>109 &lt;= nums[i] &lt;= 109</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>We want the next greater element in the same array</p><p>Loop twice could do so</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextGreaterElements</span><span class="params">(self, nums: List[int])</span> -&gt; List[int]:</span></span><br><span class="line">        stk = []</span><br><span class="line">        res = [<span class="number">-1</span>] * len(nums)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> idx <span class="keyword">in</span> range(len(nums)*<span class="number">2</span>):</span><br><span class="line">            i = idx % len(nums)</span><br><span class="line">            <span class="keyword">while</span> stk <span class="keyword">and</span> nums[stk[<span class="number">-1</span>]] &lt; nums[i]:</span><br><span class="line">                top = stk.pop()</span><br><span class="line">                res[top] = nums[i]</span><br><span class="line">            stk.append(i)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> stack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>496. Next Greater Element I</title>
       <link href="/2021/09/14/496-Next-Greater-Element-I/"/>
       <url>/2021/09/14/496-Next-Greater-Element-I/</url>
