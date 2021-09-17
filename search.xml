@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>766. Toeplitz Matrix</title>
+      <link href="/2021/09/16/766-Toeplitz-Matrix/"/>
+      <url>/2021/09/16/766-Toeplitz-Matrix/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given an <code>m x n</code> <code>matrix</code>, return <em><code>true</code> if the matrix is Toeplitz. Otherwise, return <code>false</code>.</em></p><p>A matrix is <strong>Toeplitz</strong> if every diagonal from top-left to bottom-right has the same elements.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/11/04/ex1.jpg" alt="https://assets.leetcode.com/uploads/2020/11/04/ex1.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = [[1,2,3,4],[5,1,2,3],[9,5,1,2]]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">In the above grid, the diagonals are:</span><br><span class="line">&quot;[9]&quot;, &quot;[5, 5]&quot;, &quot;[1, 1, 1]&quot;, &quot;[2, 2, 2]&quot;, &quot;[3, 3]&quot;, &quot;[4]&quot;.</span><br><span class="line">In each diagonal all elements are the same, so the answer is True.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/11/04/ex2.jpg" alt="https://assets.leetcode.com/uploads/2020/11/04/ex2.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = [[1,2],[2,2]]</span><br><span class="line">Output: false</span><br><span class="line">Explanation:</span><br><span class="line">The diagonal &quot;[1, 2]&quot; has different elements.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>m == matrix.length</code></li><li><code>n == matrix[i].length</code></li><li><code>1 &lt;= m, n &lt;= 20</code></li><li><code>0 &lt;= matrix[i][j] &lt;= 99</code></li></ul><p><strong>Follow up:</strong></p><ul><li><p>What if the <code>matrix</code> is stored on disk, and the memory is limited such that you can only load at most one row of the matrix into the memory at once?</p></li><li><p>What if the <code>matrix</code> is so large that you can only load up a partial row into the memory at once?</p></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isToeplitzMatrix</span><span class="params">(self, m)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(m) - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(m[<span class="number">0</span>]) - <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> m[i][j] != m[i + <span class="number">1</span>][j + <span class="number">1</span>]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure><ul><li>Follow up 1 :</li></ul><p>For the follow-up 1, we are only able to load one row at one time, so we have to use a buffer (1D data structure) to store the row info. When next row comes as a streaming flow, we can compare each value (say, matrix[i][j], i&gt;=1, j&gt;=1) to the “upper-left” value in the buffer (buffer[j - 1]); meanwhile, we update the buffer by inserting the 1st element of the current row (matrix[i][0]) to buffer at position 0 (buffer[0]), and removing the last element in the buffer.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public boolean isToeplitzMatrix(int[][] matrix) &#123;</span><br><span class="line">        <span class="keyword">if</span>(matrix == null || matrix.length == <span class="number">0</span> || matrix[<span class="number">0</span>] == null || matrix[<span class="number">0</span>].length == <span class="number">0</span>) <span class="keyword">return</span> true;</span><br><span class="line">        int row = matrix.length;</span><br><span class="line">        int col = matrix[<span class="number">0</span>].length;</span><br><span class="line">        List&lt;Integer&gt; buffer = new LinkedList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(int j = <span class="number">0</span>; j &lt; col; j++) buffer.add(matrix[<span class="number">0</span>][j]);</span><br><span class="line">        <span class="keyword">for</span>(int i = <span class="number">1</span>; i &lt; row; i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(int j = <span class="number">1</span>; j &lt; col; j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(buffer.get(j - <span class="number">1</span>) != matrix[i][j]) <span class="keyword">return</span> false;</span><br><span class="line">            &#125;</span><br><span class="line">            buffer.remove(buffer.size() - <span class="number">1</span>);</span><br><span class="line">            buffer.add(<span class="number">0</span>, matrix[i][<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li>Follow up 2: can only load a partial row at one time</li></ul><p>two file pointer, the first one start at [0][0], the second one starts at [1][1], load two elements each time, compare and move</p><p>Another idea:</p><p>We could split the whole matrix vertically into several sub-matrices, while each sub-matrix should have one column overlapped. We repeat the same method in follow-up 1 for each sub-matrix.</p><p>For example:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[1 2 3 4 5 6 7]              [1 2 3 4]              [4 5 6 7]</span><br><span class="line">[0 1 2 3 4 5 6]              [0 1 2 3]              [3 4 5 6]</span><br><span class="line">[1 0 1 2 3 4 5]     --&gt;      [1 0 1 2]       +      [2 3 4 5]</span><br><span class="line">[2 1 0 1 2 3 4]              [2 1 0 1]              [1 2 3 4]</span><br><span class="line">[3 2 1 0 1 2 3]              [3 2 1 0]              [0 1 2 3]</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> easy </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>317. Shortest Distance from All Buildings</title>
       <link href="/2021/09/16/317-Shortest-Distance-from-All-Buildings/"/>
       <url>/2021/09/16/317-Shortest-Distance-from-All-Buildings/</url>
@@ -368,11 +391,11 @@
             
             <tag> hard </tag>
             
+            <tag> sorting </tag>
+            
             <tag> dp </tag>
             
             <tag> binary search </tag>
-            
-            <tag> sorting </tag>
             
         </tags>
       
@@ -468,9 +491,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -898,9 +921,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -927,9 +950,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1050,9 +1073,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1535,9 +1558,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> graph </tag>
             
@@ -1610,9 +1633,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> greedy </tag>
             
@@ -1806,9 +1829,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1833,9 +1856,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1885,9 +1908,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -3289,9 +3312,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -4240,9 +4263,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -4372,9 +4395,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4836,9 +4859,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -5951,9 +5974,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6146,9 +6169,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -6914,9 +6937,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -7177,9 +7200,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -8768,9 +8791,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -9007,9 +9030,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -9038,9 +9061,9 @@
             
             <tag> tree </tag>
             
-            <tag> medium </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
