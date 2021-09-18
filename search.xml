@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>986.Interval List Intersections</title>
+      <link href="/2021/09/17/986-Interval-List-Intersections/"/>
+      <url>/2021/09/17/986-Interval-List-Intersections/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given two lists of closed intervals, <code>firstList</code> and <code>secondList</code>, where <code>firstList[i] = [starti, endi]</code> and <code>secondList[j] = [startj, endj]</code>. Each list of intervals is pairwise <strong>disjoint</strong> and in <strong>sorted order</strong>.</p><p>Return <em>the intersection of these two interval lists</em>.</p><p>A <strong>closed interval</strong> <code>[a, b]</code> (with <code>a &lt;= b</code>) denotes the set of real numbers <code>x</code> with <code>a &lt;= x &lt;= b</code>.</p><p>The <strong>intersection</strong> of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of <code>[1, 3]</code> and <code>[2, 4]</code> is <code>[2, 3]</code>.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/01/30/interval1.png" alt="https://assets.leetcode.com/uploads/2019/01/30/interval1.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: firstList = [[0,2],[5,10],[13,23],[24,25]], secondList = [[1,5],[8,12],[15,24],[25,26]]</span><br><span class="line">Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]</span><br></pre></td></tr></table></figure><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><ol><li><strong>Detect overlap and append to res</strong></li></ol><p><img src="https://assets.leetcode.com/users/arkaung/image_1590249888.png" alt="https://assets.leetcode.com/users/arkaung/image_1590249888.png"></p><p><img src="https://assets.leetcode.com/users/arkaung/image_1590249893.png" alt="https://assets.leetcode.com/users/arkaung/image_1590249893.png"></p><ol><li><strong>Incrementing pointers</strong></li></ol><p>Move the one that has the smaller end</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">intervalIntersection</span><span class="params">(self, A: List[List[int]], B: List[List[int]])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        j = <span class="number">0</span>   </span><br><span class="line">        result = []</span><br><span class="line">        <span class="keyword">while</span> i &lt; len(A) <span class="keyword">and</span> j &lt; len(B):</span><br><span class="line">            a_start, a_end = A[i]</span><br><span class="line">            b_start, b_end = B[j]</span><br><span class="line">            <span class="keyword">if</span> a_start &lt;= b_end <span class="keyword">and</span> b_start &lt;= a_end:</span><br><span class="line"><span class="comment"># Criss-cross lock</span></span><br><span class="line">                result.append([max(a_start, b_start), min(a_end, b_end)])   </span><br><span class="line">            <span class="keyword">if</span> a_end &lt;= b_end:       <span class="comment"># Exhausted this range in A</span></span><br><span class="line">                i += <span class="number">1</span>               <span class="comment"># Point to next range in A</span></span><br><span class="line">            <span class="keyword">else</span>:                    <span class="comment"># Exhausted this range in B</span></span><br><span class="line">                j += <span class="number">1</span>               <span class="comment"># Point to next range in B</span></span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> two pointers </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>509.Fibonacci Number</title>
       <link href="/2021/09/17/509-Fibonacci-Number/"/>
       <url>/2021/09/17/509-Fibonacci-Number/</url>
@@ -493,9 +516,9 @@
             
             <tag> sorting </tag>
             
-            <tag> dp </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> dp </tag>
             
         </tags>
       
@@ -1426,9 +1449,9 @@
             
             <tag> medium </tag>
             
-            <tag> two pointer </tag>
-            
             <tag> sort </tag>
+            
+            <tag> two pointer </tag>
             
         </tags>
       
@@ -3574,9 +3597,9 @@
             
             <tag> array </tag>
             
-            <tag> two pointer </tag>
-            
             <tag> sort </tag>
+            
+            <tag> two pointer </tag>
             
         </tags>
       
@@ -4334,9 +4357,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -8976,9 +8999,9 @@
             
             <tag> array </tag>
             
-            <tag> two pointer </tag>
-            
             <tag> sort </tag>
+            
+            <tag> two pointer </tag>
             
         </tags>
       
