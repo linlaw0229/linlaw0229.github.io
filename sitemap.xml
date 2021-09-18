@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/09/05/304-Range-Sum-Query-2D-Immutable/</loc>
+    
+    <lastmod>2021-09-18T06:37:50.889Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2018/09/17/270-Closest-Binary-Search-Tree-Value/</loc>
     
     <lastmod>2021-09-18T06:37:06.183Z</lastmod>
@@ -2189,13 +2196,6 @@
     <loc>http://linlaw0229.github.io/2018/08/24/33-Search-in-Rotated-Sorted-Array/</loc>
     
     <lastmod>2018-09-19T02:43:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/09/05/304-Range-Sum-Query-2D-Immutable/</loc>
-    
-    <lastmod>2018-09-05T23:02:29.000Z</lastmod>
     
   </url>
   
