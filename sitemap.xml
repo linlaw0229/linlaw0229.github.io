@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://linlaw0229.github.io/2018/09/02/129-Sum-Root-to-Leaf-Numbers/</loc>
+    
+    <lastmod>2021-09-19T06:01:57.095Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://linlaw0229.github.io/2021/09/18/1216-Valid-Palindrome-III/</loc>
     
     <lastmod>2021-09-18T07:04:35.265Z</lastmod>
@@ -2280,13 +2287,6 @@
     <loc>http://linlaw0229.github.io/2018/08/02/402-Remove-K-Digits/</loc>
     
     <lastmod>2018-09-03T17:08:05.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://linlaw0229.github.io/2018/09/02/129-Sum-Root-to-Leaf-Numbers/</loc>
-    
-    <lastmod>2018-09-03T04:45:32.000Z</lastmod>
     
   </url>
   
