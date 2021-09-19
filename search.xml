@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>983.Minimum Cost For Tickets</title>
+      <link href="/2021/09/18/983-Minimum-Cost-For-Tickets/"/>
+      <url>/2021/09/18/983-Minimum-Cost-For-Tickets/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array <code>days</code>. Each day is an integer from <code>1</code> to <code>365</code>.</p><p>Train tickets are sold in <strong>three different ways</strong>:</p><ul><li>a <strong>1-day</strong> pass is sold for <code>costs[0]</code> dollars,</li><li>a <strong>7-day</strong> pass is sold for <code>costs[1]</code> dollars, and</li><li>a <strong>30-day</strong> pass is sold for <code>costs[2]</code> dollars.</li></ul><p>The passes allow that many days of consecutive travel.</p><ul><li>For example, if we get a <strong>7-day</strong> pass on day <code>2</code>, then we can travel for <code>7</code> days: <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, and <code>8</code>.</li></ul><p>Return <em>the minimum number of dollars you need to travel every day in the given list of days</em>.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: days = [1,4,6,7,8,20], costs = [2,7,15]</span><br><span class="line">Output: 11</span><br><span class="line">Explanation: For example, here is one way to buy passes that lets you travel your travel plan:</span><br><span class="line">On day 1, you bought a 1-day pass for costs[0] = $2, which covered day 1.</span><br><span class="line">On day 3, you bought a 7-day pass for costs[1] = $7, which covered days 3, 4, ..., 9.</span><br><span class="line">On day 20, you bought a 1-day pass for costs[0] = $2, which covered day 20.</span><br><span class="line">In total, you spent $11 and covered all the days of your travel.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: days = [1,2,3,4,5,6,7,8,9,10,30,31], costs = [2,7,15]</span><br><span class="line">Output: 17</span><br><span class="line">Explanation: For example, here is one way to buy passes that lets you travel your travel plan:</span><br><span class="line">On day 1, you bought a 30-day pass for costs[2] = $15 which covered days 1, 2, ..., 30.</span><br><span class="line">On day 31, you bought a 1-day pass for costs[0] = $2 which covered day 31.</span><br><span class="line">In total, you spent $17 and covered all the days of your travel.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= days.length &lt;= 365</code></li><li><code>1 &lt;= days[i] &lt;= 365</code></li><li><code>days</code> is in strictly increasing order.</li><li><code>costs.length == 3</code></li><li><code>1 &lt;= costs[i] &lt;= 1000</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Top down DP</p><p>Calculating the cost for upcoming days</p><p>costDay = cost[Day ticket] + dfs(nextDay)</p><p>costWeek = cost[Week ticket] + dfs(next day after a week)</p><p>costMonth = cost[Month ticket] + dfs(next dat after a month)</p><p>cost on day i, <code>dp[i]= min(costDay, costWeek, costMonth)</code></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mincostTickets</span><span class="params">(self, days: List[int], costs: List[int])</span> -&gt; int:</span></span><br><span class="line">        memo = &#123;&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(idx)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> idx &gt;= len(days): <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> idx <span class="keyword">in</span> memo:</span><br><span class="line">                <span class="keyword">return</span> memo[idx]</span><br><span class="line">            </span><br><span class="line">            costDay = costs[<span class="number">0</span>] + dfs(idx+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># skip till ith day is curr_day+7 as we are buying week pass</span></span><br><span class="line">            i = idx</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(days) <span class="keyword">and</span> days[i] &lt; days[idx]+<span class="number">7</span>:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            costWeek = costs[<span class="number">1</span>] + dfs(i)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># skip till ith day is curr_day+30 as we are buying month pass</span></span><br><span class="line">            i = idx</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(days) <span class="keyword">and</span> days[i] &lt; days[idx]+<span class="number">30</span>:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            costMonth = costs[<span class="number">2</span>] + dfs(i)</span><br><span class="line">            memo[idx] = min(costDay, costWeek, costMonth)</span><br><span class="line">            <span class="keyword">return</span> memo[idx]</span><br><span class="line">        <span class="keyword">return</span> dfs(<span class="number">0</span>)</span><br></pre></td></tr></table></figure><p>Bottom up</p><p>We track the minimum <code>cost</code> for each travel day. We process only travel days and store {day, cost} for 7-and 30-day passes in the <code>last7</code> and <code>last30</code> queues. After a pass ‘expires’, we remove it from the queue. This way, our queues only contains travel days for the last 7 and 30 days, and the cheapest pass prices are in the front of the queues.</p><p><img src="https://assets.leetcode.com/users/votrubac/image_1548617861.png" alt="https://assets.leetcode.com/users/votrubac/image_1548617861.png"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mincostTickets</span><span class="params">(self, days: List[int], costs: List[int])</span> -&gt; int:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        two queues to store the ticket bought on day x</span></span><br><span class="line"><span class="string">        day7, day30 </span></span><br><span class="line"><span class="string">        if a we travel on days[i], we could </span></span><br><span class="line"><span class="string">        1. buy one day pass</span></span><br><span class="line"><span class="string">        2. use 7 day pass in queue. We use FIFO queue, so might not be </span></span><br><span class="line"><span class="string">        3. use 30 day pass in queue</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        queue7, queue30 = deque([]), deque([])</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> day <span class="keyword">in</span> days:</span><br><span class="line">            <span class="keyword">while</span> queue7 <span class="keyword">and</span> queue7[<span class="number">0</span>][<span class="number">0</span>] + <span class="number">7</span> &lt;= day:</span><br><span class="line">                queue7.popleft()</span><br><span class="line">            <span class="keyword">while</span> queue30 <span class="keyword">and</span> queue30[<span class="number">0</span>][<span class="number">0</span>] + <span class="number">30</span> &lt;= day:</span><br><span class="line">                queue30.popleft()</span><br><span class="line">            <span class="comment"># now two queues contains the available pass</span></span><br><span class="line">            queue7.append((day, res+costs[<span class="number">1</span>]))</span><br><span class="line">            queue30.append((day, res+costs[<span class="number">2</span>]))</span><br><span class="line">            </span><br><span class="line">            res = min(res + costs[<span class="number">0</span>], queue7[<span class="number">0</span>][<span class="number">1</span>], queue30[<span class="number">0</span>][<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> dp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>658.Find K Closest Elements</title>
       <link href="/2021/09/18/658-Find-K-Closest-Elements/"/>
       <url>/2021/09/18/658-Find-K-Closest-Elements/</url>
@@ -19,9 +42,9 @@
             
             <tag> medium </tag>
             
-            <tag> binary search </tag>
-            
             <tag> sliding window </tag>
+            
+            <tag> binary search </tag>
             
             <tag> two pointer </tag>
             
@@ -4482,9 +4505,9 @@
             
             <tag> hash table </tag>
             
-            <tag> trie </tag>
-            
             <tag> heap </tag>
+            
+            <tag> trie </tag>
             
         </tags>
       
@@ -9043,9 +9066,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9072,9 +9095,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9852,9 +9875,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9879,9 +9902,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9906,9 +9929,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10041,9 +10064,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10070,9 +10093,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10097,9 +10120,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
