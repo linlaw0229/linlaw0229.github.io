@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>362.Design Hit Counter</title>
+      <link href="/2021/09/20/362-Design-Hit-Counter/"/>
+      <url>/2021/09/20/362-Design-Hit-Counter/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Design a hit counter which counts the number of hits received in the past <code>5</code> minutes (i.e., the past <code>300</code> seconds).</p><p>Your system should accept a <code>timestamp</code> parameter (<strong>in seconds</strong> granularity), and you may assume that calls are being made to the system in chronological order (i.e., <code>timestamp</code> is monotonically increasing). Several hits may arrive roughly at the same time.</p><p>Implement the <code>HitCounter</code> class:</p><ul><li><code>HitCounter()</code> Initializes the object of the hit counter system.</li><li><code>void hit(int timestamp)</code> Records a hit that happened at <code>timestamp</code> (<strong>in seconds</strong>). Several hits may happen at the same <code>timestamp</code>.</li><li><code>int getHits(int timestamp)</code> Returns the number of hits in the past 5 minutes from <code>timestamp</code> (i.e., the past <code>300</code> seconds).</li></ul><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Input</span><br><span class="line">[&quot;HitCounter&quot;, &quot;hit&quot;, &quot;hit&quot;, &quot;hit&quot;, &quot;getHits&quot;, &quot;hit&quot;, &quot;getHits&quot;, &quot;getHits&quot;]</span><br><span class="line">[[], [1], [2], [3], [4], [300], [300], [301]]</span><br><span class="line">Output</span><br><span class="line">[null, null, null, null, 3, null, 4, 3]</span><br><span class="line"></span><br><span class="line">Explanation</span><br><span class="line">HitCounter hitCounter = new HitCounter();</span><br><span class="line">hitCounter.hit(1);       // hit at timestamp 1.</span><br><span class="line">hitCounter.hit(2);       // hit at timestamp 2.</span><br><span class="line">hitCounter.hit(3);       // hit at timestamp 3.</span><br><span class="line">hitCounter.getHits(4);   // get hits at timestamp 4, return 3.</span><br><span class="line">hitCounter.hit(300);     // hit at timestamp 300.</span><br><span class="line">hitCounter.getHits(300); // get hits at timestamp 300, return 4.</span><br><span class="line">hitCounter.getHits(301); // get hits at timestamp 301, return 3.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= timestamp &lt;= 2 * 109</code></li><li>All the calls are being made to the system in chronological order (i.e., <code>timestamp</code> is monotonically increasing).</li><li>At most <code>300</code> calls will be made to <code>hit</code> and <code>getHits</code>.</li></ul><p><strong>Follow up:</strong> What if the number of hits per second could be huge? Does your design scale?</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>Two ways to implement</p><ol><li>Circular array</li><li>Queue</li></ol><p>circular array might be better in huge amount of hit count</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HitCounter</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.q = [(<span class="number">0</span>, <span class="number">0</span>)]*<span class="number">300</span> <span class="comment"># (freq, time)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hit</span><span class="params">(self, timestamp: int)</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Record a hit.</span></span><br><span class="line"><span class="string">        @param timestamp - The current timestamp (in seconds granularity).</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        idx = timestamp % <span class="number">300</span></span><br><span class="line">        time, hit = self.q[idx]</span><br><span class="line">        <span class="keyword">if</span> time != timestamp:</span><br><span class="line">            self.q[idx] = timestamp, <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.q[idx] = time, hit + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getHits</span><span class="params">(self, timestamp: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Return the number of hits in the past 5 minutes.</span></span><br><span class="line"><span class="string">        @param timestamp - The current timestamp (in seconds granularity).</span></span><br><span class="line"><span class="string">        """</span>    </span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(self.q)):</span><br><span class="line">            time, hit = self.q[i]</span><br><span class="line">            <span class="keyword">if</span> timestamp - time &lt; <span class="number">300</span>:</span><br><span class="line">                ans += hit</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your HitCounter object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = HitCounter()</span></span><br><span class="line"><span class="comment"># obj.hit(timestamp)</span></span><br><span class="line"><span class="comment"># param_2 = obj.getHits(timestamp)</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> array </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1868.Product of Two Run-Length Encoded Arrays</title>
       <link href="/2021/09/19/1868-Product-of-Two-Run-Length-Encoded-Arrays/"/>
       <url>/2021/09/19/1868-Product-of-Two-Run-Length-Encoded-Arrays/</url>
@@ -9185,9 +9208,9 @@
             
             <tag> bfs </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -9214,9 +9237,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -9994,9 +10017,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -10021,9 +10044,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -10048,9 +10071,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -10183,9 +10206,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -10212,9 +10235,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -10239,9 +10262,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> array </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
