@@ -3,6 +3,37 @@
   
     
     <entry>
+      <title>778.Swim in Rising Water</title>
+      <link href="/2021/09/20/778-Swim-in-Rising-Water/"/>
+      <url>/2021/09/20/778-Swim-in-Rising-Water/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>You are given an <code>n x n</code> integer matrix <code>grid</code> where each value <code>grid[i][j]</code> represents the elevation at that point <code>(i, j)</code>.</p><p>The rain starts to fall. At time <code>t</code>, the depth of the water everywhere is <code>t</code>. You can swim from a square to another 4-directionally adjacent square if and only if the elevation of both squares individually are at most <code>t</code>. You can swim infinite distances in zero time. Of course, you must stay within the boundaries of the grid during your swim.</p><p>Return <em>the least time until you can reach the bottom right square</em> <code>(n - 1, n - 1)</code> <em>if you start at the top left square</em> <code>(0, 0)</code>.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg" alt="https://assets.leetcode.com/uploads/2021/06/29/swim1-grid.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[0,2],[1,3]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">At time 0, you are in grid location (0, 0).</span><br><span class="line">You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.</span><br><span class="line">You cannot reach point (1, 1) until time 3.</span><br><span class="line">When the depth of water is 3, we can swim anywhere inside the grid.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><p><img src="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg" alt="https://assets.leetcode.com/uploads/2021/06/29/swim2-grid-1.jpg"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[0,1,2,3,4],[24,23,22,21,5],[12,13,14,15,16],[11,17,18,19,20],[10,9,8,7,6]]</span><br><span class="line">Output: 16</span><br><span class="line">Explanation: The final route is shown.</span><br><span class="line">We need to wait until time 16 so that (0, 0) and (4, 4) are connected.</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>n == grid.length</code></li><li><code>n == grid[i].length</code></li><li><code>1 &lt;= n &lt;= 50</code></li><li><code>0 &lt;= grid[i][j] &lt; n2</code></li><li>Each value <code>grid[i][j]</code> is <strong>unique</strong>.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>We want to find if could reach to last position</p><p>Use a heap to record that available neighbor</p><p>A visited set to </p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">swimInWater</span><span class="params">(self, grid: List[List[int]])</span> -&gt; int:</span></span><br><span class="line">        heap = [(grid[<span class="number">0</span>][<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line">        heapify(heap)</span><br><span class="line">        visited = &#123;(<span class="number">0</span>, <span class="number">0</span>)&#125;</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> heap:</span><br><span class="line">            elevation, i, j = heappop(heap)</span><br><span class="line">            res = max(res, elevation)</span><br><span class="line">            <span class="keyword">if</span> i == j == len(grid)<span class="number">-1</span>: <span class="keyword">return</span> res</span><br><span class="line">            <span class="keyword">for</span> x, y <span class="keyword">in</span> [(i+<span class="number">1</span>, j), (i<span class="number">-1</span>, j), (i, j+<span class="number">1</span>), (i, j<span class="number">-1</span>)]:</span><br><span class="line">                <span class="keyword">if</span> (x,y) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> <span class="number">0</span> &lt;=x &lt; len(grid) <span class="keyword">and</span> <span class="number">0</span> &lt;= y &lt; len(grid[<span class="number">0</span>]):</span><br><span class="line">                    heappush(heap, (grid[x][y], x, y))</span><br><span class="line">                    visited.add((x,y))</span><br></pre></td></tr></table></figure><ul><li>Time Complexity: <code>O(N^2 log N)</code>. We may expand <code>O(N^2)</code> nodes, and each one requires <em>`O</em>(log<em>N</em>)` time to perform the heap operations.</li><li>Space Complexity: <code>O(N^2)</code>, the maximum size of the heap.</li></ul><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hard </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> dfs </tag>
+            
+            <tag> binary search </tag>
+            
+            <tag> union find </tag>
+            
+            <tag> heap </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>1522.Diameter of N-Ary Tree</title>
       <link href="/2021/09/20/1522-Diameter-of-N-Ary-Tree/"/>
       <url>/2021/09/20/1522-Diameter-of-N-Ary-Tree/</url>
@@ -115,9 +146,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> greedy </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -2421,9 +2452,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -3706,9 +3737,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3777,9 +3808,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -3962,11 +3993,11 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
             <tag> twitter </tag>
             
@@ -4645,11 +4676,11 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> hash table </tag>
+            
+            <tag> amazon </tag>
             
             <tag> design </tag>
             
@@ -4691,9 +4722,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> amazon </tag>
             
             <tag> heap </tag>
             
@@ -4728,9 +4759,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -4920,9 +4951,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -4999,9 +5030,9 @@
             
             <tag> google </tag>
             
-            <tag> stack </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> stack </tag>
             
             <tag> design </tag>
             
@@ -5059,9 +5090,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
             <tag> divide and conquer </tag>
             
@@ -5324,9 +5355,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -5874,11 +5905,11 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
             <tag> divide and conquer </tag>
             
@@ -5959,9 +5990,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -5986,9 +6017,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6038,13 +6069,13 @@
             
             <tag> facebook </tag>
             
-            <tag> stack </tag>
-            
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> two pointers </tag>
+            
+            <tag> amazon </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -6100,9 +6131,9 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> union find </tag>
             
@@ -6272,11 +6303,11 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -6344,11 +6375,11 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -6439,9 +6470,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -6522,11 +6553,11 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> two pointers </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6634,9 +6665,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -6694,9 +6725,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> two pointers </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -6808,9 +6839,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -7011,11 +7042,11 @@
             
             <tag> google </tag>
             
-            <tag> amazon </tag>
-            
             <tag> two pointers </tag>
             
             <tag> hash table </tag>
+            
+            <tag> amazon </tag>
             
             <tag> linkedin </tag>
             
@@ -7106,9 +7137,9 @@
             
             <tag> easy </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -7665,9 +7696,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
             <tag> graph </tag>
             
@@ -7698,9 +7729,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> greedy </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -7779,11 +7810,11 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> two pointers </tag>
             
             <tag> greedy </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -7810,9 +7841,9 @@
             
             <tag> easy </tag>
             
-            <tag> stack </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> stack </tag>
             
             <tag> design </tag>
             
@@ -7841,9 +7872,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -8215,9 +8246,9 @@
             
             <tag> hash table </tag>
             
-            <tag> uber </tag>
-            
             <tag> design </tag>
+            
+            <tag> uber </tag>
             
             <tag> linkedin </tag>
             
@@ -8244,9 +8275,9 @@
             
             <tag> medium </tag>
             
-            <tag> stack </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -8296,9 +8327,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> uber </tag>
             
@@ -8335,9 +8366,9 @@
             
             <tag> bfs </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -8418,9 +8449,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> sort </tag>
             
@@ -8449,9 +8480,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
+            
+            <tag> amazon </tag>
             
             <tag> lyft </tag>
             
@@ -8578,9 +8609,9 @@
             
             <tag> tree </tag>
             
-            <tag> amazon </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -8998,9 +9029,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -9256,9 +9287,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9285,9 +9316,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9951,11 +9982,11 @@
             
             <tag> facebook </tag>
             
-            <tag> amazon </tag>
-            
             <tag> two pointers </tag>
             
             <tag> hash table </tag>
+            
+            <tag> amazon </tag>
             
             <tag> bloomberg </tag>
             
@@ -10065,9 +10096,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10092,9 +10123,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10119,9 +10150,9 @@
             
             <tag> tree </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10254,9 +10285,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10283,9 +10314,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10310,9 +10341,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> dfs </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10724,11 +10755,11 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> array </tag>
             
             <tag> two pointers </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -10896,11 +10927,11 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
             
             <tag> hash table </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
@@ -10925,9 +10956,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> stack </tag>
-            
             <tag> array </tag>
+            
+            <tag> stack </tag>
             
         </tags>
       
