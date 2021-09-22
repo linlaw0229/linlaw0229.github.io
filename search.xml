@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>1161.Maximum Level Sum of a Binary Tree</title>
+      <link href="/2021/09/21/1161-Maximum-Level-Sum-of-a-Binary-Tree/"/>
+      <url>/2021/09/21/1161-Maximum-Level-Sum-of-a-Binary-Tree/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given the <code>root</code> of a binary tree, the level of its root is <code>1</code>, the level of its children is <code>2</code>, and so on.</p><p>Return the <strong>smallest</strong> level <code>x</code> such that the sum of all the values of nodes at level <code>x</code> is <strong>maximal</strong>.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2019/05/03/capture.JPG" alt="https://assets.leetcode.com/uploads/2019/05/03/capture.JPG"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,7,0,7,-8,null,null]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">Level 1 sum = 1.</span><br><span class="line">Level 2 sum = 7 + 0 = 7.</span><br><span class="line">Level 3 sum = 7 + -8 = -1.</span><br><span class="line">So we return the level with the maximum sum which is level 2.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [989,null,10250,98693,-89388,null,null,null,-32127]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li>The number of nodes in the tree is in the range <code>[1, 104]</code>.</li><li><code>105 &lt;= Node.val &lt;= 105</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, val=0, left=None, right=None):</span></span><br><span class="line"><span class="comment">#         self.val = val</span></span><br><span class="line"><span class="comment">#         self.left = left</span></span><br><span class="line"><span class="comment">#         self.right = right</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxLevelSum</span><span class="params">(self, root: Optional[TreeNode])</span> -&gt; int:</span></span><br><span class="line">        max, level, minLevel = float(<span class="string">"-inf"</span>), <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        queue = deque([root])</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            level += <span class="number">1</span></span><br><span class="line">            sum = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(queue)):</span><br><span class="line">                front = queue.popleft()</span><br><span class="line">                sum += front.val</span><br><span class="line">                <span class="keyword">if</span> front.left: queue.append(front.left)</span><br><span class="line">                <span class="keyword">if</span> front.right: queue.append(front.right)</span><br><span class="line">            <span class="keyword">if</span> sum &gt; max:</span><br><span class="line">                max = sum</span><br><span class="line">                minLevel = level</span><br><span class="line">        <span class="keyword">return</span> minLevel</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>359.Logger Rate Limiter</title>
       <link href="/2021/09/21/359-Logger-Rate-Limiter/"/>
       <url>/2021/09/21/359-Logger-Rate-Limiter/</url>
@@ -69,9 +94,9 @@
             
             <tag> hard </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
             <tag> binary search </tag>
             
@@ -119,13 +144,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -509,9 +534,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -532,13 +557,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -559,9 +584,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -883,11 +908,11 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -933,9 +958,9 @@
             
             <tag> hard </tag>
             
-            <tag> sorting </tag>
-            
             <tag> dp </tag>
+            
+            <tag> sorting </tag>
             
             <tag> binary search </tag>
             
@@ -1035,9 +1060,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -1194,9 +1219,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -1217,9 +1242,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -1417,9 +1442,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1465,9 +1490,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1494,9 +1519,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -1617,9 +1642,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1797,9 +1822,9 @@
             
             <tag> hard </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -1868,9 +1893,9 @@
             
             <tag> medium </tag>
             
-            <tag> sort </tag>
-            
             <tag> two pointer </tag>
+            
+            <tag> sort </tag>
             
         </tags>
       
@@ -1981,9 +2006,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -2369,13 +2394,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2396,13 +2421,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2423,9 +2448,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> greedy </tag>
             
@@ -2448,13 +2473,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2475,9 +2500,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -2502,9 +2527,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -2753,9 +2778,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -3155,9 +3180,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -3787,9 +3812,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3856,11 +3881,11 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3964,9 +3989,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -4016,9 +4041,9 @@
             
             <tag> array </tag>
             
-            <tag> sort </tag>
-            
             <tag> two pointer </tag>
+            
+            <tag> sort </tag>
             
         </tags>
       
@@ -4043,9 +4068,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -4210,9 +4235,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -4237,9 +4262,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4266,9 +4291,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -4447,9 +4472,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -4726,9 +4751,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -4803,9 +4828,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
@@ -4939,9 +4964,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -4999,11 +5024,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -5289,9 +5314,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -5318,9 +5343,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -5372,9 +5397,9 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5403,11 +5428,11 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -5625,9 +5650,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -5955,9 +5980,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -6040,9 +6065,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6067,9 +6092,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6119,11 +6144,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6181,9 +6206,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -6237,9 +6262,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -6353,9 +6378,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -6425,9 +6450,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> binary search </tag>
             
@@ -6518,11 +6543,11 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -6601,11 +6626,11 @@
             
             <tag> microsoft </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6713,11 +6738,11 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -6802,9 +6827,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6854,9 +6879,9 @@
             
             <tag> facebook </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -6889,9 +6914,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7185,11 +7210,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7243,9 +7268,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -7508,9 +7533,9 @@
             
             <tag> facebook </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7744,11 +7769,11 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -7791,7 +7816,7 @@
       <title>767. Reorganize String</title>
       <link href="/2018/08/02/767-Reorganize-String/"/>
       <url>/2018/08/02/767-Reorganize-String/</url>
-      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string S, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.</p><p>If possible, output any possible result.  If not possible, return the empty string.</p><p>Example 1:</p><p>Input: S = “aab”<br>Output: “aba”<br>Example 2:</p><p>Input: S = “aaab”<br>Output: “”<br>Note:</p><p>S will consist of lowercase letters and have length in range [1, 500].</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>When we first see this problem, we should use an example to walk through it, and we can see that we need to know what character has the greatest occurrence in the string.</p><ol><li>Use an unordered_map to count occurrence</li><li>Use priority queue to store the occurrence, it will automatically sort it. </li><li>Put the character into the result string, take <code>2 different character</code> at a time, this can ensure the outcome will not have same adjacent character.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reorganizeString</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. count the frequency of each char</span></span><br><span class="line"><span class="comment">        2. put into priority queue</span></span><br><span class="line"><span class="comment">        3. the top 2 elements in queue must be the most frequently element, put them into result string first</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: S)</span><br><span class="line">            <span class="built_in">map</span>[c]++;</span><br><span class="line">        </span><br><span class="line">        priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt;&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n.second&gt; (S.length()+<span class="number">1</span>)/<span class="number">2</span>) <span class="keyword">return</span> <span class="string">""</span>; <span class="comment">//Pigeonhole principal </span></span><br><span class="line">            q.push(&#123;n.second, n.first&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">while</span>(q.size()&gt;= <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">auto</span> tmp1= q.top(); q.pop();</span><br><span class="line">            <span class="keyword">auto</span> tmp2= q.top(); q.pop();</span><br><span class="line">            res.push_back(tmp1.second);</span><br><span class="line">            res.push_back(tmp2.second);</span><br><span class="line">            <span class="keyword">if</span>(--tmp1.first &gt; <span class="number">0</span>) q.push(tmp1);</span><br><span class="line">            <span class="keyword">if</span>(--tmp2.first &gt; <span class="number">0</span>) q.push(tmp2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!q.empty())</span><br><span class="line">            res.push_back(q.top().second);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>The goal is to first exhaust the most-frequent chars. We build a frequency dict of the letters in the string. We push all the letters into a max heap together with their <code>-ve</code> frequencies (max heap: high-freq letters are towards the top of the heap)<br>We pop two letters at a time from the heap, add them to our result string, decrement their frequencies and push them back into heap. Why do we have to pop two items/letters at a time you’re wondering? Because if we only pop one at a time, we will keep popping and pushing the same letter over and over again if that letter has a freq greater than 1. Hence by popping two at time, adding them to result, decrementing their freq and finally pushing them back into heap, we guranatee that we are always alternating between letters.</p><p>For example: for the string <code>s = aab</code><br>The freq dict will be: <code>d = {&quot;a&quot;: 2, &quot;b&quot;:1}</code><br>And the heap: <code>h = [(-2, &quot;a&quot;), (-1, &quot;b&quot;)]</code></p><p>After the first iteration:<br><code>h = [(-1, &quot;a&quot;)]</code><br>and so on…<br>Edge Case:</p><p>NOTE [1]</p><ul><li>Since we are always popping two items at a time, we will definitely run into an out of bounds error if we have an odd number of unique items in the given string. To avoid this, we need to make sure our heap at least has two items at any given time. We achive this by running our main logic inside a while len(heap) &gt; 1 instead of a while heap</li></ul><p>NOTE [2]</p><ul><li>Again if the there is an odd number of unique letters in the string, there will be one last item/letter remaining in the heap when our loop terminates. Hence we need to examine that last item:</li><li>If the last item has a freq greater than 1: -&gt; then return “” becasue we can’t escape having the same letter repeated contigiously.</li><li>else if the item has freq = 1, we pop it, add it to our result and we’re done.</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reorganizeString</span><span class="params">(self, S: str)</span> -&gt; str:</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> S:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> d:</span><br><span class="line">                <span class="comment"># we want max heap</span></span><br><span class="line">                d[c] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d[c] = <span class="number">-1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Use Max heap to store</span></span><br><span class="line">        hq = []</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</span><br><span class="line">            heapq.heappush(hq, (v, k))</span><br><span class="line">        </span><br><span class="line">        res = <span class="string">""</span></span><br><span class="line">        <span class="comment"># we want to make the string separate by two characters, so pop out two each turn</span></span><br><span class="line">        <span class="keyword">while</span> len(hq) &gt; <span class="number">1</span>:</span><br><span class="line">            f1, c1 = heapq.heappop(hq)</span><br><span class="line">            f2, c2 = heapq.heappop(hq)</span><br><span class="line">            res+= str(c1+c2)</span><br><span class="line">            <span class="keyword">if</span> f1+<span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">                heapq.heappush(hq, (f1+<span class="number">1</span>, c1))</span><br><span class="line">            <span class="keyword">if</span> f2+<span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">                heapq.heappush(hq, (f2+<span class="number">1</span>, c2))</span><br><span class="line">        <span class="keyword">if</span> len(hq):</span><br><span class="line">            <span class="comment"># still 1 (freq, character) pair left</span></span><br><span class="line">            f1, c1 = heapq.heappop(hq)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> f1 &lt; <span class="number">-1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += str(c1)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><h3 id="Solution-Sorting"><a href="#Solution-Sorting" class="headerlink" title="Solution - Sorting"></a>Solution - Sorting</h3><ol><li>count letter appearance</li><li>find the letter with most frequent.</li><li>If the most frequent letter is over half of string, then return <code>&quot;&quot;</code></li><li>put the letter into <code>even</code> index number (0, 2, 4 …) char array</li><li>put the letter into <code>odd</code> index number (1, 3, 5 …) char array</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reorganizeString</span><span class="params">(self, S: str)</span> -&gt; str:</span></span><br><span class="line">        counter = collections.Counter(S)</span><br><span class="line">        i, res, n = <span class="number">0</span>, [<span class="keyword">None</span>] * len(S), len(S)</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> sorted(counter, key = counter.get, reverse = <span class="keyword">True</span>):</span><br><span class="line">            <span class="keyword">if</span> counter[k] &gt; n // <span class="number">2</span> + (n % <span class="number">2</span>): <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(counter[k]):</span><br><span class="line">                <span class="keyword">if</span> i &gt;= n: i = <span class="number">1</span></span><br><span class="line">                print(i, k)</span><br><span class="line">                res[i] = k; i += <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(res)</span><br></pre></td></tr></table></figure><p>reference:</p>]]></content>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a string S, check if the letters can be rearranged so that two characters that are adjacent to each other are not the same.</p><p>If possible, output any possible result.  If not possible, return the empty string.</p><p>Example 1:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;aab&quot;</span><br><span class="line">Output: &quot;aba&quot;</span><br></pre></td></tr></table></figure></p><p>Example 2:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;aaab&quot;</span><br><span class="line">Output: &quot;&quot;</span><br></pre></td></tr></table></figure></p><p>Note:</p><p>S will consist of lowercase letters and have length in range [1, 500].</p><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>When we first see this problem, we should use an example to walk through it, and we can see that we need to know what character has the greatest occurrence in the string.</p><ol><li>Use an unordered_map to count occurrence</li><li>Use priority queue to store the occurrence, it will automatically sort it. </li><li>Put the character into the result string, take <code>2 different character</code> at a time, this can ensure the outcome will not have same adjacent character.</li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reorganizeString</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        1. count the frequency of each char</span></span><br><span class="line"><span class="comment">        2. put into priority queue</span></span><br><span class="line"><span class="comment">        3. the top 2 elements in queue must be the most frequently element, put them into result string first</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> c: S)</span><br><span class="line">            <span class="built_in">map</span>[c]++;</span><br><span class="line">        </span><br><span class="line">        priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">char</span>&gt;&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> n: <span class="built_in">map</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n.second&gt; (S.length()+<span class="number">1</span>)/<span class="number">2</span>) <span class="keyword">return</span> <span class="string">""</span>; <span class="comment">//Pigeonhole principal </span></span><br><span class="line">            q.push(&#123;n.second, n.first&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">while</span>(q.size()&gt;= <span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">auto</span> tmp1= q.top(); q.pop();</span><br><span class="line">            <span class="keyword">auto</span> tmp2= q.top(); q.pop();</span><br><span class="line">            res.push_back(tmp1.second);</span><br><span class="line">            res.push_back(tmp2.second);</span><br><span class="line">            <span class="keyword">if</span>(--tmp1.first &gt; <span class="number">0</span>) q.push(tmp1);</span><br><span class="line">            <span class="keyword">if</span>(--tmp2.first &gt; <span class="number">0</span>) q.push(tmp2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!q.empty())</span><br><span class="line">            res.push_back(q.top().second);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>The goal is to first exhaust the most-frequent chars. We build a frequency dict of the letters in the string. We push all the letters into a max heap together with their <code>-ve</code> frequencies (max heap: high-freq letters are towards the top of the heap)<br>We pop two letters at a time from the heap, add them to our result string, decrement their frequencies and push them back into heap. Why do we have to pop two items/letters at a time you’re wondering? Because if we only pop one at a time, we will keep popping and pushing the same letter over and over again if that letter has a freq greater than 1. Hence by popping two at time, adding them to result, decrementing their freq and finally pushing them back into heap, we guranatee that we are always alternating between letters.</p><p>For example: for the string <code>s = aab</code><br>The freq dict will be: <code>d = {&quot;a&quot;: 2, &quot;b&quot;:1}</code><br>And the heap: <code>h = [(-2, &quot;a&quot;), (-1, &quot;b&quot;)]</code></p><p>After the first iteration:<br><code>h = [(-1, &quot;a&quot;)]</code><br>and so on…<br>Edge Case:</p><p>NOTE [1]</p><ul><li>Since we are always popping two items at a time, we will definitely run into an out of bounds error if we have an odd number of unique items in the given string. To avoid this, we need to make sure our heap at least has two items at any given time. We achive this by running our main logic inside a while len(heap) &gt; 1 instead of a while heap</li></ul><p>NOTE [2]</p><ul><li>Again if the there is an odd number of unique letters in the string, there will be one last item/letter remaining in the heap when our loop terminates. Hence we need to examine that last item:</li><li>If the last item has a freq greater than 1: -&gt; then return “” becasue we can’t escape having the same letter repeated contigiously.</li><li>else if the item has freq = 1, we pop it, add it to our result and we’re done.</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reorganizeString</span><span class="params">(self, S: str)</span> -&gt; str:</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> S:</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> d:</span><br><span class="line">                <span class="comment"># we want max heap</span></span><br><span class="line">                d[c] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d[c] = <span class="number">-1</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># Use Max heap to store</span></span><br><span class="line">        hq = []</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> d.items():</span><br><span class="line">            heapq.heappush(hq, (v, k))</span><br><span class="line">        </span><br><span class="line">        res = <span class="string">""</span></span><br><span class="line">        <span class="comment"># we want to make the string separate by two characters, so pop out two each turn</span></span><br><span class="line">        <span class="keyword">while</span> len(hq) &gt; <span class="number">1</span>:</span><br><span class="line">            f1, c1 = heapq.heappop(hq)</span><br><span class="line">            f2, c2 = heapq.heappop(hq)</span><br><span class="line">            res+= str(c1+c2)</span><br><span class="line">            <span class="keyword">if</span> f1+<span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">                heapq.heappush(hq, (f1+<span class="number">1</span>, c1))</span><br><span class="line">            <span class="keyword">if</span> f2+<span class="number">1</span> != <span class="number">0</span>:</span><br><span class="line">                heapq.heappush(hq, (f2+<span class="number">1</span>, c2))</span><br><span class="line">        <span class="keyword">if</span> len(hq):</span><br><span class="line">            <span class="comment"># still 1 (freq, character) pair left</span></span><br><span class="line">            f1, c1 = heapq.heappop(hq)</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> f1 &lt; <span class="number">-1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += str(c1)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure><h3 id="Solution-Sorting"><a href="#Solution-Sorting" class="headerlink" title="Solution - Sorting"></a>Solution - Sorting</h3><ol><li>count letter appearance</li><li>find the letter with most frequent.</li><li>If the most frequent letter is over half of string, then return <code>&quot;&quot;</code></li><li>put the letter into <code>even</code> index number (0, 2, 4 …) char array</li><li>put the letter into <code>odd</code> index number (1, 3, 5 …) char array</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reorganizeString</span><span class="params">(self, S: str)</span> -&gt; str:</span></span><br><span class="line">        counter = collections.Counter(S)</span><br><span class="line">        i, res, n = <span class="number">0</span>, [<span class="keyword">None</span>] * len(S), len(S)</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> sorted(counter, key = counter.get, reverse = <span class="keyword">True</span>):</span><br><span class="line">            <span class="keyword">if</span> counter[k] &gt; n // <span class="number">2</span> + (n % <span class="number">2</span>): <span class="keyword">return</span> <span class="string">""</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(counter[k]):</span><br><span class="line">                <span class="keyword">if</span> i &gt;= n: i = <span class="number">1</span></span><br><span class="line">                print(i, k)</span><br><span class="line">                res[i] = k; i += <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>.join(res)</span><br></pre></td></tr></table></figure><p>reference:</p>]]></content>
       
       <categories>
           
@@ -7922,9 +7947,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7949,9 +7974,9 @@
             
             <tag> microsoft </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -8377,9 +8402,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -8414,11 +8439,11 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> bfs </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8499,9 +8524,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -8530,9 +8555,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -8634,9 +8659,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8659,9 +8684,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8688,9 +8713,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -8719,9 +8744,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8936,11 +8961,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary search </tag>
             
@@ -9046,9 +9071,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -9104,9 +9129,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -9131,9 +9156,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -9158,9 +9183,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> binary indexed tree </tag>
             
@@ -9206,11 +9231,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> dfs </tag>
             
@@ -9258,9 +9283,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -9308,9 +9333,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
-            
             <tag> easy </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -9331,15 +9356,15 @@
       
         <tags>
             
+            <tag> leetcode </tag>
+            
             <tag> medium </tag>
             
-            <tag> leetcode </tag>
+            <tag> bfs </tag>
             
             <tag> array </tag>
             
             <tag> dfs </tag>
-            
-            <tag> bfs </tag>
             
         </tags>
       
@@ -9360,11 +9385,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -9412,15 +9437,15 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
-            <tag> sort </tag>
-            
             <tag> two pointer </tag>
+            
+            <tag> sort </tag>
             
         </tags>
       
@@ -9443,9 +9468,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9468,9 +9493,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> easy </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -9497,9 +9522,9 @@
             
             <tag> apple </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> amazon </tag>
             
@@ -9522,11 +9547,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -9570,13 +9595,13 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
             
-            <tag> dfs </tag>
+            <tag> medium </tag>
             
             <tag> bfs </tag>
+            
+            <tag> dfs </tag>
             
             <tag> union find </tag>
             
@@ -9599,11 +9624,11 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
             
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> bfs </tag>
             
@@ -9626,9 +9651,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> sort </tag>
             
@@ -9651,9 +9676,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> greddy </tag>
             
@@ -9724,9 +9749,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> stack </tag>
             
@@ -9820,9 +9845,9 @@
             
             <tag> string </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -9920,9 +9945,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -9947,9 +9972,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> hash table </tag>
             
@@ -10142,9 +10167,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10254,9 +10279,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10306,9 +10331,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -10331,9 +10356,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10360,9 +10385,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10460,9 +10485,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10487,9 +10512,9 @@
             
             <tag> backtracking </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10539,9 +10564,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10564,9 +10589,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10589,9 +10614,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10614,9 +10639,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10639,9 +10664,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10724,9 +10749,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> array </tag>
             
@@ -10749,9 +10774,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -10774,9 +10799,9 @@
       
         <tags>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> linked list </tag>
             
@@ -10805,9 +10830,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -10832,9 +10857,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -10863,9 +10888,9 @@
             
             <tag> google </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> math </tag>
             
@@ -10890,9 +10915,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
         </tags>
       
@@ -10915,9 +10940,9 @@
             
             <tag> dynamic programming </tag>
             
-            <tag> medium </tag>
-            
             <tag> tree </tag>
+            
+            <tag> medium </tag>
             
             <tag> snapchat </tag>
             
@@ -10946,9 +10971,9 @@
             
             <tag> apple </tag>
             
-            <tag> medium </tag>
-            
             <tag> leetcode </tag>
+            
+            <tag> medium </tag>
             
             <tag> airbnb </tag>
             
@@ -10977,9 +11002,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -11006,9 +11031,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
