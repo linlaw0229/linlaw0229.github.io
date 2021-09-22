@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>1011.Capacity To Ship Packages Within D Days</title>
+      <link href="/2021/09/21/1011-Capacity-To-Ship-Packages-Within-D-Days/"/>
+      <url>/2021/09/21/1011-Capacity-To-Ship-Packages-Within-D-Days/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>A conveyor belt has packages that must be shipped from one port to another within <code>days</code> days.</p><p>The <code>ith</code> package on the conveyor belt has a weight of <code>weights[i]</code>. Each day, we load the ship with packages on the conveyor belt (in the order given by <code>weights</code>). We may not load more weight than the maximum weight capacity of the ship.</p><p>Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within <code>days</code> days.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: weights = [1,2,3,4,5,6,7,8,9,10], days = 5</span><br><span class="line">Output: 15</span><br><span class="line">Explanation: A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:</span><br><span class="line">1st day: 1, 2, 3, 4, 5</span><br><span class="line">2nd day: 6, 7</span><br><span class="line">3rd day: 8</span><br><span class="line">4th day: 9</span><br><span class="line">5th day: 10</span><br><span class="line"></span><br><span class="line">Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed.</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: weights = [3,2,2,4,1,4], days = 3</span><br><span class="line">Output: 6</span><br><span class="line">Explanation: A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:</span><br><span class="line">1st day: 3, 2</span><br><span class="line">2nd day: 2, 4</span><br><span class="line">3rd day: 1, 4</span><br></pre></td></tr></table></figure><p><strong>Example 3:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: weights = [1,2,3,1,1], days = 4</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">1st day: 1</span><br><span class="line">2nd day: 2</span><br><span class="line">3rd day: 3</span><br><span class="line">4th day: 1, 1</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>1 &lt;= days &lt;= weights.length &lt;= 5 * 104</code></li><li><code>1 &lt;= weights[i] &lt;= 500</code></li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>How to find out it could use binary search?</p><p>Given an example of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] (from first example after problem statement)</p><ol><li>Recognize that we’re looking for an integer value as our answer (not a permutation of possible intervals or anything else, JUST return an int)</li><li>Recognize that we can bound the solution space: lowest bound for the solution is the max weight of an individual container (10). In this case, we can use a day to ship each container, and that is the guaranteed to give us the largest amount of days needed to ship all the containers. The highest bound for the solution is the sum of all the individual weights (55): if you used this weight, you can ship ALL the containers in a day</li><li>Now that we see that the answer HAS to be in this solution space, we need to find the answer that will give us the minimum max capacity that can ship out all containers within D days. So we can go through all the possible solutions linearly (from 10 to 55) and find the solution that will give us what we’re looking for. We need to have a function that will calculate linearly (this function, calculate_days_to_ship, isn’t too bad to implement, do it on your own) how many days it will take to ship out all the containers with our solutions ranging from 10 to 55.</li><li>The above is a bit of a naive approach. 10 to 55 isn’t that big of a range but what if we had 10 to 100000000000? Since we know the problem is bounded, we can do a binary search to significantly speed up our algorithm. If the calculate_days_to_ship function spits out a number of days &lt;= D, then it COULD be the solution, so we keep it in our solution space, so we move the right bound to m (smaller minimum max capacity will give us a bigger days_to_ship number), and if we get a number of days &gt; D, then we know it CAN’T be the solution because we’re only interested in days within D (&lt;= D).</li></ol><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shipWithinDays</span><span class="params">(self, weights: List[int], days: int)</span> -&gt; int:</span></span><br><span class="line">        <span class="comment"># edge case is to ship all packages in one day: ship sum(weights), </span></span><br><span class="line">        <span class="comment"># wordst case is to ship the max(weights) and take as much days</span></span><br><span class="line">        <span class="comment"># we want to find in this range of weights, [max(weights), sum(weights)]</span></span><br><span class="line">        <span class="comment"># if there's a smallest number that could ship packages before D days</span></span><br><span class="line">        </span><br><span class="line">        left, right = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(weights)):</span><br><span class="line">            left = max(left, weights[i])</span><br><span class="line">            right += weights[i]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            mid = (left+right)//<span class="number">2</span></span><br><span class="line">            daysNeeded, curSum = <span class="number">1</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> weights:</span><br><span class="line">                <span class="keyword">if</span> curSum + w &gt; mid:</span><br><span class="line">                    daysNeeded += <span class="number">1</span></span><br><span class="line">                    curSum = <span class="number">0</span></span><br><span class="line">                curSum += w</span><br><span class="line">            <span class="keyword">if</span> daysNeeded &gt; days:</span><br><span class="line">                left = mid+<span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                right = mid</span><br><span class="line">        <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> facebook </tag>
+            
+            <tag> medium </tag>
+            
+            <tag> binary search </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>843.Guess the Word</title>
       <link href="/2021/09/21/843-Guess-the-Word/"/>
       <url>/2021/09/21/843-Guess-the-Word/</url>
@@ -200,11 +225,11 @@
             
             <tag> hard </tag>
             
+            <tag> binary search </tag>
+            
             <tag> bfs </tag>
             
             <tag> dfs </tag>
-            
-            <tag> binary search </tag>
             
             <tag> union find </tag>
             
@@ -1064,11 +1089,11 @@
             
             <tag> hard </tag>
             
+            <tag> binary search </tag>
+            
             <tag> dp </tag>
             
             <tag> sorting </tag>
-            
-            <tag> binary search </tag>
             
         </tags>
       
@@ -2683,9 +2708,9 @@
             
             <tag> medium </tag>
             
-            <tag> hash table </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> hash table </tag>
             
         </tags>
       
@@ -4174,11 +4199,11 @@
             
             <tag> google </tag>
             
+            <tag> binary search </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> binary search </tag>
             
             <tag> twitter </tag>
             
@@ -4343,9 +4368,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -5271,9 +5296,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
             <tag> divide and conquer </tag>
             
@@ -6086,11 +6111,11 @@
             
             <tag> google </tag>
             
+            <tag> binary search </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> binary search </tag>
             
             <tag> divide and conquer </tag>
             
@@ -6484,11 +6509,11 @@
             
             <tag> medium </tag>
             
+            <tag> binary search </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> binary search </tag>
             
             <tag> uber </tag>
             
@@ -6556,11 +6581,11 @@
             
             <tag> medium </tag>
             
+            <tag> binary search </tag>
+            
             <tag> amazon </tag>
             
             <tag> array </tag>
-            
-            <tag> binary search </tag>
             
             <tag> linkedin </tag>
             
@@ -8319,9 +8344,9 @@
             
             <tag> google </tag>
             
-            <tag> hash table </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> hash table </tag>
             
             <tag> two pointer </tag>
             
@@ -8570,9 +8595,9 @@
       
         <tags>
             
-            <tag> array </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -9210,9 +9235,9 @@
             
             <tag> medium </tag>
             
-            <tag> amazon </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> amazon </tag>
             
         </tags>
       
@@ -10248,9 +10273,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -10645,9 +10670,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> array </tag>
             
             <tag> Floyd&#39;s Tortoise and Hare Algorithm </tag>
             
@@ -10805,9 +10830,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -10832,9 +10857,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> binary search </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
