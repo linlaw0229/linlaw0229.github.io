@@ -3,6 +3,31 @@
   
     
     <entry>
+      <title>1559.Detect Cycles in 2D Grid</title>
+      <link href="/2021/09/24/1559-Detect-Cycles-in-2D-Grid/"/>
+      <url>/2021/09/24/1559-Detect-Cycles-in-2D-Grid/</url>
+      <content type="html"><![CDATA[<h3 id="Problem-description"><a href="#Problem-description" class="headerlink" title="Problem description:"></a>Problem description:</h3><p>Given a 2D array of characters <code>grid</code> of size <code>m x n</code>, you need to find if there exists any cycle consisting of the <strong>same value</strong> in <code>grid</code>.</p><p>A cycle is a path of <strong>length 4 or more</strong> in the grid that starts and ends at the same cell. From a given cell, you can move to one of the cells adjacent to it - in one of the four directions (up, down, left, or right), if it has the <strong>same value</strong> of the current cell.</p><p>Also, you cannot move to the cell that you visited in your last move. For example, the cycle <code>(1, 1) -&gt; (1, 2) -&gt; (1, 1)</code> is invalid because from <code>(1, 2)</code> we visited <code>(1, 1)</code> which was the last visited cell.</p><p>Return <code>true</code> if any cycle of the same value exists in <code>grid</code>, otherwise, return <code>false</code>.</p><p><strong>Example 1:</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/07/15/1.png" alt="https://assets.leetcode.com/uploads/2020/07/15/1.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;],[&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;a&quot;],[&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;a&quot;],[&quot;a&quot;,&quot;a&quot;,&quot;a&quot;,&quot;a&quot;]]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:There are two valid cycles shown in different colors in the image below:</span><br></pre></td></tr></table></figure><p><img src="https://assets.leetcode.com/uploads/2020/07/15/11.png" alt="https://assets.leetcode.com/uploads/2020/07/15/11.png"></p><p><strong>Example 2:</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/07/15/22.png" alt="https://assets.leetcode.com/uploads/2020/07/15/22.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[&quot;c&quot;,&quot;c&quot;,&quot;c&quot;,&quot;a&quot;],[&quot;c&quot;,&quot;d&quot;,&quot;c&quot;,&quot;c&quot;],[&quot;c&quot;,&quot;c&quot;,&quot;e&quot;,&quot;c&quot;],[&quot;f&quot;,&quot;c&quot;,&quot;c&quot;,&quot;c&quot;]]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:There is only one valid cycle highlighted in the image below:</span><br></pre></td></tr></table></figure><p><img src="https://assets.leetcode.com/uploads/2020/07/15/2.png" alt="https://assets.leetcode.com/uploads/2020/07/15/2.png"></p><p><strong>Example 3:</strong></p><p><img src="https://assets.leetcode.com/uploads/2020/07/15/3.png" alt="https://assets.leetcode.com/uploads/2020/07/15/3.png"></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [[&quot;a&quot;,&quot;b&quot;,&quot;b&quot;],[&quot;b&quot;,&quot;z&quot;,&quot;b&quot;],[&quot;b&quot;,&quot;b&quot;,&quot;a&quot;]]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure><p><strong>Constraints:</strong></p><ul><li><code>m == grid.length</code></li><li><code>n == grid[i].length</code></li><li><code>1 &lt;= m, n &lt;= 500</code></li><li><code>grid</code> consists only of lowercase English letters.</li></ul><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution:"></a>Solution:</h3><p>DFS</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">containsCycle</span><span class="params">(self, grid: List[List[str]])</span> -&gt; bool:</span></span><br><span class="line">    </span><br><span class="line">        visited = set()</span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        </span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">valid</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt;= x &lt; m <span class="keyword">and</span> <span class="number">0</span> &lt;= y &lt; n:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node, parent)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> node <span class="keyword">in</span> visited: <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            visited.add(node)</span><br><span class="line">            nx,ny = node</span><br><span class="line">            childs = []</span><br><span class="line">            <span class="keyword">for</span> cx, cy <span class="keyword">in</span> [[nx+<span class="number">1</span>,ny],[nx<span class="number">-1</span>, ny],[nx,ny+<span class="number">1</span>],[nx,ny<span class="number">-1</span>]]:</span><br><span class="line">                <span class="keyword">if</span> valid(cx, cy):</span><br><span class="line">                    <span class="keyword">if</span> grid[cx][cy] == grid[nx][ny] <span class="keyword">and</span> (cx,cy) != parent:</span><br><span class="line">                        childs.append((cx, cy))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> childs:</span><br><span class="line">                <span class="keyword">if</span> dfs(x, node): <span class="keyword">return</span> <span class="keyword">True</span> </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span>  </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> (i,j) <span class="keyword">in</span> visited:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> dfs((i,j), <span class="keyword">None</span>): </span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure><p>time complexity: $O()$<br>space complexity: $O()$<br>reference:<br>related problem:<br></p>]]></content>
+      
+      <categories>
+          
+          <category> leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> medium </tag>
+            
+            <tag> bfs </tag>
+            
+            <tag> dfs </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>865.Smallest Subtree with all the Deepest Nodes</title>
       <link href="/2021/09/24/865-Smallest-Subtree-with-all-the-Deepest-Nodes/"/>
       <url>/2021/09/24/865-Smallest-Subtree-with-all-the-Deepest-Nodes/</url>
@@ -1139,9 +1164,9 @@
             
             <tag> medium </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> sorting </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -2685,9 +2710,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -3970,9 +3995,9 @@
             
             <tag> google </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4041,9 +4066,9 @@
             
             <tag> bfs </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -4228,9 +4253,9 @@
             
             <tag> binary search </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> twitter </tag>
             
@@ -4909,9 +4934,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -4959,9 +4984,9 @@
             
             <tag> hash table </tag>
             
-            <tag> heap </tag>
-            
             <tag> trie </tag>
+            
+            <tag> heap </tag>
             
         </tags>
       
@@ -5184,9 +5209,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -5588,9 +5613,9 @@
             
             <tag> bfs </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -6140,9 +6165,9 @@
             
             <tag> binary search </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> divide and conquer </tag>
             
@@ -6223,9 +6248,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -6250,9 +6275,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -6302,11 +6327,11 @@
             
             <tag> facebook </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
             
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6364,9 +6389,9 @@
             
             <tag> google </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> union find </tag>
             
@@ -6538,9 +6563,9 @@
             
             <tag> binary search </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -6610,9 +6635,9 @@
             
             <tag> binary search </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> linkedin </tag>
             
@@ -6703,9 +6728,9 @@
             
             <tag> bfs </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -6786,9 +6811,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -6898,9 +6923,9 @@
             
             <tag> bfs </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -7072,9 +7097,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -7277,9 +7302,9 @@
             
             <tag> amazon </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> linkedin </tag>
             
@@ -7370,9 +7395,9 @@
             
             <tag> easy </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -7929,9 +7954,9 @@
             
             <tag> bfs </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
             <tag> graph </tag>
             
@@ -8045,9 +8070,9 @@
             
             <tag> amazon </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> greedy </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -8105,9 +8130,9 @@
             
             <tag> medium </tag>
             
-            <tag> dfs </tag>
-            
             <tag> stack </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -8479,9 +8504,9 @@
             
             <tag> hash table </tag>
             
-            <tag> design </tag>
-            
             <tag> uber </tag>
+            
+            <tag> design </tag>
             
             <tag> linkedin </tag>
             
@@ -8560,9 +8585,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> uber </tag>
             
@@ -8599,9 +8624,9 @@
             
             <tag> bfs </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
@@ -8682,9 +8707,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> sort </tag>
             
@@ -8713,9 +8738,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> lyft </tag>
             
@@ -8842,9 +8867,9 @@
             
             <tag> tree </tag>
             
-            <tag> dfs </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> dfs </tag>
             
         </tags>
       
@@ -10188,9 +10213,9 @@
             
             <tag> string </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> two pointers </tag>
             
         </tags>
       
@@ -10217,9 +10242,9 @@
             
             <tag> amazon </tag>
             
-            <tag> two pointers </tag>
-            
             <tag> hash table </tag>
+            
+            <tag> two pointers </tag>
             
             <tag> bloomberg </tag>
             
@@ -10988,9 +11013,9 @@
             
             <tag> medium </tag>
             
-            <tag> array </tag>
-            
             <tag> amazon </tag>
+            
+            <tag> array </tag>
             
             <tag> two pointers </tag>
             
@@ -11160,9 +11185,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
             <tag> hash table </tag>
             
@@ -11189,9 +11214,9 @@
             
             <tag> leetcode </tag>
             
-            <tag> array </tag>
-            
             <tag> stack </tag>
+            
+            <tag> array </tag>
             
         </tags>
       
